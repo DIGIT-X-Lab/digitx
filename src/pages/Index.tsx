@@ -1,7 +1,10 @@
 import ParticleSwarm from '@/components/ParticleSwarm';
 import FocusCard from '@/components/FocusCard';
+import { useParallax } from '@/hooks/useParallax';
 
 const Index = () => {
+  const parallaxOffset = useParallax(0.3);
+
   const focusAreas = [
     {
       title: 'Data Architecture',
@@ -25,7 +28,6 @@ const Index = () => {
     <div className="relative min-h-screen bg-background overflow-hidden">
       <ParticleSwarm />
       
-      {/* Subtle gradient overlay */}
       <div className="fixed inset-0 pointer-events-none bg-gradient-to-b from-transparent via-transparent to-background/50" />
       
       {/* Navigation */}
@@ -40,21 +42,24 @@ const Index = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative z-10 min-h-[85vh] flex flex-col justify-center px-8 lg:px-16 max-w-6xl mx-auto">
-        <div className="space-y-8">
+      {/* Hero Section with Parallax */}
+      <section 
+        className="relative z-10 min-h-[85vh] flex flex-col justify-center px-8 lg:px-16 max-w-6xl mx-auto"
+        style={{ transform: `translateY(${parallaxOffset}px)` }}
+      >
+        <div className="space-y-8 parallax-slow">
           <div className="space-y-4 animate-fade-up">
-            <p className="text-primary text-sm font-medium tracking-widest uppercase">
+            <p className="text-gradient-neon text-sm font-medium tracking-widest uppercase">
               LMU Klinikum · Department of Radiology
             </p>
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
               <span className="text-foreground">DIGIT</span>
-              <span className="text-gradient">-X</span>
+              <span className="text-gradient-neon glow-text-neon">-X</span>
             </h1>
           </div>
           
           <p className="animate-fade-up-delay-1 text-xl md:text-2xl text-muted-foreground max-w-2xl leading-relaxed font-light">
-            Rethinking how medical data becomes knowledge.
+            Rethinking how medical data becomes <span className="text-gradient-neon">intelligence</span>.
           </p>
           
           <p className="animate-fade-up-delay-2 text-muted-foreground/70 max-w-xl leading-relaxed">
@@ -65,7 +70,7 @@ const Index = () => {
           <div className="animate-fade-up-delay-3 flex items-center gap-6 pt-4">
             <a 
               href="#focus" 
-              className="group inline-flex items-center gap-2 text-foreground font-medium transition-colors hover:text-primary"
+              className="group inline-flex items-center gap-2 text-foreground font-medium transition-colors hover:text-gradient-neon"
             >
               Explore our focus
               <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
@@ -78,13 +83,13 @@ const Index = () => {
       <section id="mission" className="relative z-10 py-32 px-8 lg:px-16">
         <div className="max-w-4xl mx-auto">
           <div className="border-glow rounded-2xl p-8 md:p-12 glow-box">
-            <p className="text-sm text-primary font-medium tracking-widest uppercase mb-6">
+            <p className="text-sm text-gradient-neon font-medium tracking-widest uppercase mb-6">
               Our Purpose
             </p>
             <blockquote className="font-display text-2xl md:text-3xl lg:text-4xl font-light text-foreground leading-relaxed">
               "To build more than just tools — infrastructure that moves data, connects silos, 
               and makes AI a catalyst that stays{' '}
-              <span className="text-primary">transparent</span> and speaks for itself."
+              <span className="text-gradient-neon">transparent</span> and speaks for itself."
             </blockquote>
           </div>
         </div>
@@ -94,7 +99,7 @@ const Index = () => {
       <section id="focus" className="relative z-10 py-24 px-8 lg:px-16">
         <div className="max-w-6xl mx-auto">
           <div className="mb-16">
-            <p className="text-sm text-primary font-medium tracking-widest uppercase mb-4">
+            <p className="text-sm text-gradient-neon font-medium tracking-widest uppercase mb-4">
               What We Build
             </p>
             <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground">
@@ -108,7 +113,7 @@ const Index = () => {
                 key={area.title}
                 title={area.title}
                 description={area.description}
-                delay={index * 0.1}
+                index={index}
               />
             ))}
           </div>
@@ -118,7 +123,7 @@ const Index = () => {
       {/* Principles */}
       <section className="relative z-10 py-24 px-8 lg:px-16">
         <div className="max-w-4xl mx-auto">
-          <p className="text-sm text-primary font-medium tracking-widest uppercase mb-8">
+          <p className="text-sm text-gradient-neon font-medium tracking-widest uppercase mb-8">
             How We Work
           </p>
           <ul className="space-y-6">
@@ -132,7 +137,7 @@ const Index = () => {
                 key={index}
                 className="flex items-start gap-4 text-muted-foreground group hover:text-foreground transition-colors duration-300"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 group-hover:scale-150 transition-transform" />
+                <span className="principle-dot mt-2.5 group-hover:scale-150 transition-transform" />
                 <span className="font-display text-lg md:text-xl">{principle}</span>
               </li>
             ))}
@@ -143,7 +148,7 @@ const Index = () => {
       {/* Connect Section */}
       <section id="connect" className="relative z-10 py-32 px-8 lg:px-16">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm text-primary font-medium tracking-widest uppercase mb-4">
+          <p className="text-sm text-gradient-neon font-medium tracking-widest uppercase mb-4">
             Early Days
           </p>
           <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-6">
@@ -158,7 +163,7 @@ const Index = () => {
               href="https://www.linkedin.com/company/digit-x-lab"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-foreground text-background font-medium transition-all hover:bg-primary hover:text-primary-foreground"
+              className="btn-primary"
             >
               Follow on LinkedIn
             </a>

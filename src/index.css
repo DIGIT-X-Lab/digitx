@@ -15,7 +15,7 @@
     --popover: 0 0% 4%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 187 85% 53%;
+    --primary: 250 90% 70%;
     --primary-foreground: 0 0% 2%;
 
     --secondary: 220 15% 12%;
@@ -24,7 +24,7 @@
     --muted: 220 10% 15%;
     --muted-foreground: 220 10% 55%;
 
-    --accent: 200 80% 60%;
+    --accent: 330 85% 65%;
     --accent-foreground: 0 0% 2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -32,19 +32,23 @@
 
     --border: 220 10% 15%;
     --input: 220 10% 15%;
-    --ring: 187 85% 53%;
+    --ring: 250 90% 70%;
 
     --radius: 0.5rem;
 
-    /* Custom tokens for DIGIT-X */
-    --glow-primary: 187 85% 53%;
-    --glow-secondary: 200 80% 60%;
-    --particle-primary: 187 85% 60%;
-    --particle-secondary: 200 70% 65%;
-    --particle-tertiary: 170 60% 50%;
+    /* Gemini-style neon gradient colors */
+    --neon-blue: 217 91% 65%;
+    --neon-purple: 270 85% 65%;
+    --neon-pink: 330 85% 65%;
+    --neon-coral: 15 90% 65%;
+    
+    /* Particle colors - now matching gradient */
+    --particle-primary: 217 91% 65%;
+    --particle-secondary: 270 85% 65%;
+    --particle-tertiary: 330 85% 65%;
     
     --gradient-dark: linear-gradient(180deg, hsl(0 0% 2%) 0%, hsl(220 15% 4%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(187 85% 53% / 0.1) 0%, transparent 70%);
+    --gradient-neon: linear-gradient(135deg, hsl(217 91% 65%) 0%, hsl(270 85% 65%) 35%, hsl(330 85% 65%) 70%, hsl(15 90% 65%) 100%);
     
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -78,36 +82,56 @@
 }
 
 @layer components {
-  .text-gradient {
+  .text-gradient-neon {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    background-image: var(--gradient-neon);
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
   }
 
-  .glow-text {
-    text-shadow: 0 0 40px hsl(var(--glow-primary) / 0.4),
-                 0 0 80px hsl(var(--glow-primary) / 0.2);
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .glow-text-neon {
+    text-shadow: 0 0 40px hsl(var(--neon-purple) / 0.4),
+                 0 0 80px hsl(var(--neon-pink) / 0.2),
+                 0 0 120px hsl(var(--neon-blue) / 0.1);
   }
 
   .glow-box {
-    box-shadow: 0 0 60px hsl(var(--glow-primary) / 0.15),
+    box-shadow: 0 0 60px hsl(var(--neon-purple) / 0.1),
+                0 0 100px hsl(var(--neon-pink) / 0.05),
                 inset 0 1px 0 hsl(var(--foreground) / 0.05);
   }
 
   .border-glow {
-    border: 1px solid hsl(var(--primary) / 0.2);
-    background: linear-gradient(135deg, hsl(var(--primary) / 0.03) 0%, transparent 50%);
+    border: 1px solid hsl(var(--neon-purple) / 0.2);
+    background: linear-gradient(135deg, hsl(var(--neon-blue) / 0.03) 0%, hsl(var(--neon-pink) / 0.02) 50%, transparent 100%);
   }
 
   .focus-area-card {
     @apply relative overflow-hidden rounded-lg p-6 transition-all duration-500;
     background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(0 0% 3%) 100%);
     border: 1px solid hsl(var(--border));
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .focus-area-card.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .focus-area-card::before {
     content: '';
     @apply absolute inset-0 opacity-0 transition-opacity duration-500;
-    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), hsl(var(--primary) / 0.06), transparent 40%);
+    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), hsl(var(--neon-purple) / 0.06), transparent 40%);
   }
 
   .focus-area-card:hover::before {
@@ -115,7 +139,7 @@
   }
 
   .focus-area-card:hover {
-    border-color: hsl(var(--primary) / 0.3);
+    border-color: hsl(var(--neon-purple) / 0.3);
     transform: translateY(-2px);
   }
 
@@ -125,7 +149,8 @@
 
   .nav-link::after {
     content: '';
-    @apply absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-300;
+    @apply absolute -bottom-1 left-0 h-px w-0 transition-all duration-300;
+    background: var(--gradient-neon);
   }
 
   .nav-link:hover {
@@ -134,6 +159,23 @@
 
   .nav-link:hover::after {
     @apply w-full;
+  }
+
+  .principle-dot {
+    @apply w-1.5 h-1.5 rounded-full transition-all duration-300;
+    background: var(--gradient-neon);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-300;
+    background: var(--gradient-neon);
+    background-size: 200% 200%;
+    color: hsl(var(--background));
+  }
+
+  .btn-primary:hover {
+    animation: gradient-shift 3s ease infinite;
+    box-shadow: 0 0 30px hsl(var(--neon-purple) / 0.4);
   }
 }
 
@@ -157,11 +199,6 @@
     opacity: 0;
   }
 
-  .animate-fade-up-delay-4 {
-    animation: fadeUp 0.8s ease-out 0.4s forwards;
-    opacity: 0;
-  }
-
   @keyframes fadeUp {
     from {
       opacity: 0;
@@ -173,16 +210,7 @@
     }
   }
 
-  @keyframes pulse-glow {
-    0%, 100% {
-      opacity: 0.4;
-    }
-    50% {
-      opacity: 0.8;
-    }
-  }
-
-  .animate-pulse-glow {
-    animation: pulse-glow 3s ease-in-out infinite;
+  .parallax-slow {
+    will-change: transform;
   }
 }
