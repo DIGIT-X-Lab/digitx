@@ -190,10 +190,10 @@ const Index = () => {
             <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] mb-6 leading-tight">Let's Build<br /><span className="font-serif text-[hsl(var(--accent))] italic">Computable Healthcare</span></h2>
             <p className="text-lg text-[hsl(var(--text-secondary))] leading-[1.8] mb-10 max-w-lg mx-auto">If our work resonates with you — whether you're a clinician, a researcher, or an industry partner — we'd be happy to talk.</p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="https://www.linkedin.com/company/digit-x-lab" target="_blank" rel="noopener noreferrer" className="btn-primary">
+              <a href="https://www.linkedin.com/company/digitx-lmu" target="_blank" rel="noopener noreferrer" className="btn-primary">
                 Follow on LinkedIn <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
               </a>
-              <a href="mailto:contact@digit-x.de" className="btn-secondary">Get in Touch</a>
+              <a href="mailto:lalith.shiyam@med.uni-muenchen.de" className="btn-secondary">Get in Touch</a>
             </div>
           </div>
         </div>
