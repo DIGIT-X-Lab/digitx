@@ -779,12 +779,15 @@
     font-weight: 600;
     transition: all 0.2s ease;
     line-height: 1;
+    cursor: pointer;
   }
-  .icon-inline:hover {
-    color: hsl(var(--accent));
-    border-color: hsl(var(--accent) / 0.4);
-    box-shadow: 0 8px 18px hsl(var(--card-shadow) / 0.1);
-    transform: translateY(-1px);
+  .icon-inline:hover,
+  .icon-inline:focus-visible {
+    color: white;
+    background: hsl(var(--accent));
+    border-color: hsl(var(--accent));
+    box-shadow: 0 8px 18px hsl(var(--card-shadow) / 0.12);
+    transform: translateY(-1px) scale(1.01);
   }
 
 }

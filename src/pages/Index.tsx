@@ -338,7 +338,14 @@ const Index = () => {
                   <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-4 flex-1">{tool.desc}</p>
                   <div className="flex items-center justify-between gap-3 text-xs text-[hsl(var(--text-secondary))] mt-auto">
                     {tool.github && (
-                      <a href={tool.github} className="icon-inline" target="_blank" rel="noopener noreferrer" aria-label={`${tool.name} on GitHub`}>
+                      <a
+                        href={tool.github}
+                        className="icon-inline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${tool.name} on GitHub`}
+                        title="View code on GitHub"
+                      >
                         <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
                           <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.94.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.72.08-.71.08-.71 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.52-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.44-2.27 1.16-3.07-.12-.29-.5-1.46.11-3.05 0 0 .95-.3 3.12 1.17a10.9 10.9 0 0 1 5.68 0c2.17-1.47 3.12-1.17 3.12-1.17.61 1.59.23 2.76.11 3.05.72.8 1.16 1.82 1.16 3.07 0 4.41-2.68 5.38-5.23 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.79.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
                         </svg>
@@ -352,10 +359,18 @@ const Index = () => {
                       </a>
                     )}
                     {tool.paper && (
-                      <a href={tool.paper} className="icon-inline" target="_blank" rel="noopener noreferrer" aria-label={`${tool.name} publication`}>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-                          <path d="M4 19.5V5a2 2 0 0 1 2-2h9" />
-                          <path d="M16 3h2a2 2 0 0 1 2 2v14.5l-3-1.5-3 1.5V5a2 2 0 0 1 2-2Z" />
+                      <a
+                        href={tool.paper}
+                        className="icon-inline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${tool.name} publication`}
+                        title="Open publication"
+                      >
+                        <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M7 3h8l3 3v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
+                          <path d="M13 3v6l-2-1-2 1V3" />
+                          <path d="M9 11h6M9 14h6" />
                         </svg>
                         <span>Paper</span>
                       </a>
@@ -383,7 +398,14 @@ const Index = () => {
                   <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-4 flex-1">{tool.desc}</p>
                   <div className="flex items-center gap-2 text-xs text-[hsl(var(--text-secondary))] mt-auto">
                     {tool.github && (
-                      <a href={tool.github} className="icon-inline" target="_blank" rel="noopener noreferrer" aria-label={`${tool.name} on GitHub`}>
+                      <a
+                        href={tool.github}
+                        className="icon-inline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${tool.name} on GitHub`}
+                        title="View code on GitHub"
+                      >
                         <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
                           <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.94.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.72.08-.71.08-.71 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.52-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.44-2.27 1.16-3.07-.12-.29-.5-1.46.11-3.05 0 0 .95-.3 3.12 1.17a10.9 10.9 0 0 1 5.68 0c2.17-1.47 3.12-1.17 3.12-1.17.61 1.59.23 2.76.11 3.05.72.8 1.16 1.82 1.16 3.07 0 4.41-2.68 5.38-5.23 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.79.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
                         </svg>
@@ -397,10 +419,18 @@ const Index = () => {
                       </a>
                     )}
                     {tool.paper && (
-                      <a href={tool.paper} className="icon-inline" target="_blank" rel="noopener noreferrer" aria-label={`${tool.name} publication`}>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-                          <path d="M4 19.5V5a2 2 0 0 1 2-2h9" />
-                          <path d="M16 3h2a2 2 0 0 1 2 2v14.5l-3-1.5-3 1.5V5a2 2 0 0 1 2-2Z" />
+                      <a
+                        href={tool.paper}
+                        className="icon-inline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${tool.name} publication`}
+                        title="Open publication"
+                      >
+                        <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M7 3h8l3 3v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
+                          <path d="M13 3v6l-2-1-2 1V3" />
+                          <path d="M9 11h6M9 14h6" />
                         </svg>
                         <span>Paper</span>
                       </a>
@@ -450,7 +480,7 @@ const Index = () => {
               <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))]">A Small,<br /><span className="font-serif text-[hsl(var(--accent))] italic">Interdisciplinary Lab</span></h2>
             </div>
             <div className="lg:col-span-8 space-y-6">
-              <p className="text-lg md:text-xl text-[hsl(var(--text-secondary))] leading-[1.8]">DIGITX is based at LMU Klinikum Munich and brings together clinicians, informaticians, engineers, and researchers who care about building upstream foundations that translate to bedside impact. We stay small on purpose so we can stay close to the work.</p>
+              <p className="text-lg md:text-xl text-[hsl(var(--text-secondary))] leading-[1.8]">DIGITX is based at the Department of Radiology, LMU University Hospital, Munich. We bring together clinicians, informaticians, engineers, and researchers who care about building upstream foundations that translate to bedside impact. We stay small on purpose so we can stay close to the work.</p>
               <p className="text-lg text-[hsl(var(--text-secondary))] leading-[1.8]">We value clarity over hype, rigor over shortcuts, and an academic culture that keeps patients and colleagues at the center of every decision.</p>
               <div className="pt-6 border-t border-[hsl(var(--border))]">
                 <div className="focus-card">
