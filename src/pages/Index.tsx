@@ -4,7 +4,14 @@ import ThemeToggle from '@/components/ThemeToggle';
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [navScrolled, setNavScrolled] = useState(false);
   useEffect(() => setIsLoaded(true), []);
+  useEffect(() => {
+    const handleScroll = () => setNavScrolled(window.scrollY > 12);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const focusAreas = [
     {
@@ -41,18 +48,108 @@ const Index = () => {
     { title: 'Quiet Ambition', desc: 'We take on foundational work with humility and patience. We measure progress by safer care and stronger science.' },
   ];
 
+  const tools = [
+    {
+      name: 'MosaicX',
+      desc: 'Autonomous structuring engine that turns PDFs, dictated notes, images, and labs into FHIR-ready, provenance-preserved data.',
+      tags: ['FHIR', 'SNOMED/LOINC', 'Provenance', 'Pipelines'],
+      status: 'Active development',
+      github: 'https://github.com/DIGIT-X-Lab/MOSAICX',
+      stars: 3,
+    },
+    {
+      name: 'AnnotateX',
+      desc: 'GUI web app for rapid text annotation to build gold standards and evaluate structured extraction.',
+      tags: ['Annotation', 'Quality', 'Gold standards'],
+      status: 'Active development',
+      github: 'https://github.com/DIGIT-X-Lab/ANNOTATEX',
+      stars: 2,
+    },
+    {
+      name: 'KnowledgeX',
+      desc: 'A discovery platform that builds graphs from unstructured text with LLMs and supports grounded chat over the graph.',
+      tags: ['Knowledge graph', 'LLM-grounding', 'Reasoning'],
+      status: 'Active development',
+      github: 'https://github.com/DIGIT-X-Lab/KnowledgeX',
+      stars: 0,
+    },
+  ];
+
+  const imagingTools = [
+    {
+      name: 'MOOSE',
+      desc: 'Segments 130+ tissues from CT using nnU-Net; built for multicenter PET/CT workflows and opportunistic screening.',
+      tags: ['PET/CT', 'Segmentation', 'Multicenter'],
+      status: 'Maintained',
+      github: 'https://github.com/ENHANCE-PET/MOOSE',
+      paper: 'https://pubmed.ncbi.nlm.nih.gov/35772962/',
+      stars: 299,
+    },
+    {
+      name: 'FALCON',
+      desc: 'One-stop total-body PET motion correction using a greedy diffeomorphic registration engine.',
+      tags: ['PET/CT', 'Motion correction', 'Registration'],
+      status: 'Maintained',
+      github: 'https://github.com/ENHANCE-PET/FALCON',
+      paper: 'https://pubmed.ncbi.nlm.nih.gov/37290795/',
+      stars: 48,
+    },
+    {
+      name: 'PUMA',
+      desc: 'PET segmentation–guided diffeomorphic framework for multiplexing tracers to characterise tissue biology.',
+      tags: ['PET/CT', 'Segmentation', 'Diffeomorphic'],
+      status: 'Maintained',
+      github: 'https://github.com/ENHANCE-PET/PUMA',
+      paper: 'https://jnm.snmjournals.org/content/early/2025/09/18/jnumed.125.269688',
+      stars: 21,
+    },
+  ];
+
+  const focusIcons = [
+    (
+      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 4h16v6H4z" />
+        <path d="M8 14h12M8 18h8" />
+        <circle cx="6" cy="16" r="2" />
+      </svg>
+    ),
+    (
+      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="8" cy="12" r="3" />
+        <circle cx="16" cy="6" r="2" />
+        <circle cx="16" cy="18" r="2" />
+        <path d="M10.5 10.5 14.5 7.5M10.5 13.5l4 2.5" />
+      </svg>
+    ),
+    (
+      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="4" y="5" width="12" height="14" rx="2" />
+        <path d="M16 9h3v6h-3" />
+        <path d="M8 9h4M8 13h2" />
+      </svg>
+    ),
+    (
+      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 7h8l2 4 4 2-2 4H6l-2-4z" />
+        <path d="M10 4v3M6 18v2M14 18v2" />
+      </svg>
+    ),
+  ];
+
   return (
     <div className="relative min-h-screen noise-overlay">
       <NetworkGraph />
       <div className="fixed inset-0 gradient-warmth pointer-events-none" />
+      <div className="fixed inset-0 global-veil pointer-events-none" aria-hidden />
 
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 lg:px-20 py-6 transition-all duration-500">
+      <nav className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-12 lg:px-20 transition-all duration-500 ${navScrolled ? 'nav-scrolled py-2' : 'py-5'}`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="w-10 hidden md:block" />
           <div className="hidden md:flex items-center gap-10">
             <a href="#vision" className="link-subtle text-[0.8125rem]">Vision</a>
             <a href="#focus" className="link-subtle text-[0.8125rem]">Focus</a>
+            <a href="#tools" className="link-subtle text-[0.8125rem]">Software</a>
             <a href="#approach" className="link-subtle text-[0.8125rem]">Approach</a>
             <a href="#people" className="link-subtle text-[0.8125rem]">People</a>
             <a href="#connect" className="link-subtle text-[0.8125rem]">Connect</a>
@@ -65,8 +162,9 @@ const Index = () => {
 
       {/* Hero */}
       <section className="relative min-h-screen flex items-center px-6 md:px-12 lg:px-20 pt-28">
+        <div className="hero-ambient" aria-hidden />
         <div className="max-w-7xl mx-auto w-full">
-          <div className="max-w-6xl">
+          <div className="relative z-10 max-w-6xl">
             <div className={`mb-8 ${isLoaded ? 'fade-in-up' : 'opacity-0'}`}>
               <span className="text-label">DIGITX · Lab for Digital Transformation in Healthcare</span>
             </div>
@@ -80,13 +178,13 @@ const Index = () => {
               DIGITX is an academic lab in Radiology at LMU Klinikum. We build the quiet, rigorous infrastructure that turns raw clinical signals into structured, connected evidence — so decisions can be explained, challenged, and trusted.
             </p>
             <div className={`flex flex-wrap gap-4 ${isLoaded ? 'fade-in-up delay-4' : 'opacity-0'}`}>
-              <a href="#focus" className="btn-primary">Explore Our Work <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></a>
-              <a href="#connect" className="btn-secondary">Get in Touch</a>
+              <a href="#focus" className="btn-primary btn-shimmer">Explore Our Work <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></a>
+              <a href="#connect" className="btn-secondary btn-glass">Get in Touch <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg></a>
             </div>
           </div>
         </div>
         
-        <div className="absolute bottom-16 left-1/2 -translate-x-1/2">
+        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-10">
           <div className="scroll-indicator"><svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7" /></svg></div>
         </div>
       </section>
@@ -176,18 +274,17 @@ const Index = () => {
       {/* Focus Areas */}
       <section id="focus" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-20 max-w-6xl mx-auto">
+          <div className="mb-20 max-w-6xl">
             <span className="text-label text-[hsl(var(--accent))] block mb-4">What We Work On</span>
-            <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] max-w-3xl">Foundations for<br /><span className="font-serif text-[hsl(var(--accent))] italic">Health Intelligence</span></h2>
+            <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] max-w-3xl">Foundations for <span className="font-serif text-[hsl(var(--accent))] italic">Health Intelligence</span></h2>
             <p className="text-[hsl(var(--text-secondary))] mt-6 max-w-6xl leading-[1.9]">We focus on a few foundational challenges that must be solved before healthcare can benefit from trustworthy, scalable intelligence. Together, they form a platform where clinical data structures itself, links to what matters, and can be queried with evidence intact.</p>
           </div>
 
-          <div className="flex flex-col gap-6 max-w-6xl mx-auto">
+          <div className="grid gap-6 max-w-6xl">
             {focusAreas.map((area) => (
               <div key={area.num} className="focus-card group">
-                <h3 className="text-headline text-xl md:text-2xl text-[hsl(var(--text-primary))] mb-2 group-hover:text-[hsl(var(--accent))] transition-colors duration-300 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[hsl(var(--accent))]" />
-                  <span className="text-[hsl(var(--accent))]">{area.num}</span>
+                <h3 className="focus-card-title text-headline text-xl md:text-2xl text-[hsl(var(--text-primary))] mb-2 group-hover:text-[hsl(var(--accent))] transition-colors duration-300 flex items-center gap-3">
+                  <span className="focus-num text-[hsl(var(--accent))] font-semibold">{area.num}</span>
                   <span>{area.title}</span>
                 </h3>
                 <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-3">{area.desc}</p>
@@ -200,6 +297,87 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Software */}
+      <section id="tools" className="relative py-28 md:py-40 px-6 md:px-12 lg:px-20 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16 max-w-6xl">
+            <span className="text-label text-[hsl(var(--accent))] block mb-4">Software</span>
+            <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight">
+              What We’re <span className="font-serif italic text-[hsl(var(--accent))]">Building</span>
+            </h2>
+            <p className="text-[hsl(var(--text-secondary))] mt-4 max-w-3xl leading-[1.9]">Open-science tools across data/LLM and imaging stacks — structured, explainable, and built for clinical accountability.</p>
+          </div>
+
+          <div className="mb-14 max-w-7xl mx-auto">
+            <span className="text-label text-[hsl(var(--accent))] block mb-3">Imaging Stack</span>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {imagingTools.map((tool) => (
+                <div key={tool.name} className="focus-card h-full flex flex-col">
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-headline text-xl text-[hsl(var(--text-primary))]">{tool.name}</h3>
+                      {tool.github && (
+                        <a href={tool.github} className="icon-inline" target="_blank" rel="noopener noreferrer" aria-label={`${tool.name} on GitHub`}>
+                          <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
+                            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.94.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.72.08-.71.08-.71 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.52-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.44-2.27 1.16-3.07-.12-.29-.5-1.46.11-3.05 0 0 .95-.3 3.12 1.17a10.9 10.9 0 0 1 5.68 0c2.17-1.47 3.12-1.17 3.12-1.17.61 1.59.23 2.76.11 3.05.72.8 1.16 1.82 1.16 3.07 0 4.41-2.68 5.38-5.23 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.79.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                          </svg>
+                          <span>{tool.stars}</span>
+                        </a>
+                      )}
+                      {tool.paper && (
+                        <a href={tool.paper} className="icon-inline" target="_blank" rel="noopener noreferrer" aria-label={`${tool.name} publication`}>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                            <path d="M4 19.5V5a2 2 0 0 1 2-2h9" />
+                            <path d="M16 3h2a2 2 0 0 1 2 2v14.5l-3-1.5-3 1.5V5a2 2 0 0 1 2-2Z" />
+                          </svg>
+                        </a>
+                      )}
+                    </div>
+                    <span className="status-chip">{tool.status}</span>
+                  </div>
+                  <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-4 flex-1">{tool.desc}</p>
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {tool.tags.map((tag) => (
+                      <span key={tag} className="pill-soft text-xs">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="max-w-7xl mx-auto">
+            <span className="text-label text-[hsl(var(--accent))] block mb-3">LLM Stack</span>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {tools.map((tool) => (
+                <div key={tool.name} className="focus-card h-full flex flex-col">
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-headline text-xl text-[hsl(var(--text-primary))]">{tool.name}</h3>
+                      {tool.github && (
+                        <a href={tool.github} className="icon-inline" target="_blank" rel="noopener noreferrer" aria-label={`${tool.name} on GitHub`}>
+                          <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
+                            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.94.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.72.08-.71.08-.71 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.52-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.44-2.27 1.16-3.07-.12-.29-.5-1.46.11-3.05 0 0 .95-.3 3.12 1.17a10.9 10.9 0 0 1 5.68 0c2.17-1.47 3.12-1.17 3.12-1.17.61 1.59.23 2.76.11 3.05.72.8 1.16 1.82 1.16 3.07 0 4.41-2.68 5.38-5.23 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.79.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                          </svg>
+                          <span>{tool.stars}</span>
+                        </a>
+                      )}
+                    </div>
+                    <span className="status-chip">{tool.status}</span>
+                  </div>
+                  <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-4 flex-1">{tool.desc}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {tool.tags.map((tag) => (
+                      <span key={tag} className="pill-soft text-xs">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How We Work */}
       <section id="approach" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
@@ -207,7 +385,7 @@ const Index = () => {
             <div className="lg:col-span-4">
               <span className="text-label text-[hsl(var(--accent))] block mb-4">How We Work</span>
               <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))]">
-                <span className="font-serif italic text-[hsl(var(--text-primary))]">Honest Methods</span><br />
+                <span className="font-serif text-[hsl(var(--text-primary))]">Honest Methods</span><br />
                 <span className="font-serif italic text-[hsl(var(--accent))]">for a Complex Domain</span>
               </h2>
             </div>
@@ -234,7 +412,7 @@ const Index = () => {
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
             <div className="lg:col-span-4">
               <span className="text-label text-[hsl(var(--accent))] block mb-4">People</span>
-              <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))]">A Small,<br /><span className="font-serif text-[hsl(var(--accent))] italic">Interdisciplinary</span> Lab</h2>
+              <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))]">A Small,<br /><span className="font-serif text-[hsl(var(--accent))] italic">Interdisciplinary Lab</span></h2>
             </div>
             <div className="lg:col-span-8 space-y-6">
               <p className="text-lg md:text-xl text-[hsl(var(--text-secondary))] leading-[1.8]">DIGITX is based at LMU Klinikum Munich and brings together clinicians, informaticians, engineers, and researchers who care about building upstream foundations that translate to bedside impact. We stay small on purpose so we can stay close to the work.</p>
@@ -277,12 +455,20 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="relative py-12 md:py-16 px-6 md:px-12 lg:px-20 bg-[hsl(var(--footer-bg))] transition-colors duration-500">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-[hsl(var(--footer-text))] font-semibold tracking-tight">DIGITX</div>
-            <div className="text-sm text-[hsl(var(--footer-text))]/60">LMU Klinikum Munich · Department of Radiology</div>
-            <div className="text-sm text-[hsl(var(--footer-text))]/40">© {new Date().getFullYear()} DIGITX Lab</div>
+      <footer className="relative border-t border-[hsl(var(--border))] py-10 md:py-12 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-tertiary))] transition-colors duration-500">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+            <div className="flex items-center gap-3 text-[hsl(var(--text-primary))]">
+              <span className="font-semibold tracking-tight">DIGITX</span>
+              <span className="text-sm text-[hsl(var(--text-secondary))]">LMU Klinikum Munich · Department of Radiology</span>
+            </div>
+            <div className="footer-nav">
+              <a href="#vision">Vision</a>
+              <a href="#focus">Focus</a>
+              <a href="#connect">Connect</a>
+              <a href="https://www.linkedin.com/company/digitx-lmu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+            <div className="text-sm text-[hsl(var(--text-secondary))]">© {new Date().getFullYear()} DIGITX Lab</div>
           </div>
         </div>
       </footer>
