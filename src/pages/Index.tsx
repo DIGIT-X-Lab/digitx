@@ -525,7 +525,7 @@ const Index = () => {
                 <div className="focus-card">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-headline text-lg text-[hsl(var(--text-primary))]">Opportunities</h3>
-                    <span className="pill-soft">Open</span>
+                    <span className="pill-soft pill-accent">Open</span>
                   </div>
                   <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-3">We welcome:</p>
                   <ul className="text-[hsl(var(--text-secondary))] leading-relaxed space-y-2">
