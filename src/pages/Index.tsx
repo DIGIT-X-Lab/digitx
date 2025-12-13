@@ -105,6 +105,71 @@ const Index = () => {
     },
   ];
 
+  const journeySteps = [
+    {
+      title: 'Raw Signals',
+      label: 'Boids to bits',
+      desc: 'Unstructured PDFs, dictated notes, images, and labs arrive noisy and fragmented.',
+      icon: (
+        <svg className="w-9 h-9 text-[hsl(var(--accent))]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+          <path d="m4 4 4 4-4 4-4-4z" />
+          <path d="m12 2 4 4-4 4-4-4z" />
+          <path d="m20 4 4 4-4 4-4-4z" />
+          <path d="m8 12 4 4-4 4-4-4z" />
+          <path d="m16 12 4 4-4 4-4-4z" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Structured',
+      label: 'Grids snap',
+      desc: 'Entities, codes, timestamps, and provenance align into interoperable structures.',
+      icon: (
+        <svg className="w-9 h-9 text-[hsl(var(--accent))]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="7" height="7" rx="1.5" />
+          <rect x="14" y="3" width="7" height="7" rx="1.5" />
+          <rect x="3" y="14" width="7" height="7" rx="1.5" />
+          <rect x="14" y="14" width="7" height="7" rx="1.5" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Linked',
+      label: 'Graph awake',
+      desc: 'Knowledge graphs connect people, problems, meds, imaging, time — with evidence intact.',
+      icon: (
+        <svg className="w-9 h-9 text-[hsl(var(--accent))]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="6" cy="6" r="3" />
+          <circle cx="18" cy="6" r="3" />
+          <circle cx="6" cy="18" r="3" />
+          <circle cx="18" cy="18" r="3" />
+          <path d="M9 6h6M6 9v6M18 9v6M9 18h6" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Reasoned',
+      label: 'Grounded QA',
+      desc: 'LLMs anchor to graphs and citations, so answers stay auditable and challengeable.',
+      icon: (
+        <svg className="w-9 h-9 text-[hsl(var(--accent))]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+          <path d="M7 10h10M7 6h10M7 14h6" />
+          <path d="M5 20v-6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6l-3-3h-8z" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Impact',
+      label: 'Bedside',
+      desc: 'Clinicians and researchers act faster with evidence they can explain, defend, and trust.',
+      icon: (
+        <svg className="w-9 h-9 text-[hsl(var(--accent))]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 21s-6-4.35-9-9a5.16 5.16 0 0 1 9-4 5.16 5.16 0 0 1 9 4c-3 4.65-9 9-9 9Z" />
+        </svg>
+      ),
+    },
+  ];
+
   const initialStarCounts = [...tools, ...imagingTools].reduce<Record<string, number>>((acc, tool) => {
     if (tool.github && typeof tool.stars === 'number') {
       acc[tool.github] = tool.stars;
@@ -199,6 +264,41 @@ const Index = () => {
         
         <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-10">
           <div className="scroll-indicator"><svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7" /></svg></div>
+        </div>
+      </section>
+
+      {/* Journey */}
+      <section className="relative py-24 md:py-32 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-primary))] transition-colors duration-500">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-10 space-y-3">
+            <span className="text-label text-[hsl(var(--accent))]">How We Move</span>
+            <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))]">
+              From Raw Signals to Evidence You Can Defend
+            </h2>
+            <p className="text-[hsl(var(--text-secondary))] max-w-3xl">
+              A calm, auditable path: fragments become structure, structure becomes graphs, graphs power grounded reasoning, so decisions stay explainable.
+            </p>
+          </div>
+          <div className="relative overflow-hidden rounded-3xl border border-[hsl(var(--border))] bg-[hsl(var(--bg-secondary)/0.6)] backdrop-blur-xl shadow-[0_20px_80px_hsl(var(--card-shadow)/0.16)] p-6 md:p-8">
+            <div className="journey-line" aria-hidden />
+            <div className="grid gap-4 md:gap-6 md:grid-cols-2 lg:grid-cols-5">
+              {journeySteps.map((step) => (
+                <div
+                  key={step.title}
+                  className="relative z-10 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--bg-primary)/0.9)] p-4 md:p-5 flex flex-col gap-3 shadow-[0_14px_40px_hsl(var(--card-shadow)/0.12)] transition-transform duration-300 hover:-translate-y-1"
+                >
+                  <div className="w-11 h-11 rounded-full bg-[hsl(var(--accent)/0.14)] text-[hsl(var(--accent))] flex items-center justify-center">
+                    {step.icon}
+                  </div>
+                  <div className="space-y-1">
+                    <div className="text-sm text-[hsl(var(--text-secondary))]">{step.label}</div>
+                    <div className="text-lg font-semibold">{step.title}</div>
+                  </div>
+                  <p className="text-[hsl(var(--text-secondary))] text-sm leading-relaxed">{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
