@@ -48,6 +48,30 @@ const Index = () => {
     { title: 'Quiet Ambition', desc: 'We take on foundational work with humility and patience. We measure progress by safer care and stronger science.' },
   ];
 
+  const teamMembers = [
+    {
+      name: 'Prof. Dr. Lalith Kumar Shiyam Sundar',
+      role: 'Group Lead',
+      label: 'Group Lead',
+      tags: ['Medical imaging', 'Multimodal integration', 'Knowledge graphs'],
+      bio: 'Focuses on clinically grounded AI that fuses imaging, text, and structured data into explainable knowledge graphs for real-world decisions.',
+      university: 'LMU Radiology · LMU University Hospital',
+      github: 'https://github.com/LalithShiyam',
+      linkedin: 'https://de.linkedin.com/in/lalith-kumar-shiyam-sundar-phd-3a2aaba0',
+      scholar: 'https://scholar.google.com/citations?user=L6iMPN4AAAAJ&hl=en',
+    },
+    {
+      name: 'Sameer Singh Rawat',
+      role: 'Master thesis student',
+      label: 'Master thesis student',
+      tags: ['AI automation', 'Ontology', 'LLMs'],
+      bio: 'Focuses on automated ontology induction from medical documents using large language models.',
+      university: 'Ludwig Maximilian University of Munich',
+      github: 'https://github.com/SameerR007',
+      linkedin: 'https://www.linkedin.com/in/sameer-s-1333a6172',
+    },
+  ];
+
   const tools = [
     {
       name: 'MosaicX',
@@ -473,71 +497,133 @@ const Index = () => {
 
       {/* People */}
       <section id="people" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] transition-colors duration-300">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
-            <div className="lg:col-span-4">
-              <span className="text-label text-[hsl(var(--accent))] block mb-4">People</span>
-              <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))]">A Small,<br /><span className="font-serif text-[hsl(var(--accent))] italic">Interdisciplinary Lab</span></h2>
-            </div>
-            <div className="lg:col-span-8 space-y-6">
-              <p className="text-lg md:text-xl text-[hsl(var(--text-secondary))] leading-[1.8]">DIGITX is based at the Department of Radiology, LMU University Hospital, Munich. We bring together clinicians, informaticians, engineers, and researchers who care about building upstream foundations that translate to bedside impact. We stay small on purpose so we can stay close to the work.</p>
-              <p className="text-lg text-[hsl(var(--text-secondary))] leading-[1.8]">We value clarity over hype, rigor over shortcuts, and an academic culture that keeps patients and colleagues at the center of every decision.</p>
-              <div className="flex flex-wrap items-center gap-3 justify-between">
-                <a
-                  href="https://scholar.google.com/citations?user=ZjZLd-sAAAAJ&hl=de&authuser=2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="View publications on Google Scholar"
-                  className="group inline-flex items-center gap-3 px-3.5 py-2 rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--bg-primary))] text-sm font-semibold text-[hsl(var(--text-primary))] shadow-[0_10px_30px_hsl(var(--card-shadow)/0.12)] hover:bg-[hsl(var(--accent))] hover:text-white hover:border-[hsl(var(--accent))] transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(var(--accent))] active:translate-y-0.5"
-                >
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[hsl(var(--accent)/0.14)] text-[hsl(var(--accent))] group-hover:bg-white group-hover:text-[hsl(var(--accent))] transition-colors duration-300">
-                    <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-                      <path d="m3 10 9-5 9 5-9 5-9-5Z" />
-                      <path d="M12 15v6" />
-                      <path d="M7.5 12.75v3.5" />
-                      <path d="M16.5 12.75v3.5" />
-                    </svg>
-                  </span>
-                  <span>Google Scholar</span>
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        <div className="max-w-7xl mx-auto space-y-10">
+          <div className="space-y-4 max-w-7xl">
+            <span className="text-label text-[hsl(var(--accent))] block">People</span>
+            <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight">
+              A Small <span className="font-serif text-[hsl(var(--accent))] italic">Interdisciplinary Lab</span>
+            </h2>
+            <p className="text-[hsl(var(--text-secondary))] leading-[1.9] max-w-7xl">
+              DIGITX is based at the Department of Radiology, LMU University Hospital, Munich. We bring together clinicians, informaticians, engineers, and researchers who care about building upstream foundations that translate to bedside impact. We stay small on purpose so we can stay close to the work.
+            </p>
+            <p className="text-[hsl(var(--text-secondary))] leading-[1.9] max-w-7xl">
+              We value clarity over hype, rigor over shortcuts, and an academic culture that keeps patients and colleagues at the center of every decision.
+            </p>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="https://scholar.google.com/citations?user=L6iMPN4AAAAJ&hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View publications on Google Scholar"
+                className="group inline-flex items-center gap-3 px-3.5 py-2 rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--bg-primary))] text-sm font-semibold text-[hsl(var(--text-primary))] shadow-[0_10px_30px_hsl(var(--card-shadow)/0.12)] hover:bg-[hsl(var(--accent))] hover:text-white hover:border-[hsl(var(--accent))] transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(var(--accent))] active:translate-y-0.5"
+              >
+                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[hsl(var(--accent)/0.14)] text-[hsl(var(--accent))] group-hover:bg-white group-hover:text-[hsl(var(--accent))] transition-colors duration-300">
+                  <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                    <path d="m3 10 9-5 9 5-9 5-9-5Z" />
+                    <path d="M12 15v6" />
+                    <path d="M7.5 12.75v3.5" />
+                    <path d="M16.5 12.75v3.5" />
                   </svg>
-                </a>
-                <a
-                  href="https://github.com/DIGIT-X-Lab"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="View DIGITX on GitHub"
-                  className="group inline-flex items-center gap-3 px-3.5 py-2 rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--bg-primary))] text-sm font-semibold text-[hsl(var(--text-primary))] shadow-[0_10px_30px_hsl(var(--card-shadow)/0.12)] hover:bg-[hsl(var(--accent))] hover:text-white hover:border-[hsl(var(--accent))] transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(var(--accent))] active:translate-y-0.5"
-                >
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[hsl(var(--accent)/0.14)] text-[hsl(var(--accent))] group-hover:bg-white group-hover:text-[hsl(var(--accent))] transition-colors duration-300">
-                    <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.58.11.79-.26.79-.58 0-.29-.01-1.06-.02-2.07-3.2.7-3.88-1.54-3.88-1.54-.53-1.35-1.3-1.71-1.3-1.71-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.76.41-1.27.75-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.09-.12-.29-.52-1.46.11-3.04 0 0 .98-.31 3.2 1.18a11.2 11.2 0 0 1 2.91-.39c.99 0 1.99.13 2.92.39 2.21-1.5 3.19-1.18 3.19-1.18.64 1.58.24 2.75.12 3.04.75.8 1.19 1.83 1.19 3.09 0 4.44-2.69 5.41-5.25 5.69.42.36.8 1.08.8 2.19 0 1.58-.01 2.85-.01 3.24 0 .32.21.7.8.58A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
-                    </svg>
-                  </span>
-                  <span>GitHub</span>
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </span>
+                <span>Google Scholar</span>
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+              <a
+                href="https://github.com/DIGIT-X-Lab"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View DIGITX on GitHub"
+                className="group inline-flex items-center gap-3 px-3.5 py-2 rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--bg-primary))] text-sm font-semibold text-[hsl(var(--text-primary))] shadow-[0_10px_30px_hsl(var(--card-shadow)/0.12)] hover:bg-[hsl(var(--accent))] hover:text-white hover:border-[hsl(var(--accent))] transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[hsl(var(--accent))] active:translate-y-0.5"
+              >
+                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[hsl(var(--accent)/0.14)] text-[hsl(var(--accent))] group-hover:bg-white group-hover:text-[hsl(var(--accent))] transition-colors duration-300">
+                  <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.58.11.79-.26.79-.58 0-.29-.01-1.06-.02-2.07-3.2.7-3.88-1.54-3.88-1.54-.53-1.35-1.3-1.71-1.3-1.71-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.76.41-1.27.75-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.09-.12-.29-.52-1.46.11-3.04 0 0 .98-.31 3.2 1.18a11.2 11.2 0 0 1 2.91-.39c.99 0 1.99.13 2.92.39 2.21-1.5 3.19-1.18 3.19-1.18.64 1.58.24 2.75.12 3.04.75.8 1.19 1.83 1.19 3.09 0 4.44-2.69 5.41-5.25 5.69.42.36.8 1.08.8 2.19 0 1.58-.01 2.85-.01 3.24 0 .32.21.7.8.58A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
                   </svg>
-                </a>
-              </div>
-              <div className="pt-6 border-t border-[hsl(var(--border))]">
-                <div className="focus-card">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-headline text-lg text-[hsl(var(--text-primary))]">Opportunities</h3>
-                    <span className="pill-soft pill-accent">Open</span>
-                  </div>
-                  <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-3">We welcome:</p>
-                  <ul className="text-[hsl(var(--text-secondary))] leading-relaxed space-y-2">
-                    <li className="flex items-start gap-3"><span className="bullet-dot" />Students seeking research projects</li>
-                    <li className="flex items-start gap-3"><span className="bullet-dot" />Clinicians with ideas or frustrations around data use</li>
-                    <li className="flex items-start gap-3"><span className="bullet-dot" />Collaborators from medicine, computer science, and informatics</li>
-                    <li className="flex items-start gap-3"><span className="bullet-dot" />Industry partners interested in building trustworthy health intelligence</li>
-                  </ul>
-                </div>
-              </div>
+                </span>
+                <span>GitHub</span>
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
             </div>
           </div>
+
+          {teamMembers.length > 0 && (
+            <div className="relative max-w-7xl divide-y divide-[hsl(var(--border))]">
+              {teamMembers.map((member, idx) => (
+                <div
+                  key={member.name}
+                  className="relative flex items-start gap-8 md:gap-10 py-6 first:pt-0 last:pb-0"
+                >
+                  <div className="basis-64 shrink-0 space-y-2 relative z-10">
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <div className="text-lg font-semibold text-[hsl(var(--text-primary))]">{member.name}</div>
+                    </div>
+                    <div className="text-sm text-[hsl(var(--text-secondary))]">{member.role}</div>
+                    <div className="flex items-center gap-3 text-[hsl(var(--accent))] pt-1">
+                      {member.scholar && (
+                        <a
+                          href={member.scholar}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${member.name} on Google Scholar`}
+                          className="p-1 rounded-full hover:bg-[hsl(var(--accent)/0.15)] transition-colors duration-200"
+                          title="Google Scholar"
+                        >
+                          <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                            <path d="m3 10 9-5 9 5-9 5-9-5Z" />
+                            <path d="M12 15v6" />
+                            <path d="M7.5 12.75v3.5" />
+                            <path d="M16.5 12.75v3.5" />
+                          </svg>
+                        </a>
+                      )}
+                      {member.github && (
+                        <a
+                          href={member.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${member.name} on GitHub`}
+                          className="p-1 rounded-full hover:bg-[hsl(var(--accent)/0.15)] transition-colors duration-200"
+                          title="GitHub"
+                        >
+                          <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.58.11.79-.26.79-.58 0-.29-.01-1.06-.02-2.07-3.2.7-3.88-1.54-3.88-1.54-.53-1.35-1.3-1.71-1.3-1.71-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.76.41-1.27.75-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.09-.12-.29-.52-1.46.11-3.04 0 0 .98-.31 3.2 1.18a11.2 11.2 0 0 1 2.91-.39c.99 0 1.99.13 2.92.39 2.21-1.5 3.19-1.18 3.19-1.18.64 1.58.24 2.75.12 3.04.75.8 1.19 1.83 1.19 3.09 0 4.44-2.69 5.41-5.25 5.69.42.36.8 1.08.8 2.19 0 1.58-.01 2.85-.01 3.24 0 .32.21.7.8.58A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                          </svg>
+                        </a>
+                      )}
+                      {member.linkedin && (
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${member.name} on LinkedIn`}
+                          className="p-1 rounded-full hover:bg-[hsl(var(--accent)/0.15)] transition-colors duration-200"
+                          title="LinkedIn"
+                        >
+                          <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.24 8.25H4.7V24H.24V8.25ZM8.61 8.25h4.24v2.14h.06c.59-1.11 2.02-2.28 4.16-2.28 4.45 0 5.27 2.93 5.27 6.74V24h-4.46v-7.12c0-1.7-.03-3.88-2.36-3.88-2.36 0-2.72 1.84-2.72 3.75V24H8.61V8.25Z" />
+                          </svg>
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex-1 space-y-3 relative z-10 pl-4">
+                    <div className="flex flex-wrap gap-2">
+                      {member.tags.map((tag) => (
+                        <span key={tag} className="pill-soft text-xs">{tag}</span>
+                      ))}
+                    </div>
+                    <p className="text-[hsl(var(--text-secondary))] leading-relaxed">{member.bio}</p>
+                    <div className="text-sm text-[hsl(var(--text-secondary))]">{member.university}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
         </div>
       </section>
 
