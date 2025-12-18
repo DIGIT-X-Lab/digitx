@@ -566,14 +566,16 @@ const Index = () => {
               {teamMembers.map((member, idx) => (
                 <div
                   key={member.name}
-                  className="relative flex items-start gap-8 md:gap-10 py-6 first:pt-0 last:pb-0"
+                  className="relative flex flex-col md:flex-row items-start gap-6 md:gap-10 py-6 first:pt-0 last:pb-0"
                 >
-                  <div className="basis-64 shrink-0 space-y-2 relative z-10">
+                  <div className="w-full md:basis-64 shrink-0 space-y-2 relative z-10">
                     <div className="flex items-center gap-3 flex-wrap">
                       <div className="text-lg font-semibold text-[hsl(var(--text-primary))]">{member.name}</div>
                     </div>
-                    <div className="text-sm text-[hsl(var(--text-secondary))]">{member.role}</div>
-                    <div className="flex items-center gap-3 text-[hsl(var(--accent))] pt-1">
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <span className="status-chip">{member.role}</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-[hsl(var(--accent))] pt-2 pb-1">
                       {member.scholar && (
                         <a
                           href={member.scholar}
@@ -621,7 +623,7 @@ const Index = () => {
                       )}
                     </div>
                   </div>
-                  <div className="flex-1 space-y-3 relative z-10 pl-4">
+                  <div className="flex-1 w-full space-y-3 relative z-10 md:pl-4">
                     <div className="flex flex-wrap gap-2">
                       {member.tags.map((tag) => (
                         <span key={tag} className="pill-soft text-xs">{tag}</span>
