@@ -97,7 +97,7 @@ const Careers = () => {
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-3">
               <span className="font-semibold tracking-tight text-[hsl(var(--text-primary))]">DIGITX</span>
               <span className="hidden md:inline text-[hsl(var(--text-secondary))]">·</span>
-              <span className="text-xs text-[hsl(var(--text-secondary))]">LMU Klinikum Munich · Department of Radiology</span>
+              <a href="https://www.lmu-klinikum.de/radiologie" target="_blank" rel="noopener noreferrer" className="text-xs text-[hsl(var(--text-secondary))] hover:text-[hsl(var(--accent))] transition-colors">LMU Klinikum Munich · Department of Radiology</a>
             </div>
             <div className="flex items-center gap-6">
               <a href="https://www.lmu-klinikum.de/imprint?homepage=b2c7dca3b5b72d5e" target="_blank" rel="noopener noreferrer" className="text-xs text-[hsl(var(--text-secondary))] hover:text-[hsl(var(--accent))] transition-colors">Impressum</a>
