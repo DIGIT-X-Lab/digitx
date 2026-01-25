@@ -1,6 +1,10 @@
 import { useEffect, useState, useRef } from 'react';
-import NetworkGraph from '@/components/NetworkGraph';
+import { Link } from 'react-router-dom';
+import GradientOrbs from '@/components/GradientOrbs';
+import BlurText from '@/components/BlurText';
+// import NetworkGraph from '@/components/NetworkGraph'; // Swap back to re-enable particles
 import ThemeToggle from '@/components/ThemeToggle';
+import { jobs } from '@/data/jobs';
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -155,6 +159,7 @@ const Index = () => {
     },
   ];
 
+
   const initialStarCounts = [...tools, ...imagingTools].reduce<Record<string, number>>((acc, tool) => {
     if (tool.github && typeof tool.stars === 'number') {
       acc[tool.github] = tool.stars;
@@ -203,7 +208,7 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen noise-overlay">
-      <NetworkGraph />
+      <GradientOrbs />
       <div className="fixed inset-0 gradient-warmth pointer-events-none" />
       <div className="fixed inset-0 global-veil pointer-events-none" aria-hidden />
 
@@ -217,6 +222,7 @@ const Index = () => {
             <a href="#tools" className="link-subtle text-[0.8125rem]">Software</a>
             <a href="#approach" className="link-subtle text-[0.8125rem]">Approach</a>
             <a href="#people" className="link-subtle text-[0.8125rem]">People</a>
+            <a href="#careers" className="link-subtle text-[0.8125rem]">Careers</a>
             <a href="#connect" className="link-subtle text-[0.8125rem]">Connect</a>
           </div>
           <ThemeToggle />
@@ -233,8 +239,12 @@ const Index = () => {
             <div className={`mb-8 ${isLoaded ? 'fade-in-up' : 'opacity-0'}`}>
               <span className="text-label">DIGITX · Lab for Digital Transformation in Healthcare</span>
             </div>
-            <h1 className={`text-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.25rem] text-[hsl(var(--text-primary))] mb-10 ${isLoaded ? 'fade-in-up delay-1' : 'opacity-0'}`}>
-              Shaping Health<br /><span className="text-[hsl(var(--accent))] italic">Intelligence</span>
+            <h1 className="text-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.25rem] text-[hsl(var(--text-primary))] mb-10">
+              <BlurText delay={0.2}>Shaping Health</BlurText>
+              <br />
+              <span className="text-[hsl(var(--accent))] italic">
+                <BlurText delay={0.5}>Intelligence</BlurText>
+              </span>
             </h1>
             <p className={`text-lg md:text-xl text-[hsl(var(--text-secondary))] leading-[1.9] max-w-4xl mb-6 ${isLoaded ? 'fade-in-up delay-2' : 'opacity-0'}`}>
               At DIGITX, we imagine a future where clinicians aren’t slowed by fragmented data and researchers aren’t burdened by disconnected systems. By enabling medical insights to flow freely, we give people back the time and clarity needed to focus on improving lives.
@@ -645,6 +655,61 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Careers */}
+      <section id="careers" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16">
+            <span className="text-label text-[hsl(var(--accent))] block mb-4">Careers</span>
+            <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight">
+              Join Our <span className="font-serif text-[hsl(var(--accent))] italic">Team</span>
+            </h2>
+            <p className="text-[hsl(var(--text-secondary))] mt-6 leading-[1.9]">
+              We're building the infrastructure and tools that enable health intelligence. The work is technical and foundational: clean code, clear thinking, and shipping things that actually help clinicians. If that sounds like your kind of problem, reach out.
+            </p>
+          </div>
+
+          <div>
+            {jobs.map((job) => (
+              <Link
+                key={job.id}
+                to={`/careers/${job.id}`}
+                className="job-row group"
+              >
+                <div className="flex items-start justify-between gap-4 mb-2">
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-lg md:text-xl font-semibold text-[hsl(var(--text-primary))] group-hover:text-[hsl(var(--accent))] transition-colors">
+                      {job.title}
+                    </h3>
+                    <span className="status-chip">{job.badge}</span>
+                  </div>
+                  <span className="pill-soft text-xs shrink-0">{job.type}</span>
+                </div>
+
+                {job.subtitle && (
+                  <p className="text-[hsl(var(--accent))] text-sm mb-2">{job.subtitle}</p>
+                )}
+
+                <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-3">{job.shortDescription}</p>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-wrap gap-2">
+                    {job.tags.map((tag) => (
+                      <span key={tag} className="pill-soft text-xs">{tag}</span>
+                    ))}
+                  </div>
+                  <span className="text-sm text-[hsl(var(--accent))] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                    View details
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Connect */}
       <section id="connect" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-tertiary))] transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
@@ -673,6 +738,7 @@ const Index = () => {
             <div className="footer-nav">
               <a href="#vision">Vision</a>
               <a href="#focus">Focus</a>
+              <a href="#careers">Careers</a>
               <a href="#connect">Connect</a>
               <a href="https://www.linkedin.com/company/digitx-lmu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </div>
