@@ -12,7 +12,7 @@ const GradientOrbs = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
+    <div className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
       {/* Large primary orb - top left */}
       <div
         className="absolute rounded-full animate-drift-slow"

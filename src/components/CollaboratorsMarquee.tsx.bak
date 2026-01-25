@@ -1,0 +1,64 @@
+// COLLABORATORS MARQUEE - PENDING PERMISSIONS
+// Once you have permissions from all collaborators, rename this file to CollaboratorsMarquee.tsx
+// and import it into Index.tsx between Careers and Connect sections.
+//
+// Required CSS is already in index.css (search for "marquee")
+
+import React from 'react';
+
+const CollaboratorsMarquee = () => {
+  return (
+    <section className="relative py-8 md:py-10 overflow-hidden border-y border-[hsl(var(--border))]">
+      <span className="text-xs uppercase tracking-widest text-[hsl(var(--text-secondary))] opacity-60 block text-center mb-5">Collaborators</span>
+      <div className="space-y-4">
+        {/* Industry Partners - scrolling left */}
+        <div className="marquee-container">
+          <div className="marquee-track animate-marquee-left">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="flex items-center gap-12 md:gap-16">
+                <span className="text-base md:text-lg font-medium text-[hsl(var(--text-secondary))] whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">Hermes Medical Solutions</span>
+                <span className="text-base md:text-lg font-medium text-[hsl(var(--text-secondary))] whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">DeepC</span>
+                <span className="text-base md:text-lg font-medium text-[hsl(var(--text-secondary))] whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">Visage Imaging</span>
+                <span className="text-base md:text-lg font-medium text-[hsl(var(--text-secondary))] whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">Zenta</span>
+                <span className="text-base md:text-lg font-medium text-[hsl(var(--text-secondary))] whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">dottxt</span>
+                <span className="text-base md:text-lg font-medium text-[hsl(var(--text-secondary))] whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">Radixlab Medical</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Academic Partners - scrolling right */}
+        <div className="marquee-container">
+          <div className="marquee-track animate-marquee-right">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="flex items-center gap-12 md:gap-16">
+                <span className="text-base md:text-lg font-medium text-[hsl(var(--text-secondary))] whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">Medical University of Vienna</span>
+                <span className="text-base md:text-lg font-medium text-[hsl(var(--text-secondary))] whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">Brigham and Women's Hospital</span>
+                <span className="text-base md:text-lg font-medium text-[hsl(var(--text-secondary))] whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">University Hospital Essen</span>
+                <span className="text-base md:text-lg font-medium text-[hsl(var(--text-secondary))] whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">University Hospital Tübingen</span>
+                <span className="text-base md:text-lg font-medium text-[hsl(var(--text-secondary))] whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">Technical University Munich</span>
+                <span className="text-base md:text-lg font-medium text-[hsl(var(--text-secondary))] whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">Wayne State University</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CollaboratorsMarquee;
+
+/*
+USAGE IN Index.tsx:
+-------------------
+1. Import at top: import CollaboratorsMarquee from '@/components/CollaboratorsMarquee';
+2. Add between Careers and Connect sections:
+
+      </section>  {/* end of Careers */}
+
+      <CollaboratorsMarquee />
+
+      {/* Connect */}
+      <section id="connect" ...
+*/
