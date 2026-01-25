@@ -124,7 +124,7 @@ const Index = () => {
       tags: ['FHIR', 'SNOMED/LOINC', 'Provenance', 'Pipelines'],
       status: 'In development',
       github: 'https://github.com/DIGIT-X-Lab/MOSAICX',
-      stars: 3,
+      stars: 4,
     },
     {
       name: 'AnnotateX',
@@ -132,7 +132,7 @@ const Index = () => {
       tags: ['Annotation', 'Quality', 'Gold standards'],
       status: 'In development',
       github: 'https://github.com/DIGIT-X-Lab/ANNOTATEX',
-      stars: 2,
+      stars: 3,
     },
     {
       name: 'KnowledgeX',
@@ -152,7 +152,7 @@ const Index = () => {
       status: 'Stable',
       github: 'https://github.com/ENHANCE-PET/MOOSE',
       paper: 'https://pubmed.ncbi.nlm.nih.gov/35772962/',
-      stars: 299,
+      stars: 304,
     },
     {
       name: 'FALCON',
