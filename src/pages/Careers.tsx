@@ -1,9 +1,15 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { jobs } from '@/data/jobs';
 import ThemeToggle from '@/components/ThemeToggle';
 import GradientOrbs from '@/components/GradientOrbs';
 
 const Careers = () => {
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="relative min-h-screen noise-overlay">
       <GradientOrbs />

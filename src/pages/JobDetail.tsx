@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getJobById } from '@/data/jobs';
 import ThemeToggle from '@/components/ThemeToggle';
@@ -7,6 +8,11 @@ import GradientOrbs from '@/components/GradientOrbs';
 const JobDetail = () => {
   const { id } = useParams<{ id: string }>();
   const job = id ? getJobById(id) : undefined;
+
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   if (!job) {
     return (
