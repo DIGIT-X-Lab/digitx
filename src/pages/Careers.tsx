@@ -17,11 +17,13 @@ const Careers = () => {
             DIGITX
           </Link>
           <div className="hidden md:flex items-center gap-10">
-            <Link to="/#vision" className="link-subtle text-[0.8125rem]">Vision</Link>
-            <Link to="/#focus" className="link-subtle text-[0.8125rem]">Focus</Link>
-            <Link to="/#tools" className="link-subtle text-[0.8125rem]">Software</Link>
+            <a href="/#vision" className="link-subtle text-[0.8125rem]">Vision</a>
+            <a href="/#focus" className="link-subtle text-[0.8125rem]">Focus</a>
+            <a href="/#tools" className="link-subtle text-[0.8125rem]">Software</a>
+            <a href="/#approach" className="link-subtle text-[0.8125rem]">Approach</a>
+            <a href="/#people" className="link-subtle text-[0.8125rem]">People</a>
             <Link to="/careers" className="link-subtle text-[0.8125rem]">Careers</Link>
-            <Link to="/#connect" className="link-subtle text-[0.8125rem]">Connect</Link>
+            <a href="/#connect" className="link-subtle text-[0.8125rem]">Connect</a>
           </div>
           <ThemeToggle />
         </div>
@@ -91,10 +93,10 @@ const Careers = () => {
               <span className="text-sm text-[hsl(var(--text-secondary))]">LMU Klinikum Munich · Department of Radiology</span>
             </div>
             <div className="footer-nav">
-              <Link to="/#vision">Vision</Link>
-              <Link to="/#focus">Focus</Link>
+              <a href="/#vision">Vision</a>
+              <a href="/#focus">Focus</a>
               <Link to="/careers">Careers</Link>
-              <Link to="/#connect">Connect</Link>
+              <a href="/#connect">Connect</a>
             </div>
             <div className="text-sm text-[hsl(var(--text-secondary))]">© {new Date().getFullYear()} DIGITX Lab</div>
           </div>
