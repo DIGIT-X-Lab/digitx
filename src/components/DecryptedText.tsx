@@ -12,6 +12,7 @@ interface DecryptedTextProps {
   parentClassName?: string;
   encryptedClassName?: string;
   animateOn?: 'view' | 'hover';
+  parentHoverSelector?: string;
 }
 
 const DecryptedText: React.FC<DecryptedTextProps> = ({
@@ -25,6 +26,7 @@ const DecryptedText: React.FC<DecryptedTextProps> = ({
   parentClassName = '',
   encryptedClassName = '',
   animateOn = 'view',
+  parentHoverSelector,
 }) => {
   const [displayText, setDisplayText] = useState(text);
   const [isHovering, setIsHovering] = useState(false);
@@ -143,8 +145,30 @@ const DecryptedText: React.FC<DecryptedTextProps> = ({
     return () => observer.disconnect();
   }, [animateOn, hasAnimated]);
 
+  // Handle parent hover detection
+  useEffect(() => {
+    if (animateOn !== 'hover' || !parentHoverSelector) return;
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    const parent = container.closest(parentHoverSelector);
+    if (!parent) return;
+
+    const handleMouseEnter = () => setIsHovering(true);
+    const handleMouseLeave = () => setIsHovering(false);
+
+    parent.addEventListener('mouseenter', handleMouseEnter);
+    parent.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      parent.removeEventListener('mouseenter', handleMouseEnter);
+      parent.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [animateOn, parentHoverSelector]);
+
   const hoverProps =
-    animateOn === 'hover'
+    animateOn === 'hover' && !parentHoverSelector
       ? {
           onMouseEnter: () => setIsHovering(true),
           onMouseLeave: () => setIsHovering(false),
