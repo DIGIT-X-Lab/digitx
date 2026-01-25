@@ -1,0 +1,107 @@
+import { Link } from 'react-router-dom';
+import { jobs } from '@/data/jobs';
+import ThemeToggle from '@/components/ThemeToggle';
+import GradientOrbs from '@/components/GradientOrbs';
+
+const Careers = () => {
+  return (
+    <div className="relative min-h-screen noise-overlay">
+      <GradientOrbs />
+      <div className="fixed inset-0 gradient-warmth pointer-events-none" />
+      <div className="fixed inset-0 global-veil pointer-events-none" aria-hidden />
+
+      {/* Nav */}
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 lg:px-20 py-5 nav-scrolled">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <Link to="/" className="text-[hsl(var(--text-primary))] font-semibold tracking-tight hover:text-[hsl(var(--accent))] transition-colors">
+            DIGITX
+          </Link>
+          <div className="hidden md:flex items-center gap-10">
+            <Link to="/#vision" className="link-subtle text-[0.8125rem]">Vision</Link>
+            <Link to="/#focus" className="link-subtle text-[0.8125rem]">Focus</Link>
+            <Link to="/#tools" className="link-subtle text-[0.8125rem]">Software</Link>
+            <Link to="/careers" className="link-subtle text-[0.8125rem]">Careers</Link>
+            <Link to="/#connect" className="link-subtle text-[0.8125rem]">Connect</Link>
+          </div>
+          <ThemeToggle />
+        </div>
+      </nav>
+
+      {/* Content */}
+      <main className="relative pt-32 pb-20 px-6 md:px-12 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16">
+            <span className="text-label text-[hsl(var(--accent))] block mb-4">Careers</span>
+            <h1 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight mb-6">
+              Join Our <span className="font-serif text-[hsl(var(--accent))] italic">Team</span>
+            </h1>
+            <p className="text-[hsl(var(--text-secondary))] leading-[1.9] max-w-3xl">
+              We're building the infrastructure and tools that enable health intelligence. The work is technical and foundational: clean code, clear thinking, and shipping things that actually help clinicians. If that sounds like your kind of problem, reach out.
+            </p>
+          </div>
+
+          <div>
+            {jobs.map((job) => (
+              <Link
+                key={job.id}
+                to={`/careers/${job.id}`}
+                className="job-row group"
+              >
+                <div className="flex items-start justify-between gap-4 mb-2">
+                  <div className="flex items-center gap-3">
+                    <h2 className="text-lg md:text-xl font-semibold text-[hsl(var(--text-primary))] group-hover:text-[hsl(var(--accent))] transition-colors">
+                      {job.title}
+                    </h2>
+                    <span className="status-chip">{job.badge}</span>
+                  </div>
+                  <span className="pill-soft text-xs shrink-0">{job.type}</span>
+                </div>
+
+                {job.subtitle && (
+                  <p className="text-[hsl(var(--accent))] text-sm mb-2">{job.subtitle}</p>
+                )}
+
+                <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-3">{job.shortDescription}</p>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-wrap gap-2">
+                    {job.tags.map((tag) => (
+                      <span key={tag} className="pill-soft text-xs">{tag}</span>
+                    ))}
+                  </div>
+                  <span className="text-sm text-[hsl(var(--accent))] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                    View details
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="relative border-t border-[hsl(var(--border))] py-10 md:py-12 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-tertiary))] transition-colors duration-500">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
+            <div className="flex items-center gap-3 text-[hsl(var(--text-primary))]">
+              <span className="font-semibold tracking-tight">DIGITX</span>
+              <span className="text-sm text-[hsl(var(--text-secondary))]">LMU Klinikum Munich · Department of Radiology</span>
+            </div>
+            <div className="footer-nav">
+              <Link to="/#vision">Vision</Link>
+              <Link to="/#focus">Focus</Link>
+              <Link to="/careers">Careers</Link>
+              <Link to="/#connect">Connect</Link>
+            </div>
+            <div className="text-sm text-[hsl(var(--text-secondary))]">© {new Date().getFullYear()} DIGITX Lab</div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Careers;
