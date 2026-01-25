@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import GradientOrbs from '@/components/GradientOrbs';
 import BlurText from '@/components/BlurText';
 // import NetworkGraph from '@/components/NetworkGraph'; // Swap back to re-enable particles
@@ -11,8 +11,23 @@ const Index = () => {
   const [navScrolled, setNavScrolled] = useState(false);
   const toolsSectionRef = useRef<HTMLElement>(null);
   const [toolsVisible, setToolsVisible] = useState(false);
+  const location = useLocation();
 
   useEffect(() => setIsLoaded(true), []);
+
+  // Handle hash scrolling when navigating from other pages
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      // Small delay to ensure content is rendered
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location]);
   useEffect(() => {
     const handleScroll = () => setNavScrolled(window.scrollY > 12);
     handleScroll();
