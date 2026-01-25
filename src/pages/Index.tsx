@@ -518,7 +518,7 @@ const Index = () => {
             <span className="text-label text-[hsl(var(--accent))] block mb-4">How We Work</span>
             <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))]">
               <span className="font-serif text-[hsl(var(--text-primary))]">Honest Methods</span><br />
-              <span className="font-serif italic text-[hsl(var(--accent))]">for a Complex Domain</span>
+              <span className="font-serif italic text-[hsl(var(--accent))]"><DecryptedText text="for a Complex Domain" speed={60} maxIterations={20} /></span>
             </h2>
           </div>
 
@@ -547,7 +547,7 @@ const Index = () => {
           <div className="space-y-4 max-w-7xl">
             <span className="text-label text-[hsl(var(--accent))] block">People</span>
             <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight">
-              A Small <span className="font-serif text-[hsl(var(--accent))] italic">Interdisciplinary Lab</span>
+              A Small <span className="font-serif text-[hsl(var(--accent))] italic"><DecryptedText text="Interdisciplinary Lab" speed={60} maxIterations={20} /></span>
             </h2>
             <p className="text-[hsl(var(--text-secondary))] leading-[1.9] max-w-7xl">
               DIGITX is based at the Department of Radiology, LMU University Hospital, Munich. We bring together clinicians, informaticians, engineers, and researchers who care about building upstream foundations that translate to bedside impact. We stay small on purpose so we can stay close to the work.
@@ -681,7 +681,7 @@ const Index = () => {
           <div className="mb-16">
             <span className="text-label text-[hsl(var(--accent))] block mb-4">Careers</span>
             <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight">
-              Join Our <span className="font-serif text-[hsl(var(--accent))] italic">Team</span>
+              Join Our <span className="font-serif text-[hsl(var(--accent))] italic"><DecryptedText text="Team" speed={60} maxIterations={20} /></span>
             </h2>
             <p className="text-[hsl(var(--text-secondary))] mt-6 leading-[1.9]">
               We're building the infrastructure and tools that enable health intelligence. The work is technical and foundational: clean code, clear thinking, and shipping things that actually help clinicians. If that sounds like your kind of problem, reach out.
