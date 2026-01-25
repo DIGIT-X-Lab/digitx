@@ -91,20 +91,20 @@ const Careers = () => {
       </main>
 
       {/* Footer */}
-      <footer className="relative border-t border-[hsl(var(--border))] py-10 md:py-12 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-tertiary))] transition-colors duration-500">
+      <footer className="relative border-t border-[hsl(var(--border))] py-8 md:py-10 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-tertiary))] transition-colors duration-500">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
-            <div className="flex items-center gap-3 text-[hsl(var(--text-primary))]">
-              <span className="font-semibold tracking-tight">DIGITX</span>
-              <span className="text-sm text-[hsl(var(--text-secondary))]">LMU Klinikum Munich · Department of Radiology</span>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-5">
+            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-3">
+              <span className="font-semibold tracking-tight text-[hsl(var(--text-primary))]">DIGITX</span>
+              <span className="hidden md:inline text-[hsl(var(--text-secondary))]">·</span>
+              <span className="text-xs text-[hsl(var(--text-secondary))]">LMU Klinikum Munich · Department of Radiology</span>
             </div>
-            <div className="footer-nav">
-              <a href="/#vision">Vision</a>
-              <a href="/#focus">Focus</a>
-              <Link to="/careers">Careers</Link>
-              <a href="/#connect">Connect</a>
+            <div className="flex items-center gap-6">
+              <a href="https://www.lmu-klinikum.de/imprint?homepage=b2c7dca3b5b72d5e" target="_blank" rel="noopener noreferrer" className="text-xs text-[hsl(var(--text-secondary))] hover:text-[hsl(var(--accent))] transition-colors">Impressum</a>
+              <a href="https://www.lmu-klinikum.de/data_safety" target="_blank" rel="noopener noreferrer" className="text-xs text-[hsl(var(--text-secondary))] hover:text-[hsl(var(--accent))] transition-colors">Datenschutz</a>
+              <a href="https://www.lmu-klinikum.de/accessibility" target="_blank" rel="noopener noreferrer" className="text-xs text-[hsl(var(--text-secondary))] hover:text-[hsl(var(--accent))] transition-colors">Accessibility</a>
             </div>
-            <div className="text-sm text-[hsl(var(--text-secondary))]">© {new Date().getFullYear()} DIGITX Lab</div>
+            <div className="text-xs text-[hsl(var(--text-secondary))]">© {new Date().getFullYear()} DIGITX Lab</div>
           </div>
         </div>
       </footer>

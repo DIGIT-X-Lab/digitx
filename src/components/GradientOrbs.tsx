@@ -25,7 +25,7 @@ const GradientOrbs = () => {
           left: '-15%',
           background: isDark
             ? 'radial-gradient(circle, hsla(18, 70%, 50%, 0.25) 0%, transparent 60%)'
-            : 'radial-gradient(circle, hsla(18, 76%, 48%, 0.18) 0%, transparent 60%)',
+            : 'radial-gradient(circle, hsla(18, 76%, 48%, 0.28) 0%, transparent 60%)',
           filter: 'blur(80px)',
         }}
       />
@@ -42,7 +42,7 @@ const GradientOrbs = () => {
           right: '-10%',
           background: isDark
             ? 'radial-gradient(circle, hsla(155, 35%, 50%, 0.18) 0%, transparent 60%)'
-            : 'radial-gradient(circle, hsla(155, 25%, 42%, 0.12) 0%, transparent 60%)',
+            : 'radial-gradient(circle, hsla(155, 30%, 42%, 0.20) 0%, transparent 60%)',
           filter: 'blur(80px)',
         }}
       />
@@ -59,7 +59,7 @@ const GradientOrbs = () => {
           left: '15%',
           background: isDark
             ? 'radial-gradient(circle, hsla(18, 60%, 55%, 0.18) 0%, transparent 60%)'
-            : 'radial-gradient(circle, hsla(18, 55%, 65%, 0.14) 0%, transparent 60%)',
+            : 'radial-gradient(circle, hsla(18, 60%, 58%, 0.22) 0%, transparent 60%)',
           filter: 'blur(80px)',
         }}
       />
@@ -76,7 +76,7 @@ const GradientOrbs = () => {
           right: '10%',
           background: isDark
             ? 'radial-gradient(circle, hsla(18, 80%, 55%, 0.15) 0%, transparent 60%)'
-            : 'radial-gradient(circle, hsla(18, 76%, 48%, 0.1) 0%, transparent 60%)',
+            : 'radial-gradient(circle, hsla(18, 76%, 52%, 0.18) 0%, transparent 60%)',
           filter: 'blur(60px)',
         }}
       />
