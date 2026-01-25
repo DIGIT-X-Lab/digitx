@@ -730,6 +730,27 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Collaborators */}
+      <section className="relative py-12 md:py-16 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 mb-8">
+          <span className="text-label text-[hsl(var(--accent))] block text-center">Collaborators</span>
+        </div>
+        <div className="marquee-container">
+          <div className="marquee-track animate-marquee-left">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="flex items-center gap-16 md:gap-24">
+                <a href="https://www.hermesmedical.com" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">Hermes Medical Solutions</a>
+                <a href="https://www.deepc.ai/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">deepc</a>
+                <a href="https://www.zenta.solutions/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">Zenta</a>
+                <a href="https://dottxt.ai/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">dottxt</a>
+                <a href="https://radixlabmedical.com/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">Radixlab Medical</a>
+                <a href="https://www.mtic.net.au/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">Melbourne Theranostics Innovation Center</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Connect */}
       <section id="connect" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-tertiary))] transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
