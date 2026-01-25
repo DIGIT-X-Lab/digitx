@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import GradientOrbs from '@/components/GradientOrbs';
 import BlurText from '@/components/BlurText';
+import DecryptedText from '@/components/DecryptedText';
 // import NetworkGraph from '@/components/NetworkGraph'; // Swap back to re-enable particles
 import ThemeToggle from '@/components/ThemeToggle';
 import { jobs } from '@/data/jobs';
@@ -381,7 +382,9 @@ const Index = () => {
                   <span className="focus-area-num">{area.num}</span>
                 </div>
                 <div className="focus-area-right">
-                  <h3 className="focus-area-title">{area.title}</h3>
+                  <h3 className="focus-area-title">
+                    <DecryptedText text={area.title} speed={30} maxIterations={12} sequential />
+                  </h3>
                   <p className="text-[hsl(var(--text-secondary))] leading-[1.8] mt-2">{area.desc}</p>
                 </div>
               </div>
@@ -407,7 +410,9 @@ const Index = () => {
               {imagingTools.map((tool) => (
                 <div key={tool.name} className="software-card h-full flex flex-col">
                   <div className="flex items-start justify-between gap-3 mb-3">
-                    <h3 className="software-card-title">{tool.name}</h3>
+                    <h3 className="software-card-title">
+                      <DecryptedText text={tool.name} speed={40} maxIterations={8} />
+                    </h3>
                     <span className="status-chip">{tool.status}</span>
                   </div>
                   <div className="flex flex-wrap gap-2 mb-3">
@@ -467,7 +472,9 @@ const Index = () => {
               {tools.map((tool) => (
                 <div key={tool.name} className="software-card h-full flex flex-col">
                   <div className="flex items-start justify-between gap-3 mb-3">
-                    <h3 className="software-card-title">{tool.name}</h3>
+                    <h3 className="software-card-title">
+                      <DecryptedText text={tool.name} speed={40} maxIterations={8} />
+                    </h3>
                     <span className="status-chip">{tool.status}</span>
                   </div>
                   <div className="flex flex-wrap gap-2 mb-3">
