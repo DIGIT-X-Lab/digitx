@@ -1441,9 +1441,10 @@ section {
 .news-edge-content {
   display: none;
   width: 280px;
-  background: hsl(var(--bg-primary) / 0.92);
-  backdrop-filter: blur(20px);
-  border: 1px solid hsl(var(--accent) / 0.2);
+  background: hsl(var(--bg-primary) / 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid hsl(var(--text-primary) / 0.1);
   border-right: none;
   border-radius: 12px 0 0 12px;
   padding: 14px 1.25rem;

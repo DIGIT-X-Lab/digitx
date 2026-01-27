@@ -9,7 +9,7 @@ interface NewsItem {
 const newsItems: NewsItem[] = [
   { id: '1', title: 'Looking for your Master thesis topic? Positions open now.' },
   { id: '2', title: 'Research positions available — join our growing team!' },
-  { id: '3', title: 'Welcome Sameer, joining us for his Master\'s research.' },
+  { id: '3', title: 'Sameer joins us for his Master\'s research — welcome!' },
   { id: '4', title: 'Proud to announce our first research grant from ICPO!' },
 ];
 
