@@ -15,7 +15,9 @@ const newsItems: NewsItem[] = [
 
 const NewsEdgePeek = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
 
+  // Auto-rotate news items
   useEffect(() => {
     if (newsItems.length <= 1) return;
     const interval = setInterval(() => {
@@ -24,16 +26,44 @@ const NewsEdgePeek = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Auto-peek: expand after slide-in, then collapse after showing all news
+  useEffect(() => {
+    const expandDelay = 700;
+    const timePerItem = 4000;
+    // Collapse right after the last item has been shown (before looping back)
+    const collapseTime = (newsItems.length * timePerItem) - 500;
+
+    const expandTimer = setTimeout(() => {
+      setIsExpanded(true);
+    }, expandDelay);
+
+    const collapseTimer = setTimeout(() => {
+      setIsExpanded(false);
+    }, collapseTime);
+
+    return () => {
+      clearTimeout(expandTimer);
+      clearTimeout(collapseTimer);
+    };
+  }, []);
+
   return (
-    <div className="news-edge-peek">
+    <div
+      className={`news-edge-peek ${isExpanded ? 'expanded' : ''}`}
+      onMouseEnter={() => setIsExpanded(true)}
+      onMouseLeave={() => setIsExpanded(false)}
+    >
       <div className="news-edge-tab">
         <div className="news-edge-pulse" />
         <span className="news-edge-tab-text">News</span>
       </div>
       <div className="news-edge-content">
         <div className="news-edge-header">
+          <svg className="news-edge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+          </svg>
           <span className="news-edge-label">What's New</span>
-          <span className="news-edge-count">{currentIndex + 1}/{newsItems.length}</span>
         </div>
         <div className="news-edge-titles">
           {newsItems.map((item, i) => (
