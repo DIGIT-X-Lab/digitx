@@ -5,6 +5,7 @@ import BlurText from '@/components/BlurText';
 import DecryptedText from '@/components/DecryptedText';
 // import NetworkGraph from '@/components/NetworkGraph'; // Swap back to re-enable particles
 import ThemeToggle from '@/components/ThemeToggle';
+import NewsEdgePeek from '@/components/NewsEdgePeek';
 import { jobs } from '@/data/jobs';
 
 const Index = () => {
@@ -225,6 +226,7 @@ const Index = () => {
   return (
     <div className="relative min-h-screen noise-overlay">
       <GradientOrbs />
+      <NewsEdgePeek />
       <div className="fixed inset-0 gradient-warmth pointer-events-none" />
       <div className="fixed inset-0 global-veil pointer-events-none" aria-hidden />
 
@@ -746,6 +748,7 @@ const Index = () => {
                 <a href="https://dottxt.ai/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">dottxt</a>
                 <a href="https://radixlabmedical.com/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">Radixlab Medical</a>
                 <a href="https://www.mtic.net.au/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">Melbourne Theranostics Innovation Center</a>
+                <a href="https://www.icpo.foundation/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">ICPO Foundation</a>
               </div>
             ))}
           </div>
