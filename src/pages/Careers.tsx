@@ -28,6 +28,7 @@ const Careers = () => {
             <a href="/#tools" className="link-subtle text-[0.8125rem]">Software</a>
             <a href="/#approach" className="link-subtle text-[0.8125rem]">Approach</a>
             <a href="/#people" className="link-subtle text-[0.8125rem]">People</a>
+            <a href="/#publications" className="link-subtle text-[0.8125rem]">Publications</a>
             <Link to="/careers" className="link-subtle text-[0.8125rem]">Careers</Link>
             <a href="/#connect" className="link-subtle text-[0.8125rem]">Connect</a>
           </div>

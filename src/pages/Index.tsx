@@ -7,6 +7,7 @@ import DecryptedText from '@/components/DecryptedText';
 import ThemeToggle from '@/components/ThemeToggle';
 import NewsEdgePeek from '@/components/NewsEdgePeek';
 import { jobs } from '@/data/jobs';
+import { publications, isLabMember } from '@/data/publications';
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -185,6 +186,9 @@ const Index = () => {
   }, {});
 
   const [starCounts, setStarCounts] = useState<Record<string, number>>(initialStarCounts);
+  const [showAllPubs, setShowAllPubs] = useState(false);
+  const PUBS_PREVIEW = 5;
+  const visiblePubs = showAllPubs ? publications : publications.slice(0, PUBS_PREVIEW);
 
   useEffect(() => {
     if (!toolsVisible) return;
@@ -240,6 +244,7 @@ const Index = () => {
             <a href="#tools" className="link-subtle text-[0.8125rem]">Software</a>
             <a href="#approach" className="link-subtle text-[0.8125rem]">Approach</a>
             <a href="#people" className="link-subtle text-[0.8125rem]">People</a>
+            <a href="#publications" className="link-subtle text-[0.8125rem]">Publications</a>
             <a href="#careers" className="link-subtle text-[0.8125rem]">Careers</a>
             <a href="#connect" className="link-subtle text-[0.8125rem]">Connect</a>
           </div>
@@ -676,6 +681,98 @@ const Index = () => {
 
         </div>
       </section>
+
+      {/* Publications */}
+      {publications.length > 0 && (
+        <section id="publications" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 transition-colors duration-300">
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-16">
+              <span className="text-label text-[hsl(var(--accent))] block mb-4">Publications</span>
+              <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight">
+                Recent <span className="font-serif text-[hsl(var(--accent))] italic">Research</span>
+              </h2>
+              <p className="text-[hsl(var(--text-secondary))] mt-6 leading-[1.9] max-w-3xl">
+                Peer-reviewed publications and preprints from DIGITX lab members.
+              </p>
+            </div>
+
+            <div className="max-w-6xl">
+              {visiblePubs.map((pub) => (
+                <a
+                  key={pub.paperId}
+                  href={pub.doi ? `https://doi.org/${pub.doi}` : pub.semanticScholarUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block border-b border-[hsl(var(--border))] py-6 first:pt-0 last:border-0 hover:bg-[hsl(var(--bg-secondary)/0.5)] -mx-4 px-4 rounded-lg transition-colors duration-200"
+                >
+                  <div className="flex items-start justify-between gap-4 mb-2">
+                    <h3 className="text-base md:text-lg font-semibold text-[hsl(var(--text-primary))] group-hover:text-[hsl(var(--accent))] transition-colors leading-snug">
+                      {pub.title}
+                    </h3>
+                    <div className="flex items-center gap-2 shrink-0">
+                      {pub.citationCount > 0 && (
+                        <span className="pill-soft text-xs flex items-center gap-1" title="Citations">
+                          <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M3 21c3-3 3-9 3-9l4 0c0 0 0 6-3 9" />
+                            <path d="M14 21c3-3 3-9 3-9l4 0c0 0 0 6-3 9" />
+                            <path d="M6 12V3h5l2 3h5v6" />
+                          </svg>
+                          {pub.citationCount}
+                        </span>
+                      )}
+                      <span className="pill-soft text-xs">{pub.year}</span>
+                    </div>
+                  </div>
+                  <p className="text-sm text-[hsl(var(--text-secondary))] leading-relaxed mb-2">
+                    {pub.authors.map((author, i) => (
+                      <span key={i}>
+                        {i > 0 && ', '}
+                        {isLabMember(author) ? (
+                          <span className="text-[hsl(var(--accent))] font-semibold">{author}</span>
+                        ) : (
+                          author
+                        )}
+                      </span>
+                    ))}
+                  </p>
+                  <div className="flex items-center gap-3">
+                    {pub.venue && (
+                      <span className="text-xs text-[hsl(var(--accent))] font-medium">{pub.venue}</span>
+                    )}
+                    {pub.doi && (
+                      <span className="text-xs text-[hsl(var(--text-secondary))]">DOI: {pub.doi}</span>
+                    )}
+                  </div>
+                </a>
+              ))}
+
+              {publications.length > PUBS_PREVIEW && (
+                <button
+                  onClick={() => {
+                    if (showAllPubs) {
+                      setShowAllPubs(false);
+                      setTimeout(() => {
+                        document.getElementById('publications')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 0);
+                    } else {
+                      setShowAllPubs(true);
+                    }
+                  }}
+                  className="mt-8 btn-secondary btn-glass inline-flex items-center gap-2"
+                >
+                  {showAllPubs ? 'Show less' : `Show all ${publications.length} publications`}
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-300 ${showAllPubs ? 'rotate-180' : ''}`}
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Careers */}
       <section id="careers" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 transition-colors duration-300">
