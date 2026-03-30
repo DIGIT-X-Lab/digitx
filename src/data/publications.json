@@ -6,9 +6,9 @@
       "Lena Giebeler",
       "Deepa Krishnaswamy",
       "David A. Clunie",
-      "Jakob Wasserthal",
+      "J. Wasserthal",
       "L. K. S. Sundar",
-      "Andres Diaz-Pinto",
+      "A. Diaz-Pinto",
       "Klaus H. Maier-Hein",
       "Murong Xu",
       "Bjoern H Menze",
@@ -49,7 +49,7 @@
     "year": 2025,
     "venue": "AI and Ethics",
     "publicationDate": "2025-12-10",
-    "citationCount": 0,
+    "citationCount": 1,
     "doi": "10.1007/s43681-025-00837-y",
     "pubmedId": "41395256",
     "semanticScholarUrl": "https://www.semanticscholar.org/paper/7e79a7fbe9141706bc94a1c9db803a4ce4927196"
@@ -107,7 +107,7 @@
   },
   {
     "paperId": "828c0850bb2d0851e378228b0c4392611a218d70",
-    "title": "Artificial intelligence for TNM staging in NSCLC: a critical appraisal of segmentation utility in [1⁸F]FDG PET/CT.",
+    "title": "Artificial intelligence for TNM staging in NSCLC: a critical appraisal of segmentation utility in [1⁸F]FDG PET/CT",
     "authors": [
       "Maurice M. Heimer",
       "Jakob Dexl",
@@ -163,9 +163,9 @@
       "Simon Lindner",
       "L. K. S. Sundar",
       "C. Spitzweg",
-      "C J Auernhammer",
+      "C. Auernhammer",
       "Rudolf A. Werner",
-      "Mathias J Zacherl"
+      "Mathias J. Zacherl"
     ],
     "year": 2025,
     "venue": "EJNMMI reports",
@@ -265,7 +265,7 @@
     "year": 2025,
     "venue": "Journal of Nuclear Medicine",
     "publicationDate": "2025-09-18",
-    "citationCount": 1,
+    "citationCount": 2,
     "doi": "10.2967/jnumed.125.269688",
     "pubmedId": "40967756",
     "semanticScholarUrl": "https://www.semanticscholar.org/paper/73948887bb111045e24d7820add754e90958fb75"
