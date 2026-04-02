@@ -258,14 +258,14 @@ const Index = () => {
                 <AccordionItem
                   key={area.num}
                   value={area.num}
-                  className="border-b border-[hsl(var(--border))] border-t-0 border-x-0 last:border-b-0"
+                  className="focus-accordion-item border-b border-[hsl(var(--border))] border-t-0 border-x-0 last:border-b-0"
                 >
                   <AccordionTrigger className="hover:no-underline py-6 gap-4">
                     <div className="flex items-center gap-5 text-left">
-                      <span className="text-2xl md:text-3xl font-light text-[hsl(var(--accent))] tabular-nums shrink-0 w-10">
+                      <span className="focus-accordion-num text-2xl md:text-3xl font-light text-[hsl(var(--accent))] tabular-nums shrink-0 w-10">
                         {area.num}
                       </span>
-                      <span className="text-lg md:text-xl font-semibold text-[hsl(var(--text-primary))]">
+                      <span className="focus-accordion-title text-lg md:text-xl font-semibold text-[hsl(var(--text-primary))]">
                         {area.title}
                       </span>
                     </div>

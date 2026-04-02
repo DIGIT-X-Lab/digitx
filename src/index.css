@@ -1062,6 +1062,60 @@
     transition: transform 0.3s ease;
   }
 
+  /* Focus accordion - hover states matching principle/focus rows */
+  .focus-accordion-item {
+    position: relative;
+    padding-left: 1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .focus-accordion-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.5rem;
+    bottom: 1.5rem;
+    width: 2px;
+    background: linear-gradient(180deg, hsl(var(--accent)), hsl(var(--accent-soft)));
+    border-radius: 2px;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .focus-accordion-item:hover::before {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  .focus-accordion-item:hover {
+    background: hsl(var(--accent) / 0.02);
+    padding-left: 1.5rem;
+    margin-left: -0.5rem;
+    border-radius: 0.75rem;
+  }
+  .focus-accordion-num {
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+  .focus-accordion-item:hover .focus-accordion-num {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+  .focus-accordion-title {
+    transition: all 0.3s ease;
+  }
+  .focus-accordion-item:hover .focus-accordion-title {
+    color: hsl(var(--accent));
+  }
+
+  @media (min-width: 768px) {
+    .focus-accordion-item {
+      padding-left: 1.5rem;
+    }
+    .focus-accordion-item:hover {
+      padding-left: 2rem;
+    }
+  }
+
   /* Principles - How We Work section */
   .principle-row {
     position: relative;
