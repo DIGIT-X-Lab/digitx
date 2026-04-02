@@ -253,14 +253,14 @@ const Index = () => {
           </FadeIn>
 
           <FadeIn delay={0.15} className="max-w-6xl">
-            <Accordion type="single" collapsible className="space-y-2">
+            <Accordion type="single" collapsible>
               {focusAreas.map((area) => (
                 <AccordionItem
                   key={area.num}
                   value={area.num}
-                  className="border border-[hsl(var(--border))] rounded-lg px-6 bg-[hsl(var(--bg-primary)/0.5)] backdrop-blur-sm"
+                  className="border-b border-[hsl(var(--border))] border-t-0 border-x-0 last:border-b-0"
                 >
-                  <AccordionTrigger className="hover:no-underline py-5 gap-4">
+                  <AccordionTrigger className="hover:no-underline py-6 gap-4">
                     <div className="flex items-center gap-5 text-left">
                       <span className="text-2xl md:text-3xl font-light text-[hsl(var(--accent))] tabular-nums shrink-0 w-10">
                         {area.num}
@@ -270,7 +270,7 @@ const Index = () => {
                       </span>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="pb-5 pl-[3.75rem]">
+                  <AccordionContent className="pb-6 pl-[3.75rem]">
                     <p className="text-[hsl(var(--text-secondary))] leading-[1.8] mb-3">
                       {area.desc}
                     </p>
