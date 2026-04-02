@@ -16,7 +16,7 @@ export const imagingTools: Tool[] = [
     status: 'Stable',
     github: 'https://github.com/ENHANCE-PET/MOOSE',
     paper: 'https://pubmed.ncbi.nlm.nih.gov/35772962/',
-    stars: 304,
+    stars: 317,
   },
   {
     name: 'FALCON',
@@ -36,6 +36,22 @@ export const imagingTools: Tool[] = [
     paper: 'https://jnm.snmjournals.org/content/early/2025/09/18/jnumed.125.269688',
     stars: 21,
   },
+  {
+    name: 'LION',
+    desc: 'Automated lesion segmentation for whole-body PET/CT with minimal user input, built for clinical and research workflows.',
+    tags: ['PET/CT', 'Lesion segmentation', 'Automation'],
+    status: 'Stable',
+    github: 'https://github.com/ENHANCE-PET/LION',
+    stars: 11,
+  },
+  {
+    name: 'nifti2dicom',
+    desc: 'Converts NIfTI volumes back to valid DICOM series, preserving metadata for clinical PACS integration.',
+    tags: ['DICOM', 'NIfTI', 'Conversion'],
+    status: 'Stable',
+    github: 'https://github.com/ENHANCE-PET/nifti2dicom',
+    stars: 24,
+  },
 ];
 
 export const llmTools: Tool[] = [
@@ -45,7 +61,7 @@ export const llmTools: Tool[] = [
     tags: ['FHIR', 'SNOMED/LOINC', 'Provenance', 'Pipelines'],
     status: 'In development',
     github: 'https://github.com/DIGIT-X-Lab/MOSAICX',
-    stars: 4,
+    stars: 7,
   },
   {
     name: 'AnnotateX',
