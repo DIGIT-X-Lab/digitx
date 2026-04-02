@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import GradientOrbs from '@/components/GradientOrbs';
 import BlurText from '@/components/BlurText';
+import RotatingText from '@/components/RotatingText';
 import DecryptedText from '@/components/DecryptedText';
 // import NetworkGraph from '@/components/NetworkGraph'; // Swap back to re-enable particles
 import ThemeToggle from '@/components/ThemeToggle';
@@ -144,7 +145,13 @@ const Index = () => {
               <span className="text-label">DIGITX · Lab for Digital Transformation in Healthcare</span>
             </div>
             <h1 className="text-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.25rem] text-[hsl(var(--text-primary))] mb-10">
-              <BlurText delay={0.2}>Shaping Health</BlurText>
+              <BlurText delay={0.2}>Shaping</BlurText>{' '}
+              <span className="text-[hsl(var(--accent))] italic">
+                <RotatingText
+                  words={['Health', 'Radiology', 'Oncology', 'Clinical']}
+                  interval={3000}
+                />
+              </span>
               <br />
               <span className="text-[hsl(var(--accent))] italic">
                 <BlurText delay={0.5}>Intelligence</BlurText>
