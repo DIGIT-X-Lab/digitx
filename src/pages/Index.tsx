@@ -5,6 +5,7 @@ import BlurText from '@/components/BlurText';
 import DecryptedText from '@/components/DecryptedText';
 // import NetworkGraph from '@/components/NetworkGraph'; // Swap back to re-enable particles
 import ThemeToggle from '@/components/ThemeToggle';
+import MobileNav from '@/components/MobileNav';
 import NewsEdgePeek from '@/components/NewsEdgePeek';
 import { jobs } from '@/data/jobs';
 import { publications, isLabMember } from '@/data/publications';
@@ -114,6 +115,7 @@ const Index = () => {
       {/* Nav */}
       <nav className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-12 lg:px-20 transition-all duration-500 ${navScrolled ? 'nav-scrolled py-2' : 'py-5'}`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <MobileNav />
           <div className="w-10 hidden md:block" />
           <div className="hidden md:flex items-center gap-10">
             <a href="#vision" className="link-subtle text-[0.8125rem]">Vision</a>
