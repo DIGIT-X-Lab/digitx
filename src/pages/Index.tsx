@@ -248,7 +248,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto">
           <FadeIn className="mb-20 max-w-4xl">
             <span className="text-label text-[hsl(var(--accent))] block mb-4">What We Work On</span>
-            <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] max-w-3xl">Foundations for <span className="font-serif text-[hsl(var(--accent))] italic">Health Intelligence</span></h2>
+            <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] max-w-3xl">The Hard Problems<br /><span className="font-serif text-[hsl(var(--accent))] italic">We Choose</span></h2>
             <p className="text-[hsl(var(--text-secondary))] mt-6 max-w-3xl leading-[1.9]">We focus on a few foundational challenges that must be solved before healthcare can benefit from trustworthy, scalable intelligence.</p>
           </FadeIn>
 
