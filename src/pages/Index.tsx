@@ -702,11 +702,7 @@ const Index = () => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className={`inline-block w-1.5 h-1.5 rounded-full shrink-0 ${
-                        item.type === 'grant' ? 'bg-[hsl(var(--sage))]' :
-                        item.type === 'release' ? 'bg-[hsl(var(--accent))]' :
-                        'bg-[hsl(var(--text-muted))]'
-                      }`} />
+                      <span className="inline-block w-1.5 h-1.5 rounded-full shrink-0 bg-[hsl(var(--accent))]" />
                       {item.link ? (
                         <a
                           href={item.link}
