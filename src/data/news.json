@@ -1,23 +1,16 @@
 [
   {
+    "date": "2026-03-12",
+    "title": "LION v1.0.0 released",
+    "description": "First stable release of LION, the automated lesion segmentation tool for whole-body PET/CT.",
+    "type": "release",
+    "link": "https://github.com/ENHANCE-PET/LION/releases/tag/lionz-v.1.0.0"
+  },
+  {
     "date": "2026-03-05",
     "title": "ARCHE project funded by ICPO Foundation",
     "description": "ICPO Foundation awards funding for ARCHE, an AI-driven curation and harmonization engine for structuring multimodal theranostics data.",
     "type": "grant",
     "link": "https://www.icpo.foundation/"
-  },
-  {
-    "date": "2025-11-13",
-    "title": "MOSAICX open-sourced",
-    "description": "Medical cOmputational Suite for Advanced Intelligent eXtraction of Healthcare data using local LLMs",
-    "type": "release",
-    "link": "https://github.com/DIGIT-X-Lab/MOSAICX/releases/tag/v1.2.0"
-  },
-  {
-    "date": "2025-11-13",
-    "title": "ANNOTATEX open-sourced",
-    "description": "An open-source on-prem text annotation software suite.",
-    "type": "release",
-    "link": "https://github.com/DIGIT-X-Lab/ANNOTATEX/releases/tag/v0.1.0"
   }
 ]

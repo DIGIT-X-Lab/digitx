@@ -23,6 +23,7 @@ const PREV_PUBS_PATH = join(ROOT, 'src/data/.publications-prev.json');
 
 const GITHUB_ORGS = ['ENHANCE-PET', 'DIGIT-X-Lab'];
 const MAX_NEWS_ITEMS = 12;
+const RELEASE_MAX_AGE_DAYS = 90; // only include releases from the last 3 months
 
 // Repos to skip
 const SKIP_REPOS = new Set(['FERRET', '.github', 'digitx']);
@@ -32,11 +33,12 @@ function sleep(ms) {
 }
 
 /**
- * Parse semver string like "v2.0.0" or "1.0.0" into { major, minor, patch }
- * Returns null if not valid semver.
+ * Parse semver from a tag like "v2.0.0", "1.0.0", or "lionz-v.1.0.0"
+ * Finds the first X.Y.Z pattern anywhere in the string.
+ * Returns null if no semver found.
  */
 function parseSemver(tag) {
-  const m = tag.match(/^v?(\d+)\.(\d+)\.(\d+)/);
+  const m = tag.match(/(\d+)\.(\d+)\.(\d+)/);
   if (!m) return null;
   return { major: +m[1], minor: +m[2], patch: +m[3] };
 }
@@ -61,8 +63,8 @@ function isNewsworthyRelease(release, allReleases) {
   // If this is the earliest release, it's the first appearance
   if (sorted[0]?.id === release.id) return true;
 
-  // Major version bump (X.0.0 where X >= 2)
-  if (ver.major >= 2 && ver.minor === 0 && ver.patch === 0) return true;
+  // Major version bump (X.0.0 where X >= 1)
+  if (ver.major >= 1 && ver.minor === 0 && ver.patch === 0) return true;
 
   return false;
 }
@@ -103,8 +105,12 @@ async function fetchGitHubNews() {
         const releases = await res.json();
         if (!releases.length) continue;
 
+        const releaseCutoff = new Date();
+        releaseCutoff.setDate(releaseCutoff.getDate() - RELEASE_MAX_AGE_DAYS);
+
         for (const release of releases) {
           if (release.draft || release.prerelease) continue;
+          if (new Date(release.published_at) < releaseCutoff) continue;
           if (!isNewsworthyRelease(release, releases)) continue;
 
           const ver = parseSemver(release.tag_name);
@@ -115,13 +121,15 @@ async function fetchGitHubNews() {
               .sort((a, b) => new Date(a.published_at) - new Date(b.published_at))[0]?.id ===
               release.id;
 
+          const versionLabel = ver ? `v${ver.major}.${ver.minor}.${ver.patch}` : release.tag_name;
+
           const title = isFirst
             ? `${repo.name} open-sourced`
-            : `${repo.name} ${release.tag_name} released`;
+            : `${repo.name} ${versionLabel} released`;
 
           const description = isFirst
             ? repo.description || `${repo.name} is now available on GitHub.`
-            : release.name || `Major release ${release.tag_name} of ${repo.name}.`;
+            : release.name || `Major release ${versionLabel} of ${repo.name}.`;
 
           items.push({
             date: release.published_at.split('T')[0],
@@ -198,10 +206,15 @@ async function main() {
   const manualNews = loadManualNews();
   console.log(`  Found ${manualNews.length} manual entries`);
 
-  // Merge, deduplicate by title, sort by date descending, cap at MAX
+  // Apply global 90-day cutoff, deduplicate, sort by date descending, cap at MAX
+  const globalCutoff = new Date();
+  globalCutoff.setDate(globalCutoff.getDate() - RELEASE_MAX_AGE_DAYS);
+  const cutoffStr = globalCutoff.toISOString().split('T')[0];
+
   const seen = new Set();
   const all = [...manualNews, ...githubNews, ...pubNews]
     .filter((item) => {
+      if (item.date < cutoffStr) return false;
       if (seen.has(item.title)) return false;
       seen.add(item.title);
       return true;
