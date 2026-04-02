@@ -12,6 +12,12 @@ import SpotlightCard from '@/components/SpotlightCard';
 import CountUp from '@/components/CountUp';
 import FadeIn from '@/components/FadeIn';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 import { jobs } from '@/data/jobs';
 import { publications, isLabMember } from '@/data/publications';
 import { focusAreas } from '@/data/focus-areas';
@@ -292,21 +298,34 @@ const Index = () => {
           </FadeIn>
 
           <FadeIn delay={0.15} className="max-w-6xl">
-            {focusAreas.map((area, idx) => (
-              <div
-                key={area.num}
-                className="focus-area-row group"
-                style={{ animationDelay: `${idx * 100}ms` }}
-              >
-                <div className="focus-area-left">
-                  <span className="focus-area-num">{area.num}</span>
-                </div>
-                <div className="focus-area-right">
-                  <h3 className="focus-area-title">{area.title}</h3>
-                  <p className="text-[hsl(var(--text-secondary))] leading-[1.8] mt-2">{area.desc}</p>
-                </div>
-              </div>
-            ))}
+            <Accordion type="single" collapsible className="space-y-2">
+              {focusAreas.map((area) => (
+                <AccordionItem
+                  key={area.num}
+                  value={area.num}
+                  className="border border-[hsl(var(--border))] rounded-lg px-6 bg-[hsl(var(--bg-primary)/0.5)] backdrop-blur-sm"
+                >
+                  <AccordionTrigger className="hover:no-underline py-5 gap-4">
+                    <div className="flex items-center gap-5 text-left">
+                      <span className="text-2xl md:text-3xl font-light text-[hsl(var(--accent))] tabular-nums shrink-0 w-10">
+                        {area.num}
+                      </span>
+                      <span className="text-lg md:text-xl font-semibold text-[hsl(var(--text-primary))]">
+                        {area.title}
+                      </span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-5 pl-[3.75rem]">
+                    <p className="text-[hsl(var(--text-secondary))] leading-[1.8] mb-3">
+                      {area.desc}
+                    </p>
+                    <p className="text-sm text-[hsl(var(--accent))] leading-[1.8]">
+                      {area.example}
+                    </p>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </FadeIn>
         </div>
       </section>
