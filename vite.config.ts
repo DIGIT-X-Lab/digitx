@@ -22,6 +22,7 @@ export default defineConfig(({ mode }) => ({
       output: {
         manualChunks: {
           vendor: ["react", "react-dom", "react-router-dom"],
+          three: ["three", "@react-three/fiber"],
         },
       },
     },
