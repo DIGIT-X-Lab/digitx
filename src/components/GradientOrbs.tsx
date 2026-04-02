@@ -107,8 +107,9 @@ const GradientOrbs = () => {
       <Canvas
         dpr={[1, 1.5]}
         camera={{ position: [0, 0, 12], fov: 50 }}
-        style={{ position: 'absolute', inset: 0 }}
+        style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}
         gl={{ alpha: true, antialias: false, powerPreference: 'low-power' }}
+        events={() => ({ enabled: false, priority: 0, compute: () => {} } as any)}
       >
         <Particles isDark={isDark} />
       </Canvas>
