@@ -206,7 +206,7 @@ const Index = () => {
       </section>
 
       {/* Vision */}
-      <section id="vision" className="relative py-28 md:py-40 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] transition-colors duration-500">
+      <section id="vision" className="relative py-28 md:py-40 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] section-fade-in section-fade-out transition-colors duration-500">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-24">
             <FadeIn className="lg:col-span-4">
@@ -288,7 +288,7 @@ const Index = () => {
       </section>
 
       {/* Focus Areas */}
-      <section id="focus" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] transition-colors duration-300">
+      <section id="focus" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] section-fade-in section-fade-out transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
           <FadeIn className="mb-20 max-w-4xl">
             <span className="text-label text-[hsl(var(--accent))] block mb-4">What We Work On</span>
@@ -497,7 +497,7 @@ const Index = () => {
       </section>
 
       {/* People */}
-      <section id="people" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] transition-colors duration-300">
+      <section id="people" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] section-fade-in section-fade-out transition-colors duration-300">
         <div className="max-w-7xl mx-auto space-y-10">
           <FadeIn className="space-y-4 max-w-7xl">
             <span className="text-label text-[hsl(var(--accent))] block">People</span>

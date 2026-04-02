@@ -163,6 +163,43 @@
     color: hsl(var(--text-secondary));
   }
 
+  /* Smooth gradient fades between sections */
+  .section-fade-in::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--bg-primary)),
+      transparent
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+  .section-fade-out::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(
+      to top,
+      hsl(var(--bg-primary)),
+      transparent
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+  .section-fade-in > *,
+  .section-fade-out > * {
+    position: relative;
+    z-index: 1;
+  }
+
   /* Theme toggle button */
   .theme-toggle {
     width: 40px;
