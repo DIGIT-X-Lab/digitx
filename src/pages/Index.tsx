@@ -11,6 +11,7 @@ import NewsEdgePeek from '@/components/NewsEdgePeek';
 import SpotlightCard from '@/components/SpotlightCard';
 import CountUp from '@/components/CountUp';
 import FadeIn from '@/components/FadeIn';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { jobs } from '@/data/jobs';
 import { publications, isLabMember } from '@/data/publications';
 import { focusAreas } from '@/data/focus-areas';
@@ -322,112 +323,127 @@ const Index = () => {
           </FadeIn>
 
           <FadeIn delay={0.15}>
-          <div className="mb-14 max-w-7xl mx-auto">
-            <span className="text-label text-[hsl(var(--accent))] block mb-3">Imaging Stack</span>
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {imagingTools.map((tool) => (
-                <SpotlightCard key={tool.name} className="software-card h-full flex flex-col">
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <h3 className="software-card-title">
-                      <DecryptedText text={tool.name} speed={50} maxIterations={15} animateOn="hover" parentHoverSelector=".software-card" />
-                    </h3>
-                    <span className="status-chip">{tool.status}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {tool.tags.map((tag) => (
-                      <span key={tag} className="pill-soft text-xs">{tag}</span>
-                    ))}
-                  </div>
-                  <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-4 flex-1">{tool.desc}</p>
-                  <div className="flex items-center gap-3 text-xs mt-auto">
-                    {tool.github && (
-                      <a
-                        href={tool.github}
-                        className="icon-inline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${tool.name} on GitHub`}
-                        title="View code on GitHub"
-                      >
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
-                          <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.94.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.72.08-.71.08-.71 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.52-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.44-2.27 1.16-3.07-.12-.29-.5-1.46.11-3.05 0 0 .95-.3 3.12 1.17a10.9 10.9 0 0 1 5.68 0c2.17-1.47 3.12-1.17 3.12-1.17.61 1.59.23 2.76.11 3.05.72.8 1.16 1.82 1.16 3.07 0 4.41-2.68 5.38-5.23 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.79.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
-                        </svg>
-                        <span className="flex items-center gap-1.5">
-                          GitHub
-                          <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="m12 3 2.4 5.5 5.6.4-4.3 3.7 1.4 5.5L12 15.7 7 18.1l1.3-5.5-4.3-3.7 5.6-.4z" />
-                          </svg>
-                          {starCounts[tool.github] ?? tool.stars ?? 0}
-                        </span>
-                      </a>
-                    )}
-                    {tool.paper && (
-                      <a
-                        href={tool.paper}
-                        className="icon-inline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${tool.name} publication`}
-                        title="Open publication"
-                      >
-                        <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M7 3h8l3 3v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
-                          <path d="M13 3v6l-2-1-2 1V3" />
-                          <path d="M9 11h6M9 14h6" />
-                        </svg>
-                        <span>Paper</span>
-                      </a>
-                    )}
-                  </div>
-                </SpotlightCard>
-              ))}
-            </div>
-          </div>
+          <Tabs defaultValue="imaging" className="max-w-7xl mx-auto">
+            <TabsList className="mb-8 bg-[hsl(var(--bg-secondary))] border border-[hsl(var(--border))]">
+              <TabsTrigger
+                value="imaging"
+                className="data-[state=active]:bg-[hsl(var(--bg-primary))] data-[state=active]:text-[hsl(var(--accent))] data-[state=active]:shadow-sm"
+              >
+                Imaging Stack
+              </TabsTrigger>
+              <TabsTrigger
+                value="llm"
+                className="data-[state=active]:bg-[hsl(var(--bg-primary))] data-[state=active]:text-[hsl(var(--accent))] data-[state=active]:shadow-sm"
+              >
+                LLM Stack
+              </TabsTrigger>
+            </TabsList>
 
-          <div className="max-w-7xl mx-auto">
-            <span className="text-label text-[hsl(var(--accent))] block mb-3">LLM Stack</span>
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {llmTools.map((tool) => (
-                <SpotlightCard key={tool.name} className="software-card h-full flex flex-col">
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <h3 className="software-card-title">
-                      <DecryptedText text={tool.name} speed={50} maxIterations={15} animateOn="hover" parentHoverSelector=".software-card" />
-                    </h3>
-                    <span className="status-chip">{tool.status}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {tool.tags.map((tag) => (
-                      <span key={tag} className="pill-soft text-xs">{tag}</span>
-                    ))}
-                  </div>
-                  <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-4 flex-1">{tool.desc}</p>
-                  <div className="flex items-center gap-3 text-xs mt-auto">
-                    {tool.github && (
-                      <a
-                        href={tool.github}
-                        className="icon-inline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${tool.name} on GitHub`}
-                        title="View code on GitHub"
-                      >
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
-                          <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.94.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.72.08-.71.08-.71 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.52-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.44-2.27 1.16-3.07-.12-.29-.5-1.46.11-3.05 0 0 .95-.3 3.12 1.17a10.9 10.9 0 0 1 5.68 0c2.17-1.47 3.12-1.17 3.12-1.17.61 1.59.23 2.76.11 3.05.72.8 1.16 1.82 1.16 3.07 0 4.41-2.68 5.38-5.23 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.79.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
-                        </svg>
-                        <span className="flex items-center gap-1.5">
-                          GitHub
-                          <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="m12 3 2.4 5.5 5.6.4-4.3 3.7 1.4 5.5L12 15.7 7 18.1l1.3-5.5-4.3-3.7 5.6-.4z" />
+            <TabsContent value="imaging">
+              <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {imagingTools.map((tool) => (
+                  <SpotlightCard key={tool.name} className="software-card h-full flex flex-col">
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <h3 className="software-card-title">
+                        <DecryptedText text={tool.name} speed={50} maxIterations={15} animateOn="hover" parentHoverSelector=".software-card" />
+                      </h3>
+                      <span className="status-chip">{tool.status}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {tool.tags.map((tag) => (
+                        <span key={tag} className="pill-soft text-xs">{tag}</span>
+                      ))}
+                    </div>
+                    <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-4 flex-1">{tool.desc}</p>
+                    <div className="flex items-center gap-3 text-xs mt-auto">
+                      {tool.github && (
+                        <a
+                          href={tool.github}
+                          className="icon-inline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${tool.name} on GitHub`}
+                          title="View code on GitHub"
+                        >
+                          <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
+                            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.94.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.72.08-.71.08-.71 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.52-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.44-2.27 1.16-3.07-.12-.29-.5-1.46.11-3.05 0 0 .95-.3 3.12 1.17a10.9 10.9 0 0 1 5.68 0c2.17-1.47 3.12-1.17 3.12-1.17.61 1.59.23 2.76.11 3.05.72.8 1.16 1.82 1.16 3.07 0 4.41-2.68 5.38-5.23 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.79.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
                           </svg>
-                          {starCounts[tool.github] ?? tool.stars ?? 0}
-                        </span>
-                      </a>
-                    )}
-                  </div>
-                </SpotlightCard>
-              ))}
-            </div>
-          </div>
+                          <span className="flex items-center gap-1.5">
+                            GitHub
+                            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="m12 3 2.4 5.5 5.6.4-4.3 3.7 1.4 5.5L12 15.7 7 18.1l1.3-5.5-4.3-3.7 5.6-.4z" />
+                            </svg>
+                            {starCounts[tool.github] ?? tool.stars ?? 0}
+                          </span>
+                        </a>
+                      )}
+                      {tool.paper && (
+                        <a
+                          href={tool.paper}
+                          className="icon-inline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${tool.name} publication`}
+                          title="Open publication"
+                        >
+                          <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M7 3h8l3 3v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
+                            <path d="M13 3v6l-2-1-2 1V3" />
+                            <path d="M9 11h6M9 14h6" />
+                          </svg>
+                          <span>Paper</span>
+                        </a>
+                      )}
+                    </div>
+                  </SpotlightCard>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="llm">
+              <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {llmTools.map((tool) => (
+                  <SpotlightCard key={tool.name} className="software-card h-full flex flex-col">
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <h3 className="software-card-title">
+                        <DecryptedText text={tool.name} speed={50} maxIterations={15} animateOn="hover" parentHoverSelector=".software-card" />
+                      </h3>
+                      <span className="status-chip">{tool.status}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {tool.tags.map((tag) => (
+                        <span key={tag} className="pill-soft text-xs">{tag}</span>
+                      ))}
+                    </div>
+                    <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-4 flex-1">{tool.desc}</p>
+                    <div className="flex items-center gap-3 text-xs mt-auto">
+                      {tool.github && (
+                        <a
+                          href={tool.github}
+                          className="icon-inline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${tool.name} on GitHub`}
+                          title="View code on GitHub"
+                        >
+                          <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
+                            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.94.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.72.08-.71.08-.71 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.52-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.44-2.27 1.16-3.07-.12-.29-.5-1.46.11-3.05 0 0 .95-.3 3.12 1.17a10.9 10.9 0 0 1 5.68 0c2.17-1.47 3.12-1.17 3.12-1.17.61 1.59.23 2.76.11 3.05.72.8 1.16 1.82 1.16 3.07 0 4.41-2.68 5.38-5.23 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.79.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                          </svg>
+                          <span className="flex items-center gap-1.5">
+                            GitHub
+                            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="m12 3 2.4 5.5 5.6.4-4.3 3.7 1.4 5.5L12 15.7 7 18.1l1.3-5.5-4.3-3.7 5.6-.4z" />
+                            </svg>
+                            {starCounts[tool.github] ?? tool.stars ?? 0}
+                          </span>
+                        </a>
+                      )}
+                    </div>
+                  </SpotlightCard>
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
           </FadeIn>
         </div>
       </section>
