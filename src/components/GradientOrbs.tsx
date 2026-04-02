@@ -41,8 +41,8 @@ const GradientOrbs = () => {
           top: '15%',
           right: '-10%',
           background: isDark
-            ? 'radial-gradient(circle, hsla(155, 35%, 50%, 0.18) 0%, transparent 60%)'
-            : 'radial-gradient(circle, hsla(155, 30%, 42%, 0.20) 0%, transparent 60%)',
+            ? 'radial-gradient(circle, hsla(30, 50%, 50%, 0.15) 0%, transparent 60%)'
+            : 'radial-gradient(circle, hsla(30, 45%, 55%, 0.18) 0%, transparent 60%)',
           filter: 'blur(80px)',
         }}
       />
