@@ -165,13 +165,10 @@ const Index = () => {
                 <BlurText delay={0.5}>Intelligence</BlurText>
               </span>
             </h1>
-            <p className={`text-lg md:text-xl text-[hsl(var(--text-secondary))] leading-[1.9] max-w-4xl mb-6 ${isLoaded ? 'fade-in-up delay-2' : 'opacity-0'}`}>
-              At DIGITX, we imagine a future where clinicians aren’t slowed by fragmented data and researchers aren’t burdened by disconnected systems. By enabling medical insights to flow freely, we give people back the time and clarity needed to focus on improving lives.
+            <p className={`text-lg md:text-xl text-[hsl(var(--text-secondary))] leading-[1.9] max-w-4xl mb-8 ${isLoaded ? 'fade-in-up delay-2' : 'opacity-0'}`}>
+              An academic lab in Radiology at LMU University Hospital, Munich. We build the quiet, rigorous infrastructure that turns raw clinical signals into structured, connected evidence, so decisions can be explained, challenged, and trusted.
             </p>
-            <p className={`text-lg md:text-xl text-[hsl(var(--text-secondary))] leading-[1.9] max-w-4xl mb-8 ${isLoaded ? 'fade-in-up delay-3' : 'opacity-0'}`}>
-              DIGITX is an academic lab in Radiology at LMU University Hospital, Munich. We build the quiet, rigorous infrastructure that turns raw clinical signals into structured, connected evidence — so decisions can be explained, challenged, and trusted.
-            </p>
-            <div className={`flex flex-wrap gap-4 ${isLoaded ? 'fade-in-up delay-4' : 'opacity-0'}`}>
+            <div className={`flex flex-wrap gap-4 ${isLoaded ? 'fade-in-up delay-3' : 'opacity-0'}`}>
               <a href="#focus" className="btn-primary btn-shimmer">Explore Our Work <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></a>
               <a href="#connect" className="btn-secondary btn-glass">Get in Touch <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg></a>
             </div>
@@ -241,47 +238,6 @@ const Index = () => {
               </div>
 
               <p className="text-sm uppercase tracking-[0.12em] text-[hsl(var(--text-secondary))]">Structured, connected, explainable — so every answer is traceable.</p>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* The Problem */}
-      <section id="problem" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
-            <FadeIn delay={0.15} className="lg:col-span-7 space-y-8 order-2 lg:order-1">
-              <div className="grid lg:grid-cols-2 gap-6 max-w-6xl w-full mx-auto">
-                <div className="hero-side-card w-full">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-label">Where it breaks</span>
-                    <span className="pill-soft">Clinical reality</span>
-                  </div>
-                  <ul className="space-y-2 text-[hsl(var(--text-primary))]">
-                    <li className="flex items-start gap-3"><span className="bullet-dot" />Dictated reports, incompatible systems, and isolated modalities fragment the patient story.</li>
-                    <li className="flex items-start gap-3"><span className="bullet-dot" />Data trapped in PDFs and silos stays non-computable; models inherit the confusion.</li>
-                    <li className="flex items-start gap-3"><span className="bullet-dot" />Clinicians face overload while evidence sits scattered and unlinked.</li>
-                  </ul>
-                </div>
-
-                <div className="hero-side-card w-full">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-label">Why it matters</span>
-                    <span className="pill-soft">Human impact</span>
-                  </div>
-                  <ul className="space-y-2 text-[hsl(var(--text-primary))]">
-                    <li className="flex items-start gap-3"><span className="bullet-dot" />Patients wait while answers are buried in unstructured data.</li>
-                    <li className="flex items-start gap-3"><span className="bullet-dot" />Researchers burn months cleaning instead of testing hypotheses.</li>
-                    <li className="flex items-start gap-3"><span className="bullet-dot" />Decisions risk being made without traceable context.</li>
-                  </ul>
-                </div>
-              </div>
-              <p className="text-sm uppercase tracking-[0.12em] text-[hsl(var(--text-secondary))]">Our central tenet: Structure first, insight follows.</p>
-            </FadeIn>
-
-            <FadeIn className="lg:col-span-5 order-1 lg:order-2 lg:text-right">
-              <span className="text-label text-[hsl(var(--accent))] block mb-4">The Problem We Take Seriously</span>
-              <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))]">Healthcare is Data Rich<br /><span className="font-serif text-[hsl(var(--accent))] italic">but Insight Poor</span></h2>
             </FadeIn>
           </div>
         </div>
