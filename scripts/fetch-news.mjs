@@ -157,7 +157,17 @@ function detectNewPublications() {
   // Save current as prev for next run
   writeFileSync(PREV_PUBS_PATH, JSON.stringify(current.map((p) => ({ paperId: p.paperId }))));
 
-  const newPubs = current.filter((p) => !prevIds.has(p.paperId));
+  // Only include papers that are both new to the diff AND published within the last 30 days
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  const cutoff = thirtyDaysAgo.toISOString().split('T')[0];
+
+  const newPubs = current.filter((p) => {
+    if (prevIds.has(p.paperId)) return false;
+    const pubDate = p.publicationDate || `${p.year}-01-01`;
+    return pubDate >= cutoff;
+  });
+
   return newPubs.map((pub) => ({
     date: pub.publicationDate || `${pub.year}-01-01`,
     title: `New paper: ${pub.title}`,

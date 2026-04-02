@@ -7,41 +7,6 @@
     "link": "https://www.icpo.foundation/"
   },
   {
-    "date": "2025-12-17",
-    "title": "New paper: In search of truth: Evaluating concordance of AI-based anatomy segmentation models",
-    "description": "Published in arXiv.org.",
-    "type": "publication",
-    "link": "https://doi.org/10.48550/arXiv.2512.15921"
-  },
-  {
-    "date": "2025-12-10",
-    "title": "New paper: Hyper-selective explainability: an empirical case study of the utility of explainability in a clinical decision support system",
-    "description": "Published in AI and Ethics.",
-    "type": "publication",
-    "link": "https://doi.org/10.1007/s43681-025-00837-y"
-  },
-  {
-    "date": "2025-12-09",
-    "title": "New paper: Künstliche Intelligenz in der muskuloskelettalen Radiologie",
-    "description": "Published in Die Orthopädie.",
-    "type": "publication",
-    "link": "https://doi.org/10.1007/s00132-025-04752-2"
-  },
-  {
-    "date": "2025-11-25",
-    "title": "New paper: Explainable AI in nuclear medicine.",
-    "description": "Published in European Journal of Nuclear Medicine and Molecular Imaging.",
-    "type": "publication",
-    "link": "https://doi.org/10.1007/s00259-025-07675-4"
-  },
-  {
-    "date": "2025-11-23",
-    "title": "New paper: Artificial intelligence for TNM staging in NSCLC: a critical appraisal of segmentation utility in [1⁸F]FDG PET/CT.",
-    "description": "Published in European Journal of Nuclear Medicine and Molecular Imaging.",
-    "type": "publication",
-    "link": "https://doi.org/10.1007/s00259-025-07677-2"
-  },
-  {
     "date": "2025-11-13",
     "title": "MOSAICX open-sourced",
     "description": "Medical cOmputational Suite for Advanced Intelligent eXtraction of Healthcare data using local LLMs",
@@ -54,33 +19,5 @@
     "description": "An open-source on-prem text annotation software suite.",
     "type": "release",
     "link": "https://github.com/DIGIT-X-Lab/ANNOTATEX/releases/tag/v0.1.0"
-  },
-  {
-    "date": "2025-10-30",
-    "title": "New paper: Safeguarding Global AI Progress: The Role of Scientific Societies in Ensuring Equitable Data Access in Nuclear Medicine",
-    "description": "Published in Journal of Nuclear Medicine.",
-    "type": "publication",
-    "link": "https://doi.org/10.2967/jnumed.125.270717"
-  },
-  {
-    "date": "2025-10-30",
-    "title": "New paper: Feasibility of different lymph node metastases delineation approaches in [18F]SiTATE PET/CT imaging in NET patients",
-    "description": "Published in EJNMMI reports.",
-    "type": "publication",
-    "link": "https://doi.org/10.1186/s41824-025-00273-5"
-  },
-  {
-    "date": "2025-10-29",
-    "title": "New paper: Whole-Body [18F]FDG-PET/CT Imaging of Healthy Controls: Test/Retest Data for Systemic, Multi-Organ Analysis",
-    "description": "Published in Scientific Data.",
-    "type": "publication",
-    "link": "https://doi.org/10.1038/s41597-025-05997-4"
-  },
-  {
-    "date": "2025-09-24",
-    "title": "New paper: Comparison of organ volumes and standardized uptake values in [18F]FDG‐PET/CT images using MOOSE and TotalSegmentator to segment CT images",
-    "description": "Published in Medical Physics (Lancaster).",
-    "type": "publication",
-    "link": "https://doi.org/10.1002/mp.70025"
   }
 ]
