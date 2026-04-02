@@ -10,6 +10,7 @@ import MobileNav from '@/components/MobileNav';
 import NewsEdgePeek from '@/components/NewsEdgePeek';
 import SpotlightCard from '@/components/SpotlightCard';
 import CountUp from '@/components/CountUp';
+import FadeIn from '@/components/FadeIn';
 import { jobs } from '@/data/jobs';
 import { publications, isLabMember } from '@/data/publications';
 import { focusAreas } from '@/data/focus-areas';
@@ -202,11 +203,11 @@ const Index = () => {
       <section id="vision" className="relative py-28 md:py-40 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] transition-colors duration-500">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-24">
-            <div className="lg:col-span-4">
+            <FadeIn className="lg:col-span-4">
               <span className="text-label text-[hsl(var(--accent))] block mb-4">Our Vision</span>
               <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))]">From Raw Data to<br /><span className="font-serif text-[hsl(var(--accent))] italic">Computable Knowledge</span></h2>
-            </div>
-            <div className="lg:col-span-8 space-y-8">
+            </FadeIn>
+            <FadeIn delay={0.15} className="lg:col-span-8 space-y-8">
               <div className="grid lg:grid-cols-2 gap-6 max-w-6xl w-full mx-auto">
                 <div className="hero-side-card w-full">
                   <div className="flex items-center justify-between mb-3">
@@ -234,7 +235,7 @@ const Index = () => {
               </div>
 
               <p className="text-sm uppercase tracking-[0.12em] text-[hsl(var(--text-secondary))]">Structured, connected, explainable — so every answer is traceable.</p>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -243,7 +244,7 @@ const Index = () => {
       <section id="problem" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
-            <div className="lg:col-span-7 space-y-8 order-2 lg:order-1">
+            <FadeIn delay={0.15} className="lg:col-span-7 space-y-8 order-2 lg:order-1">
               <div className="grid lg:grid-cols-2 gap-6 max-w-6xl w-full mx-auto">
                 <div className="hero-side-card w-full">
                   <div className="flex items-center justify-between mb-3">
@@ -270,12 +271,12 @@ const Index = () => {
                 </div>
               </div>
               <p className="text-sm uppercase tracking-[0.12em] text-[hsl(var(--text-secondary))]">Our central tenet: Structure first, insight follows.</p>
-            </div>
+            </FadeIn>
 
-            <div className="lg:col-span-5 order-1 lg:order-2 lg:text-right">
+            <FadeIn className="lg:col-span-5 order-1 lg:order-2 lg:text-right">
               <span className="text-label text-[hsl(var(--accent))] block mb-4">The Problem We Take Seriously</span>
               <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))]">Healthcare is Data Rich<br /><span className="font-serif text-[hsl(var(--accent))] italic">but Insight Poor</span></h2>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -283,13 +284,13 @@ const Index = () => {
       {/* Focus Areas */}
       <section id="focus" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-20 max-w-4xl">
+          <FadeIn className="mb-20 max-w-4xl">
             <span className="text-label text-[hsl(var(--accent))] block mb-4">What We Work On</span>
             <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] max-w-3xl">Foundations for <span className="font-serif text-[hsl(var(--accent))] italic">Health Intelligence</span></h2>
             <p className="text-[hsl(var(--text-secondary))] mt-6 max-w-3xl leading-[1.9]">We focus on a few foundational challenges that must be solved before healthcare can benefit from trustworthy, scalable intelligence.</p>
-          </div>
+          </FadeIn>
 
-          <div className="max-w-6xl">
+          <FadeIn delay={0.15} className="max-w-6xl">
             {focusAreas.map((area, idx) => (
               <div
                 key={area.num}
@@ -305,21 +306,22 @@ const Index = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* Software */}
       <section ref={toolsSectionRef} id="tools" className="relative py-28 md:py-40 px-6 md:px-12 lg:px-20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16 max-w-6xl">
+          <FadeIn className="mb-16 max-w-6xl">
             <span className="text-label text-[hsl(var(--accent))] block mb-4">Software</span>
             <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight">
               What We're <span className="font-serif italic text-[hsl(var(--accent))]">Building</span>
             </h2>
             <p className="text-[hsl(var(--text-secondary))] mt-4 max-w-3xl leading-[1.9]">Open-science tools across data/LLM and imaging stacks — structured, explainable, and built for clinical accountability.</p>
-          </div>
+          </FadeIn>
 
+          <FadeIn delay={0.15}>
           <div className="mb-14 max-w-7xl mx-auto">
             <span className="text-label text-[hsl(var(--accent))] block mb-3">Imaging Stack</span>
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -426,21 +428,22 @@ const Index = () => {
               ))}
             </div>
           </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* How We Work */}
       <section id="approach" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-20 max-w-4xl">
+          <FadeIn className="mb-20 max-w-4xl">
             <span className="text-label text-[hsl(var(--accent))] block mb-4">How We Work</span>
             <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))]">
               <span className="font-serif text-[hsl(var(--text-primary))]">Honest Methods</span><br />
               <span className="font-serif italic text-[hsl(var(--accent))]">for a Complex Domain</span>
             </h2>
-          </div>
+          </FadeIn>
 
-          <div className="max-w-6xl">
+          <FadeIn delay={0.15} className="max-w-6xl">
             {principles.map((pr, i) => (
               <div
                 key={i}
@@ -455,14 +458,14 @@ const Index = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* People */}
       <section id="people" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] transition-colors duration-300">
         <div className="max-w-7xl mx-auto space-y-10">
-          <div className="space-y-4 max-w-7xl">
+          <FadeIn className="space-y-4 max-w-7xl">
             <span className="text-label text-[hsl(var(--accent))] block">People</span>
             <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight">
               A Small <span className="font-serif text-[hsl(var(--accent))] italic">Interdisciplinary Lab</span>
@@ -512,10 +515,10 @@ const Index = () => {
                 </svg>
               </a>
             </div>
-          </div>
+          </FadeIn>
 
           {teamMembers.length > 0 && (
-            <div className="relative max-w-7xl">
+            <FadeIn delay={0.15} className="relative max-w-7xl">
               {teamMembers.map((member, idx) => (
                 <div
                   key={member.name}
@@ -587,7 +590,7 @@ const Index = () => {
                   </div>
                 </div>
               ))}
-            </div>
+            </FadeIn>
           )}
 
         </div>
@@ -597,7 +600,7 @@ const Index = () => {
       {publications.length > 0 && (
         <section id="publications" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 transition-colors duration-300">
           <div className="max-w-7xl mx-auto">
-            <div className="mb-16">
+            <FadeIn className="mb-16">
               <span className="text-label text-[hsl(var(--accent))] block mb-4">Publications</span>
               <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight">
                 Recent <span className="font-serif text-[hsl(var(--accent))] italic">Research</span>
@@ -605,9 +608,9 @@ const Index = () => {
               <p className="text-[hsl(var(--text-secondary))] mt-6 leading-[1.9] max-w-3xl">
                 Peer-reviewed publications and preprints from DIGITX lab members.
               </p>
-            </div>
+            </FadeIn>
 
-            <div className="max-w-6xl">
+            <FadeIn delay={0.15} className="max-w-6xl">
               {visiblePubs.map((pub) => (
                 <a
                   key={pub.paperId}
@@ -680,7 +683,7 @@ const Index = () => {
                   </svg>
                 </button>
               )}
-            </div>
+            </FadeIn>
           </div>
         </section>
       )}
@@ -688,7 +691,7 @@ const Index = () => {
       {/* Careers */}
       <section id="careers" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
+          <FadeIn className="mb-16">
             <span className="text-label text-[hsl(var(--accent))] block mb-4">Careers</span>
             <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight">
               Join Our <span className="font-serif text-[hsl(var(--accent))] italic">Team</span>
@@ -696,9 +699,9 @@ const Index = () => {
             <p className="text-[hsl(var(--text-secondary))] mt-6 leading-[1.9]">
               We're building the infrastructure and tools that enable health intelligence. The work is technical and foundational: clean code, clear thinking, and shipping things that actually help clinicians. If that sounds like your kind of problem, reach out.
             </p>
-          </div>
+          </FadeIn>
 
-          <div>
+          <FadeIn delay={0.15}>
             {jobs.map((job) => (
               <Link
                 key={job.id}
@@ -736,7 +739,7 @@ const Index = () => {
                 </div>
               </Link>
             ))}
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -761,7 +764,7 @@ const Index = () => {
       {/* Connect */}
       <section id="connect" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-tertiary))] transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mx-auto text-center">
+          <FadeIn className="max-w-3xl mx-auto text-center">
             <span className="text-label block mb-6">Connect</span>
             <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] mb-6 leading-tight">Let's Build<br /><span className="font-serif text-[hsl(var(--accent))] italic">Computable Healthcare</span></h2>
             <p className="text-lg text-[hsl(var(--text-secondary))] leading-[1.8] mb-10 max-w-lg mx-auto">If our work resonates with you — whether you're caring for patients, stewarding data, or building methods — tell us what keeps you up at night. We'll listen first.</p>
@@ -771,7 +774,7 @@ const Index = () => {
               </a>
               <a href="mailto:lalith.shiyam@med.uni-muenchen.de" className="btn-secondary">Get in Touch</a>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
