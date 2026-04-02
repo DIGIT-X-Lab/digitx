@@ -1,13 +1,13 @@
-import { useEffect, useState, useRef } from 'react';
+import { lazy, Suspense, useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import GradientOrbs from '@/components/GradientOrbs';
 import BlurText from '@/components/BlurText';
 import RotatingText from '@/components/RotatingText';
 import DecryptedText from '@/components/DecryptedText';
-// import NetworkGraph from '@/components/NetworkGraph'; // Swap back to re-enable particles
 import ThemeToggle from '@/components/ThemeToggle';
 import MobileNav from '@/components/MobileNav';
 import SpotlightCard from '@/components/SpotlightCard';
+
+const GradientOrbs = lazy(() => import('@/components/GradientOrbs'));
 import CountUp from '@/components/CountUp';
 import FadeIn from '@/components/FadeIn';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -82,12 +82,26 @@ const Index = () => {
   useEffect(() => {
     if (!toolsVisible) return;
 
+    // Check sessionStorage cache first (valid for 1 hour)
+    const CACHE_KEY = 'digitx_stars';
+    const CACHE_TTL = 3600000;
+    try {
+      const cached = sessionStorage.getItem(CACHE_KEY);
+      if (cached) {
+        const { data, ts } = JSON.parse(cached);
+        if (Date.now() - ts < CACHE_TTL) {
+          setStarCounts(prev => ({ ...prev, ...data }));
+          return;
+        }
+      }
+    } catch { /* ignore */ }
+
     const repos = Array.from(new Set([...llmTools, ...imagingTools].map(t => t.github).filter(Boolean))) as string[];
     if (!repos.length) return;
 
     let cancelled = false;
     const fetchStars = async () => {
-      const updates: [string, number][] = [];
+      const updates: Record<string, number> = {};
       await Promise.all(
         repos.map(async (repo) => {
           try {
@@ -96,20 +110,17 @@ const Index = () => {
             if (!res.ok) return;
             const data = await res.json();
             if (typeof data?.stargazers_count === 'number') {
-              updates.push([repo, data.stargazers_count]);
+              updates[repo] = data.stargazers_count;
             }
-          } catch {
-            /* ignore */
-          }
+          } catch { /* ignore */ }
         })
       );
 
-      if (cancelled || !updates.length) return;
-      setStarCounts(prev => {
-        const next = { ...prev };
-        updates.forEach(([repo, stars]) => { next[repo] = stars; });
-        return next;
-      });
+      if (cancelled || !Object.keys(updates).length) return;
+      setStarCounts(prev => ({ ...prev, ...updates }));
+      try {
+        sessionStorage.setItem(CACHE_KEY, JSON.stringify({ data: updates, ts: Date.now() }));
+      } catch { /* ignore */ }
     };
 
     fetchStars();
@@ -118,7 +129,7 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen noise-overlay">
-      <GradientOrbs />
+      <Suspense fallback={null}><GradientOrbs /></Suspense>
       <div className="fixed inset-0 gradient-warmth pointer-events-none" />
       <div className="fixed inset-0 global-veil pointer-events-none" aria-hidden />
 
