@@ -583,6 +583,30 @@
     color: hsl(var(--accent));
   }
 
+  /* Spotlight card effect */
+  .spotlight-card {
+    position: relative;
+    overflow: hidden;
+  }
+  .spotlight-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      600px circle at var(--spot-x) var(--spot-y),
+      var(--spot-color),
+      transparent 40%
+    );
+    opacity: var(--spot-opacity);
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .spotlight-card > * {
+    position: relative;
+    z-index: 2;
+  }
+
   /* Job Cards - Extends software-card pattern */
   .job-card {
     position: relative;

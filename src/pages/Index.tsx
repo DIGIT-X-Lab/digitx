@@ -7,6 +7,7 @@ import DecryptedText from '@/components/DecryptedText';
 import ThemeToggle from '@/components/ThemeToggle';
 import MobileNav from '@/components/MobileNav';
 import NewsEdgePeek from '@/components/NewsEdgePeek';
+import SpotlightCard from '@/components/SpotlightCard';
 import { jobs } from '@/data/jobs';
 import { publications, isLabMember } from '@/data/publications';
 import { focusAreas } from '@/data/focus-areas';
@@ -292,7 +293,7 @@ const Index = () => {
             <span className="text-label text-[hsl(var(--accent))] block mb-3">Imaging Stack</span>
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {imagingTools.map((tool) => (
-                <div key={tool.name} className="software-card h-full flex flex-col">
+                <SpotlightCard key={tool.name} className="software-card h-full flex flex-col">
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <h3 className="software-card-title">
                       <DecryptedText text={tool.name} speed={50} maxIterations={15} animateOn="hover" parentHoverSelector=".software-card" />
@@ -345,7 +346,7 @@ const Index = () => {
                       </a>
                     )}
                   </div>
-                </div>
+                </SpotlightCard>
               ))}
             </div>
           </div>
@@ -354,7 +355,7 @@ const Index = () => {
             <span className="text-label text-[hsl(var(--accent))] block mb-3">LLM Stack</span>
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {llmTools.map((tool) => (
-                <div key={tool.name} className="software-card h-full flex flex-col">
+                <SpotlightCard key={tool.name} className="software-card h-full flex flex-col">
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <h3 className="software-card-title">
                       <DecryptedText text={tool.name} speed={50} maxIterations={15} animateOn="hover" parentHoverSelector=".software-card" />
@@ -390,7 +391,7 @@ const Index = () => {
                       </a>
                     )}
                   </div>
-                </div>
+                </SpotlightCard>
               ))}
             </div>
           </div>
