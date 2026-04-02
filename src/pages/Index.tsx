@@ -7,7 +7,6 @@ import DecryptedText from '@/components/DecryptedText';
 // import NetworkGraph from '@/components/NetworkGraph'; // Swap back to re-enable particles
 import ThemeToggle from '@/components/ThemeToggle';
 import MobileNav from '@/components/MobileNav';
-import NewsEdgePeek from '@/components/NewsEdgePeek';
 import SpotlightCard from '@/components/SpotlightCard';
 import CountUp from '@/components/CountUp';
 import FadeIn from '@/components/FadeIn';
@@ -119,7 +118,6 @@ const Index = () => {
   return (
     <div className="relative min-h-screen noise-overlay">
       <GradientOrbs />
-      <NewsEdgePeek />
       <div className="fixed inset-0 gradient-warmth pointer-events-none" />
       <div className="fixed inset-0 global-veil pointer-events-none" aria-hidden />
 
