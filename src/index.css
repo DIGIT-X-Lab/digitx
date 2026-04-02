@@ -163,6 +163,27 @@
     color: hsl(var(--text-secondary));
   }
 
+  /* Dot pattern background texture */
+  .dot-pattern {
+    position: relative;
+  }
+  .dot-pattern::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+      hsl(var(--text-primary) / 0.07) 1px,
+      transparent 1px
+    );
+    background-size: 24px 24px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .dot-pattern > * {
+    position: relative;
+    z-index: 1;
+  }
+
   /* Theme toggle button */
   .theme-toggle {
     width: 40px;
