@@ -8,6 +8,11 @@ import ThemeToggle from '@/components/ThemeToggle';
 import NewsEdgePeek from '@/components/NewsEdgePeek';
 import { jobs } from '@/data/jobs';
 import { publications, isLabMember } from '@/data/publications';
+import { focusAreas } from '@/data/focus-areas';
+import { principles } from '@/data/principles';
+import { teamMembers } from '@/data/team';
+import { imagingTools, llmTools } from '@/data/tools';
+import { collaborators } from '@/data/collaborators';
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -50,135 +55,7 @@ const Index = () => {
     return () => observer.disconnect();
   }, []);
 
-  const focusAreas = [
-    {
-      num: '01',
-      title: 'Autonomous Structuring of Clinical Data',
-      desc: 'Make PDFs, dictated notes, images, and labs computable. Normalize names, keep provenance, and deliver structured data without endless prep.',
-      example: 'Example: Radiology PDF → FHIR bundle with SNOMED/LOINC codes and time stamps preserved.',
-    },
-    {
-      num: '02',
-      title: 'Knowledge Graphs as a Common Substrate',
-      desc: 'Link that data into a clinical graph that understands people, time, and relationships — not just isolated fields.',
-      example: 'Example: patient → has_diagnosis → ICD/SNOMED node → linked to meds, labs, imaging, and time points with causal hints.',
-    },
-    {
-      num: '03',
-      title: 'Reasoning Interfaces for Clinicians',
-      desc: 'Give clinicians ways to ask grounded questions, see the evidence path, and challenge the logic — safely and quickly.',
-      example: 'Example: “Show tumor response over 6 months” → evidence-backed trend with cited sources.',
-    },
-    {
-      num: '04',
-      title: 'Scalable Infrastructure for Health Evidence',
-      desc: 'Run analyses across thousands of datasets with audit trails, reproducibility, and guardrails built in.',
-      example: 'Example: Cohort builder + reproducible pipelines with lineage, so results are portable across sites.',
-    },
-  ];
-
-  const principles = [
-    { title: 'Begin with Clinical Reality', desc: 'Health data is messy. We sit with clinicians and build for the workflows that already exist, not the ones we wish existed.' },
-    { title: 'Structure Enables Intelligence', desc: 'Predictions without meaning are brittle. We encode semantics, time, and provenance so reasoning has firm ground.' },
-    { title: 'LLMs Are Tools, Not Oracles', desc: 'We use language models where they help, and we always anchor them in verifiable knowledge graphs with clear evidence.' },
-    { title: 'Reproducibility and Scale Matter', desc: 'Methods should generalize across institutions and populations. We test for that and build for that.' },
-    { title: 'Quiet Ambition', desc: 'We take on foundational work with humility and patience. We measure progress by safer care and stronger science.' },
-  ];
-
-  const teamMembers = [
-    {
-      name: 'Prof. Dr. Lalith Kumar Shiyam Sundar',
-      role: 'Group Lead',
-      label: 'Group Lead',
-      tags: ['Medical imaging', 'Multimodal integration', 'Knowledge graphs'],
-      bio: 'Focuses on clinically grounded AI that fuses imaging, text, and structured data into explainable knowledge graphs for real-world decisions.',
-      university: 'LMU Radiology · LMU University Hospital',
-      github: 'https://github.com/LalithShiyam',
-      linkedin: 'https://de.linkedin.com/in/lalith-kumar-shiyam-sundar-phd-3a2aaba0',
-      scholar: 'https://scholar.google.com/citations?user=L6iMPN4AAAAJ&hl=en',
-    },
-    {
-      name: 'Dr. Sahib Julka',
-      role: 'Post Doctoral Researcher',
-      label: 'Post Doctoral Researcher',
-      tags: ['LLMs', 'Knowledge graphs', 'Automation'],
-      bio: 'Focuses on LLM-based knowledge graph creation from clinical text and structured sources.',
-      university: 'LMU University Hospital',
-      github: 'https://github.com/julka01',
-      linkedin: 'https://www.linkedin.com/in/julka01/',
-      scholar: 'https://scholar.google.com/citations?user=GaEUyB0AAAAJ&hl=en',
-    },
-    {
-      name: 'Sameer Singh Rawat',
-      role: 'Master thesis student',
-      label: 'Master thesis student',
-      tags: ['AI automation', 'Ontology', 'LLMs'],
-      bio: 'Focuses on automated ontology induction from medical documents using large language models.',
-      university: 'Ludwig Maximilian University of Munich',
-      github: 'https://github.com/SameerR007',
-      linkedin: 'https://www.linkedin.com/in/sameer-s-1333a6172',
-    },
-  ];
-
-  const tools = [
-    {
-      name: 'MosaicX',
-      desc: 'Autonomous structuring engine that turns PDFs, dictated notes, images, and labs into FHIR-ready, provenance-preserved data.',
-      tags: ['FHIR', 'SNOMED/LOINC', 'Provenance', 'Pipelines'],
-      status: 'In development',
-      github: 'https://github.com/DIGIT-X-Lab/MOSAICX',
-      stars: 4,
-    },
-    {
-      name: 'AnnotateX',
-      desc: 'GUI web app for rapid text annotation to build gold standards and evaluate structured extraction.',
-      tags: ['Annotation', 'Quality', 'Gold standards'],
-      status: 'In development',
-      github: 'https://github.com/DIGIT-X-Lab/ANNOTATEX',
-      stars: 3,
-    },
-    {
-      name: 'KnowledgeX',
-      desc: 'A discovery platform that builds graphs from unstructured text with LLMs and supports grounded chat over the graph.',
-      tags: ['Knowledge graph', 'LLM-grounding', 'Reasoning'],
-      status: 'In development',
-      github: 'https://github.com/DIGIT-X-Lab/KnowledgeX',
-      stars: 0,
-    },
-  ];
-
-  const imagingTools = [
-    {
-      name: 'MOOSE',
-      desc: 'Segments 130+ tissues from CT using nnU-Net; built for multicenter PET/CT workflows and opportunistic screening.',
-      tags: ['PET/CT', 'Segmentation', 'Multicenter'],
-      status: 'Stable',
-      github: 'https://github.com/ENHANCE-PET/MOOSE',
-      paper: 'https://pubmed.ncbi.nlm.nih.gov/35772962/',
-      stars: 304,
-    },
-    {
-      name: 'FALCON',
-      desc: 'One-stop total-body PET motion correction using the greedy diffeomorphic registration engine.',
-      tags: ['PET/CT', 'Motion correction', 'Registration'],
-      status: 'Stable',
-      github: 'https://github.com/ENHANCE-PET/FALCON',
-      paper: 'https://pubmed.ncbi.nlm.nih.gov/37290795/',
-      stars: 48,
-    },
-    {
-      name: 'PUMA',
-      desc: 'PET segmentation–guided diffeomorphic framework for multiplexing tracers to characterise tissue biology.',
-      tags: ['PET/CT', 'Segmentation', 'Diffeomorphic'],
-      status: 'Stable',
-      github: 'https://github.com/ENHANCE-PET/PUMA',
-      paper: 'https://jnm.snmjournals.org/content/early/2025/09/18/jnumed.125.269688',
-      stars: 21,
-    },
-  ];
-
-
-  const initialStarCounts = [...tools, ...imagingTools].reduce<Record<string, number>>((acc, tool) => {
+  const initialStarCounts = [...llmTools, ...imagingTools].reduce<Record<string, number>>((acc, tool) => {
     if (tool.github && typeof tool.stars === 'number') {
       acc[tool.github] = tool.stars;
     }
@@ -193,7 +70,7 @@ const Index = () => {
   useEffect(() => {
     if (!toolsVisible) return;
 
-    const repos = Array.from(new Set([...tools, ...imagingTools].map(t => t.github).filter(Boolean))) as string[];
+    const repos = Array.from(new Set([...llmTools, ...imagingTools].map(t => t.github).filter(Boolean))) as string[];
     if (!repos.length) return;
 
     let cancelled = false;
@@ -474,7 +351,7 @@ const Index = () => {
           <div className="max-w-7xl mx-auto">
             <span className="text-label text-[hsl(var(--accent))] block mb-3">LLM Stack</span>
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {tools.map((tool) => (
+              {llmTools.map((tool) => (
                 <div key={tool.name} className="software-card h-full flex flex-col">
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <h3 className="software-card-title">
@@ -838,14 +715,9 @@ const Index = () => {
           <div className="marquee-track animate-marquee-left">
             {[...Array(4)].map((_, i) => (
               <div key={i} className="flex items-center gap-16 md:gap-24">
-                <a href="https://www.hermesmedical.com" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">Hermes Medical Solutions</a>
-                <a href="https://www.deepc.ai/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">deepc</a>
-                <a href="https://visageimaging.com/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">Visage Imaging</a>
-                <a href="https://www.zenta.solutions/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">Zenta</a>
-                <a href="https://dottxt.ai/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">dottxt</a>
-                <a href="https://radixlabmedical.com/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">Radixlab Medical</a>
-                <a href="https://www.mtic.net.au/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">Melbourne Theranostics Innovation Center</a>
-                <a href="https://www.icpo.foundation/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">ICPO Foundation</a>
+                {collaborators.map((collab) => (
+                  <a key={collab.name} href={collab.url} target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">{collab.name}</a>
+                ))}
               </div>
             ))}
           </div>
