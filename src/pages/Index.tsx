@@ -8,6 +8,7 @@ import ThemeToggle from '@/components/ThemeToggle';
 import MobileNav from '@/components/MobileNav';
 import NewsEdgePeek from '@/components/NewsEdgePeek';
 import SpotlightCard from '@/components/SpotlightCard';
+import CountUp from '@/components/CountUp';
 import { jobs } from '@/data/jobs';
 import { publications, isLabMember } from '@/data/publications';
 import { focusAreas } from '@/data/focus-areas';
@@ -164,6 +165,29 @@ const Index = () => {
         
         <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-10">
           <div className="scroll-indicator"><svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7" /></svg></div>
+        </div>
+      </section>
+
+      {/* Stats Bar */}
+      <section className="relative py-12 md:py-16 px-6 md:px-12 lg:px-20 border-y border-[hsl(var(--border))]">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            {[
+              { target: 370, suffix: '+', label: 'GitHub Stars' },
+              { target: 11, suffix: '', label: 'Publications (2025)' },
+              { target: 6, suffix: '', label: 'Open-Source Tools' },
+              { target: 5235, suffix: '+', label: 'Patients Analyzed' },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-3xl md:text-4xl lg:text-5xl font-light text-[hsl(var(--text-primary))] tabular-nums">
+                  <CountUp target={stat.target} suffix={stat.suffix} />
+                </div>
+                <div className="text-xs uppercase tracking-[0.12em] text-[hsl(var(--text-secondary))] mt-2">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
