@@ -15,6 +15,7 @@ const navItems = [
   { label: 'Approach', href: '#approach' },
   { label: 'People', href: '#people' },
   { label: 'Publications', href: '#publications' },
+  { label: 'Latest', href: '#latest' },
   { label: 'Careers', href: '#careers' },
   { label: 'Connect', href: '#connect' },
 ];

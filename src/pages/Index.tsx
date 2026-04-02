@@ -23,6 +23,7 @@ import { focusAreas } from '@/data/focus-areas';
 import { principles } from '@/data/principles';
 import { teamMembers } from '@/data/team';
 import { imagingTools, llmTools } from '@/data/tools';
+import { news } from '@/data/news';
 import { collaborators } from '@/data/collaborators';
 
 const Index = () => {
@@ -133,6 +134,7 @@ const Index = () => {
             <a href="#approach" className="link-subtle text-[0.8125rem]">Approach</a>
             <a href="#people" className="link-subtle text-[0.8125rem]">People</a>
             <a href="#publications" className="link-subtle text-[0.8125rem]">Publications</a>
+            <a href="#latest" className="link-subtle text-[0.8125rem]">Latest</a>
             <a href="#careers" className="link-subtle text-[0.8125rem]">Careers</a>
             <a href="#connect" className="link-subtle text-[0.8125rem]">Connect</a>
           </div>
@@ -671,6 +673,61 @@ const Index = () => {
                   </svg>
                 </button>
               )}
+            </FadeIn>
+          </div>
+        </section>
+      )}
+
+      {/* Latest */}
+      {news.length > 0 && (
+        <section id="latest" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] section-fade-in section-fade-out transition-colors duration-300">
+          <div className="max-w-7xl mx-auto">
+            <FadeIn className="mb-16">
+              <span className="text-label text-[hsl(var(--accent))] block mb-4">Latest</span>
+              <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight">
+                What's <span className="font-serif text-[hsl(var(--accent))] italic">Happening</span>
+              </h2>
+            </FadeIn>
+
+            <FadeIn delay={0.15} className="max-w-4xl">
+              {news.slice(0, 6).map((item, i) => (
+                <div
+                  key={`${item.date}-${i}`}
+                  className="flex gap-6 py-5 border-b border-[hsl(var(--border))] last:border-0"
+                >
+                  <div className="shrink-0 w-20 md:w-24">
+                    <time className="text-xs text-[hsl(var(--text-muted))] tabular-nums">
+                      {new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                    </time>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className={`inline-block w-1.5 h-1.5 rounded-full shrink-0 ${
+                        item.type === 'grant' ? 'bg-[hsl(var(--sage))]' :
+                        item.type === 'release' ? 'bg-[hsl(var(--accent))]' :
+                        'bg-[hsl(var(--text-muted))]'
+                      }`} />
+                      {item.link ? (
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm md:text-base font-semibold text-[hsl(var(--text-primary))] hover:text-[hsl(var(--accent))] transition-colors truncate"
+                        >
+                          {item.title}
+                        </a>
+                      ) : (
+                        <span className="text-sm md:text-base font-semibold text-[hsl(var(--text-primary))] truncate">
+                          {item.title}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-sm text-[hsl(var(--text-secondary))] leading-relaxed line-clamp-2">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </FadeIn>
           </div>
         </section>
