@@ -704,9 +704,9 @@ const Index = () => {
               {news.slice(0, 6).map((item, i) => (
                 <div
                   key={`${item.date}-${i}`}
-                  className="flex gap-6 py-5 border-b border-[hsl(var(--border))] last:border-0"
+                  className="group flex gap-6 py-6 border-b border-[hsl(var(--border))] last:border-0 hover:bg-[hsl(var(--accent)/0.02)] -mx-4 px-4 rounded-lg transition-colors duration-200"
                 >
-                  <div className="shrink-0 w-20 md:w-24">
+                  <div className="shrink-0 w-24 md:w-28 pt-0.5">
                     <time className="text-xs text-[hsl(var(--text-muted))] tabular-nums">
                       {new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                     </time>
@@ -719,17 +719,17 @@ const Index = () => {
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm md:text-base font-semibold text-[hsl(var(--text-primary))] hover:text-[hsl(var(--accent))] transition-colors truncate"
+                          className="text-base md:text-lg font-semibold text-[hsl(var(--text-primary))] group-hover:text-[hsl(var(--accent))] transition-colors leading-snug"
                         >
                           {item.title}
                         </a>
                       ) : (
-                        <span className="text-sm md:text-base font-semibold text-[hsl(var(--text-primary))] truncate">
+                        <span className="text-base md:text-lg font-semibold text-[hsl(var(--text-primary))] group-hover:text-[hsl(var(--accent))] transition-colors leading-snug">
                           {item.title}
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-[hsl(var(--text-secondary))] leading-relaxed line-clamp-2">
+                    <p className="text-[hsl(var(--text-secondary))] leading-relaxed">
                       {item.description}
                     </p>
                   </div>
