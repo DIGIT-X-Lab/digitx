@@ -1,4 +1,3 @@
-// src/components/CountUp.tsx
 import { useEffect, useRef, useState } from 'react';
 import { useInView, animate } from 'framer-motion';
 
@@ -10,6 +9,10 @@ interface CountUpProps {
   className?: string;
 }
 
+const prefersReducedMotion =
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 const CountUp = ({
   target,
   duration = 2,
@@ -18,11 +21,13 @@ const CountUp = ({
   className = '',
 }: CountUpProps) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [display, setDisplay] = useState('0');
+  const isInView = useInView(ref, { once: true, margin: '0px' });
+  const [display, setDisplay] = useState(
+    prefersReducedMotion ? target.toLocaleString() : '0'
+  );
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || prefersReducedMotion) return;
 
     const controls = animate(0, target, {
       duration,
