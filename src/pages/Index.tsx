@@ -1,13 +1,30 @@
-import { useEffect, useState, useRef } from 'react';
+import { lazy, Suspense, useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import GradientOrbs from '@/components/GradientOrbs';
 import BlurText from '@/components/BlurText';
+import RotatingText from '@/components/RotatingText';
 import DecryptedText from '@/components/DecryptedText';
-// import NetworkGraph from '@/components/NetworkGraph'; // Swap back to re-enable particles
 import ThemeToggle from '@/components/ThemeToggle';
-import NewsEdgePeek from '@/components/NewsEdgePeek';
+import MobileNav from '@/components/MobileNav';
+import SpotlightCard from '@/components/SpotlightCard';
+
+const GradientOrbs = lazy(() => import('@/components/GradientOrbs'));
+import CountUp from '@/components/CountUp';
+import FadeIn from '@/components/FadeIn';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 import { jobs } from '@/data/jobs';
 import { publications, isLabMember } from '@/data/publications';
+import { focusAreas } from '@/data/focus-areas';
+import { principles } from '@/data/principles';
+import { teamMembers } from '@/data/team';
+import { imagingTools, llmTools } from '@/data/tools';
+import { news } from '@/data/news';
+import { collaborators } from '@/data/collaborators';
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -50,135 +67,7 @@ const Index = () => {
     return () => observer.disconnect();
   }, []);
 
-  const focusAreas = [
-    {
-      num: '01',
-      title: 'Autonomous Structuring of Clinical Data',
-      desc: 'Make PDFs, dictated notes, images, and labs computable. Normalize names, keep provenance, and deliver structured data without endless prep.',
-      example: 'Example: Radiology PDF → FHIR bundle with SNOMED/LOINC codes and time stamps preserved.',
-    },
-    {
-      num: '02',
-      title: 'Knowledge Graphs as a Common Substrate',
-      desc: 'Link that data into a clinical graph that understands people, time, and relationships — not just isolated fields.',
-      example: 'Example: patient → has_diagnosis → ICD/SNOMED node → linked to meds, labs, imaging, and time points with causal hints.',
-    },
-    {
-      num: '03',
-      title: 'Reasoning Interfaces for Clinicians',
-      desc: 'Give clinicians ways to ask grounded questions, see the evidence path, and challenge the logic — safely and quickly.',
-      example: 'Example: “Show tumor response over 6 months” → evidence-backed trend with cited sources.',
-    },
-    {
-      num: '04',
-      title: 'Scalable Infrastructure for Health Evidence',
-      desc: 'Run analyses across thousands of datasets with audit trails, reproducibility, and guardrails built in.',
-      example: 'Example: Cohort builder + reproducible pipelines with lineage, so results are portable across sites.',
-    },
-  ];
-
-  const principles = [
-    { title: 'Begin with Clinical Reality', desc: 'Health data is messy. We sit with clinicians and build for the workflows that already exist, not the ones we wish existed.' },
-    { title: 'Structure Enables Intelligence', desc: 'Predictions without meaning are brittle. We encode semantics, time, and provenance so reasoning has firm ground.' },
-    { title: 'LLMs Are Tools, Not Oracles', desc: 'We use language models where they help, and we always anchor them in verifiable knowledge graphs with clear evidence.' },
-    { title: 'Reproducibility and Scale Matter', desc: 'Methods should generalize across institutions and populations. We test for that and build for that.' },
-    { title: 'Quiet Ambition', desc: 'We take on foundational work with humility and patience. We measure progress by safer care and stronger science.' },
-  ];
-
-  const teamMembers = [
-    {
-      name: 'Prof. Dr. Lalith Kumar Shiyam Sundar',
-      role: 'Group Lead',
-      label: 'Group Lead',
-      tags: ['Medical imaging', 'Multimodal integration', 'Knowledge graphs'],
-      bio: 'Focuses on clinically grounded AI that fuses imaging, text, and structured data into explainable knowledge graphs for real-world decisions.',
-      university: 'LMU Radiology · LMU University Hospital',
-      github: 'https://github.com/LalithShiyam',
-      linkedin: 'https://de.linkedin.com/in/lalith-kumar-shiyam-sundar-phd-3a2aaba0',
-      scholar: 'https://scholar.google.com/citations?user=L6iMPN4AAAAJ&hl=en',
-    },
-    {
-      name: 'Dr. Sahib Julka',
-      role: 'Post Doctoral Researcher',
-      label: 'Post Doctoral Researcher',
-      tags: ['LLMs', 'Knowledge graphs', 'Automation'],
-      bio: 'Focuses on LLM-based knowledge graph creation from clinical text and structured sources.',
-      university: 'LMU University Hospital',
-      github: 'https://github.com/julka01',
-      linkedin: 'https://www.linkedin.com/in/julka01/',
-      scholar: 'https://scholar.google.com/citations?user=GaEUyB0AAAAJ&hl=en',
-    },
-    {
-      name: 'Sameer Singh Rawat',
-      role: 'Master thesis student',
-      label: 'Master thesis student',
-      tags: ['AI automation', 'Ontology', 'LLMs'],
-      bio: 'Focuses on automated ontology induction from medical documents using large language models.',
-      university: 'Ludwig Maximilian University of Munich',
-      github: 'https://github.com/SameerR007',
-      linkedin: 'https://www.linkedin.com/in/sameer-s-1333a6172',
-    },
-  ];
-
-  const tools = [
-    {
-      name: 'MosaicX',
-      desc: 'Autonomous structuring engine that turns PDFs, dictated notes, images, and labs into FHIR-ready, provenance-preserved data.',
-      tags: ['FHIR', 'SNOMED/LOINC', 'Provenance', 'Pipelines'],
-      status: 'In development',
-      github: 'https://github.com/DIGIT-X-Lab/MOSAICX',
-      stars: 4,
-    },
-    {
-      name: 'AnnotateX',
-      desc: 'GUI web app for rapid text annotation to build gold standards and evaluate structured extraction.',
-      tags: ['Annotation', 'Quality', 'Gold standards'],
-      status: 'In development',
-      github: 'https://github.com/DIGIT-X-Lab/ANNOTATEX',
-      stars: 3,
-    },
-    {
-      name: 'KnowledgeX',
-      desc: 'A discovery platform that builds graphs from unstructured text with LLMs and supports grounded chat over the graph.',
-      tags: ['Knowledge graph', 'LLM-grounding', 'Reasoning'],
-      status: 'In development',
-      github: 'https://github.com/DIGIT-X-Lab/KnowledgeX',
-      stars: 0,
-    },
-  ];
-
-  const imagingTools = [
-    {
-      name: 'MOOSE',
-      desc: 'Segments 130+ tissues from CT using nnU-Net; built for multicenter PET/CT workflows and opportunistic screening.',
-      tags: ['PET/CT', 'Segmentation', 'Multicenter'],
-      status: 'Stable',
-      github: 'https://github.com/ENHANCE-PET/MOOSE',
-      paper: 'https://pubmed.ncbi.nlm.nih.gov/35772962/',
-      stars: 304,
-    },
-    {
-      name: 'FALCON',
-      desc: 'One-stop total-body PET motion correction using the greedy diffeomorphic registration engine.',
-      tags: ['PET/CT', 'Motion correction', 'Registration'],
-      status: 'Stable',
-      github: 'https://github.com/ENHANCE-PET/FALCON',
-      paper: 'https://pubmed.ncbi.nlm.nih.gov/37290795/',
-      stars: 48,
-    },
-    {
-      name: 'PUMA',
-      desc: 'PET segmentation–guided diffeomorphic framework for multiplexing tracers to characterise tissue biology.',
-      tags: ['PET/CT', 'Segmentation', 'Diffeomorphic'],
-      status: 'Stable',
-      github: 'https://github.com/ENHANCE-PET/PUMA',
-      paper: 'https://jnm.snmjournals.org/content/early/2025/09/18/jnumed.125.269688',
-      stars: 21,
-    },
-  ];
-
-
-  const initialStarCounts = [...tools, ...imagingTools].reduce<Record<string, number>>((acc, tool) => {
+  const initialStarCounts = [...llmTools, ...imagingTools].reduce<Record<string, number>>((acc, tool) => {
     if (tool.github && typeof tool.stars === 'number') {
       acc[tool.github] = tool.stars;
     }
@@ -193,12 +82,26 @@ const Index = () => {
   useEffect(() => {
     if (!toolsVisible) return;
 
-    const repos = Array.from(new Set([...tools, ...imagingTools].map(t => t.github).filter(Boolean))) as string[];
+    // Check sessionStorage cache first (valid for 1 hour)
+    const CACHE_KEY = 'digitx_stars';
+    const CACHE_TTL = 3600000;
+    try {
+      const cached = sessionStorage.getItem(CACHE_KEY);
+      if (cached) {
+        const { data, ts } = JSON.parse(cached);
+        if (Date.now() - ts < CACHE_TTL) {
+          setStarCounts(prev => ({ ...prev, ...data }));
+          return;
+        }
+      }
+    } catch { /* ignore */ }
+
+    const repos = Array.from(new Set([...llmTools, ...imagingTools].map(t => t.github).filter(Boolean))) as string[];
     if (!repos.length) return;
 
     let cancelled = false;
     const fetchStars = async () => {
-      const updates: [string, number][] = [];
+      const updates: Record<string, number> = {};
       await Promise.all(
         repos.map(async (repo) => {
           try {
@@ -207,20 +110,17 @@ const Index = () => {
             if (!res.ok) return;
             const data = await res.json();
             if (typeof data?.stargazers_count === 'number') {
-              updates.push([repo, data.stargazers_count]);
+              updates[repo] = data.stargazers_count;
             }
-          } catch {
-            /* ignore */
-          }
+          } catch { /* ignore */ }
         })
       );
 
-      if (cancelled || !updates.length) return;
-      setStarCounts(prev => {
-        const next = { ...prev };
-        updates.forEach(([repo, stars]) => { next[repo] = stars; });
-        return next;
-      });
+      if (cancelled || !Object.keys(updates).length) return;
+      setStarCounts(prev => ({ ...prev, ...updates }));
+      try {
+        sessionStorage.setItem(CACHE_KEY, JSON.stringify({ data: updates, ts: Date.now() }));
+      } catch { /* ignore */ }
     };
 
     fetchStars();
@@ -229,14 +129,14 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen noise-overlay">
-      <GradientOrbs />
-      <NewsEdgePeek />
+      <Suspense fallback={null}><GradientOrbs /></Suspense>
       <div className="fixed inset-0 gradient-warmth pointer-events-none" />
       <div className="fixed inset-0 global-veil pointer-events-none" aria-hidden />
 
       {/* Nav */}
       <nav className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-12 lg:px-20 transition-all duration-500 ${navScrolled ? 'nav-scrolled py-2' : 'py-5'}`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <MobileNav />
           <div className="w-10 hidden md:block" />
           <div className="hidden md:flex items-center gap-10">
             <a href="#vision" className="link-subtle text-[0.8125rem]">Vision</a>
@@ -245,6 +145,7 @@ const Index = () => {
             <a href="#approach" className="link-subtle text-[0.8125rem]">Approach</a>
             <a href="#people" className="link-subtle text-[0.8125rem]">People</a>
             <a href="#publications" className="link-subtle text-[0.8125rem]">Publications</a>
+            <a href="#latest" className="link-subtle text-[0.8125rem]">Latest</a>
             <a href="#careers" className="link-subtle text-[0.8125rem]">Careers</a>
             <a href="#connect" className="link-subtle text-[0.8125rem]">Connect</a>
           </div>
@@ -263,19 +164,22 @@ const Index = () => {
               <span className="text-label">DIGITX · Lab for Digital Transformation in Healthcare</span>
             </div>
             <h1 className="text-display text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.25rem] text-[hsl(var(--text-primary))] mb-10">
-              <BlurText delay={0.2}>Shaping Health</BlurText>
+              <BlurText delay={0.2}>Shaping</BlurText>{' '}
+              <span className="text-[hsl(var(--accent))] italic">
+                <RotatingText
+                  words={['Health', 'Radiology', 'Oncology', 'Clinical']}
+                  interval={3000}
+                />
+              </span>
               <br />
               <span className="text-[hsl(var(--accent))] italic">
                 <BlurText delay={0.5}>Intelligence</BlurText>
               </span>
             </h1>
-            <p className={`text-lg md:text-xl text-[hsl(var(--text-secondary))] leading-[1.9] max-w-4xl mb-6 ${isLoaded ? 'fade-in-up delay-2' : 'opacity-0'}`}>
-              At DIGITX, we imagine a future where clinicians aren’t slowed by fragmented data and researchers aren’t burdened by disconnected systems. By enabling medical insights to flow freely, we give people back the time and clarity needed to focus on improving lives.
+            <p className={`text-lg md:text-xl text-[hsl(var(--text-secondary))] leading-[1.9] max-w-4xl mb-8 ${isLoaded ? 'fade-in-up delay-2' : 'opacity-0'}`}>
+              An academic lab in Radiology at LMU University Hospital, Munich. We build the quiet, rigorous infrastructure that turns raw clinical signals into structured, connected evidence, so decisions can be explained, challenged, and trusted.
             </p>
-            <p className={`text-lg md:text-xl text-[hsl(var(--text-secondary))] leading-[1.9] max-w-4xl mb-8 ${isLoaded ? 'fade-in-up delay-3' : 'opacity-0'}`}>
-              DIGITX is an academic lab in Radiology at LMU University Hospital, Munich. We build the quiet, rigorous infrastructure that turns raw clinical signals into structured, connected evidence — so decisions can be explained, challenged, and trusted.
-            </p>
-            <div className={`flex flex-wrap gap-4 ${isLoaded ? 'fade-in-up delay-4' : 'opacity-0'}`}>
+            <div className={`flex flex-wrap gap-4 ${isLoaded ? 'fade-in-up delay-3' : 'opacity-0'}`}>
               <a href="#focus" className="btn-primary btn-shimmer">Explore Our Work <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></a>
               <a href="#connect" className="btn-secondary btn-glass">Get in Touch <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg></a>
             </div>
@@ -287,15 +191,37 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Stats Bar */}
+      <section className="relative py-12 md:py-16 px-6 md:px-12 lg:px-20 border-y border-[hsl(var(--border))]">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-3 gap-8 md:gap-12">
+            {[
+              { target: 430, suffix: '+', label: 'GitHub Stars' },
+              { target: 11, suffix: '', label: 'Publications (2025)' },
+              { target: 8, suffix: '', label: 'Open-Source Tools' },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-3xl md:text-4xl lg:text-5xl font-light text-[hsl(var(--text-primary))] tabular-nums">
+                  <CountUp target={stat.target} suffix={stat.suffix} />
+                </div>
+                <div className="text-xs uppercase tracking-[0.12em] text-[hsl(var(--text-secondary))] mt-2">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Vision */}
-      <section id="vision" className="relative py-28 md:py-40 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] transition-colors duration-500">
+      <section id="vision" className="relative py-28 md:py-40 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] section-fade-in section-fade-out transition-colors duration-500">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-24">
-            <div className="lg:col-span-4">
+            <FadeIn className="lg:col-span-4">
               <span className="text-label text-[hsl(var(--accent))] block mb-4">Our Vision</span>
               <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))]">From Raw Data to<br /><span className="font-serif text-[hsl(var(--accent))] italic">Computable Knowledge</span></h2>
-            </div>
-            <div className="lg:col-span-8 space-y-8">
+            </FadeIn>
+            <FadeIn delay={0.15} className="lg:col-span-8 space-y-8">
               <div className="grid lg:grid-cols-2 gap-6 max-w-6xl w-full mx-auto">
                 <div className="hero-side-card w-full">
                   <div className="flex items-center justify-between mb-3">
@@ -323,213 +249,202 @@ const Index = () => {
               </div>
 
               <p className="text-sm uppercase tracking-[0.12em] text-[hsl(var(--text-secondary))]">Structured, connected, explainable — so every answer is traceable.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The Problem */}
-      <section id="problem" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
-            <div className="lg:col-span-7 space-y-8 order-2 lg:order-1">
-              <div className="grid lg:grid-cols-2 gap-6 max-w-6xl w-full mx-auto">
-                <div className="hero-side-card w-full">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-label">Where it breaks</span>
-                    <span className="pill-soft">Clinical reality</span>
-                  </div>
-                  <ul className="space-y-2 text-[hsl(var(--text-primary))]">
-                    <li className="flex items-start gap-3"><span className="bullet-dot" />Dictated reports, incompatible systems, and isolated modalities fragment the patient story.</li>
-                    <li className="flex items-start gap-3"><span className="bullet-dot" />Data trapped in PDFs and silos stays non-computable; models inherit the confusion.</li>
-                    <li className="flex items-start gap-3"><span className="bullet-dot" />Clinicians face overload while evidence sits scattered and unlinked.</li>
-                  </ul>
-                </div>
-
-                <div className="hero-side-card w-full">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-label">Why it matters</span>
-                    <span className="pill-soft">Human impact</span>
-                  </div>
-                  <ul className="space-y-2 text-[hsl(var(--text-primary))]">
-                    <li className="flex items-start gap-3"><span className="bullet-dot" />Patients wait while answers are buried in unstructured data.</li>
-                    <li className="flex items-start gap-3"><span className="bullet-dot" />Researchers burn months cleaning instead of testing hypotheses.</li>
-                    <li className="flex items-start gap-3"><span className="bullet-dot" />Decisions risk being made without traceable context.</li>
-                  </ul>
-                </div>
-              </div>
-              <p className="text-sm uppercase tracking-[0.12em] text-[hsl(var(--text-secondary))]">Our central tenet: Structure first, insight follows.</p>
-            </div>
-
-            <div className="lg:col-span-5 order-1 lg:order-2 lg:text-right">
-              <span className="text-label text-[hsl(var(--accent))] block mb-4">The Problem We Take Seriously</span>
-              <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))]">Healthcare is Data Rich<br /><span className="font-serif text-[hsl(var(--accent))] italic">but Insight Poor</span></h2>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Focus Areas */}
-      <section id="focus" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] transition-colors duration-300">
+      <section id="focus" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] section-fade-in section-fade-out transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-20 max-w-4xl">
+          <FadeIn className="mb-20 max-w-4xl">
             <span className="text-label text-[hsl(var(--accent))] block mb-4">What We Work On</span>
-            <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] max-w-3xl">Foundations for <span className="font-serif text-[hsl(var(--accent))] italic">Health Intelligence</span></h2>
+            <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] max-w-3xl">The Hard Problems<br /><span className="font-serif text-[hsl(var(--accent))] italic">We Choose</span></h2>
             <p className="text-[hsl(var(--text-secondary))] mt-6 max-w-3xl leading-[1.9]">We focus on a few foundational challenges that must be solved before healthcare can benefit from trustworthy, scalable intelligence.</p>
-          </div>
+          </FadeIn>
 
-          <div className="max-w-6xl">
-            {focusAreas.map((area, idx) => (
-              <div
-                key={area.num}
-                className="focus-area-row group"
-                style={{ animationDelay: `${idx * 100}ms` }}
-              >
-                <div className="focus-area-left">
-                  <span className="focus-area-num">{area.num}</span>
-                </div>
-                <div className="focus-area-right">
-                  <h3 className="focus-area-title">{area.title}</h3>
-                  <p className="text-[hsl(var(--text-secondary))] leading-[1.8] mt-2">{area.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <FadeIn delay={0.15} className="max-w-6xl">
+            <Accordion type="single" collapsible>
+              {focusAreas.map((area) => (
+                <AccordionItem
+                  key={area.num}
+                  value={area.num}
+                  className="focus-accordion-item border-b border-[hsl(var(--border))] border-t-0 border-x-0 last:border-b-0"
+                >
+                  <AccordionTrigger className="hover:no-underline py-6 gap-4">
+                    <div className="flex items-center gap-5 text-left">
+                      <span className="focus-accordion-num text-2xl md:text-3xl font-light text-[hsl(var(--accent))] tabular-nums shrink-0 w-10">
+                        {area.num}
+                      </span>
+                      <span className="focus-accordion-title text-lg md:text-xl font-semibold text-[hsl(var(--text-primary))]">
+                        {area.title}
+                      </span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-6 pl-[3.75rem]">
+                    <p className="text-[hsl(var(--text-secondary))] leading-[1.8] mb-3">
+                      {area.desc}
+                    </p>
+                    <p className="text-sm text-[hsl(var(--accent))] leading-[1.8]">
+                      {area.example}
+                    </p>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </FadeIn>
         </div>
       </section>
 
       {/* Software */}
       <section ref={toolsSectionRef} id="tools" className="relative py-28 md:py-40 px-6 md:px-12 lg:px-20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16 max-w-6xl">
+          <FadeIn className="mb-16 max-w-6xl">
             <span className="text-label text-[hsl(var(--accent))] block mb-4">Software</span>
             <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight">
               What We're <span className="font-serif italic text-[hsl(var(--accent))]">Building</span>
             </h2>
             <p className="text-[hsl(var(--text-secondary))] mt-4 max-w-3xl leading-[1.9]">Open-science tools across data/LLM and imaging stacks — structured, explainable, and built for clinical accountability.</p>
-          </div>
+          </FadeIn>
 
-          <div className="mb-14 max-w-7xl mx-auto">
-            <span className="text-label text-[hsl(var(--accent))] block mb-3">Imaging Stack</span>
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {imagingTools.map((tool) => (
-                <div key={tool.name} className="software-card h-full flex flex-col">
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <h3 className="software-card-title">
-                      <DecryptedText text={tool.name} speed={50} maxIterations={15} animateOn="hover" parentHoverSelector=".software-card" />
-                    </h3>
-                    <span className="status-chip">{tool.status}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {tool.tags.map((tag) => (
-                      <span key={tag} className="pill-soft text-xs">{tag}</span>
-                    ))}
-                  </div>
-                  <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-4 flex-1">{tool.desc}</p>
-                  <div className="flex items-center gap-3 text-xs mt-auto">
-                    {tool.github && (
-                      <a
-                        href={tool.github}
-                        className="icon-inline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${tool.name} on GitHub`}
-                        title="View code on GitHub"
-                      >
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
-                          <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.94.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.72.08-.71.08-.71 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.52-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.44-2.27 1.16-3.07-.12-.29-.5-1.46.11-3.05 0 0 .95-.3 3.12 1.17a10.9 10.9 0 0 1 5.68 0c2.17-1.47 3.12-1.17 3.12-1.17.61 1.59.23 2.76.11 3.05.72.8 1.16 1.82 1.16 3.07 0 4.41-2.68 5.38-5.23 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.79.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
-                        </svg>
-                        <span className="flex items-center gap-1.5">
-                          GitHub
-                          <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="m12 3 2.4 5.5 5.6.4-4.3 3.7 1.4 5.5L12 15.7 7 18.1l1.3-5.5-4.3-3.7 5.6-.4z" />
-                          </svg>
-                          {starCounts[tool.github] ?? tool.stars ?? 0}
-                        </span>
-                      </a>
-                    )}
-                    {tool.paper && (
-                      <a
-                        href={tool.paper}
-                        className="icon-inline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${tool.name} publication`}
-                        title="Open publication"
-                      >
-                        <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M7 3h8l3 3v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
-                          <path d="M13 3v6l-2-1-2 1V3" />
-                          <path d="M9 11h6M9 14h6" />
-                        </svg>
-                        <span>Paper</span>
-                      </a>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <FadeIn delay={0.15}>
+          <Tabs defaultValue="imaging" className="max-w-7xl mx-auto">
+            <TabsList className="mb-8 bg-[hsl(var(--bg-secondary))] border border-[hsl(var(--border))]">
+              <TabsTrigger
+                value="imaging"
+                className="data-[state=active]:bg-[hsl(var(--bg-primary))] data-[state=active]:text-[hsl(var(--accent))] data-[state=active]:shadow-sm"
+              >
+                Imaging Stack
+              </TabsTrigger>
+              <TabsTrigger
+                value="llm"
+                className="data-[state=active]:bg-[hsl(var(--bg-primary))] data-[state=active]:text-[hsl(var(--accent))] data-[state=active]:shadow-sm"
+              >
+                LLM Stack
+              </TabsTrigger>
+            </TabsList>
 
-          <div className="max-w-7xl mx-auto">
-            <span className="text-label text-[hsl(var(--accent))] block mb-3">LLM Stack</span>
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {tools.map((tool) => (
-                <div key={tool.name} className="software-card h-full flex flex-col">
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <h3 className="software-card-title">
-                      <DecryptedText text={tool.name} speed={50} maxIterations={15} animateOn="hover" parentHoverSelector=".software-card" />
-                    </h3>
-                    <span className="status-chip">{tool.status}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {tool.tags.map((tag) => (
-                      <span key={tag} className="pill-soft text-xs">{tag}</span>
-                    ))}
-                  </div>
-                  <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-4 flex-1">{tool.desc}</p>
-                  <div className="flex items-center gap-3 text-xs mt-auto">
-                    {tool.github && (
-                      <a
-                        href={tool.github}
-                        className="icon-inline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${tool.name} on GitHub`}
-                        title="View code on GitHub"
-                      >
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
-                          <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.94.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.72.08-.71.08-.71 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.52-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.44-2.27 1.16-3.07-.12-.29-.5-1.46.11-3.05 0 0 .95-.3 3.12 1.17a10.9 10.9 0 0 1 5.68 0c2.17-1.47 3.12-1.17 3.12-1.17.61 1.59.23 2.76.11 3.05.72.8 1.16 1.82 1.16 3.07 0 4.41-2.68 5.38-5.23 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.79.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
-                        </svg>
-                        <span className="flex items-center gap-1.5">
-                          GitHub
-                          <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="m12 3 2.4 5.5 5.6.4-4.3 3.7 1.4 5.5L12 15.7 7 18.1l1.3-5.5-4.3-3.7 5.6-.4z" />
+            <TabsContent value="imaging">
+              <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {imagingTools.map((tool) => (
+                  <SpotlightCard key={tool.name} className="software-card h-full flex flex-col">
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <h3 className="software-card-title">
+                        <DecryptedText text={tool.name} speed={50} maxIterations={15} animateOn="hover" parentHoverSelector=".software-card" />
+                      </h3>
+                      <span className="status-chip">{tool.status}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {tool.tags.map((tag) => (
+                        <span key={tag} className="pill-soft text-xs">{tag}</span>
+                      ))}
+                    </div>
+                    <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-4 flex-1">{tool.desc}</p>
+                    <div className="flex items-center gap-3 text-xs mt-auto">
+                      {tool.github && (
+                        <a
+                          href={tool.github}
+                          className="icon-inline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${tool.name} on GitHub`}
+                          title="View code on GitHub"
+                        >
+                          <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
+                            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.94.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.72.08-.71.08-.71 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.52-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.44-2.27 1.16-3.07-.12-.29-.5-1.46.11-3.05 0 0 .95-.3 3.12 1.17a10.9 10.9 0 0 1 5.68 0c2.17-1.47 3.12-1.17 3.12-1.17.61 1.59.23 2.76.11 3.05.72.8 1.16 1.82 1.16 3.07 0 4.41-2.68 5.38-5.23 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.79.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
                           </svg>
-                          {starCounts[tool.github] ?? tool.stars ?? 0}
-                        </span>
-                      </a>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+                          <span className="flex items-center gap-1.5">
+                            GitHub
+                            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="m12 3 2.4 5.5 5.6.4-4.3 3.7 1.4 5.5L12 15.7 7 18.1l1.3-5.5-4.3-3.7 5.6-.4z" />
+                            </svg>
+                            {starCounts[tool.github] ?? tool.stars ?? 0}
+                          </span>
+                        </a>
+                      )}
+                      {tool.paper && (
+                        <a
+                          href={tool.paper}
+                          className="icon-inline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${tool.name} publication`}
+                          title="Open publication"
+                        >
+                          <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M7 3h8l3 3v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
+                            <path d="M13 3v6l-2-1-2 1V3" />
+                            <path d="M9 11h6M9 14h6" />
+                          </svg>
+                          <span>Paper</span>
+                        </a>
+                      )}
+                    </div>
+                  </SpotlightCard>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="llm">
+              <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {llmTools.map((tool) => (
+                  <SpotlightCard key={tool.name} className="software-card h-full flex flex-col">
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <h3 className="software-card-title">
+                        <DecryptedText text={tool.name} speed={50} maxIterations={15} animateOn="hover" parentHoverSelector=".software-card" />
+                      </h3>
+                      <span className="status-chip">{tool.status}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {tool.tags.map((tag) => (
+                        <span key={tag} className="pill-soft text-xs">{tag}</span>
+                      ))}
+                    </div>
+                    <p className="text-[hsl(var(--text-secondary))] leading-relaxed mb-4 flex-1">{tool.desc}</p>
+                    <div className="flex items-center gap-3 text-xs mt-auto">
+                      {tool.github && (
+                        <a
+                          href={tool.github}
+                          className="icon-inline"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${tool.name} on GitHub`}
+                          title="View code on GitHub"
+                        >
+                          <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
+                            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.94.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.72.08-.71.08-.71 1.15.08 1.75 1.18 1.75 1.18 1.02 1.74 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.52-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.44-2.27 1.16-3.07-.12-.29-.5-1.46.11-3.05 0 0 .95-.3 3.12 1.17a10.9 10.9 0 0 1 5.68 0c2.17-1.47 3.12-1.17 3.12-1.17.61 1.59.23 2.76.11 3.05.72.8 1.16 1.82 1.16 3.07 0 4.41-2.68 5.38-5.23 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.79.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" />
+                          </svg>
+                          <span className="flex items-center gap-1.5">
+                            GitHub
+                            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="m12 3 2.4 5.5 5.6.4-4.3 3.7 1.4 5.5L12 15.7 7 18.1l1.3-5.5-4.3-3.7 5.6-.4z" />
+                            </svg>
+                            {starCounts[tool.github] ?? tool.stars ?? 0}
+                          </span>
+                        </a>
+                      )}
+                    </div>
+                  </SpotlightCard>
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
+          </FadeIn>
         </div>
       </section>
 
       {/* How We Work */}
       <section id="approach" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-20 max-w-4xl">
+          <FadeIn className="mb-20 max-w-4xl">
             <span className="text-label text-[hsl(var(--accent))] block mb-4">How We Work</span>
             <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))]">
               <span className="font-serif text-[hsl(var(--text-primary))]">Honest Methods</span><br />
               <span className="font-serif italic text-[hsl(var(--accent))]">for a Complex Domain</span>
             </h2>
-          </div>
+          </FadeIn>
 
-          <div className="max-w-6xl">
+          <FadeIn delay={0.15} className="max-w-6xl">
             {principles.map((pr, i) => (
               <div
                 key={i}
@@ -544,14 +459,14 @@ const Index = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* People */}
-      <section id="people" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] transition-colors duration-300">
+      <section id="people" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] section-fade-in section-fade-out transition-colors duration-300">
         <div className="max-w-7xl mx-auto space-y-10">
-          <div className="space-y-4 max-w-7xl">
+          <FadeIn className="space-y-4 max-w-7xl">
             <span className="text-label text-[hsl(var(--accent))] block">People</span>
             <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight">
               A Small <span className="font-serif text-[hsl(var(--accent))] italic">Interdisciplinary Lab</span>
@@ -601,10 +516,10 @@ const Index = () => {
                 </svg>
               </a>
             </div>
-          </div>
+          </FadeIn>
 
           {teamMembers.length > 0 && (
-            <div className="relative max-w-7xl">
+            <FadeIn delay={0.15} className="relative max-w-7xl">
               {teamMembers.map((member, idx) => (
                 <div
                   key={member.name}
@@ -676,7 +591,7 @@ const Index = () => {
                   </div>
                 </div>
               ))}
-            </div>
+            </FadeIn>
           )}
 
         </div>
@@ -686,7 +601,7 @@ const Index = () => {
       {publications.length > 0 && (
         <section id="publications" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 transition-colors duration-300">
           <div className="max-w-7xl mx-auto">
-            <div className="mb-16">
+            <FadeIn className="mb-16">
               <span className="text-label text-[hsl(var(--accent))] block mb-4">Publications</span>
               <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight">
                 Recent <span className="font-serif text-[hsl(var(--accent))] italic">Research</span>
@@ -694,9 +609,9 @@ const Index = () => {
               <p className="text-[hsl(var(--text-secondary))] mt-6 leading-[1.9] max-w-3xl">
                 Peer-reviewed publications and preprints from DIGITX lab members.
               </p>
-            </div>
+            </FadeIn>
 
-            <div className="max-w-6xl">
+            <FadeIn delay={0.15} className="max-w-6xl">
               {visiblePubs.map((pub) => (
                 <a
                   key={pub.paperId}
@@ -769,7 +684,58 @@ const Index = () => {
                   </svg>
                 </button>
               )}
-            </div>
+            </FadeIn>
+          </div>
+        </section>
+      )}
+
+      {/* Latest */}
+      {news.length > 0 && (
+        <section id="latest" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-secondary))] section-fade-in section-fade-out transition-colors duration-300">
+          <div className="max-w-7xl mx-auto">
+            <FadeIn className="mb-16">
+              <span className="text-label text-[hsl(var(--accent))] block mb-4">Latest</span>
+              <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight">
+                What's <span className="font-serif text-[hsl(var(--accent))] italic">Happening</span>
+              </h2>
+            </FadeIn>
+
+            <FadeIn delay={0.15} className="max-w-4xl">
+              {news.slice(0, 6).map((item, i) => (
+                <div
+                  key={`${item.date}-${i}`}
+                  className="group flex gap-6 py-6 border-b border-[hsl(var(--border))] last:border-0 hover:bg-[hsl(var(--accent)/0.02)] -mx-4 px-4 rounded-lg transition-colors duration-200"
+                >
+                  <div className="shrink-0 w-24 md:w-28 pt-0.5">
+                    <time className="text-xs text-[hsl(var(--text-muted))] tabular-nums">
+                      {new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                    </time>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="inline-block w-1.5 h-1.5 rounded-full shrink-0 bg-[hsl(var(--accent))]" />
+                      {item.link ? (
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-base md:text-lg font-semibold text-[hsl(var(--text-primary))] group-hover:text-[hsl(var(--accent))] transition-colors leading-snug"
+                        >
+                          {item.title}
+                        </a>
+                      ) : (
+                        <span className="text-base md:text-lg font-semibold text-[hsl(var(--text-primary))] group-hover:text-[hsl(var(--accent))] transition-colors leading-snug">
+                          {item.title}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-[hsl(var(--text-secondary))] leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </FadeIn>
           </div>
         </section>
       )}
@@ -777,7 +743,7 @@ const Index = () => {
       {/* Careers */}
       <section id="careers" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
+          <FadeIn className="mb-16">
             <span className="text-label text-[hsl(var(--accent))] block mb-4">Careers</span>
             <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] leading-tight">
               Join Our <span className="font-serif text-[hsl(var(--accent))] italic">Team</span>
@@ -785,9 +751,9 @@ const Index = () => {
             <p className="text-[hsl(var(--text-secondary))] mt-6 leading-[1.9]">
               We're building the infrastructure and tools that enable health intelligence. The work is technical and foundational: clean code, clear thinking, and shipping things that actually help clinicians. If that sounds like your kind of problem, reach out.
             </p>
-          </div>
+          </FadeIn>
 
-          <div>
+          <FadeIn delay={0.15}>
             {jobs.map((job) => (
               <Link
                 key={job.id}
@@ -825,7 +791,7 @@ const Index = () => {
                 </div>
               </Link>
             ))}
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -838,14 +804,9 @@ const Index = () => {
           <div className="marquee-track animate-marquee-left">
             {[...Array(4)].map((_, i) => (
               <div key={i} className="flex items-center gap-16 md:gap-24">
-                <a href="https://www.hermesmedical.com" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">Hermes Medical Solutions</a>
-                <a href="https://www.deepc.ai/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">deepc</a>
-                <a href="https://visageimaging.com/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">Visage Imaging</a>
-                <a href="https://www.zenta.solutions/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">Zenta</a>
-                <a href="https://dottxt.ai/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">dottxt</a>
-                <a href="https://radixlabmedical.com/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">Radixlab Medical</a>
-                <a href="https://www.mtic.net.au/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">Melbourne Theranostics Innovation Center</a>
-                <a href="https://www.icpo.foundation/" target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">ICPO Foundation</a>
+                {collaborators.map((collab) => (
+                  <a key={collab.name} href={collab.url} target="_blank" rel="noopener noreferrer" className="text-lg md:text-xl font-light text-[hsl(var(--text-primary))] whitespace-nowrap opacity-40 hover:opacity-100 transition-opacity duration-300">{collab.name}</a>
+                ))}
               </div>
             ))}
           </div>
@@ -855,7 +816,7 @@ const Index = () => {
       {/* Connect */}
       <section id="connect" className="relative py-32 md:py-48 px-6 md:px-12 lg:px-20 bg-[hsl(var(--bg-tertiary))] transition-colors duration-300">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-3xl mx-auto text-center">
+          <FadeIn className="max-w-3xl mx-auto text-center">
             <span className="text-label block mb-6">Connect</span>
             <h2 className="text-display text-3xl md:text-4xl lg:text-5xl text-[hsl(var(--text-primary))] mb-6 leading-tight">Let's Build<br /><span className="font-serif text-[hsl(var(--accent))] italic">Computable Healthcare</span></h2>
             <p className="text-lg text-[hsl(var(--text-secondary))] leading-[1.8] mb-10 max-w-lg mx-auto">If our work resonates with you — whether you're caring for patients, stewarding data, or building methods — tell us what keeps you up at night. We'll listen first.</p>
@@ -865,7 +826,7 @@ const Index = () => {
               </a>
               <a href="mailto:lalith.shiyam@med.uni-muenchen.de" className="btn-secondary">Get in Touch</a>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 

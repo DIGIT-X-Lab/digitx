@@ -1,0 +1,16 @@
+[
+  {
+    "date": "2026-03-12",
+    "title": "LION v1.0.0 released",
+    "description": "First stable release of LION, the automated lesion segmentation tool for whole-body PET/CT.",
+    "type": "release",
+    "link": "https://github.com/ENHANCE-PET/LION/releases/tag/lionz-v.1.0.0"
+  },
+  {
+    "date": "2026-03-05",
+    "title": "ARCHE project funded by ICPO Foundation",
+    "description": "ICPO Foundation awards funding for ARCHE, an AI-driven curation and harmonization engine for structuring multimodal theranostics data.",
+    "type": "grant",
+    "link": "https://www.icpo.foundation/"
+  }
+]

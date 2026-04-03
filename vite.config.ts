@@ -18,10 +18,13 @@ export default defineConfig(({ mode }) => ({
     target: "es2020",
     minify: "esbuild",
     cssMinify: true,
+    chunkSizeWarningLimit: 900,
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ["react", "react-dom", "react-router-dom"],
+          three: ["three", "@react-three/fiber"],
+          motion: ["framer-motion"],
         },
       },
     },
