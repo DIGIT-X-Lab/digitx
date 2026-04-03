@@ -25,7 +25,7 @@ export const jobs: Job[] = [
       "This PhD is about building vision language models for the medical imaging domain. Not fine-tuning a pretrained model on a curated dataset and calling it a day. We mean training foundation models from scratch on real, messy, multi-institutional clinical data across CT, MRI, and PET/CT. Designing pretraining strategies that actually capture the relationship between what the image shows and what the report says. Building evaluation frameworks that go beyond leaderboard metrics.",
       "If that sounds like a problem worth spending three years on, keep reading.",
       "Here's the reality of this work: writing code and publishing papers is only part of it. Working with real patient data means writing ethics applications. Building things clinicians actually use means learning to think alongside them. Some of this is slow and unglamorous. We'll teach you, but you need to genuinely want to learn.",
-      "The position is onsite at LMU Klinikum Munich. We're GPU-rich: you'll have access to our CORE cluster with DGX systems, plus your own Nvidia DIGIT Spark for local development. Salary follows TV-L E13.",
+      "The position is onsite at LMU Klinikum Munich, starting Q2 2026. We're GPU-rich: you'll have access to our CORE cluster with DGX systems, plus your own Nvidia DIGIT Spark for local development. Salary follows TV-L E13. The initial contract is one year, enough time for all of us to see if this is the right fit.",
       "To apply: send us your CV, a brief note on why this work resonates with you, and a link to something you've built that you're proud of (code, paper, project, anything). No formal cover letter needed.",
     ],
     requirements: [
