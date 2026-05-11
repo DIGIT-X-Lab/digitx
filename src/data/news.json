@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-05-07",
+    "title": "New paper: The autoPET3 Challenge -- Automated Lesion Segmentation in Whole-Body PET/CT - Multitracer Multicenter Generalization",
+    "description": "New publication from the lab.",
+    "type": "publication",
+    "link": "https://www.semanticscholar.org/paper/929125ab13dd2f40509f982a82af86b578ddba7f"
+  },
+  {
     "date": "2026-03-12",
     "title": "LION v1.0.0 released",
     "description": "lionz-v.1.0.0",
