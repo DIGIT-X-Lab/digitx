@@ -1,7 +1,7 @@
 [
   {
-    "paperId": "929125ab13dd2f40509f982a82af86b578ddba7f",
-    "title": "The autoPET3 Challenge -- Automated Lesion Segmentation in Whole-Body PET/CT - Multitracer Multicenter Generalization",
+    "paperId": "f052c41a5cc5cc966c574956c74793ae7ceab281",
+    "title": "The autoPET3 Challenge: Automated Lesion Segmentation in Whole-Body PET/CT $\\unicode{x2013}$ Multitracer Multicenter Generalization",
     "authors": [
       "Jakob Dexl",
       "K. Jeblick",
@@ -40,7 +40,7 @@
     "citationCount": 7,
     "doi": null,
     "pubmedId": null,
-    "semanticScholarUrl": "https://www.semanticscholar.org/paper/929125ab13dd2f40509f982a82af86b578ddba7f"
+    "semanticScholarUrl": "https://www.semanticscholar.org/paper/f052c41a5cc5cc966c574956c74793ae7ceab281"
   },
   {
     "paperId": "c8d76e3e2e9d91576d32d1cec3d3c024e708efcc",
@@ -351,7 +351,7 @@
     "year": 2025,
     "venue": "Research Square",
     "publicationDate": "2025-08-05",
-    "citationCount": 4,
+    "citationCount": 5,
     "doi": "10.21203/rs.3.rs-7169062/v2",
     "pubmedId": "40799763",
     "semanticScholarUrl": "https://www.semanticscholar.org/paper/5be578acff201a72a4e0383dda7bb5aadc0b1525"
