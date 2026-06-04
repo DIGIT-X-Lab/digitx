@@ -181,7 +181,7 @@ function detectNewPublications() {
     title: `New paper: ${pub.title}`,
     description: pub.venue ? `Published in ${pub.venue}.` : 'New publication from the lab.',
     type: 'publication',
-    link: pub.doi ? `https://doi.org/${pub.doi}` : pub.semanticScholarUrl,
+    link: pub.doi ? `https://doi.org/${pub.doi}` : pub.sourceUrl ?? pub.semanticScholarUrl,
   }));
 }
 

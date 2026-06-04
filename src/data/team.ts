@@ -23,17 +23,6 @@ export const teamMembers: TeamMember[] = [
     scholar: 'https://scholar.google.com/citations?user=L6iMPN4AAAAJ&hl=en',
   },
   {
-    name: 'Dr. Sahib Julka',
-    role: 'Post Doctoral Researcher',
-    label: 'Post Doctoral Researcher',
-    tags: ['LLMs', 'Knowledge graphs', 'Automation'],
-    bio: 'Focuses on LLM-based knowledge graph creation from clinical text and structured sources.',
-    university: 'LMU University Hospital',
-    github: 'https://github.com/julka01',
-    linkedin: 'https://www.linkedin.com/in/julka01/',
-    scholar: 'https://scholar.google.com/citations?user=GaEUyB0AAAAJ&hl=en',
-  },
-  {
     name: 'Sameer Singh Rawat',
     role: 'Master thesis student',
     label: 'Master thesis student',

@@ -10,23 +10,25 @@ export interface Publication {
   citationCount: number;
   doi: string | null;
   pubmedId: string | null;
-  semanticScholarUrl: string;
+  source?: string;
+  sourceProfile?: string;
+  sourceUrl?: string;
+  semanticScholarUrl?: string;
 }
 
 /** All fetched publications (2025+), newest first. */
 export const publications: Publication[] = data as Publication[];
 
-/** Semantic Scholar author IDs — add new members here. */
-export const AUTHOR_IDS: Record<string, string[]> = {
-  'Lalith Shiyam Sundar': ['41126165', '41067995', '2002047424', '2189043918'],
-  'Sahib Julka': ['51259504'],
+/** Google Scholar profile IDs used by scripts/fetch-publications.mjs. */
+export const GOOGLE_SCHOLAR_PROFILES: Record<string, string> = {
+  'Lalith Shiyam Sundar': 'L6iMPN4AAAAJ',
 };
 
 /**
  * Last-name fragments used to highlight lab members in author lists.
  * Matched against the last word of each author name (case-insensitive).
  */
-const LAB_MEMBER_LASTNAMES = new Set(['sundar', 'julka', 'rawat']);
+const LAB_MEMBER_LASTNAMES = new Set(['sundar', 'rawat']);
 
 export function isLabMember(authorName: string): boolean {
   const last = authorName.trim().split(/\s+/).pop()?.toLowerCase() ?? '';

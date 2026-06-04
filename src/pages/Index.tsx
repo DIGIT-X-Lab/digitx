@@ -78,6 +78,7 @@ const Index = () => {
   const [showAllPubs, setShowAllPubs] = useState(false);
   const PUBS_PREVIEW = 5;
   const visiblePubs = showAllPubs ? publications : publications.slice(0, PUBS_PREVIEW);
+  const publicationCount = publications.length;
 
   useEffect(() => {
     if (!toolsVisible) return;
@@ -197,7 +198,7 @@ const Index = () => {
           <div className="grid grid-cols-3 gap-8 md:gap-12">
             {[
               { target: 430, suffix: '+', label: 'GitHub Stars' },
-              { target: 11, suffix: '', label: 'Publications (2025)' },
+              { target: publicationCount, suffix: '', label: 'Original Articles (2025+)' },
               { target: 8, suffix: '', label: 'Open-Source Tools' },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
@@ -607,7 +608,7 @@ const Index = () => {
                 Recent <span className="font-serif text-[hsl(var(--accent))] italic">Research</span>
               </h2>
               <p className="text-[hsl(var(--text-secondary))] mt-6 leading-[1.9] max-w-3xl">
-                Peer-reviewed publications and preprints from DIGITX lab members.
+                Original research articles and data papers from DIGITX lab members.
               </p>
             </FadeIn>
 
@@ -615,7 +616,7 @@ const Index = () => {
               {visiblePubs.map((pub) => (
                 <a
                   key={pub.paperId}
-                  href={pub.doi ? `https://doi.org/${pub.doi}` : pub.semanticScholarUrl}
+                  href={pub.doi ? `https://doi.org/${pub.doi}` : pub.sourceUrl ?? pub.semanticScholarUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group block border-b border-[hsl(var(--border))] py-6 first:pt-0 last:border-0 hover:bg-[hsl(var(--bg-secondary)/0.5)] -mx-4 px-4 rounded-lg transition-colors duration-200"

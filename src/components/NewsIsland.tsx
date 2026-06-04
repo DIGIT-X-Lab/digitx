@@ -11,19 +11,13 @@ interface NewsItem {
 const newsItems: NewsItem[] = [
   {
     id: '1',
-    type: 'team',
-    title: 'Dr. Sahib Julka joins as Research Lead',
-    date: '2025-01',
-  },
-  {
-    id: '2',
     type: 'grant',
     title: 'EU Horizon Grant Awarded',
     link: '#',
     date: '2025-01',
   },
   {
-    id: '3',
+    id: '2',
     type: 'release',
     title: 'MOOSE v2.0 Released',
     link: 'https://github.com/QIMP-Team/MOOSE',

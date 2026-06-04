@@ -1,0 +1,47 @@
+{
+  "exclude": {
+    "scholar:L6iMPN4AAAAJ:P5F9QuxV20EC": "Review article, excluded because the site shows original articles only.",
+    "scholar:L6iMPN4AAAAJ:1sJd4Hv_s6UC": "Preprint, excluded because the site shows original articles only.",
+    "scholar:L6iMPN4AAAAJ:xtRiw3GOFMkC": "Incomplete Google Scholar row with no venue or publication details.",
+    "scholar:L6iMPN4AAAAJ:CHSYGLWDkRkC": "Conference abstract/supplement entry in RöFo 198(S 01):S47-S47.",
+    "scholar:L6iMPN4AAAAJ:abG-DnoFyZgC": "Conference abstract/poster entry from Nuklearmedizin-NuclearMedicine.",
+    "scholar:L6iMPN4AAAAJ:b0M2c_1WBrUC": "Meeting report/commentary, excluded because the site shows original articles only.",
+    "scholar:L6iMPN4AAAAJ:pyW8ca7W8N0C": "Editorial/commentary article, excluded because the site shows original articles only.",
+    "scholar:L6iMPN4AAAAJ:nb7KW1ujOQ8C": "Conference abstract entry in Oncology Research and Treatment.",
+    "scholar:L6iMPN4AAAAJ:a0OBvERweLwC": "Commentary/editorial article, excluded because the site shows original articles only.",
+    "scholar:L6iMPN4AAAAJ:dfsIfKJdRG4C": "PET is Wonderful annual scientific meeting abstract.",
+    "scholar:L6iMPN4AAAAJ:4OULZ7Gr8RgC": "Preprint superseded by journal article, excluded because the site shows original articles only.",
+    "scholar:L6iMPN4AAAAJ:HoB7MX3m0LUC": "Conference abstract entry in Pneumologie supplement.",
+    "scholar:L6iMPN4AAAAJ:pqnbT2bcN3wC": "Conference abstract/poster entry from Nuklearmedizin-NuclearMedicine.",
+    "scholar:L6iMPN4AAAAJ:g5m5HwL7SMYC": "Conference abstract entry from Nuklearmedizin-NuclearMedicine."
+  },
+  "overrides": {
+    "scholar:L6iMPN4AAAAJ:1sJd4Hv_s6UC": {
+      "title": "The autoPET3 Challenge: Automated Lesion Segmentation in Whole-Body PET/CT - Multitracer Multicenter Generalization"
+    },
+    "scholar:L6iMPN4AAAAJ:zA6iFVUQeVQC": {
+      "title": "Sharing a whole-/total-body [18F]FDG-PET/CT dataset with CT-derived segmentations: an ENHANCE.PET initiative"
+    },
+    "scholar:L6iMPN4AAAAJ:NhqRSupF_l8C": {
+      "title": "Brain Metabolic Activity Measured by [18F]FDG PET/CT Predicts Survival in Patients with Advanced Non-Small Cell Lung Cancer"
+    },
+    "scholar:L6iMPN4AAAAJ:D03iK_w7-QYC": {
+      "title": "Artificial intelligence for TNM staging in NSCLC: a critical appraisal of segmentation utility in [18F]FDG PET/CT"
+    },
+    "scholar:L6iMPN4AAAAJ:u_35RYKgDlwC": {
+      "title": "Fully automated image-based multiplexing of serial PET/CT imaging for facilitating comprehensive disease phenotyping"
+    },
+    "scholar:L6iMPN4AAAAJ:yD5IFk8b50cC": {
+      "title": "Feasibility of different lymph node metastases delineation approaches in [18F]SiTATE PET/CT imaging in NET patients"
+    },
+    "scholar:L6iMPN4AAAAJ:cFHS6HbyZ2cC": {
+      "title": "Whole-Body [18F]FDG-PET/CT Imaging of Healthy Controls: Test/Retest Data for Systemic, Multi-Organ Analysis"
+    },
+    "scholar:L6iMPN4AAAAJ:4OULZ7Gr8RgC": {
+      "title": "Brain Metabolic Activity on FDG PET/CT Predicts Survival in Non-Small Cell Lung Cancer"
+    },
+    "scholar:L6iMPN4AAAAJ:fPk4N6BV_jEC": {
+      "title": "Comparison of organ volumes and standardized uptake values in [18F]FDG-PET/CT images using MOOSE and TotalSegmentator to segment CT images"
+    }
+  }
+}
