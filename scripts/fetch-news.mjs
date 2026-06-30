@@ -206,15 +206,20 @@ async function main() {
   const manualNews = loadManualNews();
   console.log(`  Found ${manualNews.length} manual entries`);
 
-  // Apply global 90-day cutoff, deduplicate, sort by date descending, cap at MAX
+  // Auto-fetched items (GitHub releases, new publications) expire after the
+  // cutoff window so the feed does not fill with stale automated noise.
+  // Manually curated entries are deliberately chosen and always show until
+  // removed from news-manual.json, regardless of age.
   const globalCutoff = new Date();
   globalCutoff.setDate(globalCutoff.getDate() - RELEASE_MAX_AGE_DAYS);
   const cutoffStr = globalCutoff.toISOString().split('T')[0];
 
+  const autoNews = [...githubNews, ...pubNews].filter((item) => item.date >= cutoffStr);
+
+  // Manual entries first, so dedup by title prefers the curated version on collision.
   const seen = new Set();
-  const all = [...manualNews, ...githubNews, ...pubNews]
+  const all = [...manualNews, ...autoNews]
     .filter((item) => {
-      if (item.date < cutoffStr) return false;
       if (seen.has(item.title)) return false;
       seen.add(item.title);
       return true;

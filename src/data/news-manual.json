@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026-07-02",
+    "title": "Hagen Lamprecht and Peter Benedict Schildberg join as doctoral researchers",
+    "description": "DIGITX welcomes two doctoral researchers: Hagen Lamprecht, building autonomous agentic research systems for healthcare, and Peter Benedict Schildberg, developing temporal knowledge graphs for clinical data.",
+    "type": "team"
+  },
+  {
+    "date": "2026-07-01",
+    "title": "BREZN project funded by BZKF",
+    "description": "The Bavarian Center for Cancer Research (BZKF) funds BREZN, a collaboration across Bavarian university hospitals to validate GALAH, the lab's agentic AI viewer that standardizes lung cancer TNM staging from imaging, clinical reports, and guideline-based reasoning.",
+    "type": "grant",
+    "link": "https://www.bzkf.de/"
+  },
+  {
     "date": "2026-03-05",
     "title": "ARCHE project funded by ICPO Foundation",
     "description": "ICPO Foundation awards funding for ARCHE, an AI-driven curation and harmonization engine for structuring multimodal theranostics data.",

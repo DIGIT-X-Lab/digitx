@@ -14,36 +14,6 @@ export interface Job {
 
 export const jobs: Job[] = [
   {
-    id: 'phd-vlm',
-    badge: 'Open Position',
-    type: 'Full-time',
-    title: 'PhD Position',
-    subtitle: 'Vision Language Models for Medical Imaging',
-    shortDescription: "Building foundation models that jointly reason over medical images and clinical text.",
-    fullDescription: [
-      "Most medical AI treats images and text as separate worlds. Segmentation models look at pixels. Language models read reports. But clinicians reason across both at the same time: they look at the scan, read the history, and form a judgment that draws on everything. We want to build models that work the same way.",
-      "This PhD is about building LYNX, a vision language foundation model for 3D medical imaging. Not another CLIP variant fine-tuned on medical images. LYNX puts volumes, text, and segmentation into a single unified token space: one autoregressive transformer that can read a scan and write the report, segment the anatomy, and be queried like a search engine for similar cases. Most existing work (CT-CLIP, CT-RATE, BiomedCLIP) either does retrieval or generation. LYNX does both from one set of weights, natively in 3D, not on 2D slices.",
-      "You will train this on 15 years of real clinical data from LMU University Hospital, across CT, MRI, and PET/CT. Designing pretraining strategies that actually capture the relationship between what the image shows and what the report says. Building evaluation frameworks that go beyond leaderboard metrics.",
-      "If that sounds like a problem worth spending three years on, keep reading.",
-      "Here's the reality of this work: writing code and publishing papers is only part of it. Working with real patient data means writing ethics applications. Building things clinicians actually use means learning to think alongside them. Some of this is slow and unglamorous. We'll teach you, but you need to genuinely want to learn.",
-      "The position is onsite at LMU Klinikum Munich, starting Q2 2026. We're GPU-rich: you'll have access to our CORE cluster with DGX systems, plus your own Nvidia DIGIT Spark for local development. Salary follows TV-L E13. The initial contract is one year, enough time for all of us to see if this is the right fit.",
-      "To apply: send us your CV, a brief note on why this work resonates with you, and a link to something you've built that you're proud of (code, paper, project, anything). No formal cover letter needed.",
-    ],
-    requirements: [
-      'MSc in Computer Science, Biomedical Engineering, Medical Informatics, Physics, or related',
-      'Strong Python and PyTorch skills. You should be comfortable training models from scratch, not just running notebooks.',
-      'Background in deep learning for computer vision or NLP (ideally both)',
-      'You follow through on your commitments and communicate openly when things change',
-    ],
-    niceToHave: [
-      'Experience with vision-language models, CLIP, or multimodal pretraining',
-      'Familiarity with medical imaging data (DICOM, NIfTI) or clinical workflows',
-      'Published work in medical AI, computer vision, or NLP',
-    ],
-    tags: ['VLMs', 'Foundation Models', 'Medical Imaging', 'Multimodal AI'],
-    cta: 'Apply Now',
-  },
-  {
     id: 'master-thesis',
     badge: 'Open Positions',
     type: 'Thesis',
