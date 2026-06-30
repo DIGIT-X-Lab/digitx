@@ -588,7 +588,6 @@ const Index = () => {
                       ))}
                     </div>
                     <p className="text-[hsl(var(--text-secondary))] leading-relaxed">{member.bio}</p>
-                    <div className="text-sm text-[hsl(var(--text-secondary))]">{member.university}</div>
                   </div>
                 </div>
               ))}
