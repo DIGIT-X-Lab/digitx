@@ -21,6 +21,70 @@
     "sourceUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=L6iMPN4AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=L6iMPN4AAAAJ:bFI3QPDXJZMC"
   },
   {
+    "paperId": "scholar:L6iMPN4AAAAJ:SP6oXDckpogC",
+    "title": "A Whole-Body PSMA-PET/CT dataset with manually annotated tumor lesions",
+    "authors": [
+      "K Jeblick",
+      "B Schachtner",
+      "A Mittermeier",
+      "J Dexl",
+      "P Wesp",
+      "T Küstner",
+      "..."
+    ],
+    "year": 2026,
+    "venue": "Scientific Data 13 (1), 1023",
+    "publicationDate": null,
+    "citationCount": 1,
+    "doi": null,
+    "pubmedId": null,
+    "source": "google-scholar",
+    "sourceProfile": "Lalith Kumar Shiyam Sundar",
+    "sourceUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=L6iMPN4AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=L6iMPN4AAAAJ:SP6oXDckpogC"
+  },
+  {
+    "paperId": "scholar:L6iMPN4AAAAJ:NhqRSupF_l8C",
+    "title": "Brain Metabolic Activity Measured by [18F]FDG PET/CT Predicts Survival in Patients with Advanced Non-Small Cell Lung Cancer",
+    "authors": [
+      "J Auriac",
+      "G Lemoudda",
+      "N Hovhannisyan-Baghdasarian",
+      "M Pires",
+      "..."
+    ],
+    "year": 2026,
+    "venue": "Journal of Nuclear Medicine 67 (7), 1041-1048",
+    "publicationDate": null,
+    "citationCount": 1,
+    "doi": null,
+    "pubmedId": null,
+    "source": "google-scholar",
+    "sourceProfile": "Lalith Kumar Shiyam Sundar",
+    "sourceUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=L6iMPN4AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=L6iMPN4AAAAJ:NhqRSupF_l8C"
+  },
+  {
+    "paperId": "scholar:L6iMPN4AAAAJ:UxriW0iASnsC",
+    "title": "SSTR-Targeted Radiotheranostics in Breast Cancer: A Comparison of [68Ga] Ga-DOTATOC and [68Ga] Ga-SSO120 with [18F] FDG PET",
+    "authors": [
+      "AT Küper",
+      "LKS Sundar",
+      "L Djaileb",
+      "J Roschlak",
+      "KM Pabst",
+      "I Ciuciulkaite",
+      "..."
+    ],
+    "year": 2026,
+    "venue": "Journal of Nuclear Medicine",
+    "publicationDate": null,
+    "citationCount": 0,
+    "doi": null,
+    "pubmedId": null,
+    "source": "google-scholar",
+    "sourceProfile": "Lalith Kumar Shiyam Sundar",
+    "sourceUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=L6iMPN4AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=L6iMPN4AAAAJ:UxriW0iASnsC"
+  },
+  {
     "paperId": "scholar:L6iMPN4AAAAJ:zA6iFVUQeVQC",
     "title": "Sharing a whole-/total-body [18F]FDG-PET/CT dataset with CT-derived segmentations: an ENHANCE.PET initiative",
     "authors": [
@@ -35,32 +99,12 @@
     "year": 2026,
     "venue": "Scientific Data",
     "publicationDate": null,
-    "citationCount": 5,
+    "citationCount": 6,
     "doi": null,
     "pubmedId": null,
     "source": "google-scholar",
     "sourceProfile": "Lalith Kumar Shiyam Sundar",
     "sourceUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=L6iMPN4AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=L6iMPN4AAAAJ:zA6iFVUQeVQC"
-  },
-  {
-    "paperId": "scholar:L6iMPN4AAAAJ:NhqRSupF_l8C",
-    "title": "Brain Metabolic Activity Measured by [18F]FDG PET/CT Predicts Survival in Patients with Advanced Non-Small Cell Lung Cancer",
-    "authors": [
-      "J Auriac",
-      "G Lemoudda",
-      "N Hovhannisyan-Baghdasarian",
-      "M Pires",
-      "..."
-    ],
-    "year": 2026,
-    "venue": "Journal of Nuclear Medicine",
-    "publicationDate": null,
-    "citationCount": 0,
-    "doi": null,
-    "pubmedId": null,
-    "source": "google-scholar",
-    "sourceProfile": "Lalith Kumar Shiyam Sundar",
-    "sourceUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=L6iMPN4AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=L6iMPN4AAAAJ:NhqRSupF_l8C"
   },
   {
     "paperId": "scholar:L6iMPN4AAAAJ:D03iK_w7-QYC",
@@ -78,7 +122,7 @@
     "year": 2026,
     "venue": "European Journal of Nuclear Medicine and Molecular Imaging 53 (5), 3117-3127",
     "publicationDate": null,
-    "citationCount": 0,
+    "citationCount": 1,
     "doi": null,
     "pubmedId": null,
     "source": "google-scholar",
@@ -122,7 +166,7 @@
     "year": 2025,
     "venue": "Journal of Nuclear Medicine 66 (11), 1818-1826",
     "publicationDate": null,
-    "citationCount": 4,
+    "citationCount": 5,
     "doi": null,
     "pubmedId": null,
     "source": "google-scholar",
