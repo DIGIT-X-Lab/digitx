@@ -55,7 +55,7 @@
     "year": 2026,
     "venue": "Journal of Nuclear Medicine 67 (7), 1041-1048",
     "publicationDate": null,
-    "citationCount": 1,
+    "citationCount": 2,
     "doi": null,
     "pubmedId": null,
     "source": "google-scholar",
@@ -99,7 +99,7 @@
     "year": 2026,
     "venue": "Scientific Data",
     "publicationDate": null,
-    "citationCount": 6,
+    "citationCount": 11,
     "doi": null,
     "pubmedId": null,
     "source": "google-scholar",
@@ -210,7 +210,7 @@
     "year": 2025,
     "venue": "Scientific Data 12 (1), 1707",
     "publicationDate": null,
-    "citationCount": 4,
+    "citationCount": 5,
     "doi": null,
     "pubmedId": null,
     "source": "google-scholar",
@@ -237,27 +237,5 @@
     "source": "google-scholar",
     "sourceProfile": "Lalith Kumar Shiyam Sundar",
     "sourceUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=L6iMPN4AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=L6iMPN4AAAAJ:fPk4N6BV_jEC"
-  },
-  {
-    "paperId": "scholar:L6iMPN4AAAAJ:KxtntwgDAa4C",
-    "title": "Sharing a whole-/total-body [18F] FDG-PET/CT dataset with CT-derived segmentations: An ENHANCE",
-    "authors": [
-      "D Ferrara",
-      "M Pires",
-      "S Gutschmayer",
-      "J Yu",
-      "YG Abdelhafez",
-      "E Abenavoli",
-      "..."
-    ],
-    "year": 2025,
-    "venue": "PET initiative. PREPRINT (Version 1) 4",
-    "publicationDate": null,
-    "citationCount": 5,
-    "doi": null,
-    "pubmedId": null,
-    "source": "google-scholar",
-    "sourceProfile": "Lalith Kumar Shiyam Sundar",
-    "sourceUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=L6iMPN4AAAAJ&pagesize=100&sortby=pubdate&citation_for_view=L6iMPN4AAAAJ:KxtntwgDAa4C"
   }
 ]
