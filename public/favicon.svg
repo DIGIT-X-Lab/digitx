@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#0b0a09"/>
-  <rect x="3.5" y="3.5" width="25" height="25" fill="none" stroke="#f1eeea" stroke-width="1.5"/>
-  <text x="16" y="21" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="12" letter-spacing="-0.5" fill="#f1eeea">DX</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="8" fill="#f1eeea"/>
+  <path fill="#0b0a09" fill-rule="evenodd" d="M7 14h11c9 0 14 6 14 18s-5 18-14 18H7Zm7 7v22h4c5 0 7-4 7-11s-2-11-7-11Z"/>
+  <path fill="none" stroke="#0b0a09" stroke-width="2.5" stroke-linejoin="miter" d="M35 14h8l4 11 4-11h8l-8 18 8 18h-8l-4-11-4 11h-8l8-18Z"/>
 </svg>
