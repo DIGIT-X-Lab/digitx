@@ -30,8 +30,8 @@ html:has(.site-layout--home) { scroll-padding-top: 0; }
 .home-hero-sequence[data-enhanced="true"] .home-hero-scroll-cue > * { animation: home-scroll-invitation 2.8s ease-in-out infinite; animation-play-state: paused; }
 .home-hero-sequence[data-enhanced="true"] .home-hero-scroll-cue[data-inviting="true"]:not([inert]):not(:hover):not(:focus-visible) > * { animation-play-state: running; }
 @keyframes home-scroll-invitation {
-  0%, 15%, 85%, 100% { transform: translateY(0); }
-  50% { transform: translateY(4px); }
+  0%, 15%, 85%, 100% { translate: 0 0; }
+  50% { translate: 0 4px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .home-hero-sequence[data-enhanced="true"] .home-hero-scroll-cue > * { animation: none; }
