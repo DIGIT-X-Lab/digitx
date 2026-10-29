@@ -1,0 +1,27 @@
+.project-identity { position: relative; display: grid; place-items: center; width: 100%; height: clamp(320px, 30vw, 420px); padding: 0; border: 0; color: var(--ink); background: transparent; perspective: 900px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.project-stack[data-stacking="true"] .project-identity { max-height: var(--project-media-height); }
+.project-identity:disabled { cursor: default; opacity: 1; }
+.project-identity:focus-visible { outline: 1px solid var(--blue); outline-offset: -12px; }
+.project-identity-pose { display: grid; place-items: center; width: 100%; height: 100%; min-height: 0; transform-origin: 50% 55%; }
+.project-kepler-wave { display: block; width: min(76%, 340px); max-height: 90%; aspect-ratio: 1; object-fit: contain; }
+.project-lumos-mascot { display: block; width: min(70%, 310px); max-height: 88%; fill: currentColor; overflow: visible; }
+.project-lumos-eyes { transform-box: fill-box; transform-origin: center; animation: project-lumos-blink 7.4s linear infinite; animation-play-state: paused; }
+.project-galah-gesture { position: relative; display: grid; place-items: center; width: min(88%, 410px); max-height: 100%; aspect-ratio: 1; translate: 0 -10%; }
+.project-visual .project-galah-portrait { display: block; width: 100%; height: 100%; max-height: 420px; object-fit: contain; opacity: .76; }
+.project-galah-trace, .project-galah-light { position: absolute; inset: 0; pointer-events: none; -webkit-mask: url("/illustrations/projects/galah-wireframe-alpha.png") center / contain no-repeat; mask: url("/illustrations/projects/galah-wireframe-alpha.png") center / contain no-repeat; }
+.project-galah-trace { background: linear-gradient(110deg, transparent 38%, #fff9ec 50%, transparent 62%) 100% 50% / 300% 100%; animation: project-galah-trace 1.6s cubic-bezier(.2, .65, .3, 1) both; animation-play-state: paused; }
+.project-galah-light { transition: opacity 180ms ease; }
+.project-identity[data-running="true"] .project-lumos-eyes,
+.project-identity[data-motion="running"] .project-galah-trace { animation-play-state: running; }
+@keyframes project-lumos-blink { 0%, 38%, 42%, 71%, 75%, 100% { transform: scaleY(1); } 40%, 73% { transform: scaleY(.08); } }
+@keyframes project-galah-trace { 0% { background-position: 100% 50%; opacity: 0; } 15%, 65% { opacity: .8; } 100% { background-position: 0% 50%; opacity: 0; } }
+@media (max-width: 700px) {
+  .project-identity { height: 300px; }
+  .project-lumos-mascot { width: 76%; max-width: 260px; }
+  .project-galah-gesture { width: 100%; max-width: 330px; }
+  .project-kepler-wave { width: 90%; max-width: 300px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-lumos-eyes, .project-galah-trace { animation: none; }
+  .project-galah-trace, .project-galah-light { display: none; }
+}

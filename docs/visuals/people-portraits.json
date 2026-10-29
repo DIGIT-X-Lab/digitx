@@ -1,0 +1,65 @@
+{
+  "supplied": "2026-10-28",
+  "authorisation": "The PI supplied all five photographs and requested a return to the original light studio aesthetic of Hagen and Peter on 28 October 2026. Keep faces clearly lit and retain a shared head-and-chest crop.",
+  "treatment": "Original light studio portraits for Hagen and Peter; authorised background/detail edits for Lalith, Maissa and Maximilian. Shared CSS darken blending places a subtle light silver-grey radial gradient in bright background areas; monochrome and lower-edge fade match the site. Only Lalith’s portrait is mirrored horizontally in CSS. Original photographs and previous derivatives are retained.",
+  "records": [
+    {
+      "person": "lalith-shiyam-sundar",
+      "source": "/Users/nutellabear/Downloads/IMG_5815.heic",
+      "conversion": "/tmp/digitx-pi-source.jpg",
+      "edited": "public/portraits/lalith-shiyam-sundar-studio-sharp.png",
+      "web": "public/portraits/lalith-shiyam-sundar-studio-sharp-web.jpg",
+      "outputDimensions": [
+        1122,
+        1402
+      ],
+      "displayTransform": "Horizontal flip in CSS",
+      "refinement": "Sharper detail using the original high-resolution photograph as a reference; output was not enlarged beyond the generated dimensions."
+    },
+    {
+      "person": "hagen-lamprecht",
+      "source": "/Users/nutellabear/Downloads/Lamprecht_Hagen_-_NUK_6312.jpg",
+      "original": "public/portraits/hagen-lamprecht.jpg",
+      "web": "public/portraits/hagen-lamprecht-web.jpg"
+    },
+    {
+      "person": "peter-benedict-schildberg",
+      "source": "/Users/nutellabear/Downloads/Schildberg_Peter_Benedict_-_RAD_0923.jpg",
+      "original": "public/portraits/peter-benedict-schildberg.jpg",
+      "web": "public/portraits/peter-benedict-schildberg-web.jpg"
+    },
+    {
+      "person": "maissa-monsour",
+      "source": "/Users/nutellabear/Downloads/Maissa_photo.png",
+      "original": "public/portraits/maissa-monsour.png",
+      "web": "public/portraits/maissa-monsour-studio-web.jpg",
+      "edited": "public/portraits/maissa-monsour-studio.png"
+    },
+    {
+      "person": "maximilian-tiling",
+      "source": "/Users/nutellabear/Downloads/WhatsApp Image 2026-10-28 at 10.46.48.jpeg",
+      "original": "public/portraits/maximilian-tiling.jpg",
+      "edited": "public/portraits/maximilian-tiling-studio.png",
+      "web": "public/portraits/maximilian-tiling-studio-web.jpg"
+    },
+    {
+      "person": "frederic-paul-thiele",
+      "supplied": "2026-10-29",
+      "source": "/Users/nutellabear/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/0C45070B-1A4D-4EBB-BD85-3C23EC92E6CF/Thiele Frederic NCH.JPG",
+      "original": "public/portraits/frederic-paul-thiele.jpg",
+      "web": "public/portraits/frederic-paul-thiele-web.webp",
+      "sourceDimensions": [
+        7360,
+        4912
+      ],
+      "outputDimensions": [
+        1600,
+        1068
+      ],
+      "treatment": "Original official portrait. WebP delivery copy, no retouching or generated detail. The shared CSS applies the centred 4:5 display crop, monochrome filter, silver-grey gradient and lower-edge fade.",
+      "authorisation": "The PI supplied Frederic’s official LMU photograph with his authored answers and requested his addition as an associated member."
+    }
+  ],
+  "limitations": "Maissa’s original is 240 × 320. Her generated higher-resolution derivative reconstructs detail; it is not recovered high-resolution source information.",
+  "promptSet": "docs/visuals/people-light-prompts.json"
+}

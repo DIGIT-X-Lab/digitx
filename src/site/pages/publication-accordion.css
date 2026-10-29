@@ -1,0 +1,55 @@
+.pa-page { min-height: calc(100svh - 89px); scroll-margin-top: 89px; }
+.pa-page .publications-opening { padding-block: 28px 24px; }
+.pa-index { --publication-year-gap: 0px; }
+.pa-controls { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 32px; margin-bottom: 0; padding-bottom: 12px; border-bottom: 0; }
+.pa-results-line { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 32px; color: var(--muted); font-size: var(--type-caption); }
+.pa-results-line button { min-height: 32px; text-decoration: underline; text-underline-offset: 4px; }
+.pa-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--strong); }
+.pa-paper { border-bottom: 1px solid var(--line); scroll-margin-top: 105px; }
+.pa-paper > :is(h2, h3) { margin: 0; font: inherit; }
+.pa-strip { display: grid; grid-template-columns: 56px minmax(0, 1fr) minmax(180px, .32fr) 44px; gap: 28px; align-items: center; width: 100%; padding: 20px 0; border: 0; background: none; color: var(--ink); text-align: left; }
+.pa-year, .pa-journal { color: var(--muted); font-size: var(--type-meta); font-weight: var(--type-weight-body); line-height: 1.5; }
+.pa-year { font-variant-numeric: tabular-nums; }
+.pa-paper-title { font-size: var(--type-body); font-weight: var(--type-weight-action); line-height: 1.4; text-wrap: pretty; }
+.pa-mark { position: relative; display: grid; place-items: center; width: 44px; height: 44px; color: var(--subtle); }
+.pa-mark i { position: absolute; width: 18px; height: 1px; background: currentColor; }
+.pa-mark i:last-child { transform: rotate(90deg); transition: transform 180ms var(--ease); }
+.pa-strip[aria-expanded="true"] .pa-mark i:last-child { transform: rotate(0deg); }
+.pa-strip:hover .pa-mark, .pa-strip:focus-visible .pa-mark { color: var(--ink); }
+.pa-strip:hover .pa-paper-title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: var(--strong); }
+.pa-strip:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+.pa-paper[data-open="true"] { border-bottom-color: var(--strong); }
+.pa-detail-reveal { overflow: hidden; }
+.pa-details { display: grid; grid-template-columns: minmax(0, 1fr) minmax(180px, .32fr); gap: 20px 28px; padding: 4px 72px 28px 84px; }
+.pa-details :is(h3, h4) { color: var(--muted); font-size: var(--type-meta); font-weight: var(--type-weight-body); line-height: 1.5; margin-bottom: 10px; }
+.pa-details p { max-width: 65ch; color: var(--subtle); font-size: var(--type-body); line-height: var(--type-leading-body); }
+.pa-details .pa-affiliation { margin-top: 12px; font-size: var(--type-meta); color: var(--muted); }
+.pa-links { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px; }
+.pa-links a, .pa-empty button { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; font-size: var(--type-action); text-decoration: underline; text-decoration-color: var(--strong); text-underline-offset: 6px; }
+.pa-links a:hover { text-decoration-color: var(--ink); }
+.pa-measure-row.publication-row { display: block; padding: 0; margin: 0; border-top: 0; border-bottom: 1px solid var(--line); }
+.pa-pagination { min-height: 64px; }
+.pa-pagination > span { display: grid; place-items: center; min-height: 44px; min-width: 32px; }
+#pa-results:focus { outline: none; }
+#pa-results:focus-visible { outline: 2px solid var(--blue); outline-offset: 5px; }
+.pa-empty { border-block: 1px solid var(--line); padding-block: 28px; }
+.pa-empty p { margin-bottom: 12px; font-size: var(--type-body); }
+@media (max-width: 1000px) {
+  .pa-strip { grid-template-columns: 48px minmax(0, 1fr) 44px; gap: 8px 20px; }
+  .pa-journal { grid-column: 2; grid-row: 2; }
+  .pa-year { align-self: start; }
+  .pa-mark { grid-column: 3; grid-row: 1 / 3; }
+  .pa-details { grid-template-columns: minmax(0, 1fr); padding-inline: 68px 64px; }
+}
+@media (max-width: 600px) {
+  .pa-controls { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .pa-strip { grid-template-columns: minmax(0, 1fr) 44px; gap: 8px 12px; padding-block: 18px; }
+  .pa-year { grid-column: 1; grid-row: 1; }
+  .pa-paper-title { grid-column: 1; grid-row: 2; }
+  .pa-journal { grid-column: 1; grid-row: 3; }
+  .pa-mark { grid-column: 2; grid-row: 1 / 4; }
+  .pa-details { padding-inline: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pa-mark i:last-child { transition: none; }
+}

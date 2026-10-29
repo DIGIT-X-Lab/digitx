@@ -1,0 +1,156 @@
+/* Inner pages inherit the site's warm, precise editorial system.
+   Content supplies the structure: reading columns, source records and named people. */
+.inner-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  column-gap: clamp(2rem, 6vw, 6rem);
+  row-gap: 2rem;
+  padding-block: clamp(3.5rem, 7vw, 6.5rem) clamp(3.5rem, 6vw, 5rem);
+}
+.inner-intro-copy { padding-top: 0.4rem; }
+.inner-section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 2rem clamp(2rem, 6vw, 6rem);
+}
+.inner-section-heading > *, .inner-intro > * { min-width: 0; }
+.inner-section-heading .headline { max-width: 22ch; }
+.research-section, .principal-profile {
+  border-top: 1px solid var(--line);
+  padding-block: clamp(3rem, 6vw, 5.5rem);
+  scroll-margin-top: 6rem;
+}
+.editorial-link {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--strong);
+  text-underline-offset: 0.24em;
+  transition: text-decoration-color 180ms ease;
+}
+.editorial-link:hover { text-decoration-color: var(--ink); }
+.inner-back-link { display: inline-flex; gap: 0.6rem; color: var(--muted); font-size: var(--type-action); }
+.inner-back-link:hover { color: var(--ink); }
+.inner-editorial-note { margin-top: 1.5rem; }
+.inner-editorial-notes { display: grid; gap: 0.6rem; margin-top: 2.5rem; }
+
+/* Research: an index, a reading column and clearly bounded demonstrations. */
+.research-index { grid-column: 1 / -1; margin-top: 1.5rem; }
+.research-index ol { display: flex; flex-wrap: wrap; gap: 0.75rem 2.5rem; }
+.research-index a { display: inline-flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-block: 0.75rem; color: var(--subtle); font-size: var(--type-nav); }
+.research-index-label { flex: 1; }
+.research-step { color: var(--muted); font-size: var(--type-meta); font-variant-numeric: tabular-nums; }
+.research-index a:hover { color: var(--ink); }
+.research-index a > :last-child { color: var(--muted); }
+.research-figure, .research-examples { margin-top: clamp(2.5rem, 5vw, 4.5rem); }
+.research-physiology { width: 100%; }
+.research-physiology > svg { width: 100%; max-width: 56rem; margin-top: 1.75rem; }
+.research-examples { display: grid; grid-template-columns: minmax(0, 1fr); gap: 3rem; align-items: start; }
+.research-examples > figure { min-width: 0; max-width: 66rem; }
+.research-related { display: flex; flex-wrap: wrap; gap: 1.5rem 4rem; margin-top: 2.5rem; border-top: 1px solid var(--line); padding-top: 1.5rem; }
+.research-related-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; margin-top: 0.65rem; font-size: var(--type-action); }
+
+/* People: no substitute portraits, just a legible, connected directory. */
+.profile-role { margin-bottom: 1rem; }
+.principal-name { max-width: 19ch; color: var(--ink); font-size: var(--type-heading); font-weight: var(--type-weight-heading); line-height: 1.2; letter-spacing: -0.025em; text-wrap: balance; }
+.principal-details .prose-site { max-width: 42ch; }
+.principal-affiliation { margin-top: 0.85rem; max-width: 46ch; }
+.profile-interests { margin-block: 1.75rem; }
+.profile-interests > p, .researcher-interests > p { margin-top: 0.5rem; color: var(--subtle); line-height: 1.6; }
+.profile-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: var(--type-action); }
+.profile-story-draft { margin-top: 0.75rem; }
+.profile-story-draft summary { cursor: pointer; }
+.profile-story-draft > p { margin-top: 1rem; }
+.researcher-row { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(8rem, 0.5fr); gap: 1.75rem 3rem; padding-block: 2.5rem; border-top: 1px solid var(--line); }
+.researcher-row > * { min-width: 0; }
+.researcher-role { margin-top: 0.7rem; }
+.researcher-row .profile-links { align-content: start; justify-content: flex-end; }
+.researcher-editorial { display: grid; gap: 0.6rem; grid-column: 1 / -1; }
+
+/* One invitation and one direct email link close the page. */
+.contact-page { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 64px; align-items: start; padding-block: 64px; }
+.contact-page > * { min-width: 0; }
+.contact-title { max-width: none; }
+.contact-title, .contact-copy { overflow-wrap: anywhere; }
+.contact-copy { color: var(--subtle); }
+.contact-email-link { display: inline-flex; align-items: center; gap: 24px; max-width: 100%; min-height: 48px; margin-top: 28px; padding-block: 12px; padding-inline-end: 8px; border-bottom: 1px solid var(--strong); color: var(--ink); font-size: var(--type-action); line-height: 1.5; }
+.contact-email-link > span { min-width: 0; overflow-wrap: anywhere; }
+.contact-email-link > .site-arrow { width: 24px; height: 24px; transition: translate 180ms var(--ease); }
+.contact-email-link:hover { border-color: var(--ink); }
+.contact-email-link:hover > .site-arrow { translate: 3px -3px; }
+
+/* Tool and project records make access, provenance and restrictions easy to find. */
+.tool-detail, .job-page { padding-block: clamp(2rem, 4vw, 3rem) clamp(4rem, 7vw, 6rem); }
+.tool-detail-heading { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 2rem clamp(2rem, 6vw, 6rem); align-items: end; margin-top: clamp(2.5rem, 5vw, 4rem); }
+.tool-availability { margin-bottom: 1rem; color: var(--subtle); }
+.tool-availability-development { color: var(--muted); }
+.tool-purpose { max-width: 42ch; padding-bottom: 0.3rem; }
+.tool-detail-body { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 2.5rem clamp(2rem, 6vw, 6rem); margin-top: clamp(3rem, 6vw, 5rem); border-top: 1px solid var(--line); padding-top: 2rem; }
+.tool-repository { display: flex; align-items: start; gap: 1.5rem; margin-top: 0.85rem; font-size: var(--type-action); line-height: 1.5; }
+.tool-repository > :first-child { overflow-wrap: anywhere; text-decoration: underline; text-decoration-color: var(--strong); text-underline-offset: 0.25em; }
+.tool-repository:hover > :first-child { text-decoration-color: var(--ink); }
+.tool-private { margin-top: 0.85rem; }
+.tool-research-links { margin-top: 2.5rem; }
+.tool-research-links ul { display: grid; gap: 0.65rem; margin-top: 0.85rem; font-size: var(--type-action); }
+.tool-specification { margin: 0; }
+.tool-specification-row { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1rem; padding-block: 1rem; border-bottom: 1px solid var(--line); }
+.tool-specification-row:first-child { padding-top: 0; }
+.tool-specification-row dt { padding-top: 0.2rem; }
+.tool-specification-row dd { margin: 0; color: var(--subtle); }
+.research-index ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.research-index a { width: 100%; border-top: 1px solid var(--strong); padding-block: 18px; }
+.research-section .inner-section-heading > h2 { color: var(--blue); }
+@media (max-width: 700px) { .research-index ol { grid-template-columns: 1fr; gap: 0; } }
+
+.site-layout--job { --gutter: clamp(24px, 4.5vw, 96px); }
+.site-layout--job .shell { max-width: 1920px; }
+.job-heading { margin-top: 40px; }
+.job-heading .display { margin-top: 16px; }
+.job-heading .lead { max-width: none; margin-top: 24px; }
+.job-body { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--line); align-items: start; }
+.job-body > * { min-width: 0; }
+.job-body .prose-site { max-width: none; text-wrap: wrap; }
+.job-details { padding-left: 32px; border-left: 1px solid var(--line); }
+.job-requirements { display: grid; gap: 32px; }
+.job-requirements ul { margin-top: 16px; padding-left: 1.15rem; list-style: disc; color: var(--subtle); }
+.job-requirements li { padding-left: 0.3rem; line-height: var(--type-leading-body); }
+.job-requirements li + li { margin-top: 12px; }
+.job-application { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 32px; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--line); }
+.job-application .prose-site { max-width: 70ch; text-wrap: wrap; }
+.job-application .job-apply { min-height: 56px; padding: 16px 24px; background: var(--tape); color: var(--bg); border: 1px solid var(--tape); }
+.job-application .job-apply:hover { background: var(--ink); border-color: var(--ink); }
+.not-found-page { padding-block: clamp(4rem, 10vw, 9rem); }
+.not-found-page .display { margin-block: 1.5rem 2.5rem; }
+
+@media (max-width: 1000px) {
+  .researcher-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 2rem; }
+  .researcher-row .profile-links { grid-column: 2; justify-content: start; }
+  .job-body { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .job-details { padding: 32px 0 0; border-left: 0; border-top: 1px solid var(--line); }
+  .job-requirements { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contact-page { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+}
+@media (max-width: 700px) {
+  .inner-intro, .inner-section-heading, .tool-detail-heading, .tool-detail-body { grid-template-columns: minmax(0, 1fr); }
+  .inner-intro { row-gap: 1.5rem; }
+  .inner-intro-copy { padding-top: 0; }
+  .inner-section-heading .headline { max-width: 25ch; }
+  .research-index { margin-top: 0; }
+  .research-index ol { display: grid; gap: 0; }
+  .research-index a { display: flex; border-bottom: 1px solid var(--line); padding-block: 0.9rem; }
+  .research-related { gap: 1.5rem 2.5rem; }
+  .research-physiology > svg { margin-top: 1rem; }
+  .researcher-row { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; padding-block: 2rem; }
+  .researcher-row .profile-links { grid-column: auto; }
+  .researcher-editorial { grid-column: auto; }
+  .profile-interests { margin-block: 1.5rem; }
+  .contact-page { padding-block: 40px; }
+  .contact-email-link { margin-top: 24px; gap: 16px; }
+  .tool-detail-heading { gap: 1.5rem; }
+  .tool-purpose { max-width: 45ch; }
+  .tool-detail-body { gap: 2.5rem; }
+  .job-requirements { grid-template-columns: minmax(0, 1fr); }
+  .job-heading { margin-top: 32px; }
+  .job-body { margin-top: 32px; padding-top: 24px; gap: 32px; }
+  .job-application { grid-template-columns: minmax(0, 1fr); margin-top: 32px; padding-top: 24px; gap: 24px; }
+  .job-apply { justify-self: start; }
+}

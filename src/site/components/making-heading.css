@@ -1,0 +1,14 @@
+/* Compact subsection banner: black text on the site's warm-white tape. */
+.making-heading { min-width: 0; max-width: 100%; background: var(--tape); color: var(--bg); }
+.tool-validation-intro .making-heading h3 { font-size: var(--type-heading); font-weight: var(--type-weight-emphasis); line-height: 1.2; letter-spacing: normal; }
+.making-loop { display: block; width: 100%; overflow: hidden; padding-block: 12px; color: inherit; font: inherit; letter-spacing: inherit; text-align: left; }
+.making-loop:focus-visible { outline: none; box-shadow: inset 0 -2px var(--bg); }
+.making-loop-track { display: flex; width: max-content; animation: making-text-loop var(--making-loop-duration) linear infinite; animation-play-state: paused; }
+.making-loop-group { display: flex; flex: none; }
+.making-loop-unit { display: block; flex: none; padding-inline: 16px clamp(32px, 4vw, 64px); white-space: nowrap; }
+.making-heading[data-running="true"] .making-loop-track { animation-play-state: running; will-change: transform; }
+.making-static-title { display: block; padding: 12px 16px; }
+@keyframes making-text-loop { to { transform: translate3d(-50%, 0, 0); } }
+@media (prefers-reduced-motion: reduce) {
+  .making-loop-track { animation: none; transform: none; }
+}

@@ -1,0 +1,110 @@
+.tool-teaser-art { width: 100%; min-width: 0; margin: 0; }
+/* One shell for every tool: identical dimensions, chrome and control baseline. */
+.tool-workflow { height: 600px; min-width: 0; display: grid; grid-template-rows: 52px minmax(0, 1fr) 64px; border: 1px solid var(--strong); background: var(--bg); }
+.tool-workflow-chrome { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 22px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: var(--type-caption); line-height: 1.5; }
+.tool-workflow-name { color: var(--ink); font-size: var(--type-meta); font-weight: var(--type-weight-emphasis); }
+.tool-workflow-stage { min-width: 0; min-height: 0; padding: 20px 22px; }
+.tool-workflow-stage h5 { color: var(--ink); font-size: var(--type-meta); font-weight: var(--type-weight-action); line-height: 1.5; }
+.tool-workflow-controls { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-width: 0; margin-inline: 22px; border-top: 1px solid var(--line); }
+.tool-workflow-chapters { display: flex; flex-wrap: wrap; gap: 0 16px; min-width: 0; }
+.tool-workflow-chapters button { display: inline-flex; align-items: center; gap: 7px; min-height: 32px; color: var(--muted); font-size: var(--type-caption); line-height: 1.5; text-align: left; }
+.tool-workflow-chapters button:is(:hover, [aria-pressed="true"]) { color: var(--ink); }
+.tool-workflow-step-dot { width: 4px; height: 4px; background: currentColor; opacity: .3; flex: none; }
+.tool-workflow-chapters [aria-pressed="true"] .tool-workflow-step-dot { opacity: 1; background: var(--blue); }
+.tool-workflow-play { display: grid; place-items: center; flex: none; width: 44px; height: 44px; color: var(--muted); }
+.tool-workflow-play:hover { color: var(--ink); }
+.tool-workflow-play svg { width: 17px; height: 17px; }
+/* TAIPAN: the opening CHILI slide's original artwork and circulation. */
+.teaser-pet-workspace { height: 100%; display: grid; grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1.2fr); gap: 12px; align-items: center; }
+.teaser-pet-input, .teaser-pet-output { min-width: 0; text-align: center; }
+.teaser-pet-input > h5, .teaser-pet-output > h5 { margin-bottom: 12px; }
+.teaser-pet-arrow { width: 24px; color: var(--muted); }
+.teaser-pet-volume { width: 100%; display: block; height: 285px; overflow: hidden; }
+.teaser-pet-anatomy { opacity: .62; filter: grayscale(1); }
+.teaser-pet-cells { opacity: .84; }
+.teaser-pet-maps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); opacity: .18; transition: opacity 650ms ease-out; }
+.teaser-pet-output[data-ready="true"] .teaser-pet-maps { opacity: 1; }
+.teaser-pet-output > p { display: grid; place-items: center; min-height: 44px; color: var(--blue); font-size: var(--type-caption); line-height: 1.5; }
+.teaser-tracer-body { display: block; width: 100%; height: 330px; overflow: hidden; }
+.teaser-cover-vessel { color: #e58a7b; }
+.teaser-cover-vessel--venous { color: #a9bbc9; }
+.teaser-cover-route, .teaser-cover-halo, .teaser-cover-trail { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+.teaser-cover-route { stroke-width: 1.5; opacity: .14; }
+.teaser-cover-halo { stroke-width: 13; opacity: .12; }
+.teaser-cover-trail { stroke-width: 3.1; opacity: .88; }
+.teaser-cover-particle { fill: #f1eeea; opacity: .94; }
+.teaser-cover-heart image { filter: brightness(1.55) saturate(1.18); }
+.teaser-cover-heart path { fill: none; stroke: #ed8a7d; stroke-width: 1.9; opacity: .65; }
+.teaser-tracer-control { display: flex; flex-direction: column; gap: 4px; align-items: center; color: var(--muted); font-size: var(--type-caption); line-height: 1.5; }
+.teaser-tracer-control input { appearance: none; width: min(100%, 180px); min-width: 0; height: 28px; background: transparent; cursor: ew-resize; }
+.teaser-tracer-control input::-webkit-slider-runnable-track { height: 2px; background: var(--strong); }
+.teaser-tracer-control input::-moz-range-track { height: 2px; background: var(--strong); }
+.teaser-tracer-control input::-webkit-slider-thumb { appearance: none; width: 12px; height: 12px; border-radius: 50%; background: var(--blue); margin-top: -5px; }
+.teaser-tracer-control input::-moz-range-thumb { width: 12px; height: 12px; border: 0; border-radius: 50%; background: var(--blue); }
+/* GALAH is a conversation with a fixed composer, not a separate paper card. */
+.teaser-galah-workspace { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 16px; height: 100%; min-height: 0; }
+.teaser-galah-layout { display: grid; grid-template-columns: minmax(0, .5fr) minmax(0, 1.5fr); gap: 20px; min-height: 0; }
+.teaser-galah-scan { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; min-height: 0; }
+.teaser-report-anatomy { display: block; width: 100%; min-height: 0; height: 280px; overflow: hidden; }
+.teaser-galah-scan > p { display: flex; gap: 6px; align-items: center; color: var(--muted); font-size: var(--type-caption); line-height: 1.5; }
+.teaser-galah-scan > p svg { width: 15px; height: 15px; flex: none; }
+.teaser-galah-conversation { position: relative; min-width: 0; min-height: 0; overflow-y: auto; overflow-anchor: none; scroll-behavior: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--strong) transparent; padding-right: 8px; }
+.teaser-galah-message { width: fit-content; max-width: 94%; margin: 0 0 18px auto; opacity: 0; transition: opacity 200ms ease-out; }
+.teaser-galah-message[data-visible="true"] { opacity: 1; }
+.teaser-galah-message > span { display: block; margin-bottom: 6px; text-align: right; color: var(--muted); font-size: var(--type-caption); line-height: 1.5; }
+.teaser-galah-message > p { padding: 10px 12px; color: var(--ink); background: #25221e; font-size: var(--type-meta); line-height: 1.5; }
+.teaser-galah-assistant { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; color: var(--subtle); font-size: var(--type-caption); line-height: 1.5; }
+.teaser-galah-avatar { display: grid; place-items: center; width: 24px; height: 24px; color: var(--bg); background: var(--ink); font-weight: var(--type-weight-emphasis); }
+.teaser-galah-greeting { margin-bottom: 20px; color: var(--subtle); font-size: var(--type-meta); line-height: 1.6; }
+.teaser-report-sheet { color: var(--ink); transition: opacity 200ms ease-out; }
+.teaser-report-sheet[data-writing="false"] { opacity: 0; pointer-events: none; }
+.teaser-report-title { display: flex; gap: 8px; align-items: center; font-size: var(--type-meta); line-height: 1.5; font-weight: var(--type-weight-emphasis); }
+.teaser-report-title svg { width: 18px; height: 18px; flex: none; }
+.teaser-report-status { color: var(--muted); font-size: var(--type-caption); line-height: 1.5; padding-block: 6px 12px; }
+.teaser-report-text { color: var(--subtle); font-size: var(--type-meta); line-height: 1.55; margin-top: 8px; }
+.teaser-report-text p { white-space: pre-wrap; }
+.teaser-report-text p + p { margin-top: 10px; }
+.teaser-report-word { display: inline-block; white-space: nowrap; }
+.teaser-report-exports { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; margin-top: 12px; opacity: 0; transition: opacity 250ms ease-out; }
+.teaser-report-exports[data-visible="true"] { opacity: 1; }
+.teaser-report-exports :is(a, button) { display: inline-flex; align-items: center; min-height: 36px; color: var(--blue); font-size: var(--type-caption); line-height: 1.5; text-decoration: underline; text-underline-offset: 4px; }
+.teaser-galah-composer { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 56px; padding: 8px 8px 8px 14px; border: 1px solid var(--strong); color: var(--ink); font-size: var(--type-meta); line-height: 1.5; }
+.teaser-galah-composer .is-placeholder { color: var(--muted); }
+.teaser-galah-composer button { display: grid; place-items: center; flex: none; width: 40px; height: 40px; color: var(--bg); background: var(--ink); }
+.teaser-galah-composer svg { width: 20px; height: 20px; }
+/* The complete original application fits the shared shell without captions. */
+.lumos-workflow-body { display: grid; grid-template-rows: minmax(0, 1fr); }
+.lumos-workflow-viewport { min-height: 0; min-width: 0; display: flex; align-items: center; }
+.lumos-workflow iframe { display: block; width: 100%; height: 100%; border: 0; background: var(--bg); }
+.lumos-workflow-viewport:fullscreen { background: var(--bg); }
+.lumos-workflow-actions { display: flex; align-items: center; gap: 12px; }
+.lumos-workflow-actions button { display: grid; place-items: center; width: 44px; height: 44px; margin-block: -12px; color: var(--muted); flex: none; }
+.lumos-workflow-actions button:hover { color: var(--ink); }
+.lumos-workflow-actions svg { width: 17px; height: 17px; }
+@media (max-width: 1100px) and (min-width: 761px) {
+  .tool-workflow { grid-template-rows: 52px minmax(0, 1fr) 80px; }
+  .tool-workflow-stage { padding: 18px; }
+  .teaser-galah-layout { grid-template-columns: minmax(0, .42fr) minmax(0, 1.58fr); gap: 12px; }
+}
+@media (max-width: 600px) {
+  .tool-workflow { height: 560px; grid-template-rows: 50px minmax(0, 1fr) 80px; }
+  .tool-workflow-chrome { padding: 12px 14px; }
+  .tool-workflow-stage { padding: 14px; }
+  .tool-workflow-controls { margin-inline: 14px; }
+  .tool-workflow-chapters { gap: 0 12px; }
+  .teaser-pet-workspace { grid-template-columns: minmax(0, 1fr) 18px minmax(0, 1fr); gap: 4px; }
+  .teaser-tracer-body, .teaser-pet-volume { height: 280px; }
+  .teaser-pet-arrow { width: 18px; }
+  .teaser-pet-maps { grid-template-columns: minmax(0, 1fr); }
+  .teaser-pet-maps .teaser-pet-volume:nth-child(2) { display: none; }
+  .teaser-galah-layout { grid-template-columns: minmax(0, 1fr); grid-template-rows: 66px minmax(0, 1fr); gap: 10px; }
+  .teaser-galah-scan { flex-direction: row; gap: 12px; justify-content: flex-start; }
+  .teaser-report-anatomy { width: 30px; height: 66px; order: -1; }
+  .teaser-galah-scan > p { margin-left: auto; }
+  .teaser-galah-scan > p svg { display: none; }
+  .teaser-galah-message { max-width: 100%; }
+  .lumos-workflow-controls .tool-workflow-chapters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tool-workflow *, .tool-workflow *::before, .tool-workflow *::after { transition: none !important; animation: none !important; }
+}

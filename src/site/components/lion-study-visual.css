@@ -1,0 +1,7 @@
+/* Full-strength colour comes from the atlas alpha, preserving its irregular
+   filled mesh. The patient images and shared tracer-label layout stay intact. */
+.lion-study-tracers .tool-study-tracer-view--fdg .lion-study-lesion-colour { flood-color: var(--coral); }
+.lion-study-tracers .tool-study-tracer-view--psma .lion-study-lesion-colour { flood-color: #68b6f5; }
+/* Reveal the existing masks together; their shapes and positions never change. */
+.tool-study--lion[data-loop="true"][data-started="true"] .lion-study-lesion { animation: lion-mask-reveal 6s ease-out infinite; }
+@keyframes lion-mask-reveal { 0%, 100% { opacity: 0; } 15%, 88% { opacity: 1; } }

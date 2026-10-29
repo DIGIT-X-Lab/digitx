@@ -1,0 +1,20 @@
+/* Main destinations are chapters of one document; detail records keep their URLs. */
+.continuous-page { --chapter-offset: 105px; }
+.continuous-page .site-chapter { scroll-margin-top: 89px; border-top: 1px solid var(--line-section); }
+.continuous-page #home { scroll-margin-top: 89px; }
+.continuous-page .home-hero-visual { padding-bottom: 0; }
+.continuous-page .research-opening { padding-top: 48px; }
+.continuous-page .research-pillar, .continuous-page .research-approach,
+.continuous-page .researcher-profile,
+.continuous-page #opportunities { scroll-margin-top: var(--chapter-offset); }
+.continuous-page .site-chapter:focus, .continuous-page #home:focus { outline: none; }
+@media (max-width: 1199px) and (min-width: 1024px) {
+  .site-layout--home .desktop-navigation ul { gap: 22px; }
+}
+@media (max-width: 1023px) {
+  .continuous-page { --chapter-offset: 89px; }
+  .continuous-page .site-chapter, .continuous-page #home { scroll-margin-top: 73px; }
+}
+@media (max-width: 700px) {
+  .continuous-page .research-opening { padding-top: 32px; }
+}

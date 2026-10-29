@@ -1,0 +1,26 @@
+{
+  "minYear": 2025,
+  "researchers": [
+    {
+      "name": "Lalith Kumar Shiyam Sundar",
+      "orcid": "0000-0003-3004-7937",
+      "identityEvidence": "https://pub.orcid.org/v3.0/0000-0003-3004-7937/person",
+      "discoveryNames": [
+        "Shiyam Sundar LK",
+        "Sundar LKS"
+      ],
+      "names": [
+        "Lalith Kumar Shiyam Sundar",
+        "Lalith K Shiyam Sundar"
+      ],
+      "affiliations": [
+        "LMU",
+        "Ludwig Maximilian University",
+        "Ludwig-Maximilians-Universität",
+        "Medical University of Vienna"
+      ],
+      "verifiedOn": "2026-10-27",
+      "scholarProfile": "https://scholar.google.com/citations?user=L6iMPN4AAAAJ&hl=en"
+    }
+  ]
+}

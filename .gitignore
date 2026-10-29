@@ -22,3 +22,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local design studies and review reports are not release assets.
+.impeccable/
+design-previews/
+
+# Retain portrait source files locally; publish only the approved web images.
+/public/portraits/*
+!/public/portraits/lalith-shiyam-sundar-studio-sharp-web.jpg
+!/public/portraits/hagen-lamprecht-web.jpg
+!/public/portraits/peter-benedict-schildberg-web.jpg
+!/public/portraits/maissa-monsour-studio-web.jpg
+!/public/portraits/maximilian-tiling-studio-web.jpg
+!/public/portraits/frederic-paul-thiele-web.webp

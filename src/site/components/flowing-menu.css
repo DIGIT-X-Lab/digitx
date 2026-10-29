@@ -1,0 +1,5 @@
+.flowing-menu-host { position: relative; isolation: isolate; }
+.flowing-menu-host::before { content: ""; position: absolute; inset: -16px; z-index: -1; background: var(--bg); pointer-events: none; }
+.flowing-menu-clip { position: absolute; overflow: clip; pointer-events: none; }
+.flowing-menu-reveal-row { position: absolute; overflow: hidden; pointer-events: none; }
+.flowing-menu-band { position: absolute; inset: 0; z-index: 2; background: #fff; mix-blend-mode: difference; will-change: transform; pointer-events: none; }

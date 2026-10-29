@@ -1,0 +1,79 @@
+/* Portrait and a person's own questions form one editorial profile.
+   Missing material remains explicit in the local review, never invented. */
+.people-editorial-intro { padding-block: clamp(54px, 7vw, 100px) 40px; }
+.people-editorial-intro > .prose-site { max-width: 49ch; margin-top: 28px; font-size: var(--type-lead); line-height: var(--type-leading-lead); letter-spacing: var(--type-tracking-lead); font-weight: var(--type-weight-body); }
+.people-review-banner { max-width: 76ch; margin-top: 32px; border-top: 1px solid var(--strong); padding-top: 16px; color: var(--muted); font-size: var(--type-caption); line-height: 1.65; }
+.people-review-banner > p:first-child { margin-bottom: 6px; color: var(--subtle); }
+.people-profile-index { display: flex; flex-wrap: wrap; gap: 12px 30px; padding-block: 28px 32px; border-bottom: 1px solid var(--line); }
+.people-profile-index a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: var(--type-nav); color: var(--subtle); }
+.people-profile-index a:hover { color: var(--ink); }
+.people-profile-index .site-arrow { width: 16px; height: 16px; }
+.researcher-profile { display: grid; grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr); gap: clamp(40px, 7vw, 100px); padding-block: clamp(48px, 6vw, 86px); border-bottom: 1px solid var(--line); scroll-margin-top: 110px; }
+.researcher-profile-identity, .researcher-profile-writing { min-width: 0; }
+.researcher-profile-identity h2 { max-width: 20ch; font-size: var(--type-heading); font-weight: var(--type-weight-heading); line-height: 1.13; letter-spacing: -0.03em; }
+.researcher-profile-role { max-width: 37ch; margin-top: 16px; color: var(--subtle); font-size: var(--type-meta); line-height: 1.6; }
+.researcher-profile-affiliation { max-width: 37ch; margin-top: 10px; color: var(--muted); font-size: var(--type-meta); line-height: 1.65; }
+.researcher-profile-links { display: flex; flex-wrap: wrap; gap: 0 20px; margin-top: 20px; }
+.researcher-profile-links a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--subtle); font-size: var(--type-action); }
+.researcher-profile-links .site-arrow { width: 14px; height: 14px; }
+.researcher-profile-links a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+.researcher-portrait { position: relative; width: 100%; max-width: 350px; aspect-ratio: 4 / 5; margin: 0 0 26px; }
+.researcher-portrait img { width: 100%; height: 100%; object-fit: cover; }
+.researcher-portrait figcaption { position: absolute; bottom: 12px; left: 12px; right: 12px; padding: 6px 10px; background: var(--bg); color: var(--subtle); font-size: var(--type-caption); }
+.researcher-portrait--pending { display: flex; align-items: end; border: 1px dashed var(--strong); background: transparent; padding: 20px; }
+.researcher-portrait--pending > div > p:first-child { color: var(--subtle); font-size: var(--type-meta); }
+.researcher-portrait--pending > div > p + p { max-width: 25ch; margin-top: 6px; color: var(--muted); font-size: var(--type-caption); line-height: 1.6; }
+.researcher-review-label { color: var(--muted); font-size: var(--type-caption); line-height: 1.6; }
+.researcher-story { margin-bottom: 40px; }
+.researcher-story > .researcher-review-label { margin-bottom: 20px; }
+.researcher-story-text { max-width: 42ch; color: var(--ink); font-size: var(--type-subheading); line-height: 1.55; font-weight: var(--type-weight-heading); letter-spacing: -0.02em; text-wrap: pretty; }
+.researcher-response { padding-block: 28px; border-top: 1px solid var(--line); }
+.researcher-response h3, .researcher-prompt-review h3 { font-size: var(--type-subheading); font-weight: var(--type-weight-heading); letter-spacing: -0.025em; line-height: 1.25; }
+.researcher-response > p:not(.researcher-review-label) { max-width: 55ch; margin-top: 18px; color: var(--subtle); font-size: var(--type-body); line-height: var(--type-leading-body); font-weight: var(--type-weight-body); }
+.researcher-response > .researcher-review-label { margin-top: 12px; }
+.researcher-prompt-review > .researcher-review-label { margin-bottom: 14px; }
+.researcher-prompt-review li { padding-block: 22px; border-top: 1px solid var(--line); }
+.researcher-prompt-review h3 { color: var(--subtle); }
+.researcher-authored-interests, .researcher-selected-work { margin-top: 28px; font-size: var(--type-body); line-height: var(--type-leading-body); font-weight: var(--type-weight-body); }
+.researcher-authored-interests h3, .researcher-selected-work h3 { margin-bottom: 12px; color: var(--muted); font-size: var(--type-meta); }
+.researcher-selected-work li + li { margin-top: 12px; }
+.researcher-selected-work a { display: flex; align-items: baseline; gap: 20px; }
+.researcher-selected-work a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.researcher-profile-writing:empty { display: none; }
+
+.people-stories { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; margin-top: 44px; }
+.researcher-preview { min-width: 0; }
+.researcher-portrait--compact { max-width: none; margin-bottom: 20px; padding: 16px; }
+.researcher-preview-person h3 { display: flex; align-items: start; justify-content: space-between; gap: 14px; font-size: var(--type-subheading); font-weight: var(--type-weight-heading); line-height: 1.25; letter-spacing: -0.025em; }
+.researcher-preview-person h3 .site-arrow { width: 17px; height: 17px; margin-top: 4px; }
+.researcher-preview-person:hover h3 { text-decoration: underline; text-decoration-color: var(--strong); text-underline-offset: 4px; }
+.researcher-preview-role { margin-top: 12px; color: var(--muted); font-size: var(--type-meta); line-height: 1.5; }
+.researcher-preview-answer { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
+.researcher-preview-question { margin-bottom: 12px; color: var(--subtle); font-size: var(--type-meta); line-height: 1.5; }
+.researcher-preview-answer > p:not(.researcher-preview-question):not(.researcher-review-label) { color: var(--ink); font-size: var(--type-body); line-height: var(--type-leading-body); text-wrap: pretty; font-weight: var(--type-weight-body); }
+@media (max-width: 1023px) { .people-stories { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 28px; } }
+@media (max-width: 700px) {
+  .people-editorial-intro { padding-top: 44px; }
+  .people-profile-index { gap: 4px 20px; }
+  .researcher-profile { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .researcher-portrait { max-width: 400px; }
+  .researcher-portrait--compact { max-width: none; }
+  .researcher-story { margin-bottom: 32px; }
+  .researcher-prompt-review h3 { font-size: var(--type-subheading); font-weight: var(--type-weight-heading); }
+  .people-stories { margin-top: 30px; gap: 40px 24px; }
+}
+@media (max-width: 420px) { .people-stories { grid-template-columns: minmax(0, 1fr); } }
+
+/* A supplied portrait or authored response expands a profile. Until then, the
+   public roster is a deliberate reading layout, not a half-empty portrait grid. */
+.researcher-profile--directory { display: block; }
+.researcher-profile--directory .researcher-profile-identity { display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(32px, 7vw, 100px); }
+.researcher-profile--directory h2 { grid-row: 1 / 4; }
+.researcher-profile--directory .researcher-profile-role { margin-top: 0; }
+.researcher-profile--directory .researcher-profile-role,
+.researcher-profile--directory .researcher-profile-affiliation,
+.researcher-profile--directory .researcher-profile-links { grid-column: 2; }
+@media (max-width: 700px) {
+  .researcher-profile--directory .researcher-profile-identity { display: block; }
+  .researcher-profile--directory .researcher-profile-role { margin-top: 16px; }
+}

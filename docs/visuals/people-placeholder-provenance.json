@@ -1,0 +1,28 @@
+{
+  "created": "2026-10-25",
+  "tool": "Built-in image_gen",
+  "purpose": "PI-requested homepage design placeholders, not real researchers or likenesses.",
+  "sourceForResponseThemes": "https://thedigitxlab.com/",
+  "records": [
+    {
+      "file": "public/illustrations/people/portrait-01.png",
+      "source": "/Users/nutellabear/.codex/generated_images/01a1412f-3d0e-7c01-8f85-65914fd2188e/exec-5ce60ee7-d2b3-43ac-82b4-2a17d8e5584b.png",
+      "prompt": "Create one premium editorial photographic portrait for a biomedical research laboratory website DESIGN MOCKUP. This is an entirely FICTIONAL person, a placeholder, not a likeness of any named or real researcher. Portrait aspect ratio 4:5, head and upper torso, plain warm charcoal studio background (#1a1815), natural soft window lighting from camera left, monochrome warm silver/ivory palette, rich subtle tonal detail, genuine skin texture, inviting thoughtful expression, relaxed dark everyday academic clothing, no lab coat, no suit, no props, no logos, no text, no borders, no neon, no cinematic effects. Composition: person's eyes around 34 percent from top; enough space above head and shoulders; looking close to camera. High-end independent science magazine photography. An imaginary male researcher in his early forties, short dark slightly wavy hair, neat short beard, round thin glasses, calm smile, dark crew-neck sweater."
+    },
+    {
+      "file": "public/illustrations/people/portrait-02.png",
+      "source": "/Users/nutellabear/.codex/generated_images/01a1412f-3d0e-7c01-8f85-65914fd2188e/exec-ddf8d5b0-3f04-467b-ab3d-d48f3bfec4a7.png",
+      "prompt": "Create one premium editorial photographic portrait for a biomedical research laboratory website DESIGN MOCKUP. This is an entirely FICTIONAL person, a placeholder, not a likeness of any named or real researcher. Portrait aspect ratio 4:5, head and upper torso, plain warm charcoal studio background (#1a1815), natural soft window lighting from camera left, monochrome warm silver/ivory palette, rich subtle tonal detail, genuine skin texture, inviting thoughtful expression, relaxed dark everyday academic clothing, no lab coat, no suit, no props, no logos, no text, no borders, no neon, no cinematic effects. Composition: person's eyes around 34 percent from top; enough space above head and shoulders; looking close to camera. High-end independent science magazine photography. An imaginary male researcher in his late twenties, short loose light brown curls, clean shaven, gentle relaxed smile, dark open-neck cotton overshirt."
+    },
+    {
+      "file": "public/illustrations/people/portrait-03.png",
+      "source": "/Users/nutellabear/.codex/generated_images/01a1412f-3d0e-7c01-8f85-65914fd2188e/exec-713dd860-f55e-448e-85b9-f2b9b1700570.png",
+      "prompt": "Create one premium editorial photographic portrait for a biomedical research laboratory website DESIGN MOCKUP. This is an entirely FICTIONAL person, a placeholder, not a likeness of any named or real researcher. Portrait aspect ratio 4:5, head and upper torso, plain warm charcoal studio background (#1a1815), natural soft window lighting from camera left, monochrome warm silver/ivory palette, rich subtle tonal detail, genuine skin texture, inviting thoughtful expression, relaxed dark everyday academic clothing, no lab coat, no suit, no props, no logos, no text, no borders, no neon, no cinematic effects. Composition: person's eyes around 34 percent from top; enough space above head and shoulders; looking close to camera. High-end independent science magazine photography. An imaginary male researcher in his early thirties, straight medium length dark hair brushed back, light stubble, slim rectangular glasses, thoughtful friendly expression, dark linen shirt."
+    },
+    {
+      "file": "public/illustrations/people/portrait-04.png",
+      "source": "/Users/nutellabear/.codex/generated_images/01a1412f-3d0e-7c01-8f85-65914fd2188e/exec-a0589d76-e8d9-432b-b2e4-227e1affb3c6.png",
+      "prompt": "Create one premium editorial photographic portrait for a biomedical research laboratory website DESIGN MOCKUP. This is an entirely FICTIONAL person, a placeholder, not a likeness of any named or real researcher. Portrait aspect ratio 4:5, head and upper torso, plain warm charcoal studio background (#1a1815), natural soft window lighting from camera left, monochrome warm silver/ivory palette, rich subtle tonal detail, genuine skin texture, inviting thoughtful expression, relaxed dark everyday academic clothing, no lab coat, no suit, no props, no logos, no text, no borders, no neon, no cinematic effects. Composition: person's eyes around 34 percent from top; enough space above head and shoulders; looking close to camera. High-end independent science magazine photography. An imaginary male researcher in his mid twenties, thick short curly black hair, neatly trimmed beard, warm open smile, plain dark t-shirt."
+    }
+  ]
+}

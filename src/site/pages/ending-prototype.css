@@ -1,0 +1,55 @@
+/* Approved Opportunities and Contact surfaces, plus the optional local comparison controls. */
+.ending-preview-page { padding-bottom: 76px; }
+.ep-opportunities { padding-block: 56px 72px; border-top: 1px solid var(--line); scroll-margin-top: 112px; }
+.ep-opportunities > h3 { margin-bottom: 56px; }
+.ep-opportunity-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: start; }
+.ep-culture { display: grid; grid-template-columns: minmax(150px, .85fr) minmax(0, 1.15fr); gap: 28px; align-items: center; margin: 0; }
+.ep-culture-logo { width: 100%; height: auto; }
+.ep-culture figcaption { font-size: var(--type-body); line-height: 1.5; color: var(--ink); }
+.ep-opening { display: grid; gap: 20px; padding-block: 20px 28px; border-block: 1px solid var(--strong); }
+.ep-opening:focus-visible { outline: none; }
+.ep-opening-status { font-size: var(--type-meta); color: var(--ink); }
+.ep-opening h4 { font-size: var(--type-section); font-weight: var(--type-weight-heading); line-height: 1.18; letter-spacing: var(--type-tracking-display); }
+.ep-opening > p { font-size: var(--type-body); line-height: var(--type-leading-body); color: var(--subtle); }
+.ep-opening-action { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 4px; font-size: var(--type-action); }
+.ep-opening-action .site-arrow { width: 28px; height: 28px; }
+.ep-closed { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; margin-top: 32px; }
+.ep-closed h4 { font-size: var(--type-body); font-weight: var(--type-weight-body); line-height: 1.4; color: var(--subtle); }
+.ep-closed p { margin-top: 8px; font-size: var(--type-meta); color: var(--muted); line-height: 1.5; }
+.ep-contact { background: var(--ink); color: var(--bg); }
+.ep-contact-inner { padding-block: 64px 76px; }
+.ep-contact h2 { font-size: var(--type-display); font-weight: var(--type-weight-heading); letter-spacing: var(--type-tracking-display); line-height: var(--type-leading-display); }
+.ep-contact-bottom { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 72px; align-items: start; margin-top: 40px; }
+.ep-contact-bottom .page-lead { color: var(--bg); margin: 0; }
+.ep-email { grid-column: 1; display: flex; align-items: center; justify-self: start; gap: 24px; min-height: 48px; padding-block: 12px; border-bottom: 1px solid currentColor; font-size: var(--type-action); line-height: 1.5; }
+.ep-email > span { min-width: 0; overflow-wrap: anywhere; }
+.ep-email .site-arrow { flex: none; width: 24px; height: 24px; transition: translate 180ms var(--ease); }
+.ep-email:hover .site-arrow { translate: 3px -3px; }
+.ep-email:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
+.ep-switcher { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 60; display: flex; align-items: center; gap: 16px; max-width: calc(100vw - 24px); padding: 8px 16px; background: var(--bg); color: var(--ink); border: 1px solid var(--strong); font-size: var(--type-meta); }
+.ep-switcher > span { color: var(--muted); white-space: nowrap; }
+.ep-switcher button { min-height: 40px; white-space: nowrap; color: var(--muted); }
+.ep-switcher button[aria-pressed="true"] { color: var(--ink); text-decoration: underline; text-underline-offset: 6px; }
+.ep-switcher button[aria-label] { display: grid; place-items: center; min-width: 32px; }
+.ep-arrow-back { display: inline-flex; transform: rotate(180deg); }
+@media (max-width: 1100px) {
+  .ep-opportunity-grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 40px; }
+  .ep-culture { grid-template-columns: 120px minmax(0, 1fr); gap: 20px; }
+  .ep-contact-bottom { column-gap: 40px; }
+}
+@media (max-width: 800px) {
+  .ep-opportunities { padding-block: 40px 48px; scroll-margin-top: 89px; }
+  .ep-opportunities > h3 { margin-bottom: 32px; }
+  .ep-opportunity-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .ep-positions { grid-row: 1; }
+  .ep-culture { grid-template-columns: minmax(100px, .65fr) minmax(0, 1.35fr); gap: 24px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .ep-contact-inner { padding-block: 44px 48px; }
+  .ep-contact-bottom { grid-template-columns: minmax(0, 1fr); gap: 28px; margin-top: 28px; }
+  .ep-switcher { gap: 12px; }
+  .ep-switcher > span { display: none; }
+}
+@media (max-width: 450px) {
+  .ep-culture { grid-template-columns: 100px minmax(0, 1fr); gap: 20px; }
+  .ep-closed { gap: 20px; }
+}
+@media (prefers-reduced-motion: reduce) { .ep-email .site-arrow { transition: none; translate: none; } }

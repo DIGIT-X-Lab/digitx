@@ -1,0 +1,24 @@
+.identity-mark {
+  display: inline-block;
+  flex: none;
+  width: var(--identity-size, 34px);
+  height: var(--identity-size, 34px);
+  background: currentColor;
+  -webkit-mask-image: var(--identity-image);
+  mask-image: var(--identity-image);
+  -webkit-mask-size: var(--identity-scale);
+  mask-size: var(--identity-scale);
+  -webkit-mask-position: var(--identity-position);
+  mask-position: var(--identity-position);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  pointer-events: none;
+}
+.tool-index-title > .identity-mark,
+.pillar-disclosure-title > .identity-mark { opacity: 0; transition: opacity 100ms ease-out; }
+.tool-index-row[data-lit="true"] .identity-mark,
+.pillar-disclosure-trigger:is(:hover, :focus-visible) .identity-mark { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .tool-index-title > .identity-mark,
+  .pillar-disclosure-title > .identity-mark { transition: none; }
+}

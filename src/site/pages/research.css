@@ -1,0 +1,68 @@
+/*
+THESIS: Three connected research pillars, read in sequence and grounded in work.
+OWN-WORLD: Home's warm black, ivory Inter, scientific colour and fine rules.
+STORY: Scope, methods, illustrative examples, then verified tools and projects.
+FIRST VIEWPORT: Full-width lead and the approach film; methods lead into Tools.
+PILLARS: Full-width stacked disclosure rows; one drawer opens beneath its trigger.
+FORM: PI-approved sequential sections, extended from the established Home system.
+*/
+.site-layout--research { --gutter: clamp(24px, 4.5vw, 96px); --research-header-height: 89px; }
+.site-layout--research .shell { max-width: 1920px; }
+.research-page { --research-header-height: 89px; --research-invitation-gap: 40px; font-size: var(--type-body); line-height: var(--type-leading-body); font-weight: var(--type-weight-body); }
+.research-page p { text-wrap: pretty; }
+.research-opening { padding-block: clamp(56px, 4vw, 80px) 24px; }
+.research-opening:has(+ .research-approach .research-film-poster[aria-expanded='false']) { padding-bottom: var(--research-invitation-gap); }
+.research-opening > :is(h1, h2) { font-size: var(--type-display); font-weight: 420; line-height: 1.16; letter-spacing: -.025em; margin-bottom: 48px; }
+.research-opening-lead { font-size: var(--type-lead); line-height: var(--type-leading-lead); letter-spacing: var(--type-tracking-lead); font-weight: var(--type-weight-body); }
+.research-pillars { padding-top: var(--research-invitation-gap); padding-bottom: 48px; scroll-margin-top: calc(var(--research-header-height) + 16px); }
+.research-pillar-header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 24px; }
+.research-pillar-heading { color: var(--ink); font-size: var(--type-section); font-weight: var(--type-weight-heading); line-height: 1.2; letter-spacing: var(--type-tracking-display); }
+.research-pillar-grid { grid-template-columns: minmax(0, 1fr); column-gap: 0; border-bottom: 1px solid var(--line); }
+.research-pillar-toggle { grid-column: 1; grid-row: var(--pillar-row); border-top: 1px solid var(--line); }
+.research-pillar-grid .pillar-disclosure-trigger { grid-template-columns: 32px minmax(0, 1fr) 32px; grid-template-rows: auto; align-items: center; gap: 24px; min-height: 104px; height: auto; padding: 28px 16px; }
+.research-pillar-grid .pillar-disclosure-meta { grid-column: 1; grid-row: 1; align-self: center; margin: 0; }
+.research-pillar-grid .pillar-disclosure-title { grid-column: 2; grid-row: 1; align-self: center; max-width: none; margin: 0; text-wrap: pretty; text-box-trim: none; }
+.research-pillar-grid .pillar-disclosure-plus { right: 16px; }
+.research-pillar-drawer { grid-column: 1; grid-row: var(--drawer-row); overflow: hidden; min-width: 0; }
+.research-pillar-drawer-content { padding-block: 16px 32px; }
+.research-approach { padding-block: 0; scroll-margin-top: calc(var(--research-header-height) + 16px); }
+.research-video-surface { position: relative; overflow: hidden; }
+.research-film-preview { position: absolute; inset: 0 0 auto; }
+.research-film-beam { display: block; width: 100%; --beam-stroke-opacity: 7; --beam-inner-opacity: .45; --beam-bloom-opacity: 2; }
+.research-film-preview .research-film-beam[data-beam]::after { padding: 2px; }
+.research-film-invitation { position: relative; border: 1px solid var(--strong); border-radius: 10px; background: #100f0d; }
+.research-film-poster { position: relative; display: flex; align-items: center; width: 100%; min-height: 104px; padding: 24px 24px 24px 104px; border-radius: inherit; background: transparent; text-align: left; font-size: var(--type-action); letter-spacing: -.02em; scroll-margin-top: calc(var(--research-header-height) + 16px); }
+.research-film-poster:focus-visible { outline-offset: -3px; }
+.research-film-invitation .research-film-metal { position: absolute; left: 24px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+.research-film-play { width: 56px; height: 56px; display: grid; place-items: center; color: var(--ink); border-radius: 50%; background: linear-gradient(145deg, #3e3d3b, #171716 65%, #2b2b29); box-shadow: inset 0 0 0 1px #77736e; }
+.research-film-preview[data-effects-active='false'] [data-beam],
+.research-film-preview[data-effects-active='false'] [data-beam]::before,
+.research-film-preview[data-effects-active='false'] [data-beam]::after,
+.research-film-preview[data-effects-active='false'] [data-beam-bloom] { animation-play-state: paused !important; }
+.research-film-content { position: absolute; inset: 0 0 auto; }
+.research-film-content:focus { outline: none; }
+.research-film-content[aria-hidden='true'] { pointer-events: none; }
+.research-film-toolbar { position: absolute; top: 0; right: 0; z-index: 2; }
+.research-film-close { display: grid; place-items: center; width: 48px; height: 48px; color: var(--subtle); }
+.research-film-close:hover { color: var(--ink); }
+.research-film-close:focus-visible { outline-offset: -3px; }
+.research-page .research-story { position: relative; width: 100%; max-width: none; padding-top: 0; }
+.research-page .research-story-frame { display: block; width: 100%; height: auto; aspect-ratio: 1.6; border: 0; background: var(--bg); }
+.research-page .story-load-status { padding-block: 12px; color: var(--muted); font-size: var(--type-meta); }
+.research-page .story-open { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; margin-top: 8px; color: var(--subtle); font-size: var(--type-action); }
+.research-page .story-open:hover { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 1023px) {
+  .site-layout--research, .research-page { --research-header-height: 73px; }
+}
+@media (max-width: 700px) {
+  .research-pillars { padding-bottom: 32px; }
+  .research-pillar-grid .pillar-disclosure-trigger { grid-template-columns: 24px minmax(0, 1fr) 28px; gap: 12px; min-height: 96px; padding: 24px 8px; }
+  .research-pillar-grid .pillar-disclosure-plus { right: 8px; }
+  .research-page { --research-invitation-gap: 28px; }
+  .research-film-poster { min-height: 96px; padding: 20px 16px 20px 80px; }
+  .research-film-invitation .research-film-metal { left: 16px; }
+  .research-film-play { width: 48px; height: 48px; }
+  .research-opening { padding-block: 40px 24px; }
+  .research-opening > :is(h1, h2) { margin-bottom: 28px; }
+  .research-opening-lead { line-height: 1.4; }
+}

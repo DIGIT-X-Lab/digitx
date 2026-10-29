@@ -1,0 +1,70 @@
+/* All experiment rules are scoped to the separate review route. */
+.review-layout .header-inner { gap: 28px; }
+.review-layout .desktop-navigation ul { gap: 24px; }
+.review-layout .site-footer { padding-bottom: 32px; }
+.review-layout .job-application > .prose-site { max-width: 65ch; }
+.review-layout #main:focus, .review-page #opportunities:focus { outline: none; }
+.review-page #opportunities { scroll-margin-top: 105px; }
+.review-page .ep-culture { grid-template-columns: 100px minmax(0, 1fr); gap: 28px; align-items: start; }
+.review-page .ep-opportunity-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 64px; }
+.review-page .ep-culture-logo { width: 100px; }
+.review-page .ep-culture figcaption { max-width: 44ch; }
+.review-brand-group { display: grid; gap: 2px; flex: none; }
+.review-comparison { display: flex; align-items: center; gap: 10px; color: var(--ink); font-size: var(--type-caption); white-space: nowrap; }
+.review-comparison > span { color: var(--muted); }
+.review-comparison a { display: inline-flex; align-items: center; gap: 4px; min-height: 28px; }
+.review-comparison a:hover { text-decoration: underline; text-underline-offset: 5px; }
+.review-comparison .site-arrow { width: 13px; height: 13px; }
+.review-projects { padding-block: 48px 64px; }
+.review-projects-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; margin-bottom: 40px; }
+.review-projects-heading details { max-width: 42ch; color: var(--subtle); font-size: var(--type-body); }
+.review-projects-heading summary { cursor: pointer; font-size: var(--type-meta); text-decoration: underline; text-underline-offset: 5px; }
+.review-projects-heading details p { margin-top: 16px; }
+.review-projects-grid { display: grid; grid-template-columns: minmax(230px, .65fr) minmax(0, 1.6fr); gap: 64px; }
+.review-project-selectors { align-self: start; }
+.review-project-selectors button { position: relative; display: grid; width: 100%; grid-template-columns: minmax(0, 1fr) 24px; gap: 8px 16px; padding: 22px 8px; text-align: left; border-bottom: 1px solid var(--line); font-size: var(--type-subheading); color: var(--subtle); }
+.review-project-selectors button:first-of-type { border-top: 1px solid var(--line); }
+.review-project-selectors button > :first-child { grid-column: 1; }
+.review-project-selector-status { grid-column: 1; font-size: var(--type-meta); color: var(--muted); }
+.review-project-selectors button > .site-arrow { grid-column: 2; grid-row: 1 / 3; align-self: center; }
+.review-project-selectors button[aria-pressed="true"] { color: var(--ink); }
+.review-project-selectors button[aria-pressed="true"] > :first-child { text-decoration: underline; text-underline-offset: 8px; }
+.review-project-selectors button:focus-visible { outline: none; }
+#review-project-detail { min-width: 0; padding-left: 40px; border-left: 1px solid var(--line); }
+.review-project-heading { display: grid; grid-template-columns: minmax(0, 1fr) 104px; gap: 28px; align-items: start; }
+.review-project-heading h3 { margin-top: 10px; font-size: var(--type-heading); line-height: 1.3; letter-spacing: var(--type-tracking-display); font-weight: var(--type-weight-heading); text-wrap: pretty; }
+.review-project-signature .project-identity { min-height: 0; height: 104px; width: 104px; }
+.review-project-signature .project-identity-pose { width: 100%; height: 100%; }
+.review-project-description { margin-top: 24px; max-width: 65ch; color: var(--subtle); font-size: var(--type-body); line-height: var(--type-leading-body); }
+.review-project-facts { display: flex; flex-wrap: wrap; gap: 20px 36px; margin-top: 28px; font-size: var(--type-meta); }
+.review-project-facts dt { color: var(--muted); }
+.review-project-facts dd { margin-top: 6px; color: var(--ink); }
+.review-project-tool { display: inline-flex; align-items: center; gap: 28px; margin-top: 28px; min-height: 44px; font-size: var(--type-action); text-decoration: underline; text-decoration-color: var(--strong); text-underline-offset: 7px; }
+.review-project-tool:hover { text-decoration-color: var(--ink); }
+@media (max-width: 1200px) {
+  .review-layout .desktop-navigation { display: none; }
+  .review-layout .menu-toggle { display: inline-flex; }
+  .review-layout .mobile-navigation { display: block; height: calc(100dvh - 88px); }
+  .review-projects-grid { gap: 32px; grid-template-columns: minmax(210px, .65fr) minmax(0, 1.5fr); }
+  .review-page .ep-opportunity-grid { gap: 40px; }
+}
+@media (max-width: 800px) {
+  .review-projects { padding-block: 36px 48px; }
+  .review-projects-heading { display: block; margin-bottom: 28px; }
+  .review-projects-heading details { margin-top: 24px; }
+  .review-projects-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .review-project-selectors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .review-project-selectors button { padding: 16px 0; border-top: 1px solid var(--line); font-size: var(--type-body); display: flex; flex-direction: column; align-items: flex-start; }
+  .review-project-selectors button > .site-arrow { display: none; }
+  .review-project-selector-status { font-size: var(--type-caption); }
+  #review-project-detail { padding-left: 0; border-left: 0; }
+  .review-project-heading { grid-template-columns: minmax(0, 1fr) 72px; gap: 20px; }
+  .review-project-signature .project-identity { width: 72px; height: 72px; }
+  .review-page .ep-opportunity-grid { grid-template-columns: minmax(0, 1fr); }
+  .review-page .ep-culture { grid-template-columns: 80px minmax(0, 1fr); gap: 24px; }
+  .review-page .ep-culture-logo { width: 80px; }
+}
+@media (max-width: 1023px) {
+  .review-layout .mobile-navigation { height: calc(100dvh - 72px); }
+  .review-page #opportunities { scroll-margin-top: 89px; }
+}

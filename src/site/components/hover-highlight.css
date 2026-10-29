@@ -1,0 +1,7 @@
+.hover-highlight-host { position: relative; isolation: isolate; }
+/* Extend the dark blend backdrop into the inset, keeping the white uniform. */
+.hover-highlight-host::before { content: ""; position: absolute; inset: -16px; z-index: -1; background: var(--bg); pointer-events: none; }
+.hover-highlight { position: absolute; inset: 0; z-index: 2; pointer-events: none; mix-blend-mode: difference; }
+.hover-highlight-surface, .hover-highlight-wake { position: absolute; background: #fff; }
+.hover-highlight-wake { opacity: .16; box-shadow: 0 0 18px 6px #ffffff18; }
+@media (prefers-reduced-motion: reduce) { .hover-highlight-host [data-hover-item] { transition: none; } }

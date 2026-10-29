@@ -1,0 +1,7 @@
+Thinking Orbs 0.3.2
+Copyright (c) 2026 Jakub Antalik
+MIT licence, see LICENSE. Unmodified geometry engine vendored from the npm package.
+https://libraries.dev/orbs
+https://github.com/Jakubantalik/Libraries.dev/tree/main/packages/thinking-orbs
+
+Regenerate with: npm run sync:story-vendor

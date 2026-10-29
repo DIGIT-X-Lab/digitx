@@ -1,0 +1,46 @@
+.tool-study.tool-study--nifti2dicom .tool-study-stage { height: auto; }
+.tool-study.tool-study--nifti2dicom .tool-study-motion { top: auto; bottom: -10px; right: -8px; }
+.nifti-visual { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.nifti-format-labels { display: flex; justify-content: center; align-items: center; gap: 24px; flex: none; padding-inline: 24px; font-size: var(--type-meta); line-height: 1.5; }
+.nifti-format-source { color: var(--muted); }
+.nifti-format-output { color: var(--blue); }
+.nifti-format-labels .site-arrow { width: 20px; height: 20px; flex: none; color: var(--strong); }
+.nifti-art { position: relative; flex: none; height: clamp(214px, 50cqi, 364px); }
+.nifti-volume { display: block; width: 100%; height: 100%; overflow: visible; }
+.nifti-slice { transform: translateY(var(--spread-y)); }
+.nifti-plane-surface { fill: var(--bg); fill-opacity: .35; }
+.nifti-plane-grid { fill: none; stroke: var(--subtle); stroke-width: .65; stroke-opacity: .22; }
+.nifti-plane-edge { fill: none; stroke: var(--subtle); stroke-width: 1; stroke-opacity: .55; }
+.nifti-plane-corners { fill: none; stroke: var(--blue); stroke-width: 1.65; }
+.nifti-cell { fill-opacity: .8; }
+.nifti-cell--blue { fill: var(--blue); }
+.nifti-cell--coral { fill: var(--coral); }
+.nifti-volume-edges { fill: none; stroke: var(--subtle); stroke-width: .8; opacity: 0; }
+.nifti-reference-frame { fill: none; stroke: var(--blue); stroke-width: .8; stroke-opacity: .5; }
+.nifti-reference { display: flex; align-items: center; justify-content: center; gap: 8px; padding-inline: 44px; flex: none; color: var(--muted); font-size: var(--type-meta); line-height: 1.5; }
+.nifti-reference > svg { width: 20px; height: 20px; color: var(--blue); }
+
+/* The packed volume opens in just over a second. The same cell groups remain
+   mounted throughout; only the exploded-view spacing and container cues move. */
+.tool-study--nifti2dicom[data-started="true"] .nifti-slice { animation: nifti-unpack 6s cubic-bezier(.16, 1, .3, 1) infinite; }
+.tool-study--nifti2dicom[data-started="true"] .nifti-volume-edges { animation: nifti-enclosure 6s linear infinite; }
+.tool-study--nifti2dicom[data-started="true"] :is(.nifti-plane-corners, .nifti-reference-frame) { animation: nifti-reference 6s linear infinite; }
+.tool-study--nifti2dicom[data-started="true"] .nifti-format-source { animation: nifti-source-label 6s linear infinite; }
+.tool-study--nifti2dicom[data-started="true"] .nifti-format-output { animation: nifti-output-label 6s linear infinite; }
+
+/* Inspection and accessibility expose the complete conversion immediately. */
+.tool-study--nifti2dicom:is([data-inspecting="true"], [data-reduced="true"]) .nifti-visual * { animation: none !important; }
+@keyframes nifti-unpack {
+  0%, 5%, 100% { transform: translateY(var(--packed-y)); }
+  25%, 88% { transform: translateY(var(--spread-y)); }
+}
+@keyframes nifti-enclosure { 0%, 5%, 100% { opacity: 1; } 17%, 88% { opacity: 0; } }
+@keyframes nifti-reference { 0%, 8%, 100% { opacity: 0; } 25%, 88% { opacity: 1; } }
+@keyframes nifti-source-label { 0%, 5%, 100% { color: var(--ink); } 25%, 88% { color: var(--muted); } }
+@keyframes nifti-output-label { 0%, 5%, 100% { color: var(--muted); } 25%, 88% { color: var(--blue); } }
+
+@container (max-width: 380px) {
+  .nifti-format-labels { gap: 14px; padding-inline: 0; }
+  .nifti-visual { gap: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .nifti-visual * { animation: none !important; } }
