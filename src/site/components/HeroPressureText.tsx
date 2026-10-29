@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
  * https://reactbits.dev/text-animations/text-pressure
  * Real and automatic pointers share the same rendering; idle/offscreen work stops.
  */
-export function HeroPressureText({ text, outline = false, autoShine = false }: { text: string; outline?: boolean; autoShine?: boolean }) {
+export function HeroPressureText({ text, outline = false, autoShine }: { text: string; outline?: boolean; autoShine?: "intro" | "settled" }) {
   const root = useRef<HTMLSpanElement>(null);
   useEffect(() => {
     const element = root.current!;
@@ -14,8 +14,11 @@ export function HeroPressureText({ text, outline = false, autoShine = false }: {
     const fine = matchMedia("(hover: hover) and (pointer: fine)");
     let frame = 0, timer = 0, visible = false;
     let point: { x: number; y: number } | null = null;
+    const phaseVisible = () => !sequence || (autoShine === "intro"
+      ? sequence.dataset.enhanced === "true" && sequence.dataset.revealed !== "true" && Number(sequence.dataset.progress ?? 0) < .12
+      : sequence.dataset.revealed === "true");
     const automaticAllowed = () => autoShine && outline && visible && !document.hidden
-      && !motion.matches && fine.matches && (!sequence || sequence.dataset.revealed === "true");
+      && !motion.matches && fine.matches && phaseVisible();
     const markShining = (value: boolean) => {
       if (autoShine && element.dataset.shining !== String(value)) element.dataset.shining = String(value);
     };
@@ -83,7 +86,7 @@ export function HeroPressureText({ text, outline = false, autoShine = false }: {
     };
     const leave = () => { reset(); schedule(1400); };
     const sync = () => {
-      if (document.hidden || motion.matches || !fine.matches || (autoShine && !visible)) reset();
+      if (document.hidden || motion.matches || !fine.matches || (autoShine && (!visible || !phaseVisible()))) reset();
       else schedule();
     };
     const intersection = new IntersectionObserver(([entry]) => {
@@ -93,7 +96,7 @@ export function HeroPressureText({ text, outline = false, autoShine = false }: {
     const reveal = new MutationObserver(sync);
     if (autoShine) {
       intersection.observe(element);
-      if (sequence) reveal.observe(sequence, { attributes: true, attributeFilter: ["data-revealed"] });
+      if (sequence) reveal.observe(sequence, { attributes: true, attributeFilter: autoShine === "intro" ? ["data-enhanced", "data-progress", "data-revealed"] : ["data-revealed"] });
     }
     element.addEventListener("pointermove", move);
     element.addEventListener("pointerleave", leave);

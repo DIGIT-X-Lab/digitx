@@ -22,13 +22,27 @@ export function HomeHero({ reviewPreview = false }: { reviewPreview?: boolean } 
   const { opening } = home;
   const questionBreak = opening.title.indexOf(" when ");
   const sequence = useHeroSequence({ navigationAware: reviewPreview });
+  const scrollCue = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const cue = scrollCue.current!;
+    let visible = false;
+    const sync = () => { cue.dataset.inviting = String(visible && !document.hidden); };
+    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); });
+    observer.observe(cue);
+    document.addEventListener("visibilitychange", sync);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", sync);
+      delete cue.dataset.inviting;
+    };
+  }, []);
   return <div className="home-page">
     <section ref={sequence.root} id="home" data-site-section="home" className="home-hero-sequence" aria-labelledby="home-title" tabIndex={-1}>
       <div ref={sequence.stage} className="home-hero shell">
       <div className="home-hero-copy">
         <p className="home-affiliation">{opening.eyebrow.split(" · ").map((part, index) => <span key={part}>{index > 0 && <span className="home-affiliation-separator"> · </span>}{part}</span>)}</p>
         <h1 id="home-title" tabIndex={-1}>
-          <span className="home-question-main">{opening.titleLines.map((line, index) => <span className="home-question-line" key={line}>{index > 0 && " "}{index === opening.titleLines.length - 1 ? <>{line.slice(0, line.indexOf(opening.titleHighlight))}<span className="home-question-highlight"><HeroPressureText text={opening.titleHighlight} outline autoShine /></span></> : line}</span>)}</span>{" "}
+          <span className="home-question-main">{opening.titleLines.map((line, index) => <span className="home-question-line" key={line}>{index > 0 && " "}{index === opening.titleLines.length - 1 ? <>{line.slice(0, line.indexOf(opening.titleHighlight))}<span className="home-question-highlight"><HeroPressureText text={opening.titleHighlight} outline autoShine="settled" /></span></> : line}</span>)}</span>{" "}
           <span className="home-question-condition">{opening.title.slice(questionBreak + 1)}</span>
         </h1>
         <div className="home-hero-bottom">
@@ -40,10 +54,10 @@ export function HomeHero({ reviewPreview = false }: { reviewPreview?: boolean } 
       </div>
       <div className="home-hero-intro" aria-hidden="true">
         <p className="home-intro-question"><span>{opening.intro.lead}</span><span className="home-intro-focus"><HeroPressureText text={opening.intro.focus} /></span></p>
-        <div className="home-intro-subject"><p><span>{opening.intro.bridge}</span><span className="home-intro-focus"><HeroPressureText text={opening.intro.subject} outline /></span></p><p className="home-intro-condition">{opening.title.slice(questionBreak + 1)}</p></div>
+        <div className="home-intro-subject"><p><span>{opening.intro.bridge}</span><span className="home-intro-focus"><HeroPressureText text={opening.intro.subject} outline autoShine="intro" /></span></p><p className="home-intro-condition">{opening.title.slice(questionBreak + 1)}</p></div>
       </div>
       <HomeHeroVisual ref={sequence.visual} onUnavailable={sequence.artworkUnavailable} />
-      <button type="button" className="home-hero-scroll-cue" onClick={sequence.revealQuestion} aria-label={copy.heroVisual.revealQuestion}><span>{copy.heroVisual.scrollCue}</span><Arrow direction="down" /></button>
+      <button ref={scrollCue} type="button" className="home-hero-scroll-cue" onClick={sequence.revealQuestion} aria-label={copy.heroVisual.revealQuestion}><span>{copy.heroVisual.scrollCue}</span><Arrow direction="down" /></button>
       </div>
     </section>
   </div>;
