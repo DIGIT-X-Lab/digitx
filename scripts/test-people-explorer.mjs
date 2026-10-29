@@ -21,7 +21,7 @@ const load = async (page, route) => {
   await page.waitForTimeout(700);
 };
 const choose = async (page, name) => {
-  name = ['Hagen Lamprecht', 'Benedict Schildberg', 'Maissa Monsour'].includes(name) ? `${name}, M.Sc.` : name === 'Maximilian Tiling' ? `${name}, MD` : name;
+  name = ['Hagen Lamprecht', 'Benedict Schildberg', 'Maissa Mansour'].includes(name) ? `${name}, M.Sc.` : name === 'Maximilian Tiling' ? `${name}, MD` : name;
   await page.locator('.people-roster').getByRole('button', { name, exact: true }).click();
 };
 const noOverflow = async page => assert(!(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)), 'No horizontal overflow');
@@ -75,11 +75,11 @@ try {
     assert.equal(await page.locator('.people-design-note, .people-answer-pending').count(), 0, 'No draft labels or pending answers in the approved PI profile');
     assert.equal(await page.locator('#lalith-shiyam-sundar .people-question').count(), 4, 'All four approved PI answers are visible in production');
     assert(!(await page.locator('.people-page').innerText()).includes('Sameer'));
-    for (const [name, file] of [['Hagen Lamprecht', 'hagen-lamprecht-web.jpg'], ['Benedict Schildberg', 'peter-benedict-schildberg-web.jpg'], ['Maissa Monsour', 'maissa-monsour-studio-web.jpg'], ['Maximilian Tiling', 'maximilian-tiling-studio-web.jpg']]) {
+    for (const [name, file] of [['Hagen Lamprecht', 'hagen-lamprecht-web.jpg'], ['Benedict Schildberg', 'peter-benedict-schildberg-web.jpg'], ['Maissa Mansour', 'maissa-monsour-studio-web.jpg'], ['Maximilian Tiling', 'maximilian-tiling-studio-web.jpg']]) {
       await choose(page, name);
       assert((await page.locator('.people-portrait img').getAttribute('src')).endsWith(file), `${name}: supplied real portrait`);
       assert.equal(await page.locator('.people-portrait figcaption').count(), 0);
-      assert.equal(await page.locator('.people-question').count(), ['Hagen Lamprecht', 'Benedict Schildberg', 'Maissa Monsour'].includes(name) ? 4 : 0, 'Only supplied, approved responses appear in production');
+      assert.equal(await page.locator('.people-question').count(), ['Hagen Lamprecht', 'Benedict Schildberg', 'Maissa Mansour'].includes(name) ? 4 : 0, 'Only supplied, approved responses appear in production');
     }
     await choose(page, 'Frederic Paul Thiele, MD');
     const profile = page.locator('#frederic-paul-thiele');

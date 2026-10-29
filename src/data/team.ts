@@ -60,7 +60,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: 'maissa-monsour',
-    name: 'Maissa Monsour, M.Sc.',
+    name: 'Maissa Mansour, M.Sc.',
     role: 'Doctoral researcher',
     label: 'Doctoral researcher',
     background: { discipline: 'Electrical engineering and information technology' },
@@ -70,7 +70,7 @@ export const teamMembers: TeamMember[] = [
     membership: 'associated',
     github: 'https://github.com/MaissaMa',
     linkedin: 'https://www.linkedin.com/in/maissa-mansour-565ba922b/',
-    portrait: { src: '/portraits/maissa-monsour-studio-web.jpg', alt: 'Maissa Monsour', status: 'approved' },
+    portrait: { src: '/portraits/maissa-monsour-studio-web.jpg', alt: 'Maissa Mansour', status: 'approved' },
   },
   {
     id: 'maximilian-tiling',

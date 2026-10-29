@@ -27,11 +27,11 @@
 
 **Opportunities:** Only advertise real openings. When none are confirmed, show a direct contact path without implying funded vacancies.
 
-**PI-confirmed academic backgrounds (28 October 2026):** Benedict Schildberg: Physics, master’s degree. Hagen Lamprecht: Statistics and data science, master’s degree. Maissa Monsour: Electrical engineering and information technology, M.Sc. Maximilian Tiling: Medicine, MD. Display roles beneath names in the team list. Keep expertise in the selected profile, without degree-level captions. At the PI’s latest request, display Hagen Lamprecht, M.Sc.; Benedict Schildberg, M.Sc.; Maissa Monsour, M.Sc.; and Maximilian Tiling, MD. Maximilian’s role is Clinical associate. The PI confirmed his discipline as Biomedical engineering and requested the title Prof. Dr. Do not infer institutions.
+**PI-confirmed academic backgrounds (28 October 2026):** Benedict Schildberg: Physics, master’s degree. Hagen Lamprecht: Statistics and data science, master’s degree. Maissa Mansour: Electrical engineering and information technology, M.Sc. Maximilian Tiling: Medicine, MD. Display roles beneath names in the team list. Keep expertise in the selected profile, without degree-level captions. At the PI’s latest request, display Hagen Lamprecht, M.Sc.; Benedict Schildberg, M.Sc.; Maissa Mansour, M.Sc.; and Maximilian Tiling, MD. Maximilian’s role is Clinical associate. The PI confirmed his discipline as Biomedical engineering and requested the title Prof. Dr. Do not infer institutions.
 
-**PI-confirmed associated-member affiliations (28 October 2026):** Maissa Monsour, M.Sc.: Department of Nuclear Medicine, LMU University Hospital. Maximilian Tiling, MD: Department of Radiology, LMU University Hospital.
+**PI-confirmed associated-member affiliations (28 October 2026):** Maissa Mansour, M.Sc.: Department of Nuclear Medicine, LMU University Hospital. Maximilian Tiling, MD: Department of Radiology, LMU University Hospital.
 
-**PI-supplied associated-member profile links (28 October 2026):** Maissa Monsour: [GitHub](https://github.com/MaissaMa), [LinkedIn](https://www.linkedin.com/in/maissa-mansour-565ba922b/). Maximilian Tiling: [LinkedIn](https://www.linkedin.com/in/maximilian-tiling-18778635a/).
+**PI-supplied associated-member profile links (28 October 2026):** Maissa Mansour: [GitHub](https://github.com/MaissaMa), [LinkedIn](https://www.linkedin.com/in/maissa-mansour-565ba922b/). Maximilian Tiling: [LinkedIn](https://www.linkedin.com/in/maximilian-tiling-18778635a/).
 
 **Affiliation presentation:** In each person’s profile, display the department on the first line and LMU University Hospital on the next line.
 
@@ -99,7 +99,7 @@ When is extracting the facts enough, and when do we need to reason about how the
 
 I’d like to work with clinicians and researchers on questions where the patient’s history matters. What would you want to understand if you could follow the whole story across reports, scans and years of care? Those are the questions I’d like to bring to our work on temporal graphs and AI.
 
-## Maissa Monsour, approved 29 October 2026
+## Maissa Mansour, approved 29 October 2026
 
 The following four answers were supplied and approved for publication. Preserve the wording verbatim.
 
