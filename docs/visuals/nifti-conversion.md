@@ -1,0 +1,11 @@
+# nifti2dicom conversion visual
+
+The PI requested the same animation refinement applied to FALCON and LION. Replace the two generic file icons with one continuous spatial object: a compact NIfTI voxel volume opens into individually framed planes, with a DICOM reference cue appearing around it. The format labels sit above the artwork and the reference label below it. The pause control sits beside the reference, clear of both format labels on narrow screens.
+
+The seven planes use a native SVG voxel diagram, with identical blue and coral cells throughout the sequence. It is an abstract format-conversion concept, not a scan, patient anatomy or a converter output. Plane separation is an exploded-view device, not a claim that the tool changes physical slice spacing. No new raster image, data value, medical result or dependency is introduced.
+
+The current public README was reviewed on 26 October 2026: https://github.com/ENHANCE-PET/nifti2dicom. It supports scalar images and label maps with a reference DICOM series. Native image geometry is preserved by default; SEG aligns to the reference grid using nearest-neighbour interpolation. The visual explains the common conversion relationship, rather than attempting to illustrate every output profile or resampling option. The approved two-sentence tool summary remains unchanged.
+
+`NiftiStudyVisual.tsx` owns the diagram and `nifti-study-visual.css` its six-second loop. Motion starts immediately, opens fully by 1.5 seconds, holds until 5.28 seconds, then returns to the compact volume. CSS changes plane transforms, container cues and label emphasis; the voxel content never changes. Hover and reduced motion expose the completed view immediately. The shared `Study` wrapper supplies explicit pause, offscreen and hidden-tab suspension, and live reduced-motion preferences. Clicking the selected catalogue entry replays the sequence.
+
+Artwork height follows the available container width within a 214–364px range; labels size naturally above and below it. This keeps enlarged text from squeezing the diagram. All labels use the shared metadata role. The same component serves the catalogue, inline mobile preview and standalone detail route.

@@ -1,0 +1,19 @@
+{
+  "source": "lumos-app/marketing/launch-film",
+  "version": "frontier v8",
+  "copied": "2026-10-27",
+  "sha256": {
+    "src/frontier/Walkthrough.tsx": "e31c43ab8f8ad3a9dcf994299f0409beb5f39fd46e7db7f075af886faae1eb91",
+    "src/frontier/Research.tsx": "a9bd5ddbaa1df6451a6901022114907fca44a0027da91eee7c494fc104d84e12",
+    "src/frontier/FilmKit.tsx": "0408df291d6de7f33a96434db28c128d700b826e837530ecb3dd945f868ab706",
+    "src/frontier/PdfEvidence.tsx": "213c03af5808c859b5198722c1876bfde5766ae7087db6a8f16633717ca1c623",
+    "src/ProductScenes.tsx": "fb70b46f02e3f9da8f946f85c151ec8f67a638365e3278072be50ac81889aaf6",
+    "study.json": "4585e62f7e08cf028e80bcf85c43b506758a4c16debf422802d859348b13453f",
+    "source-report.png": "9243f0e9c9477c659526dee01a748a582083d41cd08da0eb3587eee21816e8b0",
+    "lumos-logo.svg": "f2c68833f18ec28669f602353f1fb8f34fc65fca8e427a2e28925feb730859f9"
+  },
+  "adaptations": [
+    "PdfEvidence uses a native img for its static source-report image; Remotion Img requires a video composition context.",
+    "browser.tsx selects the approved scene excerpts and scales their original viewport."
+  ]
+}

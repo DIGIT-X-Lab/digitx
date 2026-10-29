@@ -1,0 +1,75 @@
+.tool-study:is(.tool-study--mosaicx, .tool-study--annotatex) .tool-study-stage { height: auto; }
+.tool-study:is(.tool-study--mosaicx, .tool-study--annotatex) .tool-study-motion { top: auto; bottom: -9px; right: -8px; }
+.tool-preview-canvas:has(.tool-preview-frame[data-current="true"] :is(.tool-study--mosaicx, .tool-study--annotatex)) { min-height: 0; align-items: start; }
+.mosaic-visual { position: relative; min-width: 0; }
+.mosaic-tone--site { --mosaic-tone: var(--blue); }
+.mosaic-tone--histology { --mosaic-tone: var(--coral); }
+.mosaic-source { position: relative; z-index: 1; }
+.mosaic-label { margin-bottom: 14px; color: var(--muted); font-size: var(--type-meta); line-height: 1.5; }
+.mosaic-excerpt { color: var(--subtle); font-size: var(--type-body); line-height: 1.8; }
+.mosaic-phrase { display: inline-block; max-width: 100%; padding: 0; text-align: left; vertical-align: baseline; overflow-wrap: anywhere; color: var(--mosaic-tone); text-decoration: underline; text-decoration-color: var(--mosaic-tone); text-decoration-thickness: 1px; text-underline-offset: 5px; transition: background-color 140ms ease-out; }
+.mosaic-phrase sup { position: relative; top: -.25em; margin-left: 4px; font-size: var(--type-caption); text-decoration: none; }
+.mosaic-connections { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.mosaic-connection { fill: none; stroke: var(--mosaic-tone); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 0; opacity: .7; transition: opacity 140ms ease-out; }
+.mosaic-results { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-top: 72px; }
+.mosaic-result { min-width: 0; min-height: 96px; padding-block: 16px 12px; border-top: 1px solid var(--strong); text-align: left; transition: border-color 140ms ease-out; }
+.mosaic-result-label { display: flex; align-items: baseline; justify-content: flex-start; gap: 6px; margin-bottom: 8px; color: var(--muted); font-size: var(--type-meta); line-height: 1.5; }
+.mosaic-reference { color: var(--mosaic-tone); white-space: nowrap; font-size: var(--type-caption); }
+.mosaic-result-value { display: block; color: var(--mosaic-tone); font-size: var(--type-body); line-height: 1.5; overflow-wrap: anywhere; }
+.mosaic-hint { padding-right: 44px; margin-top: 20px; color: var(--muted); font-size: var(--type-caption); line-height: 1.6; }
+.mosaic-visual[data-active] .mosaic-connection:not([data-match="true"]) { opacity: .15; }
+.mosaic-visual[data-active] .mosaic-connection[data-match="true"] { opacity: 1; }
+.mosaic-phrase[data-match="true"] { background-color: color-mix(in srgb, var(--mosaic-tone) 14%, transparent); }
+.mosaic-result[data-match="true"] { border-color: var(--mosaic-tone); }
+
+.annotate-steps { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.annotate-steps > span + span::before { content: "·"; margin-right: 12px; color: var(--strong); }
+.annotate-results { grid-template-columns: max-content max-content max-content; justify-content: start; align-items: center; gap: 24px; margin-top: 28px; }
+.annotate-results .mosaic-result { border-top-color: transparent; }
+.annotate-results .mosaic-result[data-match="true"] { border-top-color: var(--mosaic-tone); }
+.annotate-relation { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 76px; padding-top: 26px; color: var(--muted); font-size: var(--type-meta); line-height: 1.5; }
+.annotate-relation svg { display: block; width: 64px; height: 20px; color: var(--subtle); }
+.mosaic-visual[data-kind="annotatex"] .mosaic-phrase { position: relative; isolation: isolate; }
+.mosaic-visual[data-kind="annotatex"] .mosaic-phrase::before { content: ""; position: absolute; z-index: -1; inset: 4px 0; background: var(--mosaic-tone); opacity: .12; transform-origin: left; }
+
+/* Two quick extractions, then a long readable hold. Values and source text
+   stay in the DOM, so assistive technology never receives looping updates. */
+.tool-study:is(.tool-study--mosaicx, .tool-study--annotatex)[data-started="true"] .mosaic-phrase.mosaic-tone--site { animation: mosaic-source-one 6s ease-out infinite; }
+.tool-study:is(.tool-study--mosaicx, .tool-study--annotatex)[data-started="true"] .mosaic-phrase.mosaic-tone--histology { animation: mosaic-source-two 6s ease-out infinite; }
+.tool-study:is(.tool-study--mosaicx, .tool-study--annotatex)[data-started="true"] .mosaic-connection.mosaic-tone--site { animation: mosaic-link-one 6s cubic-bezier(.16, 1, .3, 1) infinite; }
+.tool-study:is(.tool-study--mosaicx, .tool-study--annotatex)[data-started="true"] .mosaic-connection.mosaic-tone--histology { animation: mosaic-link-two 6s cubic-bezier(.16, 1, .3, 1) infinite; }
+.tool-study:is(.tool-study--mosaicx, .tool-study--annotatex)[data-started="true"] .mosaic-tone--site .mosaic-result-value { animation: mosaic-value-one 6s ease-out infinite; }
+.tool-study:is(.tool-study--mosaicx, .tool-study--annotatex)[data-started="true"] .mosaic-tone--histology .mosaic-result-value { animation: mosaic-value-two 6s ease-out infinite; }
+.tool-study:is(.tool-study--mosaicx, .tool-study--annotatex):is([data-inspecting="true"], [data-reduced="true"]) .mosaic-visual *,
+.tool-study:is(.tool-study--mosaicx, .tool-study--annotatex):is([data-inspecting="true"], [data-reduced="true"]) .mosaic-visual *::before,
+.tool-study:not([data-loop="true"]) .mosaic-visual[data-active] *,
+.tool-study:not([data-loop="true"]) .mosaic-visual[data-active] *::before { animation: none !important; }
+@keyframes mosaic-source-one { 0%, 100% { color: var(--subtle); text-decoration-color: var(--strong); } 5%, 90% { color: var(--mosaic-tone); text-decoration-color: var(--mosaic-tone); } }
+@keyframes mosaic-source-two { 0%, 6%, 100% { color: var(--subtle); text-decoration-color: var(--strong); } 13%, 90% { color: var(--mosaic-tone); text-decoration-color: var(--mosaic-tone); } }
+@keyframes mosaic-link-one { 0%, 4%, 100% { stroke-dashoffset: 1; opacity: 0; } 16%, 90% { stroke-dashoffset: 0; opacity: .7; } }
+@keyframes mosaic-link-two { 0%, 11%, 100% { stroke-dashoffset: 1; opacity: 0; } 23%, 90% { stroke-dashoffset: 0; opacity: .7; } }
+@keyframes mosaic-value-one { 0%, 7%, 100% { clip-path: inset(0 100% 0 0); opacity: .3; } 17%, 90% { clip-path: inset(0); opacity: 1; } }
+@keyframes mosaic-value-two { 0%, 14%, 100% { clip-path: inset(0 100% 0 0); opacity: .3; } 24%, 90% { clip-path: inset(0); opacity: 1; } }
+
+@container (max-width: 480px) {
+  .mosaic-results { grid-template-columns: minmax(0, 1fr); gap: 8px; margin-top: 52px; padding-left: 32px; }
+  .mosaic-result { min-height: 88px; }
+}
+@media (prefers-reduced-motion: reduce) { .mosaic-visual *, .mosaic-visual *::before { animation: none !important; transition: none !important; } }
+
+.tool-study--annotatex[data-started="true"] .mosaic-tone--site::before { animation: annotate-select-one 6s cubic-bezier(.16, 1, .3, 1) infinite; }
+.tool-study--annotatex[data-started="true"] .mosaic-tone--histology::before { animation: annotate-select-two 6s cubic-bezier(.16, 1, .3, 1) infinite; }
+.tool-study--annotatex[data-started="true"] .annotate-relation { animation: annotate-connect 6s ease-out infinite; }
+.tool-study--annotatex[data-started="true"] .annotate-steps > span { animation: annotate-step 6s ease-out infinite; }
+.tool-study--annotatex[data-started="true"] .annotate-steps > span:nth-child(2) { animation-delay: .4s; }
+.tool-study--annotatex[data-started="true"] .annotate-steps > span:nth-child(3) { animation-delay: .8s; }
+@keyframes annotate-select-one { 0%, 100% { transform: scaleX(0); } 6%, 90% { transform: scaleX(1); } }
+@keyframes annotate-select-two { 0%, 6%, 100% { transform: scaleX(0); } 13%, 90% { transform: scaleX(1); } }
+@keyframes annotate-connect { 0%, 21%, 100% { opacity: 0; clip-path: inset(0 100% 0 0); } 30%, 90% { opacity: 1; clip-path: inset(0); } }
+@keyframes annotate-step { 0%, 100% { color: var(--muted); } 5%, 13% { color: var(--ink); } 20%, 90% { color: var(--muted); } }
+@container (max-width: 580px) {
+  .annotate-results { grid-template-columns: minmax(0, 1fr); gap: 4px; margin-top: 28px; padding-left: 0; }
+  .annotate-results .mosaic-result { min-height: 80px; }
+  .annotate-relation { flex-direction: row-reverse; justify-content: flex-end; gap: 12px; padding: 0; }
+  .annotate-relation svg { width: 24px; height: 32px; transform: rotate(90deg); }
+}

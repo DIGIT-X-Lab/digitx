@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-24",
+  "generator": "Built-in image_gen",
+  "purpose": "Distinct fictional people in the standalone DIGITX mission animation.",
+  "reference": "public/illustrations/anatomy/front-clean.png",
+  "assets": [
+    {
+      "id": "PAT-002",
+      "png": "public/illustrations/anatomy/patient-002.png",
+      "webp": "public/illustrations/anatomy/patient-002.webp",
+      "prompt": "Use case: scientific-educational. Create a distinct patient figure using the attached image only as a style and composition reference. Full body perfectly FRONT FACING neutral clinical mannequin. Fine sparse warm ivory wireframe contour lines, widely spaced quad mesh, transparent empty interior. Same quiet premium scientific illustration style as the reference. No organs, no tumours, no text, no labels, no glow, no halo, no fog, no surface fill, no floor. Truly transparent background. Preserve a 1024x1536 portrait canvas with head top at y20 and feet bottom at y1470, body centre x512, relaxed arms gently away from sides, hands near x260 and765,y820. Keep all fingers and feet visible. Face simplified neutral geometric mesh. Subject: adult female body, average build, narrower shoulders and subtly wider hips than reference. Natural neutral anatomy, nonsexual medical teaching style, no hair or facial details."
+    },
+    {
+      "id": "PAT-003",
+      "png": "public/illustrations/anatomy/patient-003.png",
+      "webp": "public/illustrations/anatomy/patient-003.webp",
+      "prompt": "Use case: scientific-educational. Create a distinct patient figure using the attached image only as a style and composition reference. Full body perfectly FRONT FACING neutral clinical mannequin. Fine sparse warm ivory wireframe contour lines, widely spaced quad mesh, transparent empty interior. Same quiet premium scientific illustration style as the reference. No organs, no tumours, no text, no labels, no glow, no halo, no fog, no surface fill, no floor. Truly transparent background. Preserve a 1024x1536 portrait canvas with head top at y20 and feet bottom at y1470, body centre x512, relaxed arms gently away from sides, hands near x260 and765,y820. Keep all fingers and feet visible. Face simplified neutral geometric mesh. Subject: adult male body with a visibly broader, stockier frame than the reference, rounded abdomen and thicker limbs. Natural middle-aged proportions, no bodybuilding. Distinct head and shoulder shape, no hair or facial details."
+    }
+  ],
+  "processing": "Generated RGBA PNGs retained. Lossless cwebp conversion preserves the generated alpha. Composited lesion layers are qualitative illustrations, not measurements.",
+  "limits": "Fictional adult anatomy, not real participants or a representation of the numerical example measurements."
+}

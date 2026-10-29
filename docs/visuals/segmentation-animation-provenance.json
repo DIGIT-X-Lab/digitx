@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-24",
+  "generator": "Built-in image_gen",
+  "purpose": "Standalone animation study, not integrated into the website pending user visual review.",
+  "reference": "User-supplied CHILI title-slide human-wireframe.png",
+  "baseAsset": "public/illustrations/anatomy/front-clean.webp",
+  "muscleRevision": {
+    "date": "2026-10-25",
+    "asset": "public/illustrations/anatomy/muscle.webp",
+    "selection": "PI selected the previously generated complete wireframe muscle figure to replace the oversized muscle overlay in the film and shared measurement example.",
+    "composition": "Hide the plain front-clean figure while the complete muscle figure is visible; preserve the original artwork and example measurements. Original overlay retained but no longer used for these scenes."
+  },
+  "overlayAssets": [
+    "public/illustrations/anatomy/tumour-overlay.webp",
+    "public/illustrations/anatomy/muscle-overlay.webp",
+    "public/illustrations/anatomy/fat-overlay.webp"
+  ],
+  "processing": "Original generated PNGs retained. Lossless WebP conversion preserves alpha. The HTML composes separate layers without altering the base anatomy.",
+  "limits": "Illustrative anatomical meshes, not patient imaging or validated segmentation. Example measurements demonstrate voxel-volume arithmetic and are not calculated from the generated illustration.",
+  "prompts": [
+    {
+      "name": "tumour-overlay",
+      "prompt": "Use case: scientific-educational, compositing. Make a SEGMENTATION OVERLAY ONLY for the supplied front-facing human wireframe. It will be composited on top of the exact original image in HTML. Preserve the exact 1024x1536 transparent canvas, body pose, scale and placement, do not crop to contents or recenter the layer. The reference body occupies x220-805 and y20-1470. Output only the requested coloured anatomical tissue mesh in its anatomically correct positions. Remove ALL original ivory outer human wireframe lines, head, hands, feet, skin, organs and background from the output; these will remain in a separate underlying layer. Everything except the requested tissue must be truly transparent alpha, including empty background above, below and around the structures. Premium very fine wireframe 3D contour/surface mesh, restrained translucent colour, not opaque solids, no glow or halo, no fog, no invented text or arrows. No white outlines, legends, axis, labels, borders, floor, gradients or decorative neon. Render a coherent medical teaching illustration, not measured patient data.Show ONLY THREE small coral (#e36b63) 3D wire-mesh tumour nodules, irregular rounded mesh masses: approximately centred at x453,y354 with diameter65px (patient right upper chest), x447,y535 with diameter82px (patient right upper abdomen), and x523,y691 with diameter42px (pelvic region). Fine contour lines with subtle translucent coral fill, each a separate three-dimensional lesion. Preserve these exact positions and sizes within original full canvas. Do not include any other anatomy."
+    },
+    {
+      "name": "muscle-overlay",
+      "prompt": "Use case: scientific-educational, compositing. Make a SEGMENTATION OVERLAY ONLY for the supplied front-facing human wireframe. It will be composited on top of the exact original image in HTML. Preserve the exact 1024x1536 transparent canvas, body pose, scale and placement, do not crop to contents or recenter the layer. The reference body occupies x220-805 and y20-1470. Output only the requested coloured anatomical tissue mesh in its anatomically correct positions. Remove ALL original ivory outer human wireframe lines, head, hands, feet, skin, organs and background from the output; these will remain in a separate underlying layer. Everything except the requested tissue must be truly transparent alpha, including empty background above, below and around the structures. Premium very fine wireframe 3D contour/surface mesh, restrained translucent colour, not opaque solids, no glow or halo, no fog, no invented text or arrows. No white outlines, legends, axis, labels, borders, floor, gradients or decorative neon. Render a coherent medical teaching illustration, not measured patient data.Show ONLY the paired major skeletal muscle groups as sparse clean muted pale-blue (#a9bbc9) 3D wire-mesh segmentation volumes. Pectoral muscles at upper chest x400-500 and524-624 y300-405; deltoids and upper arm muscles following body arms; rectus abdominis and obliques below chest y420-650; quadriceps on thighs x385-495 and529-639 y740-970; calf muscles x395-465 and559-629 y1070-1290. Preserve anatomical integration and correct long muscle axes. Fine widely-spaced contour grid lines and subtle translucent fill, elegant and spare, NOT dense fibrous texture, no bodybuilder exaggeration. Do not draw skeleton, head, fingers, toes, or outer body silhouette. Each segmented anatomical muscle volume should be refined, anatomically recognisable, and softly translucent."
+    },
+    {
+      "name": "fat-overlay",
+      "prompt": "Use case: scientific-educational, compositing. Make a SEGMENTATION OVERLAY ONLY for the supplied front-facing human wireframe. It will be composited on top of the exact original image in HTML. Preserve the exact 1024x1536 transparent canvas, body pose, scale and placement, do not crop to contents or recenter the layer. The reference body occupies x220-805 and y20-1470. Output only the requested coloured anatomical tissue mesh in its anatomically correct positions. Remove ALL original ivory outer human wireframe lines, head, hands, feet, skin, organs and background from the output; these will remain in a separate underlying layer. Everything except the requested tissue must be truly transparent alpha, including empty background above, below and around the structures. Premium very fine wireframe 3D contour/surface mesh, restrained translucent colour, not opaque solids, no glow or halo, no fog, no invented text or arrows. No white outlines, legends, axis, labels, borders, floor, gradients or decorative neon. Render a coherent medical teaching illustration, not measured patient data.Show ONLY adipose-tissue compartments in muted desaturated sage (#9cab9c): a modest subcutaneous envelope at the outer abdomen and flanks x382-642,y430-700, hips x374-650,y690-810, narrow peripheral upper-thigh compartments x370-490 and534-654,y810-970, and paired modest deposits in the upper arms following the reference. Show a small, distinct visceral fat depot inside the abdominal cavity x445-580,y500-650, still transparent. It should look like coherent soft thin 3D volume meshes closely following the subject's contours, sparse fine wire lines with subtly translucent sage surface. No bright green, yellow or orange. No intestines, organ meshes, skeleton, external body lines, or isolated bubbly dots. Keep the abdominal organs implied by empty space rather than actually drawing them."
+    }
+  ],
+  "adiposeRevision": {
+    "date": "2026-10-25",
+    "asset": "public/illustrations/anatomy/fat.webp",
+    "selection": "PI requested the existing complete adipose figure, matching the complete muscle replacement. Used in the film and shared measurement example, with the plain wireframe hidden during this scene. Original files and measurements retained."
+  }
+}

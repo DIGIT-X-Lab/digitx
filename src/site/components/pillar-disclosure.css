@@ -1,0 +1,41 @@
+.pillar-disclosure-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 40px; align-items: start; }
+.pillar-disclosure-toggle { align-self: stretch; min-width: 0; font-weight: 400; }
+.pillar-disclosure-trigger { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 24px; grid-template-rows: 1fr 34px 1fr; column-gap: 24px; width: 100%; height: 100%; min-height: 148px; padding: 24px 16px; text-align: left; color: var(--subtle); scroll-margin-top: calc(var(--research-header-height, 89px) + 16px); transition: color 140ms ease-out; cursor: pointer; }
+.pillar-disclosure-trigger:is(:hover, [aria-expanded='true']) { color: var(--ink); }
+.pillar-disclosure-meta { grid-column: 1; grid-row: 1; align-self: end; margin-bottom: 16px; color: var(--muted); font-size: var(--type-meta); font-variant-numeric: tabular-nums; letter-spacing: 0; line-height: 1.5; }
+/* The 34px middle row matches the complete outlined control. Equal outer rows
+   centre it in the panel while the title starts at that row's top edge. */
+.pillar-disclosure-title { grid-column: 1; grid-row: 2 / 4; align-self: start; font-size: var(--type-heading); line-height: 1.25; letter-spacing: -.02em; max-width: 22ch; text-wrap: balance; font-weight: var(--type-weight-heading); margin-top: calc((1cap - 1lh) / 2); }
+.pillar-disclosure-title[data-has-identity] { position: relative; justify-self: start; padding-inline-end: 50px; max-width: 100%; }
+.pillar-disclosure-title > .identity-mark { position: absolute; right: 0; top: calc((1lh - var(--identity-size, 34px)) / 2); }
+@supports (text-box-trim: trim-start) {
+  .pillar-disclosure-title { text-box-trim: trim-start; text-box-edge: cap alphabetic; margin-top: 0; }
+  .pillar-disclosure-title > .identity-mark { top: calc((1cap - var(--identity-size, 34px)) / 2); }
+}
+/* Centre the control in the complete highlighted panel, independently of text.
+   Individual translate keeps the centring intact during the scale cue. */
+.pillar-disclosure-plus { position: absolute; display: block; top: 50%; right: 16px; translate: 0 -50%; width: 24px; height: 24px; outline: 1px solid var(--muted); outline-offset: 4px; }
+.pillar-disclosure-plus::before, .pillar-disclosure-plus::after { content: ''; position: absolute; left: 2px; right: 2px; top: calc(50% - .5px); height: 1px; background: currentColor; }
+.pillar-disclosure-plus::after { transform: rotate(90deg); transition: transform 180ms ease-out, opacity 180ms ease-out; }
+.pillar-disclosure-trigger[aria-expanded='true'] .pillar-disclosure-plus::after { transform: rotate(0deg); opacity: 0; }
+.pillar-disclosure-grid[data-cue='true'] [aria-expanded='false'] .pillar-disclosure-plus { animation: pillar-disclosure-cue 700ms ease-in-out; }
+@keyframes pillar-disclosure-cue { 0%, 100% { transform: scale(1); opacity: 1; } 30% { transform: scale(.92); opacity: .55; } 65% { transform: scale(1.16); opacity: 1; } }
+@media (max-width: 1199px) {
+  .pillar-disclosure-grid { column-gap: 24px; }
+  .pillar-disclosure-trigger { padding-inline: 12px; }
+  .pillar-disclosure-plus { right: 12px; }
+}
+@media (max-width: 900px) {
+  .pillar-disclosure-grid { grid-template-columns: minmax(0, 1fr); }
+  .pillar-disclosure-trigger { column-gap: 16px; padding: 24px 8px; }
+  .pillar-disclosure-title { max-width: none; }
+  .pillar-disclosure-plus { right: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pillar-disclosure-grid[data-cue='true'] [aria-expanded='false'] .pillar-disclosure-plus { animation: none; }
+  .pillar-disclosure-trigger, .pillar-disclosure-plus::after { transition: none; }
+}
+@media (max-width: 380px) {
+  .pillar-disclosure-title[data-has-identity] { padding-inline-end: 40px; }
+  .pillar-disclosure-title > .identity-mark { --identity-size: 28px; }
+}

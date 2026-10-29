@@ -1,0 +1,18 @@
+{
+  "tool": "Built-in image_gen",
+  "created": "2026-10-28",
+  "prompts": [
+    {
+      "person": "lalith-shiyam-sundar",
+      "prompt": "Use case: identity-preserve. Edit target: first image, the real man wearing dark glasses, black turtleneck and grey blazer. Reference images 2 and 3: background and portrait framing only, never their faces. Produce one high-resolution professional website portrait, 4:5 vertical composition. Replace only the outdoor street/shop background of image 1 with a seamless light neutral grey studio backdrop, almost off-white, matching the quiet studio setting of references 2 and 3. Crop the original man to head and upper chest, modest headroom, full hair visible, eye line approximately one third down, matching the scale and framing of the reference headshots once cropped to 4:5. Preserve his actual face, precise facial structure, skin texture, hair, glasses, expression, smile, teeth, clothing and head angle. No beautification, age changes, facial reconstruction, accessories or altered body proportions. Natural photographic edges around hair and shoulders; no halo. Retain natural colour; website will apply monochrome uniformly in CSS. No text, no logo, no watermark. Output highest available sharp resolution; do not invent facial detail."
+    },
+    {
+      "person": "maissa-monsour",
+      "prompt": "Use case: identity-preserve. Edit target image 1: the woman in a black jacket and white blouse. Images 2 and 3 are references only for studio backdrop and headshot crop; DO NOT transfer their faces or masculine features. Create one high-resolution photorealistic 4:5 professional website portrait of the woman in image 1. Preserve her identity very closely: same facial proportions, eyes, nose, smile, teeth, hair shape and colour, head angle, black jacket and white blouse. Source is low resolution: improve clarity conservatively, retain natural skin and hair texture, do not beautify, change age, change face, enlarge eyes, reshape teeth or stylise. Replace the medium-grey backdrop with a seamless light neutral grey almost off-white studio background matching references 2 and 3. Crop to head and upper chest, full hair visible, modest headroom, match the reference scale; face fills roughly half the vertical frame. Natural soft lighting and realistic edges, no halo, no text or watermark. Keep natural colour because website will apply shared monochrome styling. Produce highest available resolution and clear restrained professional photographic quality."
+    },
+    {
+      "person": "maximilian-tiling",
+      "prompt": "Use case: identity-preserve. Edit target image 1 is Maximilian's real photo. Images 2 and 3 are references ONLY for their plain bright studio background, never for their faces. Replace the target's grey/lilac background with a uniform soft off-white studio backdrop matching the two reference photos. Preserve the original person exactly: facial geometry, features, skin tone, hair, age, head tilt, expression, dark suit jacket and white shirt. No beautification or facial reconstruction. Keep natural well-exposed photographic lighting, no dramatic shadows or vignette. Head and upper chest composition, 4:5 vertical crop, full hair visible with modest headroom and eye line around one-third down. Match the reference headshot scale. Natural colour; the website applies a uniform monochrome style. Highest available resolution, no text, no watermark, no objects."
+    }
+  ]
+}

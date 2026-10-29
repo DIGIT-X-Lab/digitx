@@ -1,0 +1,289 @@
+/*
+ * The tools are the visual material: a large MOOSE name on the deck's ivory,
+ * source-linked document work beside it, and smaller contributions below.
+ * The asymmetric composition uses only verified names and functions, without
+ * illustrating outputs that the site cannot substantiate.
+ */
+.tool-bento {
+  --tool-card-gap: 12px;
+}
+
+.tool-bento__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-bottom: 32px;
+}
+
+.tool-bento__filter {
+  min-height: 44px;
+  padding: 8px 0;
+  border-bottom: 1px solid transparent;
+  color: var(--muted);
+  font-size: var(--type-nav);
+  line-height: 1.4;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.tool-bento__filter:hover,
+.tool-bento__filter[aria-pressed="true"] {
+  color: var(--ink);
+}
+
+.tool-bento__filter[aria-pressed="true"] {
+  border-bottom-color: var(--ink);
+}
+
+.tool-bento__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--tool-card-gap);
+}
+
+.tool-bento__card {
+  --tool-ink: var(--ink);
+  --tool-subtle: var(--subtle);
+  --tool-muted: var(--muted);
+  --tool-line: var(--line);
+  display: flex;
+  min-width: 0;
+  min-height: 290px;
+  flex-direction: column;
+  padding: clamp(22px, 2.3vw, 34px);
+  border: 1px solid var(--tool-line);
+  background: var(--surface);
+  color: var(--tool-ink);
+}
+
+.tool-bento__card--moose {
+  background: var(--bg);
+}
+
+.tool-bento__card--mosaicx {
+  --tool-ink: #dce3e8;
+  --tool-subtle: #bdc9d2;
+  --tool-muted: #a3b2bd;
+  --tool-line: #313b42;
+  background: #171d21;
+}
+
+.tool-bento__card--development {
+  min-height: 255px;
+  border-color: var(--strong);
+  background: transparent;
+}
+
+.tool-bento__card-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 12px;
+}
+
+.tool-bento__data {
+  margin: 0;
+  color: var(--tool-muted);
+  font-size: var(--type-meta);
+  line-height: 1.4;
+}
+
+.tool-bento__status {
+  padding: 3px 8px;
+  border: 1px solid var(--tool-line);
+  color: var(--tool-subtle);
+  font-size: var(--type-meta);
+  line-height: 1.4;
+}
+
+.tool-bento__card--development .tool-bento__status {
+  border-color: var(--strong);
+}
+
+.tool-bento__body {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.tool-bento__name {
+  margin: 0;
+  color: var(--tool-ink);
+  font-size: var(--type-heading);
+  font-weight: var(--type-weight-heading);
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}
+
+.tool-bento__function {
+  max-width: 40ch;
+  margin: 16px 0 0;
+  color: var(--tool-subtle);
+  font-size: var(--type-body);
+  line-height: var(--type-leading-body);
+  text-wrap: pretty;
+  font-weight: var(--type-weight-body);
+}
+
+.tool-bento__card--moose .tool-bento__name {
+  font-size: var(--type-feature);
+  letter-spacing: -0.04em;
+  font-weight: var(--type-weight-heading);
+}
+
+.tool-bento__card--moose .tool-bento__function {
+  max-width: 20ch;
+  font-size: var(--type-body);
+  line-height: var(--type-leading-body);
+  font-weight: var(--type-weight-body);
+}
+
+.tool-bento__card--mosaicx .tool-bento__name {
+  font-size: var(--type-feature);
+  font-weight: var(--type-weight-heading);
+}
+
+.tool-bento__card--mosaicx .tool-bento__function {
+  max-width: 42ch;
+  font-size: var(--type-body);
+  line-height: var(--type-leading-body);
+  font-weight: var(--type-weight-body);
+}
+
+.tool-bento__footer {
+  margin-top: auto;
+}
+
+.tool-bento__metadata {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 16px;
+  padding-bottom: 12px;
+  color: var(--tool-muted);
+  font-size: var(--type-meta);
+  line-height: 1.5;
+}
+
+.tool-bento__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 16px;
+  padding-top: 6px;
+  border-top: 1px solid var(--tool-line);
+}
+
+.tool-bento__link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 7px;
+  color: var(--tool-ink);
+  font-size: var(--type-action);
+  font-weight: 500;
+  line-height: 1.4;
+  text-underline-offset: 4px;
+}
+
+.tool-bento__link:hover {
+  text-decoration: underline;
+}
+
+.tool-bento__link:focus-visible {
+  outline-color: var(--tool-ink);
+}
+
+.tool-bento__link svg {
+  flex: none;
+}
+
+@media (min-width: 700px) {
+  .tool-bento__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tool-bento__card--moose,
+  .tool-bento__card--mosaicx {
+    min-height: 370px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .tool-bento__grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .tool-bento__card {
+    grid-column: span 4;
+  }
+
+  .tool-bento__grid--all .tool-bento__card--moose {
+    grid-column: 1 / 6;
+    grid-row: 1 / 3;
+  }
+
+  .tool-bento__grid--all .tool-bento__card--moose .tool-bento__body {
+    padding-top: 38px;
+  }
+
+  .tool-bento__grid--all .tool-bento__card--mosaicx {
+    grid-column: 6 / 13;
+    grid-row: 1;
+    min-height: 320px;
+  }
+
+  .tool-bento__grid--all .tool-bento__card--lion {
+    grid-column: 6 / 9;
+    grid-row: 2;
+  }
+
+  .tool-bento__grid--all .tool-bento__card--falcon {
+    grid-column: 9 / 13;
+    grid-row: 2;
+  }
+
+  .tool-bento__grid:not(.tool-bento__grid--all) .tool-bento__card--moose .tool-bento__name {
+    font-size: var(--type-feature);
+    font-weight: var(--type-weight-heading);
+  }
+
+  .tool-bento__grid:not(.tool-bento__grid--all) .tool-bento__card--mosaicx .tool-bento__name {
+    font-size: var(--type-feature);
+    font-weight: var(--type-weight-heading);
+  }
+}
+
+.tool-anatomy { margin: 0 0 24px; }
+.tool-anatomy-images { position: relative; height: 300px; overflow: hidden; }
+.tool-anatomy img { position: absolute; width: 100%; height: 450px; object-fit: contain; object-position: center top; }
+.tool-anatomy--moose .tool-anatomy-images { height: 520px; }
+.tool-anatomy--moose img { height: 520px; }
+.tool-anatomy--lion .tool-anatomy-images { height: 155px; }
+.tool-anatomy--lion img { height: 285px; }
+.tool-anatomy figcaption, .tool-document figcaption { margin-top: 10px; color: var(--tool-muted); font-size: var(--type-caption); }
+.tool-document { margin: 0 0 24px; }
+.tool-document-flow { display: grid; grid-template-columns: 1fr 20px 1fr; align-items: center; gap: 20px; }
+.tool-document-source { border-block: 1px solid var(--tool-line); padding-block: 18px; }
+.tool-document-source > p { color: var(--tool-muted); font-size: var(--type-caption); margin-bottom: 12px; }
+.tool-document blockquote { font-size: var(--type-meta); line-height: 1.7; color: var(--tool-ink); }
+.tool-document dl > div { padding-block: 6px; }
+.tool-document dt { font-size: var(--type-caption); color: var(--tool-muted); }
+.tool-document dd { font-size: var(--type-meta); color: var(--tool-ink); }
+.tool-bento__card--lion .tool-bento__body { padding-bottom: 18px; }
+@media (min-width: 700px) and (max-width: 1099px), (min-width: 1100px) {
+  .tool-bento__grid:not(.tool-bento__grid--all) .tool-document-flow { grid-template-columns: 1fr; gap: 14px; }
+  .tool-bento__grid:not(.tool-bento__grid--all) .tool-document-flow > svg { display: none; }
+}
+@media (max-width: 420px) {
+  .tool-anatomy--moose .tool-anatomy-images, .tool-anatomy--moose img { height: 350px; }
+  .tool-document-flow { grid-template-columns: 1fr; gap: 12px; }
+  .tool-document-flow > svg { display: none; }
+  .tool-document dl { display: flex; flex-wrap: wrap; gap: 10px 24px; }
+}
+@media (min-width: 700px) and (max-width: 1099px) {
+  .tool-document-flow { grid-template-columns: 1fr; gap: 12px; }
+  .tool-document-flow > svg { display: none; }
+  .tool-document dl { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+}

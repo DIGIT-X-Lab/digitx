@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-10-29",
+  "repositories": {
+    "moose": {
+      "repository": "https://github.com/ENHANCE-PET/MOOSE",
+      "stars": 352
+    },
+    "mosaicx": {
+      "repository": "https://github.com/DIGIT-X-Lab/MOSAICX",
+      "stars": 9
+    },
+    "lion": {
+      "repository": "https://github.com/ENHANCE-PET/LION",
+      "stars": 32
+    },
+    "falcon": {
+      "repository": "https://github.com/ENHANCE-PET/FALCON",
+      "stars": 55
+    },
+    "puma": {
+      "repository": "https://github.com/ENHANCE-PET/PUMA",
+      "stars": 22
+    },
+    "annotatex": {
+      "repository": "https://github.com/DIGIT-X-Lab/ANNOTATEX",
+      "stars": 5
+    },
+    "nifti2dicom": {
+      "repository": "https://github.com/ENHANCE-PET/nifti2dicom",
+      "stars": 28
+    }
+  }
+}

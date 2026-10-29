@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0a09">
+  <title>DIGITX · Observations into understanding</title>
+  <link rel="stylesheet" href="./digitx-story.css">
+  <link rel="preload" href="/illustrations/anatomy/front-clean.webp" as="image">
+  <script type="module" src="./digitx-story.mjs"></script>
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <a class="wordmark" href="/">DIGITX</a>
+      <span class="preview-label">A connected view of human biology</span>
+      <span class="study-label">Animation study</span>
+    </header>
+    <section class="placement-hero" data-page-context hidden>
+      <h1>Developing new ways to observe human biology, and new computational intelligence to understand it.</h1>
+      <a href="/research">Explore our research <span aria-hidden="true">↗</span></a>
+    </section>
+    <figure class="film" aria-label="The DIGITX research vision">
+      <div id="scene" class="scene" aria-busy="true">
+        <div class="fallback">
+          <h1>From observations to understanding.</h1>
+          <p>Images and clinical reports become measurements and structured facts. Patient records connect, giving computational methods and AI research systems a richer view of health and disease.</p>
+        </div>
+      </div>
+      <p id="load-status" class="load-status" role="status">Preparing the animation…</p>
+      <div class="mobile-caption" aria-hidden="true"><p id="mobile-title"></p><p id="mobile-description"></p></div>
+      <div class="playback" aria-label="Animation controls">
+        <button id="play" class="transport" type="button" disabled><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path id="play-icon" d="M4 2L13 8L4 14Z" fill="currentColor"/></svg><span id="play-label">Play</span></button>
+        <button id="replay" class="transport" type="button" disabled><svg width="17" height="17" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 7A7 7 0 1 1 3 12M4 2V7H9" stroke="currentColor" stroke-width="1.4" fill="none"/></svg><span>Replay</span></button>
+        <label class="scrubber"><span class="sr-only">Animation position in seconds</span><input id="scrub" type="range" min="0" max="48" step="0.05" value="0" disabled></label>
+        <span id="time" class="time">0:00 / 0:48</span>
+      </div>
+      <nav class="chapters" aria-label="Explore the animation stages" id="chapters"></nav>
+      <p class="sr-only" id="stage-status" aria-live="polite"></p>
+      <figcaption class="mission">Developing new ways to observe human biology,<br class="desktop-break"> and new computational intelligence to understand it.</figcaption>
+    </figure>
+    <footer class="footnote">
+      <span>Illustrative anatomy and fictional patient records.</span>
+      <details><summary>About this study</summary><p>This concept animation describes the lab’s research direction. Values are illustrative, not measurements from the rendered anatomy. The table and graph reuse the same fictional records. The highlighted routes and KEPLER dialogue are an authored research concept, not a live system run. Displayed comparisons are calculated from the fictional records; no causal conclusion or validated clinical capability is implied. The story plays once; KEPLER’s orb and border continue until paused. Each stage can also be explored without motion.</p></details>
+    </footer>
+    <section class="placement-next" data-page-context hidden>
+      <h2>More to investigate.</h2>
+      <div><p>As AI systems become more capable of using tools and carrying out computational work, the questions we can investigate may change too.</p><a href="/research">Explore our research <span aria-hidden="true">↗</span></a></div>
+    </section>
+  </main>
+</body>
+</html>

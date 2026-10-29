@@ -1,0 +1,7 @@
+.research-pillar-layout { display: grid; grid-template-columns: minmax(0, .48fr) minmax(0, .52fr); gap: 32px; align-items: center; padding-top: 24px; }
+.research-pillar-summary { display: grid; gap: 24px; color: var(--subtle); font-size: var(--type-body); font-weight: var(--type-weight-body); line-height: var(--type-leading-body); overflow-wrap: anywhere; }
+.research-pillar-layout > * { min-width: 0; }
+@media (max-width: 1199px) {
+  .research-pillar-layout { grid-template-columns: 1fr; gap: 24px; padding-top: 16px; }
+  .research-pillar-summary { max-width: 64ch; }
+}

@@ -1,0 +1,268 @@
+/* Review-only: one orientation sentence, then an example visitors can inspect. */
+.rvr-research {
+  padding-block: clamp(56px, 6vw, 112px) 48px;
+  color: var(--ink);
+}
+
+.rvr-opening {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  gap: 32px 64px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+
+.rvr-title {
+  margin: 0;
+  font-size: var(--type-display);
+  font-weight: var(--type-weight-heading);
+  line-height: var(--type-leading-display);
+  letter-spacing: var(--type-tracking-display);
+}
+
+.rvr-intro {
+  max-width: 46ch;
+  margin: 0;
+  font-size: var(--type-lead);
+  font-weight: var(--type-weight-body);
+  line-height: var(--type-leading-lead);
+  letter-spacing: var(--type-tracking-lead);
+  text-wrap: pretty;
+}
+
+.rvr-navigation { position: relative; }
+.rvr-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; scroll-margin-top: 120px; }
+.rvr-anchor:focus { outline: none; }
+.rvr-mobile-selector { display: none; }
+.rvr-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.rvr-pillar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+  min-height: 88px;
+  padding: 16px 0 20px;
+  border-bottom: 2px solid transparent;
+  color: var(--subtle);
+  font-size: var(--type-subheading);
+  font-weight: var(--type-weight-heading);
+  line-height: 1.3;
+  text-align: left;
+  text-wrap: balance;
+  scroll-margin-top: 120px;
+  transition: color 160ms ease-out, border-color 160ms ease-out;
+}
+
+.rvr-pillar[aria-selected='true'] { color: var(--ink); border-bottom-color: var(--ink); }
+.rvr-pillar:hover { color: var(--ink); }
+.rvr-pillar-indicator { flex: none; opacity: 0; }
+.rvr-pillar[aria-selected='true'] .rvr-pillar-indicator { opacity: 1; }
+.rvr-panel { padding-top: 24px; outline-offset: 6px; }
+.rvr-panel[hidden], .rvr-film-content[hidden] { display: none; }
+
+.rvr-computability { max-width: 1120px; margin-inline: auto; }
+.rvr-research .home-observation-tabs { gap: 32px; }
+.rvr-research .home-observation-tabs button { min-height: 56px; padding-block: 12px; }
+.rvr-research .home-observation-panels { display: block; }
+.rvr-research .home-observation-panel[aria-hidden='true'] { display: none; }
+.rvr-research .home-image-example {
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: 32px;
+  padding-block: 24px;
+}
+.rvr-research .home-measurement-anatomy { width: min(100%, 260px); }
+.rvr-research .home-measurement-explanation { max-width: 32ch; }
+.rvr-research .home-measurement-value { margin-block: 16px; }
+.rvr-research .home-tissue-options { gap: 24px; }
+.rvr-research .home-observation-caption { padding-bottom: 4px; }
+.rvr-research .home-observation-caption > span { color: var(--subtle); }
+.rvr-research .home-observations .dx-text-demo { gap: 48px; padding-block: 32px; }
+
+.rvr-details {
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.rvr-details > summary,
+.rvr-example-provenance > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 60px;
+  padding-block: 16px;
+  color: var(--ink);
+  font-size: var(--type-action);
+  font-weight: var(--type-weight-action);
+  line-height: 1.4;
+  list-style: none;
+  cursor: pointer;
+}
+.rvr-details > summary::-webkit-details-marker,
+.rvr-example-provenance > summary::-webkit-details-marker { display: none; }
+.rvr-disclosure-mark { flex: none; transition: transform 160ms ease-out; }
+.rvr-details[open] > summary > .rvr-disclosure-mark,
+.rvr-example-provenance[open] > summary > .rvr-disclosure-mark { transform: rotate(180deg); }
+.rvr-prose {
+  display: grid;
+  gap: 24px;
+  max-width: 68ch;
+  color: var(--subtle);
+  font-size: var(--type-body);
+  font-weight: var(--type-weight-body);
+  line-height: var(--type-leading-body);
+}
+.rvr-prose p { margin: 0; text-wrap: pretty; }
+.rvr-prose a { color: var(--ink); text-decoration: underline; text-underline-offset: .18em; }
+.rvr-details > .rvr-prose { padding-block: 8px 24px; }
+.rvr-example-provenance { margin-top: 4px; }
+.rvr-example-provenance > summary {
+  justify-content: start;
+  gap: 12px;
+  min-height: 44px;
+  padding-block: 8px;
+  color: var(--subtle);
+  font-size: var(--type-meta);
+  font-weight: var(--type-weight-body);
+}
+.rvr-example-provenance > p {
+  max-width: 68ch;
+  margin-block: 8px 0;
+  color: var(--subtle);
+  font-size: var(--type-meta);
+  line-height: var(--type-leading-body);
+}
+
+.rvr-physiology { max-width: 900px; margin-inline: auto; }
+.rvr-research .modality-carousel { width: 100%; max-width: none; }
+.rvr-research .modality-stage { --modality-height: clamp(300px, 31vw, 420px); }
+/* Remove the conceptual PNGs' black rectangles against the existing warm black. */
+.rvr-research .modality-view { mix-blend-mode: lighten; }
+.rvr-art-provenance {
+  margin-top: 16px;
+  color: var(--subtle);
+  font-size: var(--type-meta);
+  line-height: var(--type-leading-body);
+  text-align: center;
+}
+
+.rvr-systems-overview {
+  display: grid;
+  grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr);
+  gap: 32px 64px;
+  align-items: start;
+  padding-block: 16px;
+}
+.rvr-system-connections { position: relative; display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.rvr-system-connections::before { position: absolute; content: ''; left: 5px; top: 30px; bottom: 30px; width: 1px; background: var(--strong); }
+.rvr-system-connections li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 68px;
+  padding-block: 12px;
+  font-size: var(--type-subheading);
+  line-height: 1.4;
+}
+.rvr-system-connections li::before { content: ''; flex: none; width: 11px; height: 11px; border: 1px solid var(--subtle); border-radius: 50%; background: var(--bg); }
+.rvr-optional-illustration { margin-top: 16px; }
+.rvr-optional-illustration .research-systems { display: block; max-width: 760px; margin-inline: auto; padding-block: 16px; }
+.rvr-optional-illustration .systems-summary { display: none; }
+
+.rvr-film { margin-top: 32px; border-top: 1px solid var(--line); }
+.rvr-film-trigger {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding-block: 16px;
+  color: var(--ink);
+  font-size: var(--type-action);
+  font-weight: var(--type-weight-action);
+  line-height: 1.4;
+}
+.rvr-film-trigger:hover { text-decoration: underline; text-underline-offset: .2em; }
+.rvr-film-content { padding-top: 16px; outline-offset: 6px; }
+.rvr-research .research-story { width: 100%; padding: 0; }
+.rvr-research .research-story-frame { display: block; width: 100%; height: auto; aspect-ratio: 1.6; border: 0; background: var(--bg); }
+.rvr-research .story-load-status { padding-block: 12px; color: var(--subtle); font-size: var(--type-meta); }
+.rvr-research .story-open { display: inline-flex; min-height: 44px; align-items: center; color: var(--ink); font-size: var(--type-action); text-decoration: underline; }
+.rvr-research :is(button, select, summary, a):focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
+
+@media (max-width: 1000px) {
+  .rvr-opening { grid-template-columns: 1fr; gap: 24px; }
+  .rvr-intro { max-width: 56ch; }
+  .rvr-pillar { font-size: var(--type-nav); }
+  .rvr-pillar-indicator { display: none; }
+  .rvr-systems-overview { grid-template-columns: 1fr; gap: 24px; }
+  .rvr-system-connections { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .rvr-system-connections::before { display: none; }
+  .rvr-system-connections li { align-items: baseline; gap: 12px; font-size: var(--type-nav); }
+}
+
+@media (max-width: 700px) {
+  .rvr-research { padding-block: 48px 32px; }
+  .rvr-opening { margin-bottom: 24px; }
+  .rvr-pillars { gap: 12px; }
+  .rvr-pillar { padding-block: 12px 16px; min-height: 88px; line-height: 1.4; scroll-margin-top: 100px; }
+  .rvr-panel { padding-top: 16px; }
+  .rvr-research .home-observation-tabs { gap: 24px; }
+  .rvr-research .home-observation-tabs button { flex: 1; }
+  .rvr-research .home-image-example { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 20px; }
+  .rvr-research .home-measurement-anatomy { width: min(100%, 220px); }
+  .rvr-research .home-tissue-options { gap: 16px; }
+  .rvr-research .home-observations .dx-text-demo { grid-template-columns: 1fr; gap: 28px; padding-block: 24px; }
+  .rvr-research .modality-stage { --modality-height: 300px; }
+  .rvr-details { margin-top: 24px; }
+  .rvr-details > summary { min-height: 64px; }
+  .rvr-system-connections { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .rvr-system-connections li { min-height: 44px; padding-block: 4px; }
+  .rvr-film { margin-top: 24px; }
+}
+
+@media (max-width: 480px) {
+  .rvr-research { padding-top: 24px; }
+  .rvr-opening { gap: 16px; margin-bottom: 16px; }
+  .rvr-anchor { scroll-margin-top: 100px; }
+  .rvr-pillars { display: none; }
+  .rvr-mobile-selector { position: relative; display: block; border-bottom: 1px solid var(--ink); }
+  .rvr-mobile-selection {
+    display: flex;
+    align-items: center;
+    min-height: 56px;
+    padding: 12px 32px 12px 0;
+    color: var(--ink);
+    font-size: var(--type-nav);
+    line-height: 1.4;
+    pointer-events: none;
+  }
+  .rvr-mobile-selector select {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    font-family: inherit;
+    font-size: var(--type-nav);
+    background: var(--bg);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .rvr-mobile-selector:has(select:focus-visible) { outline: 2px solid var(--ink); outline-offset: 5px; }
+  .rvr-mobile-selector > svg { position: absolute; top: 18px; right: 0; pointer-events: none; }
+  .rvr-research .home-image-example { grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 16px; align-items: start; }
+  .rvr-research .home-measurement-anatomy { width: min(100%, 150px); margin-top: 4px; }
+  .rvr-research .home-measurement-readout { padding-bottom: 12px; }
+  .rvr-research .home-tissue-options { gap: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rvr-pillar, .rvr-disclosure-mark { transition: none; }
+}

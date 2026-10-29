@@ -18,7 +18,10 @@ jobs:
         with:
           node-version: 20
 
-      - name: Fetch publications from Semantic Scholar
+      - name: Check publication import rules
+        run: node --test scripts/test-publication-import.mjs
+
+      - name: Fetch verified journal papers from Europe PMC
         run: node scripts/fetch-publications.mjs
 
       - name: Fetch news (releases, publications, manual)
@@ -29,4 +32,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add src/data/publications.json src/data/news.json src/data/.publications-prev.json
-          git diff --cached --quiet || git commit -m "chore: update publications and news feed" && git push
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update publications and news feed"
+            git push
+          fi

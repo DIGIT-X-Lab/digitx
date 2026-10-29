@@ -1,0 +1,15 @@
+.physiology-summary a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; text-decoration-color: var(--muted); }
+.physiology-summary a:hover { color: var(--ink); text-decoration-color: currentColor; }
+.modality-carousel { width: 100%; min-width: 0; margin: 0; }
+.modality-stage { --modality-height: clamp(420px, 36vw, 560px); --modality-card-width: min(58%, calc(var(--modality-height) * 2 / 3)); position: relative; height: calc(var(--modality-height) + 36px); overflow: hidden; display: block; width: 100%; padding: 0; border: 0; background: transparent; touch-action: pan-y; cursor: pointer; user-select: none; }
+.modality-stage:focus-visible { outline-offset: -4px; }
+/* Shared percentage centring avoids WebKit's zoom drift in width-based calc(). */
+.modality-view, .modality-caption { position: absolute; top: 0; left: 50%; translate: -50% 0; }
+.modality-view { width: var(--modality-card-width); height: 100%; }
+.modality-art { display: block; transform-origin: center; backface-visibility: hidden; }
+.modality-art img { display: block; width: 100%; height: auto; pointer-events: none; }
+.modality-caption { z-index: 200; display: block; width: max-content; text-align: center; color: var(--subtle); font-size: var(--type-meta); line-height: 1.5; }
+@media (max-width: 1199px) {
+  .modality-carousel { width: min(100%, 680px); justify-self: center; }
+  .modality-stage { --modality-height: clamp(300px, 60vw, 360px); }
+}

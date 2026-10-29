@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-27",
+  "styleReferenceInspected": "public/illustrations/anatomy/front-clean.webp",
+  "artDirection": "Sparse monochrome wireframe animal headshots. Transparent background and open spaces; no filled surfaces or black tiles. Existing Lumos identity retained. GALAH reuses the separately documented project identity.",
+  "assets": [
+    {
+      "name": "moose",
+      "prompt": "Use case: stylized-concept. Asset type: transparent website identity, ONE animal head, no text. Create a close-up frontal MOOSE head with recognisable broad palmate antlers, complete silhouette comfortably inside a square composition, large head occupying 85% of the canvas. True transparent alpha background and transparent open spaces BETWEEN EVERY wire. Draw only sparse dark charcoal #17191b contour wires: graceful curved longitude/latitude cage lines describing the three-dimensional head, muzzle, ears and antlers. Match a restrained scientific 3D wireframe humanoid visual language: approximately 12-18 generous curved surface lines, medium-thin clean lines that remain readable at 54px. Anatomical and elegant, calm symmetrical face, no cartoon expression. NO surface fill, NO solid fur, NO shading, NO dense triangulation, NO tiny crosshatching, NO color, NO glow, NO halo, NO background, NO floor, NO shadow, NO border, NO lettering. This is pure open sparse wire sculpture, NOT a realistic rendered animal covered with a mesh.",
+      "generationTool": "built-in image_gen",
+      "transparentBackground": true,
+      "source": "/Users/nutellabear/.codex/generated_images/01a17f33-0965-7a33-af90-5850fd57b9c7/exec-a271d9a5-2fbe-4194-b9de-37ca0500a3d9.png",
+      "original": "public/illustrations/flowing-menu/moose-wireframe.png",
+      "display": "public/illustrations/flowing-menu/moose-wireframe.webp",
+      "encoding": "cwebp -lossless; no pixel edits, no cropping, original alpha retained"
+    },
+    {
+      "name": "lion",
+      "prompt": "Use case: stylized-concept. Asset type: transparent website identity, ONE animal head, no text. True transparent alpha background and fully transparent open spaces BETWEEN EVERY wire. Draw only sparse dark charcoal #17191b contour wires: graceful curved longitude/latitude cage lines describing three-dimensional form. Match a restrained scientific 3D wireframe humanoid visual language: approximately 12-18 generous curved surface lines, medium-thin clean lines readable at 54px. Anatomical, elegant, calm. Square close-up composition, complete silhouette with 6% safe margin, head occupying 85-90% of canvas. NO solid surface fill, NO shading, NO realistic skin/fur/feather textures, NO dense triangulation, NO tiny crosshatching, NO color, NO glow, NO halo, NO background, NO floor, NO shadow, NO border, NO text. Pure open sparse wire sculpture, NOT a realistic rendered animal covered with mesh. Subject: a frontal male LION head with a simple generous mane silhouette, dignified muzzle and ears; the mane itself is described by broad sparse curved cage lines, not strands of hair.",
+      "generationTool": "built-in image_gen",
+      "transparentBackground": true,
+      "source": "/Users/nutellabear/.codex/generated_images/01a17f33-0965-7a33-af90-5850fd57b9c7/exec-bb75d63c-181c-45ce-b62f-f5401e9d3789.png",
+      "original": "public/illustrations/flowing-menu/lion-wireframe.png",
+      "display": "public/illustrations/flowing-menu/lion-wireframe.webp",
+      "encoding": "cwebp -lossless; no pixel edits, no cropping, original alpha retained"
+    },
+    {
+      "name": "falcon",
+      "prompt": "Use case: stylized-concept. Asset type: transparent website identity, ONE animal head, no text. True transparent alpha background and fully transparent open spaces BETWEEN EVERY wire. Draw only sparse dark charcoal #17191b contour wires: graceful curved longitude/latitude cage lines describing three-dimensional form. Match a restrained scientific 3D wireframe humanoid visual language: approximately 12-18 generous curved surface lines, medium-thin clean lines readable at 54px. Anatomical, elegant, calm. Square close-up composition, complete silhouette with 6% safe margin, head occupying 85-90% of canvas. NO solid surface fill, NO shading, NO realistic skin/fur/feather textures, NO dense triangulation, NO tiny crosshatching, NO color, NO glow, NO halo, NO background, NO floor, NO shadow, NO border, NO text. Pure open sparse wire sculpture, NOT a realistic rendered animal covered with mesh. Subject: a FALCON head in clear three-quarter profile facing left, recognisable compact raptor skull, strong hooked beak, focused eye; crop ends at the short base of the neck. The feathers are described only by broad sparse surface contour wires, with no feather rendering.",
+      "generationTool": "built-in image_gen",
+      "transparentBackground": true,
+      "source": "/Users/nutellabear/.codex/generated_images/01a17f33-0965-7a33-af90-5850fd57b9c7/exec-ff977e38-cd53-4c6b-964c-4bf6fe155cdb.png",
+      "original": "public/illustrations/flowing-menu/falcon-wireframe.png",
+      "display": "public/illustrations/flowing-menu/falcon-wireframe.webp",
+      "encoding": "cwebp -lossless; no pixel edits, no cropping, original alpha retained"
+    },
+    {
+      "name": "puma",
+      "prompt": "Use case: stylized-concept. Asset type: transparent website identity, ONE animal head, no text. True transparent alpha background and fully transparent open spaces BETWEEN EVERY wire. Draw only sparse dark charcoal #17191b contour wires: graceful curved longitude/latitude cage lines describing three-dimensional form. Match a restrained scientific 3D wireframe humanoid visual language: approximately 12-18 generous curved surface lines, medium-thin clean lines readable at 54px. Anatomical, elegant, calm. Square close-up composition, complete silhouette with 6% safe margin, head occupying 85-90% of canvas. NO solid surface fill, NO shading, NO realistic skin/fur textures, NO dense triangulation, NO tiny crosshatching, NO color, NO glow, NO halo, NO background, NO floor, NO shadow, NO border, NO text. Pure open sparse wire sculpture, NOT a realistic rendered animal covered with mesh. Subject: a frontal PUMA / cougar head, recognisable broad feline muzzle, rounded ears and smooth strong cranial silhouette, NO mane, with minimal eye and nose outlines, head and very short neck only.",
+      "generationTool": "built-in image_gen",
+      "transparentBackground": true,
+      "source": "/Users/nutellabear/.codex/generated_images/01a17f33-0965-7a33-af90-5850fd57b9c7/exec-a81e2c13-8f70-4361-9f1e-9cbe159ff75e.png",
+      "original": "public/illustrations/flowing-menu/puma-wireframe.png",
+      "display": "public/illustrations/flowing-menu/puma-wireframe.webp",
+      "encoding": "cwebp -lossless; no pixel edits, no cropping, original alpha retained"
+    },
+    {
+      "name": "taipan",
+      "prompt": "Use case: stylized-concept. Asset type: transparent website identity, ONE animal head, no text. True transparent alpha background and fully transparent open spaces BETWEEN EVERY wire. Draw only sparse dark charcoal #17191b contour wires: graceful curved longitude/latitude cage lines describing three-dimensional form. Match a restrained scientific 3D wireframe humanoid visual language: approximately 12-18 generous curved surface lines, medium-thin clean lines readable at 54px. Anatomical, elegant, calm. Square close-up composition, complete silhouette with 6% safe margin, head occupying 85-90% of canvas. NO solid surface fill, NO shading, NO realistic skin/fur textures, NO dense triangulation, NO tiny crosshatching, NO color, NO glow, NO halo, NO background, NO floor, NO shadow, NO border, NO text. Pure open sparse wire sculpture, NOT a realistic rendered animal covered with mesh. Subject: a TAIPAN snake's head and a short curved neck, close-up three-quarter view facing left, recognisably slender non-hooded Australian snake skull, narrow eyes, mouth CLOSED, calm and graceful, no fangs, no tongue, no scales. Broad curved wire contours describe the smooth reptile head and a subtle S-shaped short neck, not a whole snake.",
+      "generationTool": "built-in image_gen",
+      "transparentBackground": true,
+      "source": "/Users/nutellabear/.codex/generated_images/01a17f33-0965-7a33-af90-5850fd57b9c7/exec-cbd25eec-7290-4c38-ae72-401b42514a89.png",
+      "original": "public/illustrations/flowing-menu/taipan-wireframe.png",
+      "display": "public/illustrations/flowing-menu/taipan-wireframe.webp",
+      "encoding": "cwebp -lossless; no pixel edits, no cropping, original alpha retained"
+    }
+  ],
+  "nativeSvgSymbols": [
+    "public/illustrations/flowing-menu/volume-wireframe.svg",
+    "public/illustrations/flowing-menu/document-wireframe.svg",
+    "public/illustrations/flowing-menu/annotation-wireframe.svg",
+    "public/illustrations/flowing-menu/physiology-wireframe.svg",
+    "public/illustrations/flowing-menu/computable-wireframe.svg",
+    "public/illustrations/flowing-menu/systems-wireframe.svg"
+  ]
+}
