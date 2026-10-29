@@ -1,7 +1,7 @@
 {
   "supplied": "2026-10-28",
   "authorisation": "The PI supplied all five photographs and requested a return to the original light studio aesthetic of Hagen and Peter on 28 October 2026. Keep faces clearly lit and retain a shared head-and-chest crop.",
-  "treatment": "Original light studio portraits for Hagen and Peter; authorised background/detail edits for Lalith, Maissa and Maximilian. Shared CSS darken blending places a subtle light silver-grey radial gradient in bright background areas; monochrome and lower-edge fade match the site. Only Lalith’s portrait is mirrored horizontally in CSS. Original photographs and previous derivatives are retained.",
+  "treatment": "Original light studio portraits for Hagen, Peter, Maximilian and Frederic; authorised background/detail edits for Lalith and Maissa. Shared CSS darken blending places a subtle light silver-grey radial gradient in bright background areas; monochrome and lower-edge fade match the site. Only Lalith’s portrait is mirrored horizontally in CSS. Original photographs and previous derivatives are retained locally.",
   "records": [
     {
       "person": "lalith-shiyam-sundar",
@@ -37,10 +37,14 @@
     },
     {
       "person": "maximilian-tiling",
-      "source": "/Users/nutellabear/Downloads/WhatsApp Image 2026-10-28 at 10.46.48.jpeg",
-      "original": "public/portraits/maximilian-tiling.jpg",
-      "edited": "public/portraits/maximilian-tiling-studio.png",
-      "web": "public/portraits/maximilian-tiling-studio-web.jpg"
+      "supplied": "2026-10-29",
+      "source": "/Users/nutellabear/Downloads/Tiling-Maximilian---RAD_9466.jpeg",
+      "web": "public/portraits/maximilian-tiling-official-web.webp",
+      "sourceDimensions": [7360, 4912],
+      "outputDimensions": [1600, 1068],
+      "treatment": "Original official portrait. WebP delivery copy, no retouching or generated detail. The shared CSS applies the centred 4:5 display crop, monochrome filter, silver-grey gradient and lower-edge fade.",
+      "authorisation": "The PI supplied this official photograph and requested it replace Maximilian’s previous portrait.",
+      "previousWeb": "public/portraits/maximilian-tiling-studio-web.jpg"
     },
     {
       "person": "frederic-paul-thiele",

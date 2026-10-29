@@ -83,7 +83,7 @@ export const teamMembers: TeamMember[] = [
     university: affiliations.radiology,
     membership: 'associated',
     linkedin: 'https://www.linkedin.com/in/maximilian-tiling-18778635a/',
-    portrait: { src: '/portraits/maximilian-tiling-studio-web.jpg', alt: 'Maximilian Tiling', status: 'approved' },
+    portrait: { src: '/portraits/maximilian-tiling-official-web.webp', alt: 'Maximilian Tiling', status: 'approved' },
   },
   {
     id: 'frederic-paul-thiele',
