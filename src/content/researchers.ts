@@ -30,7 +30,7 @@ export interface Researcher {
   selectedWork?: { title: string; href: string }[];
 }
 
-/** Researcher answers supplied or explicitly approved by the PI on 29 October 2026.
+/** Researcher answers supplied or explicitly approved by the PI; provenance is in editorial/06-PEOPLE.md.
  * Preserve the approved wording, including the distinction between a goal and a result.
  */
 const authoredResponses: Record<string, ResearcherResponse[]> = {
@@ -135,6 +135,32 @@ const authoredResponses: Record<string, ResearcherResponse[]> = {
       id: "collaborate",
       question: peoplePage.prompts[3],
       answer: "Projects that open the black box of medical AI, where every prediction comes with reasoning a clinician can understand, question and trust.",
+      status: "approved",
+    },
+  ],
+  "maximilian-tiling": [
+    {
+      id: "understand",
+      question: peoplePage.prompts[0],
+      answer: "Why hundreds of AI tools are approved, yet so few have shown real benefit for patients. And what role radiologists will play once machines take over the measuring.",
+      status: "approved",
+    },
+    {
+      id: "building",
+      question: peoplePage.prompts[1],
+      answer: "AI tools that automatically detect and quantify tumors on PET/CT, especially for newer tracers where reliable automated analysis is still missing.",
+      status: "approved",
+    },
+    {
+      id: "unanswered",
+      question: peoplePage.prompts[2],
+      answer: "How much to rely on AI as a beginner. It can be a great teacher, but also a shortcut that keeps me from developing my own eye. And why all my houseplants keep dying.",
+      status: "approved",
+    },
+    {
+      id: "collaborate",
+      question: peoplePage.prompts[3],
+      answer: "Closer work with other specialties. Radiology is often the hub of a hospital, and the better we connect, the more our patients benefit.",
       status: "approved",
     },
   ],

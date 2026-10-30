@@ -56,7 +56,7 @@ try {
       await people.getByRole('button', { name: 'Clear search and filters' }).click();
       assert.equal(await people.locator('.pg-person-card').count(), 6);
       await people.locator('[data-person="maximilian-tiling"]').click();
-      assert.equal(await people.locator('.pg-question').count(), 0);
+      assert.equal(await people.locator('.pg-question').count(), 4);
       await page.getByRole('button', { name: 'All people', exact: true }).click();
       await page.goto(`${base}/people#maissa-monsour`);
       await page.locator('#maissa-monsour .pg-profile-name').waitFor();

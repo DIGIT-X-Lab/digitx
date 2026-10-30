@@ -119,6 +119,26 @@ How do we know when an AI system is truly ready to be trusted in clinical practi
 
 Projects that open the black box of medical AI, where every prediction comes with reasoning a clinician can understand, question and trust.
 
+## Maximilian Tiling, supplied 30 October 2026
+
+The following four answers were supplied by Max through the PI for publication. Preserve his wording verbatim, including his spelling and the houseplants line.
+
+**What I'm trying to understand**
+
+Why hundreds of AI tools are approved, yet so few have shown real benefit for patients. And what role radiologists will play once machines take over the measuring.
+
+**What I'm currently building**
+
+AI tools that automatically detect and quantify tumors on PET/CT, especially for newer tracers where reliable automated analysis is still missing.
+
+**What I haven't figured out yet**
+
+How much to rely on AI as a beginner. It can be a great teacher, but also a shortcut that keeps me from developing my own eye. And why all my houseplants keep dying.
+
+**What I would love to collaborate on**
+
+Closer work with other specialties. Radiology is often the hub of a hospital, and the better we connect, the more our patients benefit.
+
 ## Frederic Paul Thiele, supplied 29 October 2026
 
 **Membership:** Associated member. **Role:** Clinical associate.
