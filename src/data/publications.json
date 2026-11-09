@@ -1,35 +1,5 @@
 [
   {
-    "paperId": "epmc:MED:42957205",
-    "title": "Botulinum Toxin Plus Transdermal Scopolamine Reduces Salivary Gland Uptake in Patients Undergoing Tandem Radiopharmaceutical Therapy with [225Ac]Ac- and [177Lu]Lu-PSMA Radioligands",
-    "authors": [
-      "Joerg Mueller",
-      "Tianzhi Zhao",
-      "Vivianne Jakobsson",
-      "Lalith Kumar Shiyam Sundar",
-      "Xin Fan",
-      "Aleksandr Eismant",
-      "Jingjing Zhang",
-      "Richard P Baum"
-    ],
-    "groupAuthors": [
-      "Lalith Kumar Shiyam Sundar"
-    ],
-    "year": 2026,
-    "venue": "Journal of nuclear medicine : official publication, Society of Nuclear Medicine",
-    "publicationDate": "2026-10-29",
-    "citationCount": 0,
-    "citationSource": "Europe PMC",
-    "citationUrl": "https://europepmc.org/article/MED/42957205",
-    "doi": "10.2967/jnumed.125.271922",
-    "pubmedId": "42957205",
-    "publicationTypes": [
-      "Journal Article"
-    ],
-    "source": "europe-pmc",
-    "sourceUrl": "https://europepmc.org/article/MED/42957205"
-  },
-  {
     "paperId": "epmc:MED:42816125",
     "title": "Fully Automated Segmentation of [18F]FDG and [68Ga]/[18F]PSMA PET/CT Images via Data-Centric Deep Learning",
     "authors": [
@@ -84,17 +54,49 @@
     ],
     "year": 2026,
     "venue": "Journal of nuclear medicine : official publication, Society of Nuclear Medicine",
-    "publicationDate": "2026-09-30",
+    "publicationDate": "2026-11-02",
     "citationCount": 0,
     "citationSource": "Europe PMC",
     "citationUrl": "https://europepmc.org/article/MED/42816125",
     "doi": "10.2967/jnumed.126.272852",
     "pubmedId": "42816125",
     "publicationTypes": [
+      "research-article",
+      "Multicenter Study",
       "Journal Article"
     ],
     "source": "europe-pmc",
     "sourceUrl": "https://europepmc.org/article/MED/42816125"
+  },
+  {
+    "paperId": "epmc:MED:42957205",
+    "title": "Botulinum Toxin Plus Transdermal Scopolamine Reduces Salivary Gland Uptake in Patients Undergoing Tandem Radiopharmaceutical Therapy with [225Ac]Ac- and [177Lu]Lu-PSMA Radioligands",
+    "authors": [
+      "Joerg Mueller",
+      "Tianzhi Zhao",
+      "Vivianne Jakobsson",
+      "Lalith Kumar Shiyam Sundar",
+      "Xin Fan",
+      "Aleksandr Eismant",
+      "Jingjing Zhang",
+      "Richard P Baum"
+    ],
+    "groupAuthors": [
+      "Lalith Kumar Shiyam Sundar"
+    ],
+    "year": 2026,
+    "venue": "Journal of nuclear medicine : official publication, Society of Nuclear Medicine",
+    "publicationDate": "2026-10-29",
+    "citationCount": 0,
+    "citationSource": "Europe PMC",
+    "citationUrl": "https://europepmc.org/article/MED/42957205",
+    "doi": "10.2967/jnumed.125.271922",
+    "pubmedId": "42957205",
+    "publicationTypes": [
+      "Journal Article"
+    ],
+    "source": "europe-pmc",
+    "sourceUrl": "https://europepmc.org/article/MED/42957205"
   },
   {
     "paperId": "epmc:MED:42738377",
