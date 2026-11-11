@@ -45,7 +45,7 @@ function Header() {
   useEffect(() => { if (!compact && matchMedia("(min-width: 1024px)").matches) setOpen(false); }, [compact]);
   useEffect(() => {
     const page = navRedesign.find(item => item.id === active)?.label;
-    document.title = !page || active === "home" ? "DIGITX · Making the human body computable" : `${page} · DIGITX`;
+    document.title = !page || active === "home" ? "DIGITX · Building the computable human" : `${page} · DIGITX`;
   }, [active]);
   useEffect(() => {
     if (!open) return;
