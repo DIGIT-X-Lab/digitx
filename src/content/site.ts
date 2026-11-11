@@ -19,6 +19,22 @@ export const nav = [
 
 export type SiteSection = typeof nav[number]["id"];
 
+/** Redesign preview navigation: Opportunities becomes a chapter of its own,
+ * so the most likely high-value visitor (a prospective student) gets scent
+ * from the first viewport. The section already exists at #opportunities. */
+export const navRedesign = [
+  { id: "home", to: "/#home", label: "Home" },
+  { id: "research", to: "/#research", label: "Research" },
+  { id: "tools", to: "/#tools", label: "Tools" },
+  { id: "projects", to: "/#projects", label: "Projects" },
+  { id: "publications", to: "/#publications", label: "Publications" },
+  { id: "people", to: "/#people", label: "People" },
+  { id: "opportunities", to: "/#opportunities", label: "Opportunities" },
+  { id: "contact", to: "/#contact", label: "Contact" },
+] as const;
+
+export type SectionId = typeof navRedesign[number]["id"];
+
 /** Public lab mailbox confirmed by the PI, 27 October 2026. */
 export const contactEmail = "RAD-Digitx@med.uni-muenchen.de";
 

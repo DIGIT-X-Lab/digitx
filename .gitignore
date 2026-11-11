@@ -35,3 +35,18 @@ design-previews/
 !/public/portraits/maissa-monsour-studio-web.jpg
 !/public/portraits/maximilian-tiling-official-web.webp
 !/public/portraits/frederic-paul-thiele-web.webp
+!/public/portraits/lalith-shiyam-sundar-studio-sharp-web-dark.jpg
+!/public/portraits/lalith-shiyam-sundar-studio-sharp-web-light.jpg
+!/public/portraits/hagen-lamprecht-web-dark.jpg
+!/public/portraits/hagen-lamprecht-web-light.jpg
+!/public/portraits/peter-benedict-schildberg-web-dark.jpg
+!/public/portraits/peter-benedict-schildberg-web-light.jpg
+!/public/portraits/maissa-monsour-studio-web-dark.jpg
+!/public/portraits/maissa-monsour-studio-web-light.jpg
+!/public/portraits/maximilian-tiling-official-web-dark.jpg
+!/public/portraits/maximilian-tiling-official-web-light.jpg
+!/public/portraits/frederic-paul-thiele-web-dark.jpg
+!/public/portraits/frederic-paul-thiele-web-light.jpg
+
+# TypeScript incremental build caches
+*.tsbuildinfo

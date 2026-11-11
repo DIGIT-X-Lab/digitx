@@ -7,7 +7,7 @@ import { affiliations } from "@/data/affiliations";
 
 export const peoplePage = {
   title: "People",
-  intro: "We come from different backgrounds and work on different problems. These are the people behind the research.",
+  intro: "We come from different backgrounds and work on different problems, together. These are the people behind the research.",
   fields: {
     role: "Role",
     background: "Expertise",

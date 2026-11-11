@@ -9,6 +9,7 @@ import { ToolValidation } from "./ToolValidation";
 import { IdentityMark } from "./IdentityMark";
 import { FlowingMenuHighlight } from "./FlowingMenuHighlight";
 import { useHoverHighlight } from "./useHoverHighlight";
+import { useRegister } from "../redesign/useRegister";
 import "./tool-catalogue.css";
 
 type Filter = (typeof toolsPage.filters)[number];
@@ -65,6 +66,7 @@ function ToolFocus({ tool, trigger, onClose }: { tool: Tool; trigger: HTMLButton
  * Search/filter the entire collection before pagination; keep unreleased work separate. */
 export function ToolCatalogue() {
   const id = useId();
+  const register = useRegister();
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<Filter>("All");
   const [page, setPage] = useState(0);
@@ -94,19 +96,31 @@ export function ToolCatalogue() {
   return <div className="tool-catalogue">
     <div className="tool-directory-toolbar">
       <label className="tool-directory-search"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="6.5" stroke="currentColor" strokeWidth="1.4" /><path d="m15 15 6 6" stroke="currentColor" strokeWidth="1.4" /></svg><input aria-label="Search tools" aria-controls={`${id}-results`} type="search" placeholder="Search tools" value={query} onChange={event => { setQuery(event.target.value); setPage(0); }} /></label>
-      <div className="tool-catalogue-filters" role="group" aria-label={toolsPage.filterLabel}>{toolsPage.filters.map(value => <button type="button" key={value} aria-pressed={filter === value} aria-controls={`${id}-results`} onClick={() => { setFilter(value); setPage(0); }}>{value === "All" ? value : toolsPage.dataLabels[value]}</button>)}</div>
+      {register === "current" && <div className="tool-catalogue-filters" role="group" aria-label={toolsPage.filterLabel}>{toolsPage.filters.map(value => <button type="button" key={value} aria-pressed={filter === value} aria-controls={`${id}-results`} onClick={() => { setFilter(value); setPage(0); }}>{value === "All" ? value : toolsPage.dataLabels[value]}</button>)}</div>}
     </div>
     <div id={`${id}-results`}>
       <p className="sr-only" role="status">{released.length} available tools, {forthcoming.length + development.length} forthcoming.</p>
       <div className="tool-directory-index flowing-menu-host" ref={index} aria-label={toolsPage.released}>
         <FlowingMenuHighlight target={target} exitEdge={exitEdge} inset={12} />
-        {visible.map(tool => <button key={tool.slug} type="button" className="tool-directory-row" data-hover-item={tool.slug} data-lit={target?.id === tool.slug || undefined}
-          aria-label={`Open ${tool.name} demonstration`} aria-describedby={`${id}-${tool.slug}-purpose`} aria-haspopup="dialog"
-          onClick={event => { trigger.current = event.currentTarget; setOpened(tool); }}>
-          <span className="tool-directory-name"><IdentityMark name={tool.slug} /><span className="tool-directory-title"><span>{tool.name}</span><ToolStars tool={tool} /></span></span>
-          <span className="tool-directory-purpose" id={`${id}-${tool.slug}-purpose`}>{tool.summary ?? tool.function}</span>
-          <span className="tool-directory-row-end" aria-hidden="true"><Arrow direction="diagonal" /></span>
-        </button>)}
+        {(() => {
+          const row = (tool: Tool) => <button key={tool.slug} type="button" className="tool-directory-row" data-hover-item={tool.slug} data-lit={target?.id === tool.slug || undefined}
+            aria-label={`Open ${tool.name} demonstration`} aria-describedby={`${id}-${tool.slug}-purpose`} aria-haspopup="dialog"
+            onClick={event => { trigger.current = event.currentTarget; setOpened(tool); }}>
+            <span className="tool-directory-name"><IdentityMark name={tool.slug} /><span className="tool-directory-title"><span>{tool.name}</span><ToolStars tool={tool} /></span></span>
+            <span className="tool-directory-purpose" id={`${id}-${tool.slug}-purpose`}>{tool.summary ?? tool.function}</span>
+            {/* Rows open an in-page demonstration, so the redesign registers
+                reserve the diagonal arrow for links that leave the page. */}
+            <span className="tool-directory-row-end" aria-hidden="true"><Arrow direction={register === "current" ? "diagonal" : undefined} /></span>
+          </button>;
+          // Redesign registers: two named groups replace the filter buttons,
+          // so the default view presents two short lists instead of one wall.
+          if (register === "current" || filter !== "All" || query.trim()) return visible.map(row);
+          return (["Imaging", "Documents"] as const).map(kind => {
+            const group = visible.filter(tool => kind === "Imaging" ? tool.data.includes("Imaging") : !tool.data.includes("Imaging"));
+            if (!group.length) return null;
+            return <Fragment key={kind}><p className="tool-directory-group">{kind}</p>{group.map(row)}</Fragment>;
+          });
+        })()}
       </div>
       {matching.length === 0 && <div className="tool-directory-empty"><p>{toolsPage.empty}</p><button type="button" onClick={() => { setQuery(""); setFilter("All"); setPage(0); }}>{toolsPage.filterReset}<Arrow /></button></div>}
       {pages > 1 && <nav className="tool-directory-pagination" aria-label="Tools pages">

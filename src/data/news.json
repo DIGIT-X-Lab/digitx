@@ -1,5 +1,17 @@
 [
   {
+    "date": "2026-11-11",
+    "title": "LION v2.0 kicks off with 20 international centres",
+    "description": "Following the success of LION v1.0, LION v2.0 kicks off with 20 international centres. Automated DOTA, SiFA and FAPI segmentation.",
+    "type": "project"
+  },
+  {
+    "date": "2026-11-11",
+    "title": "KEPLER project funded by ZIM",
+    "description": "ZIM funds KEPLER, a collaboration with deepc investigating an LLM-based system for adapting radiology foundation models for X-ray and CT on site, with checks built into the workflow. The project starts in January 2027.",
+    "type": "grant"
+  },
+  {
     "date": "2026-07-02",
     "title": "Hagen Lamprecht and Peter Benedict Schildberg join as doctoral researchers",
     "description": "DIGITX welcomes two doctoral researchers: Hagen Lamprecht, building autonomous agentic research systems for healthcare, and Peter Benedict Schildberg, developing temporal knowledge graphs for clinical data.",

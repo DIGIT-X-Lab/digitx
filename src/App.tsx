@@ -1,7 +1,7 @@
 import { lazy, Suspense, type ReactNode } from "react";
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Layout } from "./site/components/Layout";
-import Landing from "./site/pages/Landing";
+import Home from "./site/pages/RedesignPreview";
 import { showDevicePreview, showPeoplePreview, showReviewPrototype } from "./site/env";
 import { ReviewLayout } from "./site/pages/review/ReviewLayout";
 
@@ -30,7 +30,9 @@ const App = () => (
     <SiteFrame>
       <Suspense fallback={<div className="min-h-[60vh]" />}>
         <Routes>
-          <Route path="/" element={<Landing />} />
+          <Route path="/" element={<Home register="motion" />} />
+          {/* The elevation previews shipped as the site; old links come home. */}
+          <Route path="/redesign/*" element={<Navigate to="/" replace />} />
           {showDevicePreview && <Route path="/device-preview" element={<DevicePreview />} />}
           {showReviewPrototype && <>
             <Route path="/publications-preview" element={<SectionRedirect id="publications" />} />

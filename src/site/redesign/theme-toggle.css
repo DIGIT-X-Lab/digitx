@@ -1,0 +1,10 @@
+/* Theme toggle: one quiet icon beside the menu. */
+.header-actions { display: flex; align-items: center; gap: 14px; }
+.theme-toggle { display: grid; place-items: center; width: 44px; height: 44px; color: var(--subtle); }
+.theme-toggle:hover { color: var(--ink); }
+.theme-toggle svg { width: 17px; height: 17px; }
+
+/* The circular sweep owns the crossfade: stock view-transition animation
+   and blending are disabled so the growing clip is the whole effect. */
+::view-transition-old(root),
+::view-transition-new(root) { animation: none; mix-blend-mode: normal; }

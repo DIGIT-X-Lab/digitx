@@ -12,7 +12,10 @@ const SPEED = 26; // CSS pixels per second, independent of viewport width.
 export function MakingHeading({ id }: { id: string }) {
   const root = useRef<HTMLDivElement>(null);
   const unit = useRef<HTMLSpanElement>(null);
-  const reduced = useMotionPreference();
+  const motionPreference = useMotionPreference();
+  // The marquee runs in every register (user call, 11 Nov 2026); only the
+  // visitor's reduced-motion preference stills it.
+  const reduced = motionPreference;
   const [metrics, setMetrics] = useState({ width: 0, repeats: 1 });
   const [visible, setVisible] = useState(false);
   const [hidden, setHidden] = useState(document.hidden);

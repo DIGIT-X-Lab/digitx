@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useRegister } from "../redesign/useRegister";
 
 /** React Bits Text Pressure, adapted to Inter's weight axis and stable glyph slots.
  * https://reactbits.dev/text-animations/text-pressure
@@ -6,6 +7,9 @@ import { useEffect, useRef } from "react";
  */
 export function HeroPressureText({ text, outline = false, autoShine }: { text: string; outline?: boolean; autoShine?: "intro" | "settled" }) {
   const root = useRef<HTMLSpanElement>(null);
+  // Redesign registers: the automatic shine passes once and rests, so a
+  // screenshot or a pause never catches the lettering half-filled mid-loop.
+  const register = useRegister();
   useEffect(() => {
     const element = root.current!;
     const glyphs = Array.from(element.querySelectorAll<HTMLElement>(".hero-pressure-ink"));
@@ -67,7 +71,7 @@ export function HeroPressureText({ text, outline = false, autoShine }: { text: s
           else {
             markShining(false);
             clearGlyphs();
-            schedule(3800);
+            if (register === "current") schedule(3800);
           }
         };
         frame = requestAnimationFrame(sweep);
@@ -117,7 +121,7 @@ export function HeroPressureText({ text, outline = false, autoShine }: { text: s
       fine.removeEventListener("change", sync);
       delete element.dataset.shining;
     };
-  }, [text, outline, autoShine]);
+  }, [text, outline, autoShine, register]);
   return <span ref={root} className={`hero-pressure-text${outline ? " hero-pressure-text--outline" : ""}`}>
     <span className="sr-only">{text}</span>
     <span aria-hidden="true">{text.split(" ").map((word, wordIndex) => <span key={wordIndex}>{wordIndex > 0 && " "}<span className="hero-pressure-word">{Array.from(word).map((letter, index) => <span className="hero-pressure-slot" key={index}><span className="hero-pressure-reserve">{letter}</span><span className="hero-pressure-ink">{letter}</span></span>)}</span></span>)}</span>

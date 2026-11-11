@@ -17,11 +17,10 @@
 .pg-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px 32px; }
 .pg-person-card { text-align: left; min-width: 0; align-self: start; }
 .pg-portrait { display: block; overflow: hidden; position: relative; margin: 0; isolation: isolate; background: var(--bg); aspect-ratio: 1; }
-.pg-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; filter: grayscale(1) sepia(.08); }
-/* Darken from above so fractional image edges cannot expose a pale backdrop. */
-.pg-portrait::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse at 28% 18%, #f8f6f1 0%, #e4e5e3 48%, #a5adb0 100%); mix-blend-mode: darken; }
+/* The monochrome treatment is baked into the per-theme portrait files;
+   the renderer only crops and places them. */
+.pg-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
 .pg-portrait .pg-mirrored { transform: scaleX(-1); }
-.pg-portrait::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(180deg, transparent 75%, #0b0a090c 85%, #0b0a0945 100%); }
 .pg-card-identity { display: block; padding-top: 18px; }
 .pg-card-name { display: flex; align-items: start; justify-content: space-between; gap: 16px; }
 .pg-name-text { font-size: var(--type-heading); font-weight: var(--type-weight-heading); line-height: 1.2; letter-spacing: var(--type-tracking-display); text-wrap: balance; }
@@ -62,7 +61,6 @@
 .pg-profile-heading > p:last-child { font-size: var(--type-body); color: var(--subtle); margin-top: 12px; }
 .pg-detail-layout { display: grid; grid-template-columns: minmax(240px, .7fr) minmax(0, 1.3fr); gap: clamp(48px, 6vw, 96px); align-items: start; }
 .pg-detail-identity .pg-portrait { aspect-ratio: 4 / 5; max-width: 360px; }
-.pg-detail-identity .pg-portrait::after { background: linear-gradient(180deg, transparent 65%, #0b0a0926 78%, var(--bg) 100%); }
 .pg-detail-identity dl { margin-top: 24px; }
 .pg-detail-identity dt { font-size: var(--type-meta); color: var(--muted); margin-bottom: 8px; }
 .pg-detail-identity dd { font-size: var(--type-body); color: var(--ink); line-height: 1.45; }

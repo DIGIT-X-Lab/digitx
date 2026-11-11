@@ -1,0 +1,65 @@
+/* "What computable enables": the approach film playing in the page.
+   Borderless; the scene shares the page ground and the film's own in-page
+   crop. Shares the site's tokens and type roles; no new colours or faces. */
+.atlas-moment { position: relative; border-top: 1px solid var(--line-section); padding-top: clamp(56px, 6.5vw, 94px); padding-bottom: clamp(48px, 5.5vw, 84px); }
+
+.atlas-inner { --atlas-scene-width: min(100%, calc(66dvh * var(--atlas-frame-ratio, 1.8624))); display: flex; flex-direction: column; gap: clamp(12px, 1.8vh, 22px); }
+
+/* Chapter grammar, same as the siblings: ivory tape display title, then
+   the content (the film, whose rotating 45px titles sit correctly below
+   the 88px tape in a descending hierarchy). */
+.atlas-head .tape { width: fit-content; }
+/* The film draws each chapter's title inside its own scene on desktop; this
+   block narrates live for assistive tech and becomes visible on phones,
+   where the in-scene lettering is too small to read. */
+.atlas-status-title { max-width: 40ch; color: var(--subtle); font-size: var(--type-body); font-weight: var(--type-weight-body); line-height: 1.45; text-wrap: pretty; }
+.atlas-status-line { display: none; }
+@media (min-width: 900px) {
+  .atlas-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+
+/* Left-aligned, not centred: the framed film gutter sits on the page gutter,
+   so the scene's internal titles align with the section heading above. The
+   wrapper clips an oversized iframe that applyFraming positions precisely. */
+/* The film title sits 1.7% inside the framed canvas; the scene shifts left
+   by that amount so the title rests exactly on the page gutter line, with
+   the heading above and the rail below on the same alignment. */
+.atlas-scene { --atlas-frame-ratio: calc(1408 / 756); position: relative; width: var(--atlas-scene-width); margin-left: calc(var(--atlas-scene-width) * -0.017); aspect-ratio: var(--atlas-frame-ratio); overflow: hidden; }
+.atlas-scene iframe { position: absolute; top: 0; left: 0; display: block; width: 100%; height: 100%; border: 0; pointer-events: none; background: transparent; transform-origin: 0 0; will-change: transform; }
+.atlas-moment[data-reduced="true"] .atlas-scene iframe { pointer-events: auto; }
+
+/* Narrow screens keep today's flow: scene, then the rail beneath.
+   (DOM order puts the rail first, so order swaps it back below.) */
+.atlas-stage { display: contents; }
+.atlas-rail-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; order: 1; }
+.atlas-rail-marker { display: none; }
+
+/* Wide screens: the chapter index stands on the left at the film's full
+   height, the film holds the right; an orb glides down the track as the
+   chapters advance. */
+@media (min-width: 1200px) {
+  .atlas-stage { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: clamp(56px, 7vw, 140px); align-items: stretch; margin-top: clamp(20px, 3.5vh, 44px); }
+  .atlas-stage .atlas-rail-row { order: 0; display: flex; align-self: stretch; align-items: center; }
+  .atlas-stage .atlas-scene { justify-self: end; align-self: start; }
+  .atlas-stage .atlas-rail { position: relative; display: flex; flex-direction: column; gap: clamp(26px, 4vh, 42px); padding-left: 32px; }
+  .atlas-stage .atlas-rail::before { content: ""; position: absolute; left: 3px; top: 18px; bottom: 18px; width: 1px; background: var(--line); }
+  .atlas-stage .atlas-rail-item { font-size: var(--type-subheading); gap: 16px; padding-block: 4px; border-bottom: 0; position: relative; }
+  .atlas-stage .atlas-rail-item[aria-current="true"] { border-bottom: 0; }
+  .atlas-stage .atlas-rail-marker { display: block; position: absolute; left: 1.5px; width: 4px; background: var(--ink); }
+}
+.atlas-rail { display: flex; flex-wrap: wrap; gap: 0 clamp(16px, 2.4vw, 36px); }
+.atlas-rail li { list-style: none; }
+.atlas-rail-item { display: inline-flex; align-items: baseline; gap: 10px; min-height: 44px; padding-block: 8px; border-bottom: 1px solid transparent; color: var(--muted); font-size: var(--type-nav); transition: color 220ms var(--ease), border-color 220ms var(--ease); }
+.atlas-rail-item:hover { color: var(--subtle); }
+.atlas-rail-item[aria-current="true"] { color: var(--ink); border-bottom-color: var(--strong); }
+.atlas-numeral { font-size: var(--type-meta); font-variant-numeric: tabular-nums; color: inherit; }
+.atlas-rail-name { letter-spacing: -0.01em; }
+
+
+@media (max-width: 899px) {
+  .atlas-moment { padding-top: 44px; }
+  .atlas-inner { gap: 14px; }
+  .atlas-status-title { font-size: var(--type-meta); color: var(--ink); }
+  .atlas-rail { gap: 0 14px; }
+  .atlas-rail-item { font-size: var(--type-meta); gap: 7px; min-height: 40px; }
+}

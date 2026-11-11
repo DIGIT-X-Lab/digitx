@@ -1,0 +1,40 @@
+/* Announcements island: tape material, soft spring morph. Lives in the
+   header band, centred between the brand and the menu button; the panel
+   drops downward from the pill. */
+.news-island { position: fixed; left: 50%; top: 22px; transform: translateX(-50%); z-index: 45; }
+.news-island-shape { position: relative; background: var(--tape); color: var(--bg); border: 1px solid var(--strong); box-shadow: 0 10px 30px rgb(0 0 0 / .45); overflow: hidden; }
+
+/* The two content layers never scale: they sit at their natural size and
+   cross-fade while the shell's width and height spring between them. */
+.news-layer { position: absolute; top: 0; left: 0; opacity: 1; transition: opacity 180ms var(--ease) 90ms, visibility 0s linear 0s; }
+.news-layer[data-active="false"] { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 90ms var(--ease), visibility 0s linear 120ms; }
+.news-layer[data-compact] .news-latest { display: none; }
+.news-layer[data-compact] .news-kicker { opacity: 1; }
+.news-pill { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px 0 14px; max-width: min(520px, calc(100vw - 480px)); font-size: var(--type-caption); color: inherit; white-space: nowrap; }
+.news-pill:hover .news-latest { text-decoration: underline; text-underline-offset: 3px; }
+/* A small living orb in the site's accents: the news signal itself. */
+.news-dot { width: 10px; height: 10px; border-radius: 50%; flex: none; background: conic-gradient(from 0deg, var(--coral), var(--blue), var(--coral)); animation: news-orb-turn 3.6s linear infinite; }
+@keyframes news-orb-turn { to { transform: rotate(1turn); } }
+@media (prefers-reduced-motion: reduce) {
+  .news-dot { animation: none; }
+}
+.news-kicker { opacity: .55; flex: none; transition: opacity 300ms var(--ease); }
+.news-latest { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.news-panel { width: min(480px, calc(100vw - 32px)); max-height: min(calc(100svh - 120px), 560px); overflow: auto; padding: 16px 22px 22px; outline: none; }
+.news-panel header { display: flex; justify-content: space-between; align-items: center; }
+.news-panel header p { font-size: var(--type-caption); opacity: .55; }
+.news-panel header button { display: grid; place-items: center; width: 36px; height: 36px; margin-right: -12px; font-size: var(--type-subheading); line-height: 1; color: inherit; opacity: .6; }
+.news-panel header button:hover { opacity: 1; }
+.news-panel ol { display: grid; gap: 16px; margin-top: 10px; }
+.news-panel li { border-top: 1px solid rgb(11 10 9 / .14); padding-top: 14px; }
+/* Earlier items step back to a dated title line. */
+.news-item-brief h3 { font-size: var(--type-meta); }
+.news-item-brief .news-date { font-size: var(--type-caption); }
+.news-date { font-size: var(--type-caption); opacity: .55; }
+.news-panel h3 { margin-top: 4px; font-size: var(--type-body); font-weight: var(--type-weight-heading); letter-spacing: var(--type-tracking-display); line-height: 1.35; }
+.news-body { margin-top: 6px; font-size: var(--type-caption); line-height: 1.55; opacity: .75; }
+.news-panel li a { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; min-height: 32px; font-size: var(--type-caption); text-decoration: underline; text-underline-offset: 3px; }
+.news-panel li a .site-arrow { width: 11px; height: 11px; }
+@media (max-width: 900px) {
+  .news-island { display: none; }
+}
