@@ -18,6 +18,12 @@ const artwork = new Map([
     ".dx-demo-measure", ".dx-demo-measure small", ".dx-range-measure",
     ".dx-range-measure > span", ".dx-source-phrase sup",
   ])],
+  // The hero focus role, capped by HeroDepthMask to the measured distance
+  // between its column and the figure so the word tucks behind the body
+  // instead of overflowing; the fallback is the role token itself.
+  ["src/site/redesign/redesign-preview.css", new Set([
+    ".redesign-preview .home-intro-question .home-intro-focus",
+  ])],
 ]);
 
 async function cssFiles(directory) {

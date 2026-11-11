@@ -22,7 +22,7 @@ export interface Researcher {
   membership?: "core" | "associated";
   affiliation: string;
   profiles: { platform: "github" | "linkedin" | "scholar" | "email"; label: string; href: string }[];
-  portrait?: { src: string; alt: string; status: "draft" | "approved"; placeholder?: boolean; mirrored?: boolean };
+  portrait?: { src: string; dark?: string; light?: string; alt: string; status: "draft" | "approved"; placeholder?: boolean; mirrored?: boolean };
   responses: ResearcherResponse[];
   homepageResponseId?: string;
   story?: { text: string; status: "draft" | "approved" };

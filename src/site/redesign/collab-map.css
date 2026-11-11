@@ -1,0 +1,19 @@
+/* Collaboration map: flat world panel, ink on ivory. Filled landmass,
+   aggregated unnamed nodes sized by centre count, curved flights with
+   pulses traveling inbound to Munich. */
+.collab-map { grid-column: 2; grid-row: 1 / 3; justify-self: end; align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; width: 100%; max-width: 720px; margin: 6px 0 0; }
+.collab-map svg { display: block; width: 100%; height: auto; color: var(--bg); }
+.cm-land { fill: none; stroke: currentColor; stroke-width: 1; opacity: 1; stroke-opacity: .34; }
+.cm-lines path { fill: none; stroke: currentColor; stroke-width: 1; opacity: .3; }
+.cm-sites circle { fill: currentColor; opacity: .85; }
+.cm-hub { fill: currentColor; }
+.cm-hub-ring { fill: none; stroke: currentColor; stroke-width: 1; opacity: .55; }
+.cm-pulses circle { fill: currentColor; opacity: .6; }
+.collab-map figcaption { margin-top: 0; text-align: center; font-size: var(--type-meta); color: inherit; opacity: .55; }
+
+/* The figure spans both grid rows; keep the mailto link content-sized. */
+.redesign-preview .ep-email { align-self: start; }
+
+@media (max-width: 1000px) {
+  .collab-map { display: none; }
+}

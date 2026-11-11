@@ -7,7 +7,7 @@ export type AreaId = "physiology" | "computable" | "systems";
 
 export const research = {
   title: "Research",
-  indexLabel: "Research pillars",
+  indexLabel: "Our focus",
   intro: [
     "We develop computational methods and research systems to investigate how the body works, in health and disease.",
   ],

@@ -6,11 +6,13 @@ import { institution } from "@/data/affiliations";
 import { Arrow } from "./primitives";
 import { FlowingMenuHighlight } from "./FlowingMenuHighlight";
 import { useHoverHighlight } from "./useHoverHighlight";
+import { portraitSource, useSiteTheme } from "../redesign/useSiteTheme";
 import "./people-explorer.css";
 
 function PersonPortrait({ person, preview }: { person: Researcher; preview: boolean }) {
+  const theme = useSiteTheme();
   const portrait = person.portrait && (preview || person.portrait.status === "approved") ? person.portrait : undefined;
-  return portrait ? <figure className="people-portrait"><img className={portrait.mirrored ? "people-portrait--mirrored" : undefined} src={portrait.src} alt={portrait.alt} width="720" height="900" loading="lazy" />{portrait.placeholder && <figcaption>{peopleReview.placeholder}</figcaption>}</figure> : null;
+  return portrait ? <figure className="people-portrait"><img className={portrait.mirrored ? "people-portrait--mirrored" : undefined} src={portraitSource(portrait, theme)} alt={portrait.alt} width="720" height="900" loading="lazy" />{portrait.placeholder && <figcaption>{peopleReview.placeholder}</figcaption>}</figure> : null;
 }
 
 function PersonIdentity({ person, embedded }: { person: Researcher; embedded: boolean }) {

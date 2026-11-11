@@ -11,7 +11,11 @@ html:has(.site-layout--home) { scroll-padding-top: 0; }
 .home-hero-sequence[data-enhanced="true"] .home-hero { min-height: var(--hero-viewport); position: sticky; top: var(--hero-sticky-top); overflow: clip; clip-path: inset(0 0 max(0px, calc(100% - var(--hero-viewport))) 0); }
 .home-hero-sequence .home-hero-visual { transform-origin: 0 0; background: var(--bg); align-self: center; }
 .home-hero-intro { display: none; }
-.home-hero-sequence[data-enhanced="true"] .home-hero-intro { position: absolute; inset: 0; height: var(--hero-viewport); display: block; pointer-events: none; }
+/* Depth order: the intro words paint ABOVE the figure in every engine, and
+   the behind-the-body depth comes from the word's own fitted size and
+   gradient mask (HeroDepthMask). Relying on paint order plus blending for
+   the occlusion broke in Safari, whose SVG mask and blend stack differ. */
+.home-hero-sequence[data-enhanced="true"] .home-hero-intro { position: absolute; inset: 0; height: var(--hero-viewport); display: block; pointer-events: none; z-index: 2; }
 .home-hero-sequence[data-enhanced="true"] .home-hero-visual[inert] { pointer-events: none; }
 .home-intro-question, .home-intro-subject { position: absolute; width: calc((100% - 2 * var(--gutter) - var(--hero-portrait-width)) / 2 - 32px); font-size: var(--type-lead); line-height: 1.25; letter-spacing: -.025em; font-weight: 420; text-wrap: balance; }
 .home-intro-question { left: var(--gutter); top: 23%; text-align: right; }
@@ -37,7 +41,9 @@ html:has(.site-layout--home) { scroll-padding-top: 0; }
   .home-hero-sequence[data-enhanced="true"] .home-hero-scroll-cue > * { animation: none; }
 }
 .home-hero-scroll-cue:hover { color: var(--ink); }
+/* Quiet for programmatic focus, visible for keyboard arrivals. */
 #home-title:focus { outline: none; }
+#home-title:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
 .home-affiliation { margin-bottom: 24px; color: var(--muted); font-size: var(--type-meta); line-height: 1.3; letter-spacing: var(--type-tracking-lead); }
 .home-affiliation > span { display: inline-block; }
 .home-affiliation-separator { padding-inline: .3em; }

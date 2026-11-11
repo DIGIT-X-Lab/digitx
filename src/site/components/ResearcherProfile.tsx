@@ -4,12 +4,14 @@ import { homeExperience } from "@/content/home";
 import { peopleReview, type Researcher } from "@/content/researchers";
 import { showSlots } from "../env";
 import { Arrow } from "./primitives";
+import { portraitSource, useSiteTheme } from "../redesign/useSiteTheme";
 import "./researcher-profile.css";
 
 export function ResearcherPortrait({ person, compact = false, preview = false }: { person: Researcher; compact?: boolean; preview?: boolean }) {
+  const theme = useSiteTheme();
   if (person.portrait && (person.portrait.status === "approved" || showSlots || preview)) {
     return <figure className={`researcher-portrait${compact ? " researcher-portrait--compact" : ""}`}>
-      <img src={person.portrait.src} alt={person.portrait.alt} width="720" height="900" loading="lazy" />
+      <img src={portraitSource(person.portrait, theme)} alt={person.portrait.alt} width="720" height="900" loading="lazy" />
       {person.portrait.status === "draft" && <figcaption>{person.portrait.placeholder ? homeExperience.portraitLabel : peopleReview.draft}</figcaption>}
     </figure>;
   }

@@ -6,16 +6,18 @@ import { peoplePage } from "@/content/people";
 import { Arrow, Tape } from "./primitives";
 import { FlowingMenuHighlight } from "./FlowingMenuHighlight";
 import { useHoverHighlight } from "./useHoverHighlight";
+import { portraitSource, useSiteTheme } from "../redesign/useSiteTheme";
 import "./people-directory.css";
 
 type Group = "all" | "core" | "associated";
 const PAGE_SIZE = 6;
 
 function Portrait({ person }: { person: Researcher }) {
+  const theme = useSiteTheme();
   if (!person.portrait || person.portrait.status !== "approved") return null;
   const mirrored = person.portrait.mirrored;
   return <motion.span layoutId={`portrait-${person.id}`} className="pg-portrait">
-    <img loading="lazy" width="720" height="900" src={person.portrait.src} alt={person.portrait?.alt ?? person.name} className={mirrored ? "pg-mirrored" : undefined} />
+    <img loading="lazy" width="720" height="900" src={portraitSource(person.portrait, theme)} alt={person.portrait?.alt ?? person.name} className={mirrored ? "pg-mirrored" : undefined} />
   </motion.span>;
 }
 

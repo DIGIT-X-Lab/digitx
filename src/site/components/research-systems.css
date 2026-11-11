@@ -1,5 +1,7 @@
 .systems-illustration { position: relative; min-width: 0; container-type: inline-size; }
-.systems-constellation { position: relative; height: clamp(360px, 28vw, 460px); max-width: 760px; margin-inline: auto; }
+/* The ring sits left of the column's centre so the right-hand label keeps
+   a single line; the max-width caps below remain the wrap fallback. */
+.systems-constellation { --constellation-h: clamp(320px, 24vw, 400px); --ring-r: calc(var(--constellation-h) * 0.381); --constellation-shift: 48px; position: relative; height: var(--constellation-h); width: calc(100% - var(--constellation-shift)); max-width: 760px; margin: 0 auto 0 0; }
 .systems-orbit { position: absolute; inset: 0; }
 .systems-connections { position: absolute; inset: 0; width: 100%; height: 100%; }
 .systems-orbit-path { stroke: var(--strong); stroke-width: 1; }
@@ -7,18 +9,23 @@
 .systems-orb-control { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: min(44%, 280px); aspect-ratio: 1; border-radius: 50%; }
 .systems-orb-control:disabled { cursor: default; }
 .systems-orb { display: block; width: 100%; height: 100%; }
-.systems-label { position: absolute; color: var(--subtle); font-size: var(--type-body); line-height: 1.4; text-align: center; }
+/* Orbit annotations take the metadata role: diagram labels, not prose. */
+.systems-label { position: absolute; color: var(--subtle); font-size: var(--type-meta); line-height: 1.4; text-align: center; }
 .systems-label--question { top: 0; left: 50%; translate: -50% 0; width: max-content; max-width: 60%; }
-.systems-label--data { left: 0; top: 50%; translate: 0 -50%; width: 25%; }
-.systems-label--tools { right: 0; top: 50%; translate: 0 -50%; width: 25%; }
+/* Side labels anchor to their orbit nodes, outside the ring: the ring's
+   radius is 160/420 of the constellation height, so the clearance holds at
+   every size instead of guessing with percentage boxes. */
+.systems-label--data, .systems-label--tools { width: max-content; top: 50%; translate: 0 -50%; }
+.systems-label--data { left: auto; right: calc(50% + var(--ring-r) + 14px); max-width: calc(50% - var(--ring-r) - 22px); text-align: right; }
+.systems-label--tools { right: auto; left: calc(50% + var(--ring-r) + 14px); max-width: calc(50% - var(--ring-r) - 22px + var(--constellation-shift)); text-align: left; }
 @media (max-width: 1199px) {
   .systems-constellation { height: 360px; }
 }
 @container (max-width: 640px) {
   .systems-constellation { height: 360px; }
   .systems-orbit { bottom: 64px; }
-  .systems-label--data, .systems-label--tools { top: calc(100% - 2.8em); translate: none; }
-  .systems-label--data { width: 40%; }
-  .systems-label--tools { width: 56%; }
+  .systems-label--data, .systems-label--tools { top: calc(100% - 2.8em); translate: none; max-width: none; }
+  .systems-label--data { left: 0; right: auto; width: 40%; text-align: center; }
+  .systems-label--tools { right: 0; left: auto; width: 56%; text-align: center; }
   .systems-label--question { max-width: 90%; }
 }

@@ -9,6 +9,8 @@ import { jobs } from "@/data/jobs";
 import { Arrow, Tape } from "../components/primitives";
 import { FlowingMenuHighlight } from "../components/FlowingMenuHighlight";
 import { useHoverHighlight } from "../components/useHoverHighlight";
+import { useRegister } from "../redesign/useRegister";
+import { CollabMap } from "../redesign/CollabMap";
 import "./ending-prototype.css";
 
 /** Throwaway comparison of the current ending and the proposed human invitation.
@@ -16,9 +18,13 @@ import "./ending-prototype.css";
 export function OpportunitiesPrototype() {
   const surface = useRef<HTMLDivElement>(null);
   const highlight = useHoverHighlight(surface);
+  const register = useRegister();
+  /* A navigation destination in the redesign registers, so its heading level
+     matches its chapter-scale tape; the live page keeps its h3 nested outline. */
+  const ItemHeading = register === "current" ? "h4" : "h3";
   const closed = peoplePage.opportunities.categories.filter(category => !jobs.some(job => job.category === category.id));
-  return <section id="opportunities" className="shell ep-opportunities" aria-labelledby="opps-title">
-    <Tape as="h3" size="display" id="opps-title">{peoplePage.opportunities.title}</Tape>
+  return <section id="opportunities" data-site-section="opportunities" tabIndex={-1} className="shell ep-opportunities" aria-labelledby="opps-title">
+    <Tape as={register === "current" ? "h3" : "h2"} size="display" id="opps-title">{peoplePage.opportunities.title}</Tape>
     <div className="ep-opportunity-grid">
       <figure className="ep-culture">
         <img className="ep-culture-logo" src="/brand/digitx-lmu-aligned.svg" alt="DIGITX · LMU" width="240" height="240" />
@@ -28,13 +34,13 @@ export function OpportunitiesPrototype() {
         <div ref={surface} className="ep-openings flowing-menu-host">
           {jobs.map(job => <Link key={job.id} to={`/careers/${job.id}`} data-hover-item={job.id} className="ep-opening">
             <span className="ep-opening-status">{peoplePage.opportunities.open}</span>
-            <h4>{job.title}</h4>
+            <ItemHeading>{job.title}</ItemHeading>
             <p>{job.shortDescription}</p>
             <span className="ep-opening-action">{copy.openingAction}<Arrow direction="diagonal" /></span>
           </Link>)}
           <FlowingMenuHighlight target={highlight.target} exitEdge={highlight.exitEdge} inset={12} />
         </div>
-        <div className="ep-closed">{closed.map(category => <div key={category.id}><h4>{category.title}</h4><p>{peoplePage.opportunities.closed}</p></div>)}</div>
+        <div className="ep-closed">{closed.map(category => <div key={category.id}><ItemHeading>{category.title}</ItemHeading><p>{peoplePage.opportunities.closed}</p></div>)}</div>
       </div>
     </div>
   </section>;
@@ -42,6 +48,7 @@ export function OpportunitiesPrototype() {
 
 export function ContactPrototype() {
   const reduced = useReducedMotion();
+  const register = useRegister();
   return <div className="ep-contact">
     <motion.section className="shell ep-contact-inner" aria-labelledby="contact-title" initial={reduced ? false : "hidden"} whileInView="visible" viewport={{ once: true, amount: .25 }}>
       <motion.h2 id="contact-title" variants={{ hidden: { clipPath: "inset(0 100% 0 0)" }, visible: { clipPath: "inset(0)" } }} transition={{ duration: reduced ? 0 : .55, ease: [.16, 1, .3, 1] }}>{contactPage.title}</motion.h2>
@@ -49,6 +56,7 @@ export function ContactPrototype() {
         <p className="page-lead">{contactPage.body}</p>
         <a href={`mailto:${contactEmail}`} className="ep-email"><span>{contactPage.cta}</span><Arrow direction="diagonal" /></a>
       </div>
+      {register !== "current" && <CollabMap />}
     </motion.section>
   </div>;
 }

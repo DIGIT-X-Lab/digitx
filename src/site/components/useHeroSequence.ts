@@ -235,6 +235,9 @@ export function useHeroSequence({ navigationAware = false }: { navigationAware?:
     observer.observe(scene);
     const resizing = new ResizeObserver(measure);
     resizing.observe(scene);
+    // The intro geometry depends on the figure's own box, which settles when
+    // its artwork arrives; remeasure then, not only on scene resizes.
+    resizing.observe(figure);
     if (header) resizing.observe(header);
     const visibility = () => {
       if (!enabled || completed) return;

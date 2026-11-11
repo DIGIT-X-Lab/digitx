@@ -12,7 +12,7 @@ export interface TeamMember {
   linkedin?: string;
   scholar?: string;
   email?: string;
-  portrait?: { src: string; alt: string; status: "draft" | "approved"; mirrored?: boolean };
+  portrait?: { src: string; dark?: string; light?: string; alt: string; status: "draft" | "approved"; mirrored?: boolean };
   membership?: "core" | "associated";
   background?: { discipline: string };
 }
@@ -30,7 +30,7 @@ export const teamMembers: TeamMember[] = [
     github: 'https://github.com/LalithShiyam',
     linkedin: 'https://de.linkedin.com/in/lalith-kumar-shiyam-sundar-phd-3a2aaba0',
     scholar: 'https://scholar.google.com/citations?user=L6iMPN4AAAAJ&hl=en',
-    portrait: { src: '/portraits/lalith-shiyam-sundar-studio-sharp-web.jpg', alt: 'Lalith Kumar Shiyam Sundar', status: 'approved', mirrored: false },
+    portrait: { src: '/portraits/lalith-shiyam-sundar-studio-sharp-web.jpg', dark: '/portraits/lalith-shiyam-sundar-studio-sharp-web-dark.jpg', light: '/portraits/lalith-shiyam-sundar-studio-sharp-web-light.jpg', alt: 'Lalith Kumar Shiyam Sundar', status: 'approved', mirrored: false },
   },
   {
     id: 'hagen-lamprecht',
@@ -43,7 +43,7 @@ export const teamMembers: TeamMember[] = [
     university: affiliations.radiology,
     github: 'https://github.com/Hogandr',
     linkedin: 'https://www.linkedin.com/in/hagen-lamprecht-44a456234/',
-    portrait: { src: '/portraits/hagen-lamprecht-web.jpg', alt: 'Hagen Lamprecht', status: 'approved' },
+    portrait: { src: '/portraits/hagen-lamprecht-web.jpg', dark: '/portraits/hagen-lamprecht-web-dark.jpg', light: '/portraits/hagen-lamprecht-web-light.jpg', alt: 'Hagen Lamprecht', status: 'approved' },
   },
   {
     id: 'peter-benedict-schildberg',
@@ -56,7 +56,7 @@ export const teamMembers: TeamMember[] = [
     university: affiliations.radiology,
     github: 'https://github.com/chillybang',
     linkedin: 'https://www.linkedin.com/in/b-schildberg/',
-    portrait: { src: '/portraits/peter-benedict-schildberg-web.jpg', alt: 'Benedict Schildberg', status: 'approved' },
+    portrait: { src: '/portraits/peter-benedict-schildberg-web.jpg', dark: '/portraits/peter-benedict-schildberg-web-dark.jpg', light: '/portraits/peter-benedict-schildberg-web-light.jpg', alt: 'Benedict Schildberg', status: 'approved' },
   },
   {
     id: 'maissa-monsour',
@@ -70,7 +70,7 @@ export const teamMembers: TeamMember[] = [
     membership: 'associated',
     github: 'https://github.com/MaissaMa',
     linkedin: 'https://www.linkedin.com/in/maissa-mansour-565ba922b/',
-    portrait: { src: '/portraits/maissa-monsour-studio-web.jpg', alt: 'Maissa Mansour', status: 'approved' },
+    portrait: { src: '/portraits/maissa-monsour-studio-web.jpg', dark: '/portraits/maissa-monsour-studio-web-dark.jpg', light: '/portraits/maissa-monsour-studio-web-light.jpg', alt: 'Maissa Mansour', status: 'approved' },
   },
   {
     id: 'maximilian-tiling',
@@ -83,7 +83,7 @@ export const teamMembers: TeamMember[] = [
     university: affiliations.radiology,
     membership: 'associated',
     linkedin: 'https://www.linkedin.com/in/maximilian-tiling-18778635a/',
-    portrait: { src: '/portraits/maximilian-tiling-official-web.webp', alt: 'Maximilian Tiling', status: 'approved' },
+    portrait: { src: '/portraits/maximilian-tiling-official-web.webp', dark: '/portraits/maximilian-tiling-official-web-dark.jpg', light: '/portraits/maximilian-tiling-official-web-light.jpg', alt: 'Maximilian Tiling', status: 'approved' },
   },
   {
     id: 'frederic-paul-thiele',
@@ -98,6 +98,6 @@ export const teamMembers: TeamMember[] = [
     github: 'https://github.com/frxderic',
     linkedin: 'https://de.linkedin.com/in/dr-med-univ-frederic-thiele-b49849226',
     scholar: 'https://scholar.google.com/citations?user=inGD8ccAAAAJ&hl=en',
-    portrait: { src: '/portraits/frederic-paul-thiele-web.webp', alt: 'Frederic Paul Thiele', status: 'approved' },
+    portrait: { src: '/portraits/frederic-paul-thiele-web.webp', dark: '/portraits/frederic-paul-thiele-web-dark.jpg', light: '/portraits/frederic-paul-thiele-web-light.jpg', alt: 'Frederic Paul Thiele', status: 'approved' },
   },
 ];

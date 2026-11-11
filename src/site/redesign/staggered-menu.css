@@ -1,0 +1,29 @@
+/* Staggered menu: ivory panel from the right, pale-blue prelayer sweep,
+   chapters stepping up with their indices. */
+.sm-toggle { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; padding-inline: 4px; font-size: var(--type-meta); color: var(--subtle); }
+.sm-toggle:hover { color: var(--ink); }
+.sm-mark { position: relative; width: 16px; height: 16px; }
+.sm-mark i { position: absolute; left: 0; top: 7px; width: 16px; height: 2px; background: currentColor; transition: transform 240ms var(--ease); }
+.sm-mark i:last-child { transform: rotate(90deg); }
+.sm-toggle[aria-expanded="true"] .sm-mark i:first-child,
+.sm-mark--open i:first-child { transform: rotate(45deg); }
+.sm-toggle[aria-expanded="true"] .sm-mark i:last-child,
+.sm-mark--open i:last-child { transform: rotate(135deg); }
+
+/* The panel's own close control, sitting where the Menu button sits. */
+.sm-close { position: absolute; top: 22px; right: clamp(32px, 4vw, 56px); display: inline-flex; align-items: center; gap: 12px; min-height: 44px; font-size: var(--type-meta); color: inherit; opacity: .75; }
+.sm-close:hover { opacity: 1; }
+
+.sm-root { position: fixed; inset: 0; z-index: 70; }
+.sm-scrim { position: absolute; inset: 0; width: 100%; background: rgb(0 0 0 / .55); cursor: default; }
+.sm-prelayer { position: absolute; top: 0; right: 0; height: 100%; width: min(520px, 100vw); background: var(--blue); }
+.sm-panel { position: absolute; top: 0; right: 0; height: 100%; width: min(480px, 100vw); background: var(--tape); color: var(--bg); padding: clamp(88px, 16svh, 140px) clamp(32px, 4vw, 56px) 36px; display: flex; flex-direction: column; overflow-y: auto; }
+.sm-panel ol { display: grid; gap: 6px; }
+.sm-panel a { display: flex; align-items: baseline; gap: 20px; min-height: 52px; font-size: var(--type-subheading); font-weight: var(--type-weight-heading); letter-spacing: var(--type-tracking-display); color: inherit; }
+.sm-panel a:hover { text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 1px; }
+.sm-panel a[aria-current="page"] { text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 1px; }
+.sm-index { font-size: var(--type-caption); opacity: .45; min-width: 24px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sm-mark i { transition: none; }
+}

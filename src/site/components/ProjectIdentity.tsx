@@ -23,7 +23,9 @@ function KeplerWave({ running }: { running: boolean }) {
       const scale = element.width / 64;
       context.setTransform(scale, 0, 0, scale, 0, 0);
       context.clearRect(0, 0, 64, 64);
-      paintFrame(context, MODE_FRAMES[preset.mode](64, (6 + elapsed.current * .24) * preset.speed, preset.opts), true, { r: 225, g: 218, b: 202 });
+      /* Ivory on the dark ground, ink on the light one. */
+      const ink = document.documentElement.dataset.theme === "light" ? { r: 22, g: 20, b: 15 } : { r: 225, g: 218, b: 202 };
+      paintFrame(context, MODE_FRAMES[preset.mode](64, (6 + elapsed.current * .24) * preset.speed, preset.opts), true, ink);
     };
     const tick = (now: number) => {
       if (last) elapsed.current += Math.min(now - last, 64) / 1000;

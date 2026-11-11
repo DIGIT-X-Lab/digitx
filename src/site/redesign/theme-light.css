@@ -1,0 +1,60 @@
+/* First-pass light theme for the redesign previews: the dark world's
+   tokens, mirrored. The approach film and tool demos remain dark
+   artifacts by design: screens stay screens. */
+:root[data-theme="light"] {
+  --bg: #f2efe9;
+  --surface: #e8e4dd;
+  --ink: #16140f;
+  --subtle: #45413a;
+  --muted: #6e675f;
+  --dim: #938c83;
+  --line: #d8d3cb;
+  --line-section: #e2ddd5;
+  --strong: #b5aea4;
+  --tape: #16140f;
+  --c-bg: 242 239 233;
+  --c-surface: 232 228 221;
+  --c-ink: 22 20 15;
+  --c-subtle: 69 65 58;
+  --c-muted: 110 103 95;
+  --c-dim: 147 140 131;
+  --c-line: 216 211 203;
+  --c-strong: 181 174 164;
+  --c-tape: 22 20 15;
+  color-scheme: light;
+}
+
+/* Ivory-drawn anatomy flips to ink so the figures stay visible, and the
+   layering blend mirrors with it: lighten against the dark ground becomes
+   darken against the light one. The filter sits on the svg ROOT, not its
+   <image> children: Safari ignores CSS filters on inner SVG elements. */
+:root[data-theme="light"] .hero-body-art { filter: invert(1) hue-rotate(180deg); mix-blend-mode: darken; }
+:root[data-theme="light"] img[src*="/illustrations/"],
+:root[data-theme="light"] img[src*="/brand/"] { filter: invert(1) hue-rotate(180deg); mix-blend-mode: darken; }
+
+/* Portrait treatment is baked into the per-theme image files; no CSS
+   grading here, or it would double-apply. */
+
+/* The cursor wake inverts with the ground. */
+:root[data-theme="light"] .pixel-trail { filter: invert(1); }
+
+/* No elevation shadow on ivory, and no light border ringing the dark
+   pill: both read as bleed. The shape is its own crisp edge. */
+:root[data-theme="light"] .news-island-shape { box-shadow: none; border-color: var(--tape); }
+
+/* On the dark pill the conic mix turns murky; here the orb is a lit coral
+   sphere, its highlight carried around by the same slow spin. */
+:root[data-theme="light"] .news-dot { background: radial-gradient(circle at 32% 30%, #ffc9bd 0%, #e8766b 48%, #8e4a44 100%); }
+
+/* Embedded films and demos are live HTML, so in light mode they invert
+   live: ivory lines become ink, the ground becomes paper, and the warm
+   accents keep their hue through the rotation. */
+/* The sepia and brightness steps warm the inverted result so the film's
+   interior panels land on the page's ivory rather than a cool white. */
+:root[data-theme="light"] .atlas-scene iframe,
+:root[data-theme="light"] .lumos-workflow-viewport iframe { filter: invert(1) hue-rotate(180deg) sepia(.1) brightness(.955); }
+
+/* Wireframe figures drawn into other inline svgs flip too (the hero is
+   excluded: its whole svg already inverts above). */
+:root[data-theme="light"] svg:not(.hero-body-art) image[href*="/illustrations/"] { filter: invert(1) hue-rotate(180deg); }
+:root[data-theme="light"] .tool-study-puma-source { mix-blend-mode: multiply; }

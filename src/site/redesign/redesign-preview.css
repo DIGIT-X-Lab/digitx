@@ -1,0 +1,73 @@
+/* Preview chrome and register-gated refinements. */
+.redesign-switch { position: fixed; bottom: 20px; right: 20px; z-index: 50; display: flex; align-items: center; gap: 2px; padding: 4px 6px; background: var(--surface); border: 1px solid var(--strong); box-shadow: 0 1px 2px rgb(0 0 0 / 0.4); }
+.redesign-switch span { padding-inline: 10px 6px; font-size: var(--type-caption); color: var(--muted); }
+.redesign-switch a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 14px; font-size: var(--type-caption); color: var(--subtle); }
+.redesign-switch a:hover { color: var(--ink); }
+.redesign-switch a[aria-current="page"] { background: var(--tape); color: var(--bg); }
+
+/* Home now carries the approach film; the Research chapter's duplicate film
+   row stays out of the redesign registers. */
+.redesign-preview .research-approach { display: none; }
+
+/* With the film row gone, the lead binds to the pillars it introduces: the
+   intro-to-pillars gap was the largest step on the screen (40 + 40px), twice
+   the section's own rhythm. */
+.redesign-preview .research-opening,
+.redesign-preview .research-opening:has(+ .research-approach .research-film-poster[aria-expanded='false']) { padding-bottom: 16px; }
+.redesign-preview .research-pillars { padding-top: 24px; }
+
+/* Hero tension: the big intro word ends at a measured gap from the body's
+   edge (HeroDepthMask fits the size per viewport). A decided near-miss, not
+   a half-occluded letter; this wireframe has no silhouette to tuck behind. */
+@media (min-width: 1200px) {
+  .redesign-preview .home-intro-question .home-intro-focus { font-size: var(--hero-focus-fit, var(--type-hero-focus)); }
+}
+
+/* The pointer's wake: a brief grid of data cells, nothing more. */
+.pixel-trail { position: fixed; inset: 0; width: 100vw; height: 100dvh; z-index: 60; pointer-events: none; }
+
+/* "Coming soon" keeps its ivory banner (user call: the section's one
+   moment of material contrast), rendered still rather than as a marquee. */
+/* Item names step one level below their section heading. */
+.redesign-preview .tool-directory-development h4 { font-size: var(--type-subheading); }
+
+/* Page changes arrive instead of teleporting: incoming strips rise and
+   fade in a short cascade, the site's settle move. Still under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .redesign-preview .pa-list .pa-paper { animation: pa-row-in 400ms var(--ease) both; animation-delay: calc(var(--pa-i, 0) * 50ms); }
+}
+@keyframes pa-row-in { from { opacity: 0; transform: translateY(14px); } }
+
+/* Opportunities is a navigation destination here, but its content is shorter
+   than a viewport: landing on it showed slivers of People above and Contact
+   below. Give the chapter one full screen, content settled in the space. */
+.redesign-preview .ep-opportunities { min-height: calc(100svh - var(--home-header-height, 89px)); display: flex; flex-direction: column; }
+.redesign-preview .ep-opportunity-grid { flex: 1; align-content: center; }
+/* The live page's #opportunities offset (landing.css) shows a sliver of
+   People above; a full-screen chapter lands flush like its siblings. */
+.redesign-preview #opportunities { scroll-margin-top: var(--home-header-height, 89px); }
+
+/* The ending owns the final screen: ivory band plus the 110px footer fill
+   the viewport below the header, so Contact lands as a composed finale
+   instead of a strip under the previous chapter's tail. */
+@media (min-width: 801px) {
+  .redesign-preview .ep-contact-inner { min-height: calc(100svh - var(--home-header-height, 89px) - 110px); display: flex; flex-direction: column; justify-content: center; }
+}
+/* Two columns once the map shows: title, lead and the invitation on the
+   left; the map stretched over the same vertical span on the right, its
+   caption baseline meeting the invitation's line. */
+@media (min-width: 1001px) {
+  .redesign-preview .ep-contact-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); grid-template-rows: auto auto; column-gap: clamp(48px, 6vw, 96px); align-content: center; }
+  .redesign-preview .ep-contact-inner > h2 { grid-column: 1; }
+  .redesign-preview .ep-contact-bottom { grid-column: 1; grid-row: 2; display: block; }
+  .redesign-preview .ep-contact-bottom .ep-email { margin-top: 32px; }
+}
+
+/* De-cluttered tools index: two named groups replace three filter buttons. */
+.tool-directory-group { margin: 36px 0 2px; font-size: var(--type-meta); color: var(--muted); }
+.tool-directory-index .tool-directory-group:first-child { margin-top: 0; }
+
+
+@media (max-width: 700px) {
+  .redesign-switch { bottom: 12px; right: 12px; }
+}

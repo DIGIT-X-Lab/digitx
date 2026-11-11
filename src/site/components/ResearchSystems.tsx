@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MODE_FRAMES, paintFrame, resolvePreset } from "thinking-orbs/engine";
 import { research, researchExperience } from "@/content/research";
+import { useRegister } from "../redesign/useRegister";
 import "./research-pillar-layout.css";
 import "./research-systems.css";
 
@@ -35,7 +36,10 @@ function ResearchSystemIllustration() {
       const scale = element.width / 64;
       context.setTransform(scale, 0, 0, scale, 0, 0);
       context.clearRect(0, 0, 64, 64);
-      paintFrame(context, MODE_FRAMES[preset.mode](64, elapsed.current * preset.speed * .3, preset.opts), true, { r: 225, g: 218, b: 202 });
+      /* Ivory particles on the dark ground, ink on the light one; read per
+         frame so the theme sweep carries the orb with it. */
+      const ink = document.documentElement.dataset.theme === "light" ? { r: 22, g: 20, b: 15 } : { r: 225, g: 218, b: 202 };
+      paintFrame(context, MODE_FRAMES[preset.mode](64, elapsed.current * preset.speed * .3, preset.opts), true, ink);
     };
     const tick = (time: number) => {
       if (last) elapsed.current += Math.min(time - last, 64) / 1000;
@@ -92,11 +96,26 @@ function ResearchSystemIllustration() {
   </figure>;
 }
 
+/** Redesign registers: three sentences sliced verbatim from the approved
+ * editorial, so the prose matches the orb's height — the core claim, the
+ * reliability and human-judgement question, and inspectability. The
+ * baseline register renders the original paragraphs in full. */
+function selectedParagraphs() {
+  const [first, second, third] = research.areas.find(item => item.id === "systems")!.intro;
+  return [
+    first.split(". ")[1],
+    second.split(". ").slice(-1)[0],
+    third,
+  ];
+}
+
 export function ResearchSystems() {
+  const register = useRegister();
   const area = research.areas.find(item => item.id === "systems")!;
+  const paragraphs = register === "current" ? area.intro : selectedParagraphs();
   return <div className="research-systems research-pillar-layout">
     <div className="systems-summary research-pillar-summary">
-      {area.intro.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+      {paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
     </div>
     <ResearchSystemIllustration />
   </div>;

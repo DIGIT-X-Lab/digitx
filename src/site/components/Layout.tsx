@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link, useLocation, useNavigationType } from "react-router-dom";
-import { identity, legal, nav } from "@/content/site";
+import { identity, legal, nav, navRedesign } from "@/content/site";
 import { affiliations } from "@/data/affiliations";
 import { Arrow } from "./primitives";
 import { useActiveSection } from "./useActiveSection";
+import { registerBase, useRegister } from "../redesign/useRegister";
+import { StaggeredMenu } from "../redesign/StaggeredMenu";
+import { ThemeToggle } from "../redesign/ThemeToggle";
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -12,6 +15,10 @@ function Header() {
   const navigation = useRef<HTMLUListElement>(null);
   const { pathname, key } = useLocation();
   const active = useActiveSection();
+  const register = useRegister();
+  const items = register === "current" ? nav : navRedesign;
+  const base = registerBase(register);
+  const linkTo = (item: { id: string; to: string }) => register === "current" ? item.to : `${base}#${item.id}`;
   const toggle = useRef<HTMLButtonElement>(null);
   const mobile = useRef<HTMLElement>(null);
   useEffect(() => setOpen(false), [key]);
@@ -37,8 +44,8 @@ function Header() {
   }, []);
   useEffect(() => { if (!compact && matchMedia("(min-width: 1024px)").matches) setOpen(false); }, [compact]);
   useEffect(() => {
-    const page = nav.find(item => item.id === active)?.label;
-    document.title = !page || active === "home" ? "DIGITX · Research into human biology" : `${page} · DIGITX`;
+    const page = navRedesign.find(item => item.id === active)?.label;
+    document.title = !page || active === "home" ? "DIGITX · Building the computable human" : `${page} · DIGITX`;
   }, [active]);
   useEffect(() => {
     if (!open) return;
@@ -60,10 +67,12 @@ function Header() {
     return () => { document.body.style.overflow = previous;document.removeEventListener("keydown", keydown);desktop.removeEventListener("change", closeOnDesktop); };
   }, [open]);
   return <header className={`site-header${open ? " menu-open" : ""}`} data-compact={compact}><div ref={header} className="header-inner shell">
-    <Link to="/#home" aria-label="DIGITX home" className="site-brand">DIGIT<span>X</span></Link>
-    <nav aria-label="Main navigation" className="desktop-navigation"><ul ref={navigation}>{nav.map(item => <li key={item.id}><Link to={item.to} className={active === item.id ? "active" : undefined} aria-current={active === item.id ? pathname === "/" ? "location" : "page" : undefined}>{item.label}</Link></li>)}</ul></nav>
-    <button type="button" ref={toggle} className="menu-toggle" aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen(value => !value)}><span>{open ? "Close" : "Menu"}</span><span className="menu-mark" aria-hidden="true"><i /><i /></span></button>
-  </div>{open && <nav ref={mobile} id="mobile-nav" aria-label="Mobile navigation" className="mobile-navigation shell"><ul>{nav.map(item => <li key={item.id}><Link to={item.to} onClick={() => setOpen(false)} className={active === item.id ? "active" : undefined} aria-current={active === item.id ? pathname === "/" ? "location" : "page" : undefined}>{item.label}<Arrow direction="diagonal" /></Link></li>)}</ul><p>{identity}</p></nav>}</header>;
+    <Link to={`${base}#home`} aria-label="DIGITX home" className="site-brand">DIGIT<span>X</span></Link>
+    {register === "current" ? <>
+      <nav aria-label="Main navigation" className="desktop-navigation"><ul ref={navigation}>{items.map(item => <li key={item.id}><Link to={linkTo(item)} className={active === item.id ? "active" : undefined} aria-current={active === item.id ? pathname === "/" ? "location" : "page" : undefined}>{item.label}</Link></li>)}</ul></nav>
+      <button type="button" ref={toggle} className="menu-toggle" aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen(value => !value)}><span>{open ? "Close" : "Menu"}</span><span className="menu-mark" aria-hidden="true"><i /><i /></span></button>
+    </> : <div className="header-actions"><ThemeToggle /><StaggeredMenu items={items} linkTo={linkTo} active={active} /></div>}
+  </div>{open && register === "current" && <nav ref={mobile} id="mobile-nav" aria-label="Mobile navigation" className="mobile-navigation shell"><ul>{items.map(item => <li key={item.id}><Link to={linkTo(item)} onClick={() => setOpen(false)} className={active === item.id ? "active" : undefined} aria-current={active === item.id ? pathname === "/" ? "location" : "page" : undefined}>{item.label}<Arrow direction="diagonal" /></Link></li>)}</ul><p>{identity}</p></nav>}</header>;
 }
 
 function ScrollRestore() {
@@ -122,8 +131,9 @@ function ScrollRestore() {
 }
 
 function Footer() {
+  const base = registerBase(useRegister());
   return <footer className="site-footer shell"><div className="footer-top">
-    <Link to="/#home" aria-label="DIGITX home" className="footer-brand">DIGIT<span>X</span></Link>
+    <Link to={`${base}#home`} aria-label="DIGITX home" className="footer-brand">DIGIT<span>X</span></Link>
     <p>{affiliations.radiology}</p>
     <ul className="footer-legal">{legal.map(link => <li key={link.href}><a href={link.href} target="_blank" rel="noopener noreferrer">{link.label}<Arrow direction="diagonal" /></a></li>)}</ul>
   </div></footer>;
@@ -131,6 +141,8 @@ function Footer() {
 
 export function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
-  const surface = pathname === "/" || pathname === "/people-preview" ? "home" : pathname === "/research" ? "research" : pathname.startsWith("/careers/") ? "job" : null;
+  /* The redesign previews mirror the continuous home document, so they share
+     its surface: home gutters, shell width and zeroed scroll-padding. */
+  const surface = pathname === "/" || pathname === "/people-preview" || pathname.startsWith("/redesign") ? "home" : pathname === "/research" ? "research" : pathname.startsWith("/careers/") ? "job" : null;
   return <div className={`site-layout${surface ? ` site-layout--${surface}` : ""}`}><a className="skip-link" href="#main">Skip to content</a><ScrollRestore /><Header /><main id="main" tabIndex={-1}>{children}</main><Footer /></div>;
 }

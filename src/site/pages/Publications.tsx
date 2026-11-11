@@ -5,20 +5,23 @@ import { publicationsPage as copy } from "@/content/publications";
 import { Arrow, Tape } from "../components/primitives";
 import { filterPublications, publicationPages, selectPublications } from "./publication-archive";
 import { usePublicationLayout } from "./use-publication-layout";
+import { useRegister } from "../redesign/useRegister";
+import { cleanVenueName } from "../redesign/venue";
 import "./publications.css";
 import "./publication-accordion.css";
 
 /** Approved accordion archive: collapsed strips determine page capacity. */
 function StripContent({ paper }: { paper: Publication }) {
+  const register = useRegister();
   return <>
     <span className="pa-year">{paper.year ?? "Undated"}</span>
     <span className="pa-paper-title">{paper.title}</span>
-    <span className="pa-journal">{paper.venue}</span>
+    <span className="pa-journal">{register === "current" ? paper.venue : cleanVenueName(paper.venue)}</span>
     <span className="pa-mark" aria-hidden="true"><i /><i /></span>
   </>;
 }
 
-function Paper({ paper, open, embedded, onToggle }: { paper: Publication; open: boolean; embedded: boolean; onToggle: () => void }) {
+function Paper({ paper, open, embedded, onToggle, order = 0 }: { paper: Publication; open: boolean; embedded: boolean; onToggle: () => void; order?: number }) {
   const Heading = embedded ? "h3" : "h2";
   const DetailHeading = embedded ? "h4" : "h3";
   const id = useId();
@@ -27,7 +30,7 @@ function Paper({ paper, open, embedded, onToggle }: { paper: Publication; open: 
   const doi = paper.note?.doi ?? paper.doi;
   const source = doi ? `https://doi.org/${doi}` : paper.sourceUrl;
   const groupAuthors = paper.note?.groupAuthors ?? paper.groupAuthors ?? [];
-  return <li className="pa-paper" data-paper-id={paper.paperId} data-open={open} onKeyDown={event => {
+  return <li className="pa-paper" style={{ "--pa-i": order } as React.CSSProperties} data-paper-id={paper.paperId} data-open={open} onKeyDown={event => {
     if (open && event.key === "Escape") { event.preventDefault(); onToggle(); trigger.current?.focus(); }
   }}>
     <Heading><button ref={trigger} id={`${id}-trigger`} className="pa-strip" type="button" aria-expanded={open} aria-controls={`${id}-details`}
@@ -65,6 +68,7 @@ export default function Publications({ embedded = false }: { embedded?: boolean 
   const years = useMemo(() => [...new Set(publications.map(paper => paper.year).filter((value): value is number => value !== null))].sort((a, b) => b - a), []);
   const matches = useMemo(() => filterPublications(publications, { query, year }), [query, year]);
   const geometry = usePublicationLayout(root, measure, matches);
+  const register = useRegister();
   const archive = selectPublications(publications, { query, year, anchor }, geometry?.layout);
   const reset = () => { setQuery(""); setYear("all"); setAnchor(null); setExpanded(null); search.current?.focus(); };
   const changePage = (page: number) => {
@@ -97,7 +101,7 @@ export default function Publications({ embedded = false }: { embedded?: boolean 
             <div className="publication-pagination pa-pagination"><span>1</span></div>
           </div>
           <div ref={results} id="pa-results" tabIndex={-1}>
-            {archive.total ? <ol className="pa-list">{archive.items.map(paper => <Paper key={paper.paperId} paper={paper} embedded={embedded} open={expanded === paper.paperId} onToggle={() => setExpanded(value => value === paper.paperId ? null : paper.paperId)} />)}</ol>
+            {archive.total ? <ol className="pa-list" key={register === "current" ? undefined : `${archive.page}-${query}-${year}`}>{archive.items.map((paper, order) => <Paper key={paper.paperId} paper={paper} order={order} embedded={embedded} open={expanded === paper.paperId} onToggle={() => setExpanded(value => value === paper.paperId ? null : paper.paperId)} />)}</ol>
               : <div className="pa-empty"><p>{copy.empty}</p><button type="button" onClick={reset}>Show all publications <Arrow /></button></div>}
           </div>
         </div>

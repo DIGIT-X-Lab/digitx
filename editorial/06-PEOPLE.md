@@ -2,7 +2,7 @@
 
 **H1:** People
 
-**Intro:** We come from different backgrounds and work on different problems. These are the people behind the research.
+**Intro:** We come from different backgrounds and work on different problems, together. These are the people behind the research.
 
 **Profile field labels:** Name · Role · Expertise · Research interests · Selected work · Contact · Profiles
 

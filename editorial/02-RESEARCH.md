@@ -46,3 +46,5 @@ We also develop ways to make their actions and evidence open to inspection, so r
 [PI layout revision, 29 October 2026: present the three research pillars as full-width stacked rows with thin dividers, the shared tools white hover reveal, and plus/minus controls. Expand one pillar beneath its own row at a time.]
 
 [PI refinement, 29 October 2026: omit “Select a pillar to explore.” Give “Research pillars” the shared section-heading type role, above the individual pillar-heading role.]
+
+[PI refinement, 11 November 2026: the pillar index heading reads “Our focus” instead of “Research pillars”.]

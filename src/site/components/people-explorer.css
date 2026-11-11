@@ -35,7 +35,8 @@
 .people-profile[hidden], .people-answer[hidden] { display: none; }
 .people-person, .people-person-details, .people-conversation { min-width: 0; }
 .people-portrait { grid-area: portrait; position: relative; width: min(100%, 400px); aspect-ratio: 4 / 5; overflow: hidden; isolation: isolate; background: radial-gradient(ellipse at 28% 18%, #f8f6f1 0%, #e4e5e3 48%, #a5adb0 100%); }
-.people-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 36%; filter: grayscale(1) sepia(.08); mix-blend-mode: darken; }
+/* Treatment is baked into the per-theme portrait files. */
+.people-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 36%; }
 .people-portrait--mirrored { transform: scaleX(-1); }
 .people-portrait::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 65%, #0b0a0926 78%, var(--bg) 100%); }
 .people-portrait figcaption { position: absolute; z-index: 1; inset: auto 0 8px; color: var(--muted); font-size: var(--type-caption); line-height: 1.5; }
