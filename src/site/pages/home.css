@@ -41,7 +41,9 @@ html:has(.site-layout--home) { scroll-padding-top: 0; }
   .home-hero-sequence[data-enhanced="true"] .home-hero-scroll-cue > * { animation: none; }
 }
 .home-hero-scroll-cue:hover { color: var(--ink); }
+/* Quiet for programmatic focus, visible for keyboard arrivals. */
 #home-title:focus { outline: none; }
+#home-title:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
 .home-affiliation { margin-bottom: 24px; color: var(--muted); font-size: var(--type-meta); line-height: 1.3; letter-spacing: var(--type-tracking-lead); }
 .home-affiliation > span { display: inline-block; }
 .home-affiliation-separator { padding-inline: .3em; }

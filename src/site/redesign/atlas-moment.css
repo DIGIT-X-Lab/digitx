@@ -61,5 +61,5 @@
   .atlas-inner { gap: 14px; }
   .atlas-status-title { font-size: var(--type-meta); color: var(--ink); }
   .atlas-rail { gap: 0 14px; }
-  .atlas-rail-item { font-size: var(--type-meta); gap: 7px; min-height: 40px; }
+  .atlas-rail-item { font-size: var(--type-meta); gap: 7px; min-height: 44px; }
 }
