@@ -8,6 +8,13 @@
   .header-actions > .theme-toggle { display: none; }
 }
 
+/* The menu's explicit pair: the active mode carries the site's
+   underline, the other waits. */
+.theme-choice { display: flex; gap: 22px; }
+.theme-choice button { min-height: 44px; font-size: var(--type-meta); color: inherit; opacity: .45; }
+.theme-choice button:hover { opacity: .8; }
+.theme-choice button[aria-pressed="true"] { opacity: 1; text-decoration: underline; text-underline-offset: 6px; }
+
 /* The circular sweep owns the crossfade: stock view-transition animation
    and blending are disabled so the growing clip is the whole effect. */
 ::view-transition-old(root),

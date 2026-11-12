@@ -77,7 +77,7 @@ export function StaggeredMenu({ items, linkTo, active }: {
           </motion.ol>
           <div className="sm-theme">
             <span className="sm-theme-label">Appearance</span>
-            <ThemeToggle />
+            <ThemeToggle variant="labels" />
           </div>
         </motion.nav>
       </motion.div>}
