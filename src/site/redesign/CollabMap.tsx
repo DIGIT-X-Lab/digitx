@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent, type MouseEvent as ReactMouseEvent } from "react";
 import land from "./world-land.json";
 import "./collab-map.css";
 
@@ -64,6 +64,71 @@ export function CollabMap() {
     return () => media.removeEventListener("change", update);
   }, []);
   const dotScale = compact ? 1.8 : 1;
+  /* Zoom: click or tap zooms toward that point, drag pans, click again
+     resets; pinch works on touch. No wheel capture, so the page keeps
+     scrolling normally past the figure. */
+  const viewport = useRef<HTMLDivElement>(null);
+  const [view, setView] = useState({ scale: 1, x: 0, y: 0 });
+  const [live, setLive] = useState(false);
+  const pointers = useRef(new Map<number, { x: number; y: number }>());
+  const pinch = useRef<{ scale: number; x: number; y: number; distance: number } | null>(null);
+  const movedBy = useRef(0);
+  const clampView = (scale: number, x: number, y: number) => {
+    const box = viewport.current?.getBoundingClientRect();
+    if (!box) return { scale, x, y };
+    return {
+      scale,
+      x: Math.min(0, Math.max(box.width * (1 - scale), x)),
+      y: Math.min(0, Math.max(box.height * (1 - scale), y)),
+    };
+  };
+  const localPoint = (event: { clientX: number; clientY: number }) => {
+    const box = viewport.current!.getBoundingClientRect();
+    return { x: event.clientX - box.left, y: event.clientY - box.top };
+  };
+  const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    try { viewport.current?.setPointerCapture(event.pointerId); } catch { /* already released */ }
+    pointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    movedBy.current = 0;
+    if (pointers.current.size === 2) {
+      const [a, b] = [...pointers.current.values()];
+      pinch.current = { scale: view.scale, x: view.x, y: view.y, distance: Math.hypot(a.x - b.x, a.y - b.y) };
+      setLive(true);
+    } else if (view.scale > 1) setLive(true);
+  };
+  const onPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const previous = pointers.current.get(event.pointerId);
+    if (!previous) return;
+    movedBy.current += Math.hypot(event.clientX - previous.x, event.clientY - previous.y);
+    pointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (pointers.current.size === 2 && pinch.current) {
+      const [a, b] = [...pointers.current.values()];
+      const distance = Math.hypot(a.x - b.x, a.y - b.y);
+      const nextScale = Math.min(4, Math.max(1, pinch.current.scale * (distance / pinch.current.distance)));
+      const box = viewport.current!.getBoundingClientRect();
+      const mid = { x: (a.x + b.x) / 2 - box.left, y: (a.y + b.y) / 2 - box.top };
+      const contentX = (mid.x - pinch.current.x) / pinch.current.scale;
+      const contentY = (mid.y - pinch.current.y) / pinch.current.scale;
+      setView(clampView(nextScale, mid.x - nextScale * contentX, mid.y - nextScale * contentY));
+    } else if (pointers.current.size === 1 && view.scale > 1) {
+      setView(value => clampView(value.scale, value.x + event.movementX, value.y + event.movementY));
+    }
+  };
+  const onPointerEnd = (event: ReactPointerEvent<HTMLDivElement>) => {
+    pointers.current.delete(event.pointerId);
+    if (pointers.current.size === 0) {
+      setLive(false);
+      pinch.current = null;
+      setView(value => value.scale < 1.15 ? { scale: 1, x: 0, y: 0 } : value);
+    }
+  };
+  const onClick = (event: ReactMouseEvent<HTMLDivElement>) => {
+    if (movedBy.current > 8) return;
+    if (view.scale === 1) {
+      const point = localPoint(event);
+      setView(clampView(2.6, point.x * (1 - 2.6), point.y * (1 - 2.6)));
+    } else setView({ scale: 1, x: 0, y: 0 });
+  };
   /* Full-world closed rings; the viewBox does the cropping. Longitudes are
      unwrapped for continuity so antimeridian crossings leave the frame
      instead of streaking across it. */
@@ -100,7 +165,12 @@ export function CollabMap() {
     return { x, y, count, radius: Math.min(6.2, 2.6 * Math.sqrt(count) + 0.6), path: arc(x, y, hubX, hubY), distance: Math.hypot(hubX - x, hubY - y) };
   }), [hubX, hubY]);
   return <figure className="collab-map">
+    <div ref={viewport} className="cm-viewport" data-zoomed={view.scale > 1 || undefined} data-live={live || undefined}
+      style={{ touchAction: view.scale > 1 ? "none" : "pan-y" }}
+      onPointerDown={onPointerDown} onPointerMove={onPointerMove}
+      onPointerUp={onPointerEnd} onPointerCancel={onPointerEnd} onClick={onClick}>
     <svg viewBox={`0 0 ${W} ${H}`} role="img"
+      style={{ transform: `translate(${view.x}px, ${view.y}px) scale(${view.scale})` }}
       aria-label="World map: our collaborators, from Germany across Europe to North America, Asia and Australia, each connected to Munich.">
       <path className="cm-land" d={landPath} fillRule="evenodd" vectorEffect="non-scaling-stroke" />
       <g className="cm-lines">{nodes.map((node, index) => <path key={index} d={node.path} vectorEffect="non-scaling-stroke" />)}</g>
@@ -118,6 +188,7 @@ export function CollabMap() {
           </circle>);
       })}</g>}
     </svg>
+    </div>
     <figcaption>Our collaborators come from all over the world. There&rsquo;s always room for one more.</figcaption>
   </figure>;
 }
