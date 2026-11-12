@@ -39,6 +39,9 @@ const SCENE_ONLY = `
 main, .film, #scene { padding: 0 !important; margin: 0 !important; max-width: none !important; }
 body { overflow: hidden !important; background: transparent !important; }
 #scene svg { max-width: none !important; width: 100% !important; height: auto !important; }
+/* Phones narrate the chapters in page text, so the film's internal
+   titles (all drawn at 56,85) stay quiet there (toggled from the parent). */
+html[data-hide-titles] #scene svg text[x="56"][y="85"] { display: none !important; }
 `;
 /* The region of the film's canvas (its own user units) that this placement
  * shows: the content area across all five chapters, without the standalone
@@ -78,6 +81,22 @@ export function AtlasMoment({ register }: { register: Mode }) {
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
   }, [stage]);
+  /* Below the phone breakpoint the page narrates each chapter, so the
+     film's own title lettering switches off inside the frame. */
+  useEffect(() => {
+    const media = matchMedia("(max-width: 899px)");
+    const apply = () => {
+      const doc = frame.current?.contentDocument;
+      if (!doc) return;
+      if (media.matches) doc.documentElement.dataset.hideTitles = "";
+      else delete doc.documentElement.dataset.hideTitles;
+    };
+    apply();
+    media.addEventListener("change", apply);
+    const frameEl = frame.current;
+    frameEl?.addEventListener("load", apply);
+    return () => { media.removeEventListener("change", apply); frameEl?.removeEventListener("load", apply); };
+  }, []);
   /* On the phone strip the rail scrolls itself, never the page, so the
      active chapter stays in view as the film advances. */
   useEffect(() => {
