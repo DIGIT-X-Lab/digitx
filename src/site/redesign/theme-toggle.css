@@ -1,7 +1,12 @@
-/* Theme toggle: one quiet icon, hosted by the menu panel. */
+/* Theme toggle: in the header, grouped tight with Menu so the pair reads
+   as one control cluster. Phones hand it to the menu panel instead. */
+.header-actions { display: flex; align-items: center; gap: 6px; }
 .theme-toggle { display: grid; place-items: center; width: 44px; height: 44px; color: var(--subtle); }
 .theme-toggle:hover { color: var(--ink); }
-.theme-toggle svg { width: 17px; height: 17px; }
+.theme-toggle svg { width: 18px; height: 18px; }
+@media (max-width: 899px) {
+  .header-actions > .theme-toggle { display: none; }
+}
 
 /* The circular sweep owns the crossfade: stock view-transition animation
    and blending are disabled so the growing clip is the whole effect. */
