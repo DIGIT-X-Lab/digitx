@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
+import { ThemeToggle } from "./ThemeToggle";
 import "./staggered-menu.css";
 
 /** Collapsed navigation for the redesign registers: one Menu button, an
@@ -74,6 +75,10 @@ export function StaggeredMenu({ items, linkTo, active }: {
               </Link>
             </motion.li>)}
           </motion.ol>
+          <div className="sm-theme">
+            <span className="sm-theme-label">Appearance</span>
+            <ThemeToggle variant="labels" />
+          </div>
         </motion.nav>
       </motion.div>}
     </AnimatePresence>, document.body)}

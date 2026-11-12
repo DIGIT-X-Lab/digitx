@@ -1,11 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { useSiteTheme } from "./useSiteTheme";
 import "./theme-light.css";
 import "./theme-toggle.css";
 
-/** Theme toggle for the redesign previews: dark is home, light is the
- * mirror. The switch sweeps across the page as a circle growing from the
- * button (View Transitions API); browsers without it, and reduced-motion
- * visitors, get an instant swap. The choice persists per browser. */
+/** Theme control: dark is home, light is the mirror. The switch sweeps
+ * across the page as a circle growing from the control you pressed
+ * (View Transitions API); browsers without it, and reduced-motion
+ * visitors, get an instant swap. The choice persists per browser.
+ *
+ * Two faces: "icon" (the header's sun/moon) and "labels" (the menu's
+ * explicit Dark / Light pair). All instances derive their state from the
+ * document, so they stay in sync and remounts never reset anything. */
 
 const KEY = "digitx-theme";
 type Theme = "dark" | "light";
@@ -15,37 +19,40 @@ const setAttribute = (theme: Theme) => {
   else delete document.documentElement.dataset.theme;
 };
 
-export function ThemeToggle() {
-  const button = useRef<HTMLButtonElement>(null);
-  const [theme, setTheme] = useState<Theme>("dark");
-  useEffect(() => {
-    let saved: string | null = null;
-    try { saved = localStorage.getItem(KEY); } catch { /* storage may be unavailable */ }
-    if (saved === "light") { setTheme("light"); setAttribute("light"); }
-    /* Leaving the preview registers returns the site to its own ground. */
-    return () => setAttribute("dark");
-  }, []);
-  const toggle = () => {
-    const next: Theme = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    try { localStorage.setItem(KEY, next); } catch { /* fine without persistence */ }
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const doc = document as Document & { startViewTransition?: (update: () => void) => { ready: Promise<void> } };
-    const anchor = button.current;
-    if (!doc.startViewTransition || reduced || !anchor) { setAttribute(next); return; }
-    const transition = doc.startViewTransition(() => setAttribute(next));
-    transition.ready.then(() => {
-      const rect = anchor.getBoundingClientRect();
-      const x = rect.left + rect.width / 2;
-      const y = rect.top + rect.height / 2;
-      const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-      document.documentElement.animate(
-        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
-        { duration: 650, easing: "ease-in-out", pseudoElement: "::view-transition-new(root)" },
-      );
-    }).catch(() => undefined);
-  };
-  return <button ref={button} type="button" className="theme-toggle" onClick={toggle}
+/* The saved choice applies as soon as the app loads, not when the first
+   toggle happens to mount. */
+try { if (localStorage.getItem(KEY) === "light") setAttribute("light"); } catch { /* storage may be unavailable */ }
+
+function apply(next: Theme, anchor: HTMLElement | null) {
+  try { localStorage.setItem(KEY, next); } catch { /* fine without persistence */ }
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const doc = document as Document & { startViewTransition?: (update: () => void) => { ready: Promise<void> } };
+  if (!doc.startViewTransition || reduced || !anchor) { setAttribute(next); return; }
+  const transition = doc.startViewTransition(() => setAttribute(next));
+  transition.ready.then(() => {
+    const rect = anchor.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    document.documentElement.animate(
+      { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+      { duration: 650, easing: "ease-in-out", pseudoElement: "::view-transition-new(root)" },
+    );
+  }).catch(() => undefined);
+}
+
+export function ThemeToggle({ variant = "icon" }: { variant?: "icon" | "labels" }) {
+  const theme = useSiteTheme();
+  if (variant === "labels") {
+    return <div className="theme-choice" role="group" aria-label="Appearance">
+      <button type="button" aria-pressed={theme === "dark"}
+        onClick={event => theme !== "dark" && apply("dark", event.currentTarget)}>Dark</button>
+      <button type="button" aria-pressed={theme === "light"}
+        onClick={event => theme !== "light" && apply("light", event.currentTarget)}>Light</button>
+    </div>;
+  }
+  return <button type="button" className="theme-toggle"
+    onClick={event => apply(theme === "dark" ? "light" : "dark", event.currentTarget)}
     aria-pressed={theme === "light"} aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}>
     <svg viewBox="0 0 16 16" aria-hidden="true">
       {theme === "dark"

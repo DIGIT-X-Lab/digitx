@@ -1,8 +1,19 @@
-/* Theme toggle: one quiet icon beside the menu. */
-.header-actions { display: flex; align-items: center; gap: 14px; }
+/* Theme toggle: in the header, grouped tight with Menu so the pair reads
+   as one control cluster. Phones hand it to the menu panel instead. */
+.header-actions { display: flex; align-items: center; gap: 6px; }
 .theme-toggle { display: grid; place-items: center; width: 44px; height: 44px; color: var(--subtle); }
 .theme-toggle:hover { color: var(--ink); }
-.theme-toggle svg { width: 17px; height: 17px; }
+.theme-toggle svg { width: 18px; height: 18px; }
+@media (max-width: 899px) {
+  .header-actions > .theme-toggle { display: none; }
+}
+
+/* The menu's explicit pair: the active mode carries the site's
+   underline, the other waits. */
+.theme-choice { display: flex; gap: 22px; }
+.theme-choice button { min-height: 44px; font-size: var(--type-meta); color: inherit; opacity: .45; }
+.theme-choice button:hover { opacity: .8; }
+.theme-choice button[aria-pressed="true"] { opacity: 1; text-decoration: underline; text-underline-offset: 6px; }
 
 /* The circular sweep owns the crossfade: stock view-transition animation
    and blending are disabled so the growing clip is the whole effect. */
