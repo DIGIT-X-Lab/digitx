@@ -46,6 +46,9 @@ function arc(x: number, y: number, hx: number, hy: number): string {
 
 export function CollabMap() {
   const [still, setStill] = useState(false);
+  /* On small screens the svg renders at roughly half scale; strokes stay
+     crisp via vector-effect, and the dots grow to compensate. */
+  const [compact, setCompact] = useState(false);
   useEffect(() => {
     const media = matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => setStill(media.matches);
@@ -53,6 +56,14 @@ export function CollabMap() {
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
   }, []);
+  useEffect(() => {
+    const media = matchMedia("(max-width: 999px)");
+    const update = () => setCompact(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+  const dotScale = compact ? 1.8 : 1;
   /* Full-world closed rings; the viewBox does the cropping. Longitudes are
      unwrapped for continuity so antimeridian crossings leave the frame
      instead of streaking across it. */
@@ -91,17 +102,17 @@ export function CollabMap() {
   return <figure className="collab-map">
     <svg viewBox={`0 0 ${W} ${H}`} role="img"
       aria-label="World map: our collaborators, from Germany across Europe to North America, Asia and Australia, each connected to Munich.">
-      <path className="cm-land" d={landPath} fillRule="evenodd" />
-      <g className="cm-lines">{nodes.map((node, index) => <path key={index} d={node.path} />)}</g>
+      <path className="cm-land" d={landPath} fillRule="evenodd" vectorEffect="non-scaling-stroke" />
+      <g className="cm-lines">{nodes.map((node, index) => <path key={index} d={node.path} vectorEffect="non-scaling-stroke" />)}</g>
       <g className="cm-sites">{nodes.map((node, index) =>
-        <circle key={index} cx={node.x.toFixed(1)} cy={node.y.toFixed(1)} r={node.radius.toFixed(1)} />)}</g>
-      <circle className="cm-hub-ring" cx={hubX.toFixed(1)} cy={hubY.toFixed(1)} r="8" />
-      <circle className="cm-hub" cx={hubX.toFixed(1)} cy={hubY.toFixed(1)} r="3.2" />
+        <circle key={index} cx={node.x.toFixed(1)} cy={node.y.toFixed(1)} r={(node.radius * dotScale).toFixed(1)} />)}</g>
+      <circle className="cm-hub-ring" cx={hubX.toFixed(1)} cy={hubY.toFixed(1)} r={(8 * dotScale).toFixed(1)} vectorEffect="non-scaling-stroke" />
+      <circle className="cm-hub" cx={hubX.toFixed(1)} cy={hubY.toFixed(1)} r={(3.2 * dotScale).toFixed(1)} />
       {!still && <g className="cm-pulses">{nodes.flatMap((node, index) => {
         const seconds = 1.7 + (node.distance / W) * 3.2;
         const trips = node.distance > 180 ? 2 : 1;
         return Array.from({ length: trips }, (_, trip) =>
-          <circle key={`${index}-${trip}`} r="2">
+          <circle key={`${index}-${trip}`} r={(2 * dotScale).toFixed(1)}>
             <animateMotion dur={`${seconds.toFixed(2)}s`} begin={`${(index * 0.53 + trip * seconds / 2).toFixed(2)}s`}
               repeatCount="indefinite" path={node.path} />
           </circle>);

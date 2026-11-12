@@ -35,6 +35,10 @@
 .news-body { margin-top: 6px; font-size: var(--type-caption); line-height: 1.55; opacity: .75; }
 .news-panel li a { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; min-height: 32px; font-size: var(--type-caption); text-decoration: underline; text-underline-offset: 3px; }
 .news-panel li a .site-arrow { width: 11px; height: 11px; }
+/* Phones: the island stays, as the chip alone; the panel opens full
+   width beneath the header. */
 @media (max-width: 900px) {
-  .news-island { display: none; }
+  .news-island { top: 14px; }
+  .news-layer .news-latest { display: none; }
+  .news-pill { max-width: none; }
 }

@@ -78,6 +78,15 @@ export function AtlasMoment({ register }: { register: Mode }) {
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
   }, [stage]);
+  /* On the phone strip the rail scrolls itself, never the page, so the
+     active chapter stays in view as the film advances. */
+  useEffect(() => {
+    const list = rail.current;
+    const item = list?.querySelectorAll<HTMLElement>(".atlas-rail-item")[stage];
+    if (!list || !item || list.scrollWidth <= list.clientWidth + 4) return;
+    const target = Math.max(0, Math.min(item.offsetLeft - 16, list.scrollWidth - list.clientWidth));
+    list.scrollTo({ left: target, behavior: reduced ? "instant" : "smooth" });
+  }, [stage, reduced]);
 
   const getStory = () => {
     if (!story.current) story.current = (frame.current?.contentWindow as (Window & { digitxStory?: StoryHandle }) | null)?.digitxStory ?? null;

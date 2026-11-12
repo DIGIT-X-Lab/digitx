@@ -14,6 +14,9 @@
 /* The figure spans both grid rows; keep the mailto link content-sized. */
 .redesign-preview .ep-email { align-self: start; }
 
+/* Phones and tablets: the map flows after the invitation, full width,
+   the worldwide impression intact at small scale. */
 @media (max-width: 1000px) {
-  .collab-map { display: none; }
+  .collab-map { margin-top: 40px; max-width: none; }
+  .collab-map figcaption { text-align: left; margin-top: 12px; }
 }
