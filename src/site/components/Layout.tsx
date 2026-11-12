@@ -6,7 +6,6 @@ import { Arrow } from "./primitives";
 import { useActiveSection } from "./useActiveSection";
 import { registerBase, useRegister } from "../redesign/useRegister";
 import { StaggeredMenu } from "../redesign/StaggeredMenu";
-import { ThemeToggle } from "../redesign/ThemeToggle";
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -71,7 +70,7 @@ function Header() {
     {register === "current" ? <>
       <nav aria-label="Main navigation" className="desktop-navigation"><ul ref={navigation}>{items.map(item => <li key={item.id}><Link to={linkTo(item)} className={active === item.id ? "active" : undefined} aria-current={active === item.id ? pathname === "/" ? "location" : "page" : undefined}>{item.label}</Link></li>)}</ul></nav>
       <button type="button" ref={toggle} className="menu-toggle" aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen(value => !value)}><span>{open ? "Close" : "Menu"}</span><span className="menu-mark" aria-hidden="true"><i /><i /></span></button>
-    </> : <div className="header-actions"><ThemeToggle /><StaggeredMenu items={items} linkTo={linkTo} active={active} /></div>}
+    </> : <StaggeredMenu items={items} linkTo={linkTo} active={active} />}
   </div>{open && register === "current" && <nav ref={mobile} id="mobile-nav" aria-label="Mobile navigation" className="mobile-navigation shell"><ul>{items.map(item => <li key={item.id}><Link to={linkTo(item)} onClick={() => setOpen(false)} className={active === item.id ? "active" : undefined} aria-current={active === item.id ? pathname === "/" ? "location" : "page" : undefined}>{item.label}<Arrow direction="diagonal" /></Link></li>)}</ul><p>{identity}</p></nav>}</header>;
 }
 

@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+import { useSiteTheme } from "./useSiteTheme";
 import "./theme-light.css";
 import "./theme-toggle.css";
 
@@ -15,19 +16,17 @@ const setAttribute = (theme: Theme) => {
   else delete document.documentElement.dataset.theme;
 };
 
+/* The saved choice applies as soon as the app loads, not when the first
+   toggle happens to mount. */
+try { if (localStorage.getItem(KEY) === "light") setAttribute("light"); } catch { /* storage may be unavailable */ }
+
 export function ThemeToggle() {
   const button = useRef<HTMLButtonElement>(null);
-  const [theme, setTheme] = useState<Theme>("dark");
-  useEffect(() => {
-    let saved: string | null = null;
-    try { saved = localStorage.getItem(KEY); } catch { /* storage may be unavailable */ }
-    if (saved === "light") { setTheme("light"); setAttribute("light"); }
-    /* Leaving the preview registers returns the site to its own ground. */
-    return () => setAttribute("dark");
-  }, []);
+  /* The theme is read from the document, so every instance of this
+     button stays in sync and mounting or unmounting never resets it. */
+  const theme = useSiteTheme();
   const toggle = () => {
     const next: Theme = theme === "dark" ? "light" : "dark";
-    setTheme(next);
     try { localStorage.setItem(KEY, next); } catch { /* fine without persistence */ }
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const doc = document as Document & { startViewTransition?: (update: () => void) => { ready: Promise<void> } };

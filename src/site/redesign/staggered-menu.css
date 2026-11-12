@@ -24,6 +24,12 @@
 .sm-panel a[aria-current="page"] { text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 1px; }
 .sm-index { font-size: var(--type-caption); opacity: .45; min-width: 24px; }
 
+/* The appearance switch lives at the panel's foot, out of the header. */
+.sm-theme { margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 24px; border-top: 1px solid rgb(11 10 9 / .14); }
+.sm-theme-label { font-size: var(--type-caption); opacity: .55; }
+.sm-theme .theme-toggle { color: inherit; opacity: .7; }
+.sm-theme .theme-toggle:hover { opacity: 1; }
+
 @media (prefers-reduced-motion: reduce) {
   .sm-mark i { transition: none; }
 }
